@@ -1,0 +1,39 @@
+.boton_buscar {
+    margin: 5px 32px 0px 74px
+}
+
+.busc {
+    font-size: 24px;
+}
+
+.imag-fondo {
+    position: relative;
+    height: 300px;
+    background-image: url("/assets/imag/ryan-ancill-nGsVMkRatgM-unsplash.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.contenido-imag {
+    text-align: center;
+    background-color: #2595beb1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+}
+
+.contenido-imag>p {
+    margin: 10px;
+}
+
+.dd {
+    display: flex;
+}
+
+#carouselExampleCaptions {
+    position: absolute;
+}
