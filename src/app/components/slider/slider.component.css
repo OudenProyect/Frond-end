@@ -1,0 +1,15 @@
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.my-swiper {
+    padding: 0px 20px;
+}
