@@ -37,3 +37,49 @@
 #carouselExampleCaptions {
     position: absolute;
 }
+
+.logos img {
+    width: 200px;
+}
+
+.logos {
+    width: 90%;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+    gap: 60px;
+    display: flex;
+    vertical-align: middle;
+}
+
+.img-empreinfo {
+    object-fit: cover;
+    height: 300px;
+}
+
+.lado {
+    background-color: white;
+    padding: 30px;
+}
+
+.img-empreinfo {
+    width: 47.5%;
+    border-radius: 5px;
+}
+
+#info-empresa {
+    background-color: #C8CCD5;
+}
+
+.accordion-button {
+    border-bottom: 1px solid;
+}
+
+.accordion-item {
+    border: 0px;
+}
+
+.accordion {
+    --bs-accordion-active-bg: #C8CCD5;
+    --bs-accordion-active-color: black;
+}
