@@ -1,23 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-body">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-        <a class="navbar-brand" href="#">
-            <img src="assets/imag/logo.png" width="20%">
-        </a>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <form class="d-flex" role="search">
-                <input class="form-control d-none me-2" type="search" placeholder="Search" aria-label="Search">
-                <p class="btn border-0 bg-body boton_buscar "><i class="busc fa fa-search"></i></p>
-            </form>
-            <a class="nav-link w-25" href="#">Contact</a>
-            <a class="nav-link w-25" href="# ">About Us</a>
-            <a class="btn btn-dark " href="# ">Signup</a>
-        </div>
-    </div>
-</nav>
-
+<div id="header">
+    <app-header></app-header>
+</div>
 <div class="imag-fondo">
     <div class="contenido-imag">
         <h2 class="text-light p-2">Un sueño de casas</h2>
@@ -35,6 +18,7 @@
         </div>
     </div>
 </div>
+<!-- slider -->
 <div>
     <h1 class="text-center pt-lg-5">Casas destacadas</h1>
     <app-slider></app-slider>
@@ -73,7 +57,6 @@
 </div>
 
 <div id="preguntas">
-
     <h1 class="text-center p-lg-5">Frequently Asked Questions</h1>
     <div class="accordion w-75 m-auto mb-5" id="accordionExample">
         <div class="accordion-item">
@@ -133,4 +116,8 @@
             </div>
         </div>
     </div>
+</div>
+
+<div id="footer">
+    <app-footer></app-footer>
 </div>
