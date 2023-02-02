@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { HomeComponent } from './views/home/home.component';
 import { RegisterComponent } from './views/register/register.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { PreciosComponent } from './components/precios/precios.component';
 
 
 @NgModule({
@@ -13,7 +16,10 @@ import { RegisterComponent } from './views/register/register.component';
     AppComponent,
     SliderComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    FooterComponent,
+    HeaderComponent,
+    PreciosComponent
   ],
   imports: [
     BrowserModule,
