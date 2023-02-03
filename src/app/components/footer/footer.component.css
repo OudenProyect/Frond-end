@@ -7,57 +7,7 @@
 
 footer .main-footer {
     padding: 20px 0;
-    background: #252525;
-}
-
-footer ul {
-    padding-left: 0;
-    list-style: none;
-}
-
-
-/* Copy Right Footer */
-
-.footer-copyright {
-    background: #222;
-    padding: 5px 0;
-}
-
-.footer-copyright .logo {
-    display: inherit;
-}
-
-.footer-copyright nav {
-    float: right;
-    margin-top: 5px;
-}
-
-.footer-copyright nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.footer-copyright nav ul li {
-    border-left: 1px solid #505050;
-    display: inline-block;
-    line-height: 12px;
-    margin: 0;
-    padding: 0 8px;
-}
-
-.footer-copyright nav ul li a {
-    color: #969696;
-}
-
-.footer-copyright nav ul li:first-child {
-    border: medium none;
-    padding-left: 0;
-}
-
-.footer-copyright p {
-    color: #969696;
-    margin: 2px 0 0;
+    background: #000000;
 }
 
 
@@ -71,47 +21,12 @@ footer ul {
 }
 
 
-/* Footer transparent */
-
-footer.transparent .footer-top,
-footer.transparent .main-footer {
-    background: transparent;
-}
-
-footer.transparent .footer-copyright {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3);
-}
-
-
-/* Footer light */
-
-footer.light .footer-top {
-    background: #f9f9f9;
-}
-
-footer.light .main-footer {
-    background: #f9f9f9;
-}
-
-footer.light .footer-copyright {
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3);
-}
-
-
-/* Footer 4 */
-
-.footer- .logo {
-    display: inline-block;
-}
-
-
 /*==================== 
   Widgets 
 ====================== */
 
 .widget {
     padding: 20px;
-    margin-bottom: 40px;
 }
 
 .widget.widget-last {
@@ -120,15 +35,6 @@ footer.light .footer-copyright {
 
 .widget.subscribe p {
     margin-bottom: 18px;
-}
-
-.widget li a {
-    color: #fff;
-}
-
-.widget li a:hover {
-    color: #aaa;
-    text-decoration: none;
 }
 
 .widget-title {
@@ -158,6 +64,10 @@ footer.light .footer-copyright {
     background: #7f7f7f;
 }
 
+.borCryp {
+    border-top: 1px solid #839FAD;
+}
+
 .fa {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -168,33 +78,6 @@ footer.light .footer-copyright {
     text-align: center;
     margin: 4px;
     border-radius: 5px;
-}
-
-ul.social-footer2 {
-    margin: 0;
-    padding: 0;
-    width: auto;
-}
-
-ul.social-footer2 li {
-    display: inline-block;
-    padding: 0;
-}
-
-ul.social-footer2 li a:hover {
-    background-color: #ff8d1e;
-}
-
-ul.social-footer2 li a {
-    display: block;
-    height: 30px;
-    width: 30px;
-    text-align: center;
-}
-
-.btn {
-    background-color: #ff8d1e;
-    color: #fff;
 }
 
 #subscribe-box .emailfield {
@@ -215,18 +98,21 @@ input[type="text"] {
     width: 100%;
 }
 
-input.submitbutton.ripplelink {
-    background: #e67e22;
-    border: 3px solid rgba(0, 0, 0, 0.1);
-    color: #fff;
-    border-color: #e67e22;
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    transition-delay: 0s;
-    width: 100%;
-    font-size: 14px;
-    border: 0px solid;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 10px 15px;
-    margin-bottom: 16px;
+.submitbutton {
+    background-color: #2595be;
+    border: none;
+    color: white;
+    width: 245px;
+    padding: 6px;
     border-radius: 5px;
+}
+
+.row>* {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.pLink a {
+    text-decoration: none;
+    color: #2595be;
 }
