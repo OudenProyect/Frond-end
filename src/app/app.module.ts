@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PreciosComponent } from './components/precios/precios.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './views/login/login.component';
 
 /** alison */
 @NgModule({
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     FooterComponent,
     HeaderComponent,
-    PreciosComponent
+    PreciosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

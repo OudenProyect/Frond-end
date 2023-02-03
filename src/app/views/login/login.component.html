@@ -1,0 +1,25 @@
+<div class="col-12 row">
+    <div class="col-6 contenido-Log">
+        <h1 class="text-center pt-lg-5">login</h1>
+        <div class="contenido-Log" >
+            <form class="formularioLogin formLogin" [formGroup]="formLogin" (submit)="submitLogin()">
+                <div>
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" class="form-control"  name="email"  formControlName="email" placeholder="Email">
+                  <span class="errorMessage" *ngIf="formLogin.get('email')?.hasError('required') && (formLogin.get('email')?.dirty || formLogin.get('email')?.touched)" >Este campo es requerido</span>
+                </div>
+                <div>
+                  <label for="password">Password:</label>
+                  <input type="password" id="password" class="form-control" name="password" formControlName="password" placeholder="Password">
+                  <span class="errorMessage" *ngIf="formLogin.get('password')?.hasError('required') && (formLogin.get('password')?.dirty || formLogin.get('password')?.touched)" >Este campo es requerido</span>
+                </div>
+                <button class="btn-primary btn  my-3" type="submit">Login</button>
+              </form>
+        </div>
+        
+    </div>
+    <div class="col-6 imag-fondo">
+       
+    </div>
+    
+</div>
