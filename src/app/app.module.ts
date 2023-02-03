@@ -8,6 +8,7 @@ import { HomeComponent } from './views/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PreciosComponent } from './components/precios/precios.component';
+import { PerfilComponent } from './views/perfil/perfil.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PreciosComponent } from './components/precios/precios.component';
     HomeComponent,
     FooterComponent,
     HeaderComponent,
-    PreciosComponent
+    PreciosComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
