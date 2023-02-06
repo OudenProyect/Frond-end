@@ -10,8 +10,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PreciosComponent } from './components/precios/precios.component';
 import { ReactiveFormsModule } from '@angular/forms';
-/** FONT AWESOME INSTALACION  */
-import  {  FontAwesomeModule  }  from  '@fortawesome/angular-fontawesome' ;
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 /** alison */
 @NgModule({
