@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faUser , faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons' ;
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit {
 
+  user = faUser;
+  lock = faLock;
+  mail = faEnvelope;
   // @ts-ignore
   formLogin: FormGroup;
 
