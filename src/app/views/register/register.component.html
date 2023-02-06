@@ -1,6 +1,6 @@
 <div class="box-content">
     <div class="form">
-            <h2>Registrate</h2>
+        <h2>Register</h2>
         <form class="formularioLogin formLogin" [formGroup]="formLogin" (submit)="submitLogin()">
             <div class="cajaDatos usuario caja-datos-user">
                 <p class="icono-user" for="usuario">
@@ -13,11 +13,11 @@
                     campo es requerido</span>
             </div>
             <div class="cajaDatos  caja-datos-contra">
-                <p class="icono-user" for="usuario">
+                <p class="icono-user" for="mail">
                     <fa-icon [icon]="mail"> </fa-icon>
                 </p>
-                <input class="flex-grow-1" type="password" id="contraUsuario" formControlName="contrasena"
-                    placeholder="Password">
+                <input class="flex-grow-1" type="email" id="mail" formControlName="contrasena"
+                    placeholder="Email">
                 <span class="errorMessage"
                     *ngIf="formLogin.get('contrasena')?.hasError('required') && (formLogin.get('contrasena')?.dirty || formLogin.get('contrasena')?.touched)">Este
                     campo es requerido</span>
@@ -32,11 +32,23 @@
                     *ngIf="formLogin.get('contrasena')?.hasError('required') && (formLogin.get('contrasena')?.dirty || formLogin.get('contrasena')?.touched)">Este
                     campo es requerido</span>
             </div>
-            <input class="btn-danger btn w-100 my-3" type="submit" value="Log in">
+            <input class="btn-general btn w-100 my-3" type="submit" value="Log in">
         </form>
+        <span class="spanLogin">Ya tienes una cuenta? <a href="#">Inicia sesion</a></span>
+        <div class="box-registres">
+            <span>Registrate con:</span>
+            <div class="iconos">
+                <a class="face" href=""><i class="fa fa-facebook"> </i></a>
+                <a href=""><i class="fa fa-google"></i></a>
+                <a href=""><i class="fa fa-twitter"> </i></a>
+            </div>
+            <div class="btn-descargas">
+                <button><img src="../../../assets/imag/down-apple.png" alt=""></button>
+                <button><img src="../../../assets/imag/down-g-p.png" alt=""></button>
+            </div>
+        </div>
     </div>
     <div id="portada">
-        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit aliquam veniam, iusto odio quo eveniet,
-            tenetur nesciunt fugiat itaque impedit, qui dolore minima libero? Id vero tenetur itaque magni.
-            Maiores?
+        <span> We help you<br> find your home
         </span>
+    </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { faUser , faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons' ;
+import { faUser , faLock, faEnvelope} from '@fortawesome/free-solid-svg-icons' ;
 
 @Component({
   selector: 'app-register',
