@@ -1,17 +1,42 @@
-<form class="formularioLogin formLogin" (submit)="submitLogin()">
-    <div class="cajaDatos usuario caja-datos-user">
-        <p class="icono-user" for="usuario">
-            <i class="fa-solid fa-user"></i>
-        </p>
-        <input class="flex-grow-1 datos-user" type="text" id="nombreUsuario" formControlName="usuario" placeholder="Username">
-        <span class="errorMessage" *ngIf="formLogin.get('usuario')?.hasError('required') && (formLogin.get('usuario')?.dirty || formLogin.get('usuario')?.touched)" >Este campo es requerido</span>
+<div class="box-content">
+    <div class="form">
+            <h2>Registrate</h2>
+        <form class="formularioLogin formLogin" [formGroup]="formLogin" (submit)="submitLogin()">
+            <div class="cajaDatos usuario caja-datos-user">
+                <p class="icono-user" for="usuario">
+                    <fa-icon [icon]="user"> </fa-icon>
+                </p>
+                <input class="flex-grow-1 datos-user" type="text" id="nombreUsuario" formControlName="usuario"
+                    placeholder="Username">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('usuario')?.hasError('required') && (formLogin.get('usuario')?.dirty || formLogin.get('usuario')?.touched)">Este
+                    campo es requerido</span>
+            </div>
+            <div class="cajaDatos  caja-datos-contra">
+                <p class="icono-user" for="usuario">
+                    <fa-icon [icon]="mail"> </fa-icon>
+                </p>
+                <input class="flex-grow-1" type="password" id="contraUsuario" formControlName="contrasena"
+                    placeholder="Password">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('contrasena')?.hasError('required') && (formLogin.get('contrasena')?.dirty || formLogin.get('contrasena')?.touched)">Este
+                    campo es requerido</span>
+            </div>
+            <div class="cajaDatos  caja-datos-contra">
+                <p class="icono-user" for="usuario">
+                    <fa-icon [icon]="lock"> </fa-icon>
+                </p>
+                <input class="flex-grow-1" type="password" id="contraUsuario" formControlName="contrasena"
+                    placeholder="Password">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('contrasena')?.hasError('required') && (formLogin.get('contrasena')?.dirty || formLogin.get('contrasena')?.touched)">Este
+                    campo es requerido</span>
+            </div>
+            <input class="btn-danger btn w-100 my-3" type="submit" value="Log in">
+        </form>
     </div>
-    <div class="cajaDatos  caja-datos-contra">
-        <p class="icono-user" for="usuario">
-            <i class="fa-solid fa-lock"></i>
-        </p>
-        <input class="flex-grow-1" type="password" id="contraUsuario" formControlName="contrasena" placeholder="Password">
-        <span class="errorMessage" *ngIf="formLogin.get('contrasena')?.hasError('required') && (formLogin.get('contrasena')?.dirty || formLogin.get('contrasena')?.touched)" >Este campo es requerido</span>
-    </div>
-    <input class="btn-danger btn w-100 my-3" type="submit" value="Log in">
-</form>
+    <div id="portada">
+        <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit aliquam veniam, iusto odio quo eveniet,
+            tenetur nesciunt fugiat itaque impedit, qui dolore minima libero? Id vero tenetur itaque magni.
+            Maiores?
+        </span>
