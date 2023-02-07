@@ -1,15 +1,19 @@
 import { Component, ViewEncapsulation, ViewChild } from "@angular/core";
 import { SwiperComponent } from "swiper/angular";
-
 // import Swiper core and required modules
-import SwiperCore, { Pagination, Navigation } from "swiper";
+import SwiperCore, {
+  Keyboard,
+  Scrollbar,
+  Navigation,
+  Pagination,
+} from "swiper";
 
 // install Swiper modules
-SwiperCore.use([Pagination, Navigation]);
+SwiperCore.use([Keyboard, Scrollbar, Navigation, Pagination]);
 
 @Component({
   selector: "app-slider",
-  template:  `<swiper
+  template: `<swiper 
   [slidesPerView]="3"
   [spaceBetween]="30"
   [slidesPerGroup]="3"
