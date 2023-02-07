@@ -1,0 +1,46 @@
+  <div class="box-content">
+    <div class="form">
+        <h2>Login</h2>
+        <form class="formularioLogin formLogin" [formGroup]="formLogin" (submit)="submitLogin()">
+            <div class="cajaDatos  caja-datos-contra">
+                <p class="icono-user" for="mail">
+                    <fa-icon [icon]="mail"> </fa-icon>
+                </p>
+                <input class="flex-grow-1" type="email" id="mail" formControlName="contrasena"
+                    placeholder="Email">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('contrasena')?.hasError('required') && (formLogin.get('contrasena')?.dirty || formLogin.get('contrasena')?.touched)">Este
+                    campo es requerido</span>
+            </div>
+            <div class="cajaDatos  caja-datos-contra">
+                <p class="icono-user" for="usuario">
+                    <fa-icon [icon]="lock"> </fa-icon>
+                </p>
+                <input class="flex-grow-1" type="password" id="contraUsuario" formControlName="contrasena"
+                    placeholder="Password">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('contrasena')?.hasError('required') && (formLogin.get('contrasena')?.dirty || formLogin.get('contrasena')?.touched)">Este
+                    campo es requerido</span>
+            </div>
+            <input class="btn-general btn w-100 my-3" type="submit" value="Log in">
+        </form>
+        <div class="text-center pt-1 mb-5 pb-1">
+          <a  href="#">Forgot password?</a>
+        </div>
+        <span class="spanLogin">Don't have an account?<a href="#">Create new</a></span>
+        <div class="box-registres">
+            <span>Login width:</span>
+            <div class="iconos">
+                <a class="face" href=""><i class="fa fa-facebook"> </i></a>
+                <a href=""><i class="fa fa-google"></i></a>
+                <a href=""><i class="fa fa-twitter"> </i></a>
+            </div>
+            <div class="btn-descargas">
+                <button><img src="../../../assets/imag/down-apple.png" alt=""></button>
+                <button><img src="../../../assets/imag/down-g-p.png" alt=""></button>
+            </div>
+        </div>
+    </div>
+    <div id="portada">
+        
+    </div>
