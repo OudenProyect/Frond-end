@@ -23,12 +23,18 @@ export class RegisterComponent implements OnInit {
       usuario: ['', [
         Validators.required
       ]],
-      contrasena: ['', [
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]],
+      password: ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(8)
       ]]
-    }, { updateOn: 'submit' });
+    });
+
+    console.log(this);
   }
 
   submitLogin() {
@@ -37,6 +43,12 @@ export class RegisterComponent implements OnInit {
       // registro
       console.log("correcto");
     } else {
+      // let inputs = document.querySelectorAll('.validacion');
+      // inputs.forEach(element => {
+      //   element.classList.add('error-input');
+      // });
+
+      console.log(this.formLogin)
       this.formLogin.markAllAsTouched()
     }
   }

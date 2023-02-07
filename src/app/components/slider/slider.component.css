@@ -23,11 +23,11 @@
 }
 
 .mySwiper {
-    padding: 100px;
+    padding: 55px;
 }
 
 .caja {
-    height: 300px;
+    height: 400px;
     border-radius: 20px;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .info-contact.on {
-    border-right: 1px solid rgb(56, 56, 56);
+    border-right: 1px solid #c8ccd59a;
 }
 
 .contact {
@@ -65,6 +65,8 @@
 .info-contact {
     margin-top: 16px;
     padding: 0px 10px;
+    font-size: 20px;
+    color: #2595be;
 }
 
 .caja>.card .card-img-top {

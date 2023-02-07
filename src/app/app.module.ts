@@ -9,6 +9,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PreciosComponent } from './components/precios/precios.component';
+import { PerfilComponent } from './views/perfil/perfil.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './views/login/login.component';
@@ -24,7 +25,8 @@ import { LoginComponent } from './views/login/login.component';
     FooterComponent,
     HeaderComponent,
     PreciosComponent,
-    LoginComponent
+    LoginComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
