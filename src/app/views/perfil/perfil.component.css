@@ -2,6 +2,10 @@
     border-bottom: 1px solid #C8CCD5;
 }
 
+#centrar {
+    display: flex;
+}
+
 .avatar {
     width: 80px;
     height: 79px;
@@ -9,8 +13,17 @@
     border-radius: 50%;
 }
 
+.confUser {
+    width: 40%;
+}
+
+.confUser i {
+    color: #C8CCD5;
+}
+
 .info-user,
-.infoEdit {
+.infoEdit,
+.confUser {
     background-color: white;
     margin: 30px 20px;
     border-radius: 20px;
@@ -20,6 +33,7 @@
 
 .infoEdit {
     width: 550px;
+    height: 290px;
     text-align: center;
 }
 
@@ -34,7 +48,7 @@
     padding: 8px;
 }
 
-i {
+.infoEdit i {
     font-size: 20px;
 }
 
