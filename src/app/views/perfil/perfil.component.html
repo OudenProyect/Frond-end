@@ -18,38 +18,59 @@
                     <form class="editNick" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-user"></i> <input type="text" placeholder="Nick Name">
-                            <span><i class="fa fa-pencil"></i></span>
+                            <span (click)="opbnt()" btn-id="bnt1"><i *ngIf="noPincel" class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv">
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                            <span (click)="cancel()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span>
                         </div>
-                        <div class="">
-                            <button>Guardar</button>
-                            <button>Cancelar</button>
-                        </div>
+
                     </form>
 
                     <form class="editName" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-id-card-o"></i> <input type="text" placeholder="Nombre completo">
-                            <span><i class="fa fa-pencil"></i></span>
+                            <span (click)="opbnt2()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv2">
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span>
                         </div>
+
                     </form>
                     <form class="editEmail" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-envelope"></i> <input type="text" placeholder="Correo">
-                            <span><i class="fa fa-pencil"></i></span>
+                            <span (click)="opbnt3()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv3">
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span>
                         </div>
+
                     </form>
                     <form class="editPWD" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-lock"></i> <input type="text" placeholder="Contraseña">
-                            <span><i class="fa fa-pencil"></i></span>
+                            <span (click)="opbnt4()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv4">
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span>
                         </div>
+
                     </form>
                     <form class="editTlf" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-phone"></i><input type="text" placeholder="Telefono">
                             <span><i class="fa fa-eye-slash mx-2"></i></span>
-                            <span><i class="fa fa-pencil"></i></span>
+                            <span (click)="opbnt5()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv5">
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span>
                         </div>
+
                     </form>
                 </div>
                 <div class="contacUser" id="bordes">

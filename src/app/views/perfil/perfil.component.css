@@ -42,7 +42,7 @@
 
 .infoEdit {
     width: 550px;
-    height: 290px;
+    height: auto;
     text-align: center;
 }
 
