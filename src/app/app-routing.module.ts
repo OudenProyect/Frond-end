@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutModule } from './views/about/about.module';
 import { HomeModule } from './views/home/home.module';
 import { LoginComponent } from './views/login/login.component';
 import { PerfilModule } from './views/perfil/perfil.module';
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path:"perfil",
     loadChildren: () => import('./views/perfil/perfil.module').then(m => PerfilModule)
+  },
+  {
+    path:"about",
+    loadChildren: () => import('./views/about/about.module').then(m => AboutModule)
   }
 ];
 

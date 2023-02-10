@@ -13,6 +13,7 @@ import { PerfilComponent } from './views/perfil/perfil.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './views/login/login.component';
+import { AboutComponent } from './views/about/about.component';
 
 
 /** alison */
@@ -26,7 +27,8 @@ import { LoginComponent } from './views/login/login.component';
     HeaderComponent,
     PreciosComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
