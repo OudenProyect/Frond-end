@@ -13,61 +13,60 @@
             </div>
         </div>
         <div id="centrar">
-            <div>
+            <div class="wi1300">
                 <div id="bordes" class="infoEdit">
                     <form class="editNick" action="" method="get">
                         <div class="borderInput">
-                            <i class="fa fa-user"></i> <input type="text" placeholder="Nick Name">
+                            <i class="fa fa-user"></i><input type="text" [ngStyle]="ajustar" placeholder="Nick Name">
                             <span (click)="opbnt()" btn-id="bnt1"><i *ngIf="noPincel" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv">
-                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                                <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
                             <span (click)="cancel()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
                             </span>
                         </div>
-
                     </form>
 
                     <form class="editName" action="" method="get">
                         <div class="borderInput">
-                            <i class="fa fa-id-card-o"></i> <input type="text" placeholder="Nombre completo">
-                            <span (click)="opbnt2()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <i class="fa fa-id-card-o"></i> <input type="text" [ngStyle]="ajustar2" placeholder="Nombre completo">
+                            <span (click)="opbnt2()" btn-id="bnt1"><i *ngIf="noPincel2" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv2">
-                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
-                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                                <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
+                            <span (click)="cancel2()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
                             </span>
                         </div>
 
                     </form>
                     <form class="editEmail" action="" method="get">
                         <div class="borderInput">
-                            <i class="fa fa-envelope"></i> <input type="text" placeholder="Correo">
-                            <span (click)="opbnt3()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <i class="fa fa-envelope"></i> <input type="text" [ngStyle]="ajustar3" placeholder="Correo">
+                            <span (click)="opbnt3()" btn-id="bnt1"><i *ngIf="noPincel3" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv3">
-                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
-                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                                <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
+                            <span (click)="cancel3()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
                             </span>
                         </div>
 
                     </form>
                     <form class="editPWD" action="" method="get">
                         <div class="borderInput">
-                            <i class="fa fa-lock"></i> <input type="text" placeholder="Contraseña">
-                            <span (click)="opbnt4()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <i class="fa fa-lock"></i> <input type="text" [ngStyle]="ajustar4" placeholder="Contraseña">
+                            <span (click)="opbnt4()" btn-id="bnt1"><i *ngIf="noPincel4" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv4">
-                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
-                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                                <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
+                            <span (click)="cancel4()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
                             </span>
                         </div>
 
                     </form>
                     <form class="editTlf" action="" method="get">
                         <div class="borderInput">
-                            <i class="fa fa-phone"></i><input type="text" placeholder="Telefono">
-                            <span><i class="fa fa-eye-slash mx-2"></i></span>
-                            <span (click)="opbnt5()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <i class="fa fa-phone"></i><input type="text" [ngStyle]="ajustar5" placeholder="Telefono">
+                            <!-- <span><i *ngIf="noPincel5" class="fa fa-eye-slash mx-2"></i></span> -->
+                            <span (click)="opbnt5()" btn-id="bnt1"><i *ngIf="noPincel5" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv5">
-                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
-                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                                <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
+                            <span (click)="cancel5()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
                             </span>
                         </div>
 
@@ -75,7 +74,7 @@
                 </div>
                 <div class="contacUser" id="bordes">
                     <h4 class="text-center">Contactos recientes</h4>
-                    <table class="table mt-4 ">
+                    <table class="table mt-4 d-block ">
                         <thead>
                             <tr>
                                 <th scope="col"><img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar">Remires pende <button class="bntCont"><i class="fa fa-phone"></i></button></th>
