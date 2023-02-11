@@ -16,6 +16,9 @@ import { LoginComponent } from './views/login/login.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { FormcontactComponent } from './components/formcontact/formcontact.component';
 
+/* importamos el modulo http client conexion backend */
+import { HttpClientModule } from '@angular/common/http';
+
 
 /** alison */
 @NgModule({
@@ -34,6 +37,7 @@ import { FormcontactComponent } from './components/formcontact/formcontact.compo
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     SwiperModule,
