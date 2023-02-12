@@ -22,7 +22,7 @@
                             <span (click)="opbnt()" btn-id="bnt1"><i *ngIf="noPincel" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv">
                                 <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
-                                <span (click)="cancel()" id="cancelar" class="bnt-ocult"><i
+                            <span (click)="cancel()" id="cancelar" class="bnt-ocult"><i
                                         class="fa fa-remove"></i></span>
                             </span>
                         </div>
@@ -31,13 +31,12 @@
                     <form class="editName" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-id-card-o"></i>
-                            <input type="text" [ngStyle]="ajustar2" name="name" placeholder="Nombre completo"
-                                [(ngModel)]="userinfo.user.name">
+                            <input type="text" [ngStyle]="ajustar2" name="name" placeholder="Nombre completo" [(ngModel)]="userinfo.user.name">
                             <span (click)="opbnt2()" btn-id="bnt1"><i *ngIf="noPincel2" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv2">
                                 <span (click)="guardar('name', userinfo.user.name)" id="guardar"
                                     class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
-                                <span (click)="cancel2()" id="cancelar" class="bnt-ocult"><i
+                            <span (click)="cancel2()" id="cancelar" class="bnt-ocult"><i
                                         class="fa fa-remove"></i></span>
                             </span>
                         </div>
@@ -46,8 +45,7 @@
                     <form class="editEmail" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-envelope"></i>
-                            <input readonly disabled type="text" [ngStyle]="ajustar3" name="email" placeholder="Correo"
-                            [(ngModel)]="userinfo.user.email">
+                            <input readonly disabled type="text" [ngStyle]="ajustar3" name="email" placeholder="Correo" [(ngModel)]="userinfo.user.email">
                             <span btn-id="bnt1"><i *ngIf="noPincel3" class="fa fa-pencil"></i></span>
                         </div>
 
@@ -58,7 +56,7 @@
                             <span (click)="opbnt4()" btn-id="bnt1"><i *ngIf="noPincel4" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv4">
                                 <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
-                                <span (click)="cancel4()" id="cancelar" class="bnt-ocult"><i
+                            <span (click)="cancel4()" id="cancelar" class="bnt-ocult"><i
                                         class="fa fa-remove"></i></span>
                             </span>
                         </div>
@@ -67,12 +65,11 @@
                     <form class="editTlf" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-phone"></i>
-                            <input type="text" [ngStyle]="ajustar5" name="phone" placeholder="Telefono"
-                            [(ngModel)]="userinfo.user.phone">
+                            <input type="text" [ngStyle]="ajustar5" name="phone" placeholder="Telefono" [(ngModel)]="userinfo.user.phone">
                             <span (click)="opbnt5()" btn-id="bnt1"><i *ngIf="noPincel5" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv5">
                                 <span (click)="guardar('phone', userinfo.user.phone)" id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
-                                <span (click)="cancel5()" id="cancelar" class="bnt-ocult"><i
+                            <span (click)="cancel5()" id="cancelar" class="bnt-ocult"><i
                                         class="fa fa-remove"></i></span>
                             </span>
                         </div>
@@ -84,19 +81,16 @@
                     <table class="table mt-4 d-block ">
                         <thead>
                             <tr>
-                                <th scope="col"><img class="avatarTabl mx-2" src="assets/imag/cara_5.png"
-                                        alt="avatar">Remires pende <button class="bntCont"><i
+                                <th scope="col"><img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar">Remires pende <button class="bntCont"><i
                                             class="fa fa-phone"></i></button></th>
-                                <th scope="col"> <img class="avatarTabl mx-2" src="assets/imag/cara_5.png"
-                                        alt="avatar">Remires pende <button class="bntCont"><i
+                                <th scope="col"> <img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar">Remires pende <button class="bntCont"><i
                                             class="fa fa-phone"></i></button></th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row"><img class="avatarTabl mx-2" src="assets/imag/cara_5.png"
-                                        alt="avatar">Remires pende <button class="bntCont"><i
+                                <th scope="row"><img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar">Remires pende <button class="bntCont"><i
                                             class="fa fa-phone"></i></button></th>
                                 <th><img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar">Remires pende
                                     <button class="bntCont"><i class="fa fa-phone"></i></button>
@@ -111,23 +105,19 @@
                 <h3 class="text-center"><i class="fa fa-cog "></i> Ajustes</h3>
                 <div class="w-75 m-auto mt-5 ">
                     <div class="">
-                        <label for="noved"><b>Novedades y recomendaciones</b></label><input class="form-check-input"
-                            type="checkbox" id="noved" name="noved">
+                        <label for="noved"><b>Novedades y recomendaciones</b></label><input class="form-check-input" type="checkbox" id="noved" name="noved">
                         <p>Te mantendremos al día de las novedades del portal</p>
                     </div>
                     <div>
-                        <label for="noti"><b>Activar notificaciones</b></label> <input class="form-check-input"
-                            type="checkbox" id="noti" name="noti">
+                        <label for="noti"><b>Activar notificaciones</b></label> <input class="form-check-input" type="checkbox" id="noti" name="noti">
                         <p>Te informamos de cada nueva publicación</p>
                     </div>
                     <div>
-                        <label for="ofer"><b> Ofertas y promociones</b></label><input type="checkbox"
-                            class="form-check-input" id="ofer" name="ofer">
+                        <label for="ofer"><b> Ofertas y promociones</b></label><input type="checkbox" class="form-check-input" id="ofer" name="ofer">
                         <p>Información de inmobiliarias o promotoras que ofrecen inmuebles</p>
                     </div>
                     <div>
-                        <label for="ofer"><b> Ofertas y promociones</b></label><input type="checkbox"
-                            class="form-check-input" id="ofer" name="ofer">
+                        <label for="ofer"><b> Ofertas y promociones</b></label><input type="checkbox" class="form-check-input" id="ofer" name="ofer">
                         <p>Información de inmobiliarias o promotoras que ofrecen inmuebles</p>
                     </div>
 
