@@ -15,6 +15,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './views/login/login.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { FormcontactComponent } from './components/formcontact/formcontact.component';
+import { AboutComponent } from './views/about/about.component';
 
 
 /** alison */
@@ -30,7 +31,8 @@ import { FormcontactComponent } from './components/formcontact/formcontact.compo
     LoginComponent,
     PerfilComponent,
     ContactComponent,
-    FormcontactComponent
+    FormcontactComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

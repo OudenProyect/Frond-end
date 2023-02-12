@@ -102,7 +102,7 @@ input[type="text"] {
     background-color: #2595be;
     border: none;
     color: white;
-    width: 245px;
+    width: 100%;
     padding: 6px;
     border-radius: 5px;
 }

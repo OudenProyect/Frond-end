@@ -41,13 +41,12 @@
 
 .infoEdit {
     width: 550px;
-    height: 290px;
+    height: auto;
     text-align: center;
 }
 
-.infoEdit form {
+.borderInput {
     border-bottom: 1.5px solid #C8CCD5;
-    border-radius: 4px;
 }
 
 .infoEdit input[type="text"] {
@@ -60,13 +59,13 @@
     font-size: 20px;
 }
 
-.infoEdit form>i {
+.borderInput>i {
     width: 70px;
     margin-left: -30px;
     color: #2595be;
 }
 
-.infoEdit form>button {
+.borderInput>span {
     border: 0px;
     background-color: white;
     margin-left: 4px;
