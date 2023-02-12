@@ -1,3 +1,7 @@
+#header {
+    border-bottom: 1px solid #C8CCD5;
+}
+
 #centrar {
     display: flex;
     justify-content: center;
@@ -6,9 +10,6 @@
 #recomendados {
     padding: 30px 0px;
 }
-
-
-/* d */
 
 .avatar,
 .avatarTabl {
@@ -40,19 +41,17 @@
 }
 
 .infoEdit {
-    width: 550px;
-    height: 290px;
+    height: auto;
+    width: auto;
     text-align: center;
 }
 
-.infoEdit form {
+.borderInput {
     border-bottom: 1.5px solid #C8CCD5;
-    border-radius: 4px;
 }
 
 .infoEdit input[type="text"] {
     border: none;
-    width: 400px;
     padding: 8px;
 }
 
@@ -60,22 +59,19 @@
     font-size: 20px;
 }
 
-.infoEdit form>i {
+.borderInput>i {
     width: 70px;
     margin-left: -30px;
     color: #2595be;
 }
 
-.infoEdit form>button {
+.borderInput>span,
+.borderInput button {
     border: 0px;
     background-color: white;
     margin-left: 4px;
     width: 30px;
     color: #C8CCD5;
-}
-
-.editTlf input[type="text"] {
-    width: 362px;
 }
 
 .form-check-input[type=checkbox] {
@@ -102,4 +98,29 @@
     padding: 3px 16px;
     margin-left: 3px;
     background-color: white;
+}
+
+@media(max-width: 1355px) {
+    .form-check-input[type=checkbox] {
+        margin-left: 13px;
+    }
+    .confUser {
+        width: auto;
+    }
+}
+
+@media(max-width: 1300px) {
+    #centrar {
+        display: block;
+    }
+    .wi1300 {
+        display: flex;
+    }
+    .bntCont {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .infoEdit {
+        width: 50%;
+    }
 }
