@@ -31,7 +31,7 @@ export class PerfilComponent implements OnInit {
       this.router.navigate(['login'])
     }
   }
-  
+
   ajustar={
     "width.%":"80"
   }

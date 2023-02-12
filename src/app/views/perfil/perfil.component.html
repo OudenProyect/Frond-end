@@ -22,7 +22,7 @@
                             <input type="text" [ngStyle]="ajustar" placeholder="Nick Name">
                             <span (click)="opbnt()" btn-id="bnt1"><i *ngIf="noPincel" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv">
-                                <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
                             <span (click)="cancel()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
                             </span>
                         </div>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="contacUser" id="bordes">
                     <h4 class="text-center">Contactos recientes</h4>
-                    <table class="table mt-4 d-block ">
+                    <table class="table mt-4 ">
                         <thead>
                             <tr>
                                 <th scope="col"><img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar">Remires pende <button class="bntCont"><i class="fa fa-phone"></i></button></th>
