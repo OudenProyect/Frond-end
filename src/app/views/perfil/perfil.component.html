@@ -6,7 +6,7 @@
             <img class="avatar mx-4" src="assets/imag/cara_5.png" alt="avatar">
             <div>
                 <span class="d-block nickname">@TrixXii</span>
-                <span class="name"> Beatriz Muñoz</span>
+                <span class="name">{{ userinfo.user.name }}</span>
             </div>
         </div>
         <div id="centrar">
@@ -17,22 +17,28 @@
                         <button><i class="fa fa-pencil"></i></button>
                     </form>
                     <form class="editName" action="" method="get">
-                        <i class="fa fa-id-card-o"></i> <input type="text" placeholder="Nombre completo">
+                        <i class="fa fa-id-card-o"></i> 
+                        <input type="text" placeholder="Nombre completo" value="{{ userinfo
+                        .user.name}}">
                         <button><i class="fa fa-pencil"></i></button>
-
                     </form>
                     <form class="editEmail" action="" method="get">
-                        <i class="fa fa-envelope"></i> <input type="text" placeholder="Correo">
+                        <i class="fa fa-envelope"></i> 
+                        <input type="text" placeholder="Correo" value="{{ userinfo
+                        .user.email}}">
                         <button><i class="fa fa-pencil"></i></button>
 
                     </form>
                     <form class="editPWD" action="" method="get">
-                        <i class="fa fa-lock"></i> <input type="text" placeholder="Contraseña">
+                        <i class="fa fa-lock"></i> 
+                        <input type="text" placeholder="Contraseña">
                         <button><i class="fa fa-pencil"></i></button>
 
                     </form>
                     <form class="editTlf" action="" method="get">
-                        <i class="fa fa-phone"></i><input type="text" placeholder="Telefono">
+                        <i class="fa fa-phone"></i>
+                        <input type="text" placeholder="Telefono" value="{{ userinfo
+                            .user.phone }}">
                         <button><i class="fa fa-eye-slash"></i></button>
                         <button><i class="fa fa-pencil"></i></button>
 
