@@ -16,6 +16,7 @@ export class SesionService {
     return this.http.post('http://127.0.0.1:8000/api/login_check', datos)
   }
 
+  // peticion para informacion usuario pasando el token
   user(token: any) {
     return this.http.get('http://127.0.0.1:8000/api/user', {
       headers: {
@@ -23,4 +24,13 @@ export class SesionService {
       }
     })
   }
+
+  editField(data: any) {
+    return this.http.put('http://127.0.0.1:8000/api/profile/edit', data, {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    });
+  }
+
 }

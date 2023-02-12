@@ -10,7 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PreciosComponent } from './components/precios/precios.component';
 import { PerfilComponent } from './views/perfil/perfil.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './views/login/login.component';
 import { ContactComponent } from './views/contact/contact.component';
@@ -42,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     SwiperModule,
     FontAwesomeModule
   ],

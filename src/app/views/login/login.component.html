@@ -8,10 +8,10 @@
                 </p>
                 <input 
                     [className]="formLogin.get('email')?.touched && formLogin.get('email')?.errors?.['required'] ? 'error-input' : '' "
-                    class="flex-grow-1 validacion" type="email" id="mail" formControlName="contrase"
+                    class="flex-grow-1 validacion" type="email" id="mail" formControlName="email"
                     placeholder="Email">
                 <span class="errorMessage"
-                    *ngIf="formLogin.get('email')?.hasError && (formLogin.get('email')?.dirty || formLogin.get('email')?.touched)">Introduzca un email valido</span>
+                *ngIf="formLogin.get('email')?.errors?.['required'] && formLogin.get('email')?.touched">Introduzca un email valido</span>
             </div>
             <div class="cajaDatos  caja-datos-contra">
                 <p class="icono-user" for="usuario">
@@ -27,6 +27,7 @@
             </div>
             <input class="btn-general btn w-100 my-3" type="submit" value="Log in">
         </form>
+        <span class="mgerror" *ngIf="errormg">Email or password incorrect</span>
         <div class="text-center pt-1 mb-5 pb-1">
           <a  href="#">Forgot password?</a>
         </div>
