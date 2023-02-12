@@ -1,27 +1,33 @@
-# Ouden
+# Instalacion symfony:
+1. Instalar version PHP 8.1 min
+2. Instalar composer
+3. Instalar symfony cli
+# Instalacion angular:
+1. Instalar Node.js 
+2. Instalar Angular cli `npm install -g @angular/cli`
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.2.
+# Pasos para clonar el repositorio
+1.  Clonar repositorio
+2.  Instalar las dependencias del frontend y backend
 
-## Development server
+    2.1.Backend
+    - Situarse en la carpeta del Backend
+    - Ejecutar composer install
+    - Arrancar servidor local `symfony server:start`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+    2.2.Frontend
+    - Situarse en la carpeta del Frontend
+    - Ejecutar npm install 
+    - Arrancar el servidor local `ng serve --open`
+  
+# Symfony configuracion servidor para la conexion con la BBDD
 
-## Code scaffolding
+1.  Conexion de 0
+    1.1. Configuracion archivo .env `DATABASE_URL="mysql://usuario:contraseña@127.0.0.1:3306/nombreBBDD?serverVersion=8&charset=utf8mb4"`
+    1.2. Creacion BBDD : `php bin/console doctrine:database:create`
+    1.3. Si ya hay migraciones guardadas, las migras para crear las tablas : `php bin/console doctrine:migrations:migrate`,si estuviera vacia 
+         pero hay entidades, primero ejecuatas `php bin/console make:migration`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2.  Reconexion:
+    2.1. Verificar si no hay migraciones que faltan por migrar `php bin/console doctrine:migrations:status`
+    2.2. Si hay un error, ejecutas este comando, que sincroniza con los datos `php bin/console doctrine:migration:sync-metadata-storage`

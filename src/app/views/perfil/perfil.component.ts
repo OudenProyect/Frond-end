@@ -112,6 +112,7 @@ export class PerfilComponent implements OnInit {
     this.ajustar5["width.%"] = "80";
   }
 
+  // edicion del usuario
   guardar(edit: any, value: any) {
     this.sesions.editField({
       id: this.userinfo.user.id,

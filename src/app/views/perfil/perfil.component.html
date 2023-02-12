@@ -31,7 +31,8 @@
                     <form class="editName" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-id-card-o"></i>
-                            <input type="text" [ngStyle]="ajustar2" name="name" placeholder="Nombre completo" [(ngModel)]="userinfo.user.name">
+                            <input type="text" [ngStyle]="ajustar2" name="name" placeholder="Nombre completo" 
+                            [(ngModel)]="userinfo.user.name">
                             <span (click)="opbnt2()" btn-id="bnt1"><i *ngIf="noPincel2" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv2">
                                 <span (click)="guardar('name', userinfo.user.name)" id="guardar"

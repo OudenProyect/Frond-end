@@ -6,12 +6,15 @@
                 <p class="icono-user" for="email">
                     <fa-icon [icon]="mail"> </fa-icon>
                 </p>
-                <input 
-                    [className]="formLogin.get('email')?.touched && formLogin.get('email')?.errors?.['required'] ? 'error-input' : '' "
-                    class="flex-grow-1 validacion" type="email" id="mail" formControlName="email"
-                    placeholder="Email">
-                <span class="errorMessage"
-                *ngIf="formLogin.get('email')?.errors?.['required'] && formLogin.get('email')?.touched">Introduzca un email valido</span>
+                        <input
+                        [className]="formLogin.get('email')?.touched && formLogin.get('email')?.errors ? 'error-input' : '' "
+                        class="flex-grow-1 validacion" type="email" id="email" formControlName="email" placeholder="Email">
+                    <span class="errorMessage"
+                        *ngIf="formLogin.get('email')?.errors?.['required'] && formLogin.get('email')?.touched">Este
+                        campo es requerido
+                    </span>
+                    <span class="errorMessage" *ngIf="formLogin.get('email')?.hasError('email')">Introduzca
+                        un email valido</span>
             </div>
             <div class="cajaDatos  caja-datos-contra">
                 <p class="icono-user" for="usuario">
@@ -20,7 +23,7 @@
                 <input 
                     [className]="formLogin.get('password')?.touched && formLogin.get('password')?.errors?.['required'] ? 'error-input' : '' "
                     class="flex-grow-1 validacion" type="password" id="password" formControlName="password"
-                    placeholder="Password">
+                    placeholder="Password" name="password">
                 <span class="errorMessage"
                     *ngIf="formLogin.get('password')?.hasError('required') && (formLogin.get('password')?.dirty || formLogin.get('password')?.touched)">Este
                     campo es requerido</span>
