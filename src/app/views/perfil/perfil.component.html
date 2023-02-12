@@ -1,6 +1,3 @@
-<div id="header">
-</div>
-
 <div id="perfil" class=" m-5">
     <h1 class="text-center m-5"><b>Tu perfil</b></h1>
 
@@ -16,28 +13,60 @@
             <div>
                 <div id="bordes" class="infoEdit">
                     <form class="editNick" action="" method="get">
-                        <i class="fa fa-user"></i> <input type="text" placeholder="Nick Name">
-                        <button><i class="fa fa-pencil"></i></button>
+                        <div class="borderInput">
+                            <i class="fa fa-user"></i> <input type="text" placeholder="Nick Name">
+                            <span (click)="opbnt()" btn-id="bnt1"><i *ngIf="noPincel" class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv">
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                            <span (click)="cancel()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span>
+                        </div>
+
                     </form>
+
                     <form class="editName" action="" method="get">
-                        <i class="fa fa-id-card-o"></i> <input type="text" placeholder="Nombre completo">
-                        <button><i class="fa fa-pencil"></i></button>
+                        <div class="borderInput">
+                            <i class="fa fa-id-card-o"></i> <input type="text" placeholder="Nombre completo">
+                            <span (click)="opbnt2()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv2">
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span>
+                        </div>
 
                     </form>
                     <form class="editEmail" action="" method="get">
-                        <i class="fa fa-envelope"></i> <input type="text" placeholder="Correo">
-                        <button><i class="fa fa-pencil"></i></button>
+                        <div class="borderInput">
+                            <i class="fa fa-envelope"></i> <input type="text" placeholder="Correo">
+                            <span (click)="opbnt3()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv3">
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span>
+                        </div>
 
                     </form>
                     <form class="editPWD" action="" method="get">
-                        <i class="fa fa-lock"></i> <input type="text" placeholder="Contraseña">
-                        <button><i class="fa fa-pencil"></i></button>
+                        <div class="borderInput">
+                            <i class="fa fa-lock"></i> <input type="text" placeholder="Contraseña">
+                            <span (click)="opbnt4()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv4">
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span>
+                        </div>
 
                     </form>
                     <form class="editTlf" action="" method="get">
-                        <i class="fa fa-phone"></i><input type="text" placeholder="Telefono">
-                        <button><i class="fa fa-eye-slash"></i></button>
-                        <button><i class="fa fa-pencil"></i></button>
+                        <div class="borderInput">
+                            <i class="fa fa-phone"></i><input type="text" placeholder="Telefono">
+                            <span><i class="fa fa-eye-slash mx-2"></i></span>
+                            <span (click)="opbnt5()" btn-id="bnt1"><i class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv5">
+                                <span id="guardar" class="bnt-ocult"><i class="fa fa-save"></i></span>
+                            <span id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span>
+                        </div>
 
                     </form>
                 </div>
