@@ -7,7 +7,7 @@
                     <fa-icon [icon]="user"> </fa-icon>
                 </p>
                 <input
-                    [className]="formLogin.get('usuario')?.touched && formLogin.get('usuario')?.errors?.['required'] ? 'error-input' : '' "
+                    [className]="formLogin.get('usuario')?.touched && formLogin.get('usuario')?.errors ? 'error-input' : '' "
                     class="flex-grow-1 datos-user validacion" type="text" id="usuario" formControlName="usuario"
                     placeholder="Username" name="usuario">
                 <span class="errorMessage"
@@ -18,28 +18,36 @@
                 <p class="icono-user" for="email">
                     <fa-icon [icon]="mail"> </fa-icon>
                 </p>
-                <input 
-                    [className]="formLogin.get('email')?.touched && formLogin.get('email')?.errors?.['required'] ? 'error-input' : '' "
-                    class="flex-grow-1 validacion" type="email" id="email" formControlName="email"
-                    placeholder="Email">
+                <input
+                    [className]="formLogin.get('email')?.touched && formLogin.get('email')?.errors ? 'error-input' : '' "
+                    class="flex-grow-1 validacion" type="email" id="email" formControlName="email" placeholder="Email">
                 <span class="errorMessage"
-                    *ngIf="formLogin.get('email')?.hasError && (formLogin.get('email')?.dirty || formLogin.get('email')?.touched)">Introduzca un email valido</span>
+                    *ngIf="formLogin.get('email')?.errors?.['required'] && formLogin.get('email')?.touched">Este
+                    campo es requerido
+                </span>
+                <span class="errorMessage" *ngIf="formLogin.get('email')?.hasError('email')">Introduzca
+                    un email valido</span>
             </div>
             <div class="cajaDatos  caja-datos-contra">
                 <p class="icono-user" for="usuario">
                     <fa-icon [icon]="lock"> </fa-icon>
                 </p>
-                <input 
-                    [className]="formLogin.get('password')?.touched && formLogin.get('password')?.errors?.['required'] ? 'error-input' : '' "
+                <input
+                    [className]="formLogin.get('password')?.touched && formLogin.get('password')?.errors ? 'error-input' : '' "
                     class="flex-grow-1 validacion" type="password" id="password" formControlName="password"
                     placeholder="Password">
                 <span class="errorMessage"
-                    *ngIf="formLogin.get('password')?.hasError('required') && (formLogin.get('password')?.dirty || formLogin.get('password')?.touched)">Este
+                    *ngIf="(formLogin.get('password')?.dirty || formLogin.get('password')?.touched) && formLogin.get('password')?.hasError('required')">Este
                     campo es requerido</span>
+                <span class="errorMessage" *ngIf="formLogin.get('password')?.hasError('minlength')">
+                    La contraseña debe tener minimo 4 valores</span>
+                <span class="errorMessage" *ngIf="formLogin.get('password')?.hasError('maxlength')">
+                    La contraseña debe tener maximo 10</span>
             </div>
-            <input class="btn-general btn w-100 my-3" type="submit" value="Log in">
+            <input class="btn-general btn w-100 my-3" type="submit" value="Register">
         </form>
-        <span class="spanLogin">Ya tienes una cuenta? <a href="#">Inicia sesion</a></span>
+        <span class="mgerror" *ngIf="errormg">{{  errormg }}</span>
+        <span class="spanLogin">Ya tienes una cuenta? <a href="login">Inicia sesion</a></span>
         <div class="box-registres">
             <span>Registrate con:</span>
             <div class="iconos">

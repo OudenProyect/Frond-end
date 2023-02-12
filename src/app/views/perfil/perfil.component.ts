@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SesionService } from 'src/app/services/sesion.service';
 import { faL } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,11 +11,27 @@ import { faL } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class PerfilComponent implements OnInit {
- 
-  constructor() { }
+
+  userinfo: any = null;
+
+  constructor(private sesions: SesionService, private router: Router) { }
 
   ngOnInit(): void {
-  } 
+    // cogemos el usuario desde el local storage , para verificar que ha iniciado sesion
+    if (localStorage.getItem('token')) {
+      this.sesions.user(localStorage.getItem('token'))
+        .subscribe(user => {
+          this.userinfo = user;
+          console.log({ user })
+        }, error => {
+          // si hubiera un error se redirigira al login
+          this.router.navigate(['login'])
+        })
+    } else {
+      this.router.navigate(['login'])
+    }
+  }
+  
   ajustar={
     "width.%":"80"
   }
@@ -93,5 +111,4 @@ export class PerfilComponent implements OnInit {
     this.showDiv5 = !this.showDiv5;
     this.ajustar5["width.%"]= "80";
   }
-  
 }

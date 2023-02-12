@@ -14,15 +14,16 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
 
   constructor(private formGroup: FormBuilder) {
-
-   }
+    
+  }
 
   ngOnInit(): void {
     this.formLogin = this.formGroup.group({
-      usuario: ['', [
-        Validators.required
+      email: ['', [
+        Validators.required,
+        Validators.email
       ]],
-      contrasena: ['', [
+      password: ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(8)

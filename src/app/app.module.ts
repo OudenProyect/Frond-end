@@ -13,7 +13,12 @@ import { PerfilComponent } from './views/perfil/perfil.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from './views/login/login.component';
+import { ContactComponent } from './views/contact/contact.component';
+import { FormcontactComponent } from './components/formcontact/formcontact.component';
 import { AboutComponent } from './views/about/about.component';
+
+/* importamos el modulo http client conexion backend */
+import { HttpClientModule } from '@angular/common/http';
 
 
 /** alison */
@@ -28,10 +33,13 @@ import { AboutComponent } from './views/about/about.component';
     PreciosComponent,
     LoginComponent,
     PerfilComponent,
+    ContactComponent,
+    FormcontactComponent,
     AboutComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     SwiperModule,

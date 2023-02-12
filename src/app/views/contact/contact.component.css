@@ -1,0 +1,15 @@
+.title{
+    background-color: #2596BE;
+    color: white;
+    width: 100%;
+    font-weight: bolder;
+    text-align: center;
+    padding: 30px;
+}
+
+.content{
+    height: 90vh;
+}
+.box-contact{
+    padding: 40px 60px;
+}
