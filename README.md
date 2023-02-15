@@ -19,6 +19,9 @@
     - Situarse en la carpeta del Frontend
     - Ejecutar npm install 
     - Arrancar el servidor local `ng serve --open`
+    - cambiar el composer.json ,lexik/jwt-authentication-bundle: "2.16" sin gorrito
+    - Si se usa token, generar las claves publicas y privadas, primero eliminar composer.lock, luego venfor, composer install, `php bin/console lexik:jwt:generate-keypair`
+    - verificar que el paquete del jwt sea 2.16 en el composer json, quitar gorrito
   
 # Symfony configuracion servidor para la conexion con la BBDD
 
