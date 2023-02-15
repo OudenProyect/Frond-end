@@ -124,3 +124,21 @@
         width: 50%;
     }
 }
+
+@media(max-width: 1043px) {
+    .wi1300 {
+        display: block;
+    }
+    .infoEdit {
+        width: auto;
+    }
+    .contacUser {
+        margin: auto;
+    }
+}
+
+@media(max-width: 572px) {
+    .m-5 {
+        margin: 1rem!important;
+    }
+}

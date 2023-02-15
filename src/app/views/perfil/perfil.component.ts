@@ -39,7 +39,7 @@ export class PerfilComponent implements OnInit {
     "width.%": "80"
   }
   ajustar3 = {
-    "width.%": "80"
+    "width.%": "83"
   }
   ajustar4 = {
     "width.%": "80"

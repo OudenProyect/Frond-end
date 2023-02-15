@@ -31,8 +31,7 @@
                     <form class="editName" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-id-card-o"></i>
-                            <input type="text" [ngStyle]="ajustar2" name="name" placeholder="Nombre completo" 
-                            [(ngModel)]="userinfo.user.name">
+                            <input type="text" [ngStyle]="ajustar2" name="name" placeholder="Nombre completo" [(ngModel)]="userinfo.user.name">
                             <span (click)="opbnt2()" btn-id="bnt1"><i *ngIf="noPincel2" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv2">
                                 <span (click)="guardar('name', userinfo.user.name)" id="guardar"
@@ -47,7 +46,6 @@
                         <div class="borderInput">
                             <i class="fa fa-envelope"></i>
                             <input readonly disabled type="text" [ngStyle]="ajustar3" name="email" placeholder="Correo" [(ngModel)]="userinfo.user.email">
-                            <span btn-id="bnt1"><i *ngIf="noPincel3" class="fa fa-pencil"></i></span>
                         </div>
 
                     </form>
@@ -79,7 +77,7 @@
                 </div>
                 <div class="contacUser" id="bordes">
                     <h4 class="text-center">Contactos recientes</h4>
-                    <table class="table mt-4 d-block ">
+                    <table class="table mt-4  ">
                         <thead>
                             <tr>
                                 <th scope="col"><img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar">Remires pende <button class="bntCont"><i
