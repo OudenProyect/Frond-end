@@ -120,6 +120,7 @@ export class PerfilComponent implements OnInit {
       value
     })
       .subscribe(res => {
+        
         console.log({ res })
       }, err => {
         console.log({ err })
