@@ -157,15 +157,10 @@ export class PerfilComponent implements OnInit {
         console.log({ res })
       }, err => {
         if (this.showDiv2) {
-          this.cancel2();
           this.noGuardado = true;
- 
         }else if(this.showDiv4){
-          this.cancel4();
           this.noGuardado = true;
-
         }else{
-          this.cancel5();
           this.noGuardado = true;
         }
         setTimeout(() => {
