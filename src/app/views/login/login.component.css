@@ -46,6 +46,8 @@ label {
     width: 100%;
     margin-bottom: 37px;
     font-size: 50px;
+    text-align: center;
+    font-weight: bolder;
 }
 
 .box-content .form .box-registres {
@@ -79,6 +81,7 @@ label {
     color: white;
     font-weight: bolder;
     font-size: 38px;
+    text-align: center;
 }
 
 /* caja datos inputs con iconos*/
@@ -134,6 +137,10 @@ input[type="email"]{
     font-size: 20px;
     background-color: #2596BE;
     color: white;
+    filter: drop-shadow(6px 6px 2px gray);
+    width: fit-content;
+    margin: auto;
+    padding: 5px 28px;
 }
 
 /**/
@@ -174,42 +181,41 @@ button {
 
 
 
-/* Centrar Login */
-.box-content .form h2{
- text-align: center;
-}
-
-
-@media screen and (min-width:1200px){
-    .box-content .form{
+@media screen and (min-width:1200px) {
+    .box-content .form {
         padding: 100px 120px;
     }
-
 }
+
 @media screen and (max-width:950px) {
-    .box-content .form{
-        padding: 20px;
-    }
-    .box-content .form h2{
-        font-size:35px;
-    }
-
-}
-
-@media screen and (max-width:800px) {
-    .box-content .form{
-        padding: 15px;
-    }
-    .box-content .form h2{
-        font-size:30px;
+    .box-content .form {
+        padding: 100px 30px;
     }
 }
-@media screen and (max-width:700px) {
-    .box-content .form{
-        padding: 30px;
-        width: 100%;
-    }
-    .box-content #portada{
+
+@media screen and (max-width:750px) {
+    .box-content #portada {
         display: none;
     }
+
+    .box-content .form {
+        width: 100%;
+    }
 }
+
+@media screen and (max-width:400px) {
+    .box-content .form h2{
+        font-size: 40px;
+    }
+
+    .box-content .form{
+        padding: 90px 15px;
+    }
+
+    .btn-descargas{
+        display: flex;
+        flex-direction: column;
+        gap: 10px
+    }
+}
+

@@ -29,7 +29,7 @@
                     *ngIf="formLogin.get('password')?.hasError('required') && (formLogin.get('password')?.dirty || formLogin.get('password')?.touched)">Este
                     campo es requerido</span>
             </div>
-            <input class="btn-general btn w-100 my-3" type="submit" value="Log in">
+            <input class="btn-general btn my-3" type="submit" value="Log in">
         </form>
         <span class="mgerror" *ngIf="errormg">Email or password incorrect</span>
         <div class="text-center pt-1 mb-5 pb-1">
@@ -50,5 +50,5 @@
         </div>
     </div>
     <div id="portada">
-        
+        <span>Find your dream house<br> with Ouden</span>
     </div>
