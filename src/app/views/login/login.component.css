@@ -173,8 +173,43 @@ button {
 }
 
 
-@media screen and  (min-width:1200px) {
+
+/* Centrar Login */
+.box-content .form h2{
+ text-align: center;
+}
+
+
+@media screen and (min-width:1200px){
     .box-content .form{
         padding: 100px 120px;
+    }
+
+}
+@media screen and (max-width:950px) {
+    .box-content .form{
+        padding: 20px;
+    }
+    .box-content .form h2{
+        font-size:35px;
+    }
+
+}
+
+@media screen and (max-width:800px) {
+    .box-content .form{
+        padding: 15px;
+    }
+    .box-content .form h2{
+        font-size:30px;
+    }
+}
+@media screen and (max-width:700px) {
+    .box-content .form{
+        padding: 30px;
+        width: 100%;
+    }
+    .box-content #portada{
+        display: none;
     }
 }
