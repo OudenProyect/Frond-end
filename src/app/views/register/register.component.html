@@ -44,7 +44,7 @@
                 <span class="errorMessage" *ngIf="formLogin.get('password')?.hasError('maxlength')">
                     La contraseña debe tener maximo 10</span>
             </div>
-            <input class="btn-general btn w-100 my-3" type="submit" value="Register">
+            <input class="btn-general btn my-3" type="submit" value="Register">
         </form>
         <span class="mgerror" *ngIf="errormg">{{  errormg }}</span>
         <span class="spanLogin">Ya tienes una cuenta? <a href="login">Inicia sesion</a></span>
