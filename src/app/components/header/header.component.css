@@ -1,3 +1,39 @@
-.navbar>.container-fluid {
-    display: block;
+@media (min-width: 768px) {
+    .navbar-expand-lg .navbar-collapse {
+        display: flex!important;
+        flex-basis: 0%;
+        position: absolute;
+        right: 16px;
+        top: 20%;
+    }
+    .bb {
+        display: none;
+    }
+}
+
+.navbar-toggler {
+    position: absolute;
+    right: 16px;
+    top: 15px;
+}
+
+.container-fluid {
+    margin: 0%;
+}
+
+.links a {
+    text-decoration: none;
+    color: black;
+}
+
+.logReg {
+    padding: 8px;
+    border-radius: 5px;
+    background-color: black;
+    color: white !important;
+}
+
+.logReg:hover {
+    background-color: #2595be;
+    transition: 0.2s;
 }
