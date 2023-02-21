@@ -5,9 +5,14 @@
         position: absolute;
         right: 16px;
         top: 20%;
+        align-items: center;
     }
     .bb {
         display: none;
+    }
+    .links {
+        margin-top: 16px;
+        display: flex!important;
     }
 }
 
@@ -26,11 +31,17 @@
     color: black;
 }
 
+.links {
+    display: inline-grid;
+}
+
 .logReg {
     padding: 8px;
     border-radius: 5px;
     background-color: black;
     color: white !important;
+    width: 90px;
+    text-align: center;
 }
 
 .logReg:hover {
