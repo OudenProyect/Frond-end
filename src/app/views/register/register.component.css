@@ -10,7 +10,7 @@ label {
     position: absolute;
     left: 13px;
     top: 6px;
-  }
+}
 
 .box-content {
     display: flex;
@@ -52,6 +52,8 @@ label {
     width: 100%;
     margin-bottom: 37px;
     font-size: 50px;
+    text-align: center;
+    font-weight: bolder;
 }
 
 .box-content .form .box-registres {
@@ -81,6 +83,7 @@ label {
     color: white;
     font-weight: bolder;
     font-size: 38px;
+    text-align: center;
 }
 
 /* caja datos inputs con iconos*/
@@ -109,8 +112,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"], 
-input[type="email"]{
+input[type="password"],
+input[type="email"] {
     border: 1.5px solid gray;
     background-color: white;
     border-radius: 15px;
@@ -125,6 +128,21 @@ input[type="email"]{
     font-size: 20px;
     background-color: #2596BE;
     color: white;
+    filter: drop-shadow(6px 6px 2px gray);
+    width: fit-content;
+    margin: auto;
+    padding: 5px 28px;
+}
+
+
+.btn-general:hover,
+.box-content .form .box-registres .iconos a i:hover {
+    transition: ease 0.2s;
+    filter: drop-shadow(6px 6px 8px gray);
+}
+
+.box-content .form .box-registres .iconos a i:hover {
+    color: #2db0df;
 }
 
 /**/
@@ -150,7 +168,7 @@ button {
 }
 
 /* ERROR MESSAGE */
-.errorMessage{
+.errorMessage {
     width: 100%;
     color: #eb3e3e;
     font-weight: 500;
@@ -159,7 +177,7 @@ button {
 }
 
 
-.mgerror{
+.mgerror {
     border: 1px solid red;
     width: 100%;
     padding: 9px;
@@ -169,12 +187,45 @@ button {
     text-align: center;
 }
 
-.error-input{
+.error-input {
     border: 1px solid red !important;
     color: red !important;
 }
-@media screen and  (min-width:1200px) {
-    .box-content .form{
+
+@media screen and (min-width:1200px) {
+    .box-content .form {
         padding: 100px 120px;
+    }
+}
+
+@media screen and (max-width:950px) {
+    .box-content .form {
+        padding: 100px 30px;
+    }
+}
+
+@media screen and (max-width:750px) {
+    .box-content #portada {
+        display: none;
+    }
+
+    .box-content .form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .box-content .form h2{
+        font-size: 40px;
+    }
+
+    .box-content .form{
+        padding: 90px 15px;
+    }
+
+    .btn-descargas{
+        display: flex;
+        flex-direction: column;
+        gap: 10px
     }
 }

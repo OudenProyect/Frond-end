@@ -3,3 +3,7 @@
 body{
     font-family: 'Montserrat', sans-serif;
 }
+
+.btn-general:hover {
+    background-color: #2db0df !important;
+}
