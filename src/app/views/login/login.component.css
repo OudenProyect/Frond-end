@@ -66,7 +66,7 @@ label {
     gap: 35px;
 }
 
-.icono-user{
+.icono-user {
     top: 6px;
 }
 
@@ -84,7 +84,9 @@ label {
     text-align: center;
 }
 
+
 /* caja datos inputs con iconos*/
+
 .cajaDatos {
     width: 100%;
     margin-bottom: 5px;
@@ -101,7 +103,6 @@ label {
     margin: 0;
 }
 
-
 .caja-datos-user,
 .caja-datos-contra {
     display: flex;
@@ -110,8 +111,8 @@ label {
 }
 
 input[type="text"],
-input[type="password"], 
-input[type="email"]{
+input[type="password"],
+input[type="email"] {
     border: 1.5px solid gray;
     background-color: white;
     border-radius: 15px;
@@ -122,8 +123,7 @@ input[type="email"]{
     font-size: 16px;
 }
 
-
-.mgerror{
+.mgerror {
     border: 1px solid red;
     width: 100%;
     padding: 9px;
@@ -143,7 +143,9 @@ input[type="email"]{
     padding: 5px 28px;
 }
 
+
 /**/
+
 #portada {
     background-image: url('../../../assets/imag/Login.png');
     background-repeat: no-repeat;
@@ -165,8 +167,10 @@ button {
     border: none;
 }
 
+
 /* ERROR MESSAGE */
-.errorMessage{
+
+.errorMessage {
     width: 100%;
     color: #eb3e3e;
     font-weight: 500;
@@ -174,12 +178,10 @@ button {
     font-size: 16px;
 }
 
-.error-input{
+.error-input {
     border: 1px solid red !important;
     color: red !important;
 }
-
-
 
 @media screen and (min-width:1200px) {
     .box-content .form {
@@ -197,25 +199,21 @@ button {
     .box-content #portada {
         display: none;
     }
-
     .box-content .form {
         width: 100%;
     }
 }
 
 @media screen and (max-width:400px) {
-    .box-content .form h2{
+    .box-content .form h2 {
         font-size: 40px;
     }
-
-    .box-content .form{
+    .box-content .form {
         padding: 90px 15px;
     }
-
-    .btn-descargas{
+    .btn-descargas {
         display: flex;
         flex-direction: column;
         gap: 10px
     }
 }
-

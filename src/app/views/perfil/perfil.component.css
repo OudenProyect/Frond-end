@@ -51,6 +51,7 @@
 }
 
 .infoEdit input[type="text"] {
+    background-color: white;
     border: none;
     padding: 8px;
 }
@@ -100,6 +101,14 @@
     background-color: white;
 }
 
+#messGuardado {
+    background-color: #fbffa861;
+    color: rgb(0, 0, 0);
+    padding: 16px;
+    margin-top: 16px;
+    border-radius: 5px;
+}
+
 @media(max-width: 1355px) {
     .form-check-input[type=checkbox] {
         margin-left: 13px;
@@ -140,5 +149,8 @@
 @media(max-width: 572px) {
     .m-5 {
         margin: 1rem!important;
+    }
+    .confUser label {
+        width: 119px;
     }
 }

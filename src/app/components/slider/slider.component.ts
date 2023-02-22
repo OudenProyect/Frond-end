@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ViewChild } from "@angular/core";
+import { Component, ViewEncapsulation, ViewChild, OnInit } from "@angular/core";
 import { SwiperComponent } from "swiper/angular";
 // import Swiper core and required modules
 import SwiperCore, {
@@ -6,7 +6,9 @@ import SwiperCore, {
   Scrollbar,
   Navigation,
   Pagination,
+  Swiper
 } from "swiper";
+
 
 // install Swiper modules
 SwiperCore.use([Keyboard, Scrollbar, Navigation, Pagination]);
@@ -22,7 +24,7 @@ SwiperCore.use([Keyboard, Scrollbar, Navigation, Pagination]);
   [pagination]="{
     clickable: true
   }"
-  [navigation]="true"
+  [navigation]="true" 
   class="mySwiper"
 >
   <ng-template swiperSlide class="caja">
@@ -209,5 +211,29 @@ SwiperCore.use([Keyboard, Scrollbar, Navigation, Pagination]);
   styleUrls: ["./slider.component.css"],
   encapsulation: ViewEncapsulation.None,
 })
-export class SliderComponent {}
+
+export class SliderComponent {
+  ngAfterViewInit() {
+    const swiper = new Swiper('.swiper', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      breakpoints: {
+        550: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        490: {
+          slidesPerView: 1,
+          spaceBetween: 30
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 40
+        }
+      }
+    });
+  }
+  
+   
+}
 
