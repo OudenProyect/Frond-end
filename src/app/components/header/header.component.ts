@@ -8,10 +8,9 @@ import { SesionService } from 'src/app/services/sesion.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  userinfo: any = null;
-
+  
   constructor(private sesions: SesionService, private router: Router) { }
-
+  userinfo: any = "";
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
       this.sesions.user(localStorage.getItem('token'))
@@ -20,10 +19,10 @@ export class HeaderComponent implements OnInit {
           console.log({ user })
         }, error => {
           // si hubiera un error se redirigira al login
-          this.router.navigate(['login'])
+          this.userinfo = null;
         })
     } else {
-      this.router.navigate(['login'])
+      this.userinfo = null;
     }
   }
   isCollapse = false;   // guardamos el valor
