@@ -79,3 +79,11 @@
     --bs-accordion-active-bg: #2595be25;
     --bs-accordion-active-color: black;
 }
+
+.buscador{
+    width: 400px;
+    height: fit-content;
+    padding: 7px;
+    border-radius: 7px;
+    border: none;
+}

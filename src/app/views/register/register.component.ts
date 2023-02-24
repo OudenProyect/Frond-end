@@ -37,7 +37,6 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(10)
       ]]
     });
-
   }
 
   submitLogin() {
