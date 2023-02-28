@@ -3,20 +3,14 @@
     vertical-align: middle;
 }
 
-.caja>.card {
-    border: 0px;
-    background: none;
-}
-
 .info-casaMin {
-    margin: 3px;
     padding: 3px;
     background-color: #c8ccd552;
 }
 
 .info-casaMin span {
     margin-left: 6px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .info-contact.on {
@@ -34,20 +28,115 @@
     color: #2595be;
 }
 
-.caja>.card .card-img-top {
-    height: 50%;
+.card-img-top {
+    height: 180px;
     object-fit: cover;
-    border-radius: 24px 24px 0px 0px;
+    border-radius: 25px 25px 0px 0px;
 }
 
-.caja .card-body {
-    background-color: white;
-    box-shadow: 0px 11px 188px -4px #00000024;
-    border-radius: 0px 0px 24px 24px;
-    text-align: left;
+.caracter-casa {
+    gap: 3px;
 }
 
 #carrusel {
     width: 288px;
     margin: auto;
+}
+
+#contenidoReco {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: column nowrap;
+    position: relative;
+    margin: auto;
+}
+
+.pro {
+    display: flex;
+    flex: none;
+    width: 100%;
+    gap: 37px;
+    overflow: auto;
+    flex-flow: row nowrap;
+    scroll-behavior: smooth;
+}
+
+.pro::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* scroll-snap */
+
+.mandatory-scroll-snapping {
+    scroll-snap-type: x mandatory;
+}
+
+.caja {
+    width: 100%;
+    text-align: left;
+    flex: none;
+    font-size: 18px;
+    border-radius: 25px;
+    border: 1px solid rgb(0 0 0 / 12%);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    cursor: pointer;
+}
+
+.contenido {
+    margin: 12px;
+}
+
+#contenidoReco .btns {
+    position: absolute;
+    top: 45%;
+    font-size: 50px;
+    transform: translateY(-50%);
+    color: #2595be;
+    z-index: 1;
+}
+
+#contenidoReco .btns.next {
+    right: -14px;
+}
+
+#contenidoReco .btns.prev {
+    left: -14px;
+    /* display: none; */
+}
+
+@media(min-width: 425px) {
+    #contenidoReco .btns.next {
+        right: -40px;
+        transition: 0.5s;
+    }
+    #contenidoReco .btns.prev {
+        left: -40px;
+        transition: 0.5s;
+    }
+}
+
+@media(min-width: 768px) {
+    .caja {
+        width: 47%;
+        scroll-snap-align: start;
+        transition: 0.5s;
+    }
+    #carrusel {
+        width: 85%;
+        transition: 0.5s;
+    }
+}
+
+@media(min-width: 1024px) {
+    .caja {
+        width: 31%;
+        transition: 0.5s;
+    }
+    #carrusel {
+        width: 85%;
+        transition: 0.5s;
+    }
 }
