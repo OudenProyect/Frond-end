@@ -19,6 +19,8 @@ import { AboutComponent } from './views/about/about.component';
 
 /* importamos el modulo http client conexion backend */
 import { HttpClientModule } from '@angular/common/http';
+import { BusquedaComponent } from './views/busqueda/busqueda.component';
+import { FiltrosComponent } from './components/filtros/filtros.component';
 
 
 /** alison */
@@ -35,7 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
     PerfilComponent,
     ContactComponent,
     FormcontactComponent,
-    AboutComponent
+    AboutComponent,
+    BusquedaComponent,
+    FiltrosComponent
   ],
   imports: [
     BrowserModule,

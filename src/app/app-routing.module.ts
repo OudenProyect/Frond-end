@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path:"about",
     loadChildren: () => import('./views/about/about.module').then(m => m.AboutModule)
+  },
+  {
+    path:"busquedas",
+    loadChildren: () => import('./views/busqueda/busqueda.module').then(m => m.BusquedaModule)
   }
 ];
 
