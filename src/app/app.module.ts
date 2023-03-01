@@ -21,6 +21,7 @@ import { AboutComponent } from './views/about/about.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BusquedaComponent } from './views/busqueda/busqueda.component';
 import { FiltrosComponent } from './components/filtros/filtros.component';
+import { CarruselComponent } from './components/carrusel/carrusel.component';
 
 
 /** alison */
@@ -39,7 +40,8 @@ import { FiltrosComponent } from './components/filtros/filtros.component';
     FormcontactComponent,
     AboutComponent,
     BusquedaComponent,
-    FiltrosComponent
+    FiltrosComponent,
+    CarruselComponent
   ],
   imports: [
     BrowserModule,

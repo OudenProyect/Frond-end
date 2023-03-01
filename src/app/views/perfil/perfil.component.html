@@ -15,10 +15,10 @@
         <div id="centrar">
             <div class="wi1300">
                 <div id="bordes" class="infoEdit">
-                    <form class="editNick" action="" method="get">
+                    <form class="editNick" action="" method="get" [(ngModel)]="textoGuar">
                         <div class="borderInput">
                             <i class="fa fa-user"></i>
-                            <input type="text" [ngStyle]="ajustar" placeholder="Nick Name">
+                            <input type="text" [ngStyle]="ajustar" placeholder="Nick Name" name="nick" [disabled]="isDisabled">
                             <span (click)="opbnt()" btn-id="bnt1"><i *ngIf="noPincel" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv">
                                 <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
@@ -31,7 +31,7 @@
                     <form class="editName" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-id-card-o"></i>
-                            <input type="text" [ngStyle]="ajustar2" name="name" placeholder="Nombre completo" [(ngModel)]="userinfo.user.name">
+                            <input [disabled]="isDisabled2" type="text" [ngStyle]="ajustar2" name="name" placeholder="Nombre completo" [(ngModel)]="userinfo.user.name">
                             <span (click)="opbnt2()" btn-id="bnt1"><i *ngIf="noPincel2" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv2">
                                 <span (click)="guardar('name', userinfo.user.name)" id="guardar"
@@ -42,6 +42,7 @@
                         </div>
 
                     </form>
+
                     <form class="editEmail" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-envelope"></i>
@@ -51,7 +52,7 @@
                     </form>
                     <form class="editPWD" action="" method="get">
                         <div class="borderInput">
-                            <i class="fa fa-lock"></i> <input type="text" [ngStyle]="ajustar4" placeholder="Contraseña">
+                            <i class="fa fa-lock"></i> <input [disabled]="isDisabled3" type="text" [ngStyle]="ajustar4" placeholder="Contraseña">
                             <span (click)="opbnt4()" btn-id="bnt1"><i *ngIf="noPincel4" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv4">
                                 <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
@@ -64,7 +65,7 @@
                     <form class="editTlf" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-phone"></i>
-                            <input type="text" [ngStyle]="ajustar5" name="phone" placeholder="Telefono" [(ngModel)]="userinfo.user.phone">
+                            <input [disabled]="isDisabled4" type="text" [ngStyle]="ajustar5" name="phone" placeholder="Telefono" [(ngModel)]="userinfo.user.phone">
                             <span (click)="opbnt5()" btn-id="bnt1"><i *ngIf="noPincel5" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv5">
                                 <span (click)="guardar('phone', userinfo.user.phone)" id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
@@ -74,7 +75,11 @@
                         </div>
 
                     </form>
+                    <div id="messGuardado" *ngIf="guardado">Guardado</div>
+                    <div id="messNoGuardado" *ngIf="noGuardado">Error en el guardado</div>
+
                 </div>
+
                 <div class="contacUser" id="bordes">
                     <h4 class="text-center">Contactos recientes</h4>
                     <table class="table mt-4  ">
@@ -128,5 +133,6 @@
 
 <div id="recomendados">
     <h1 class="text-center m-2"><b>Recomendados para ti</b></h1>
-    <app-slider></app-slider>
+
+    <app-carrusel></app-carrusel>
 </div>

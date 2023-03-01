@@ -83,6 +83,7 @@ label {
     color: white;
     font-weight: bolder;
     font-size: 38px;
+    text-align: center;
 }
 
 /* caja datos inputs con iconos*/
@@ -184,7 +185,7 @@ button {
     }
 }
 
-@media screen and (max-width:900px) {
+@media screen and (max-width:950px) {
     .box-content .form {
         padding: 100px 30px;
     }
