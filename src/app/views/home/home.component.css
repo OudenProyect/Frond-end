@@ -11,6 +11,14 @@
     background-position: center center;
 }
 
+.imag-fondo .contenido-imag form .contentInputMg{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+.imag-fondo .contenido-imag form .contentInputMg input,.imag-fondo .contenido-imag form .contentInputM span{
+    width: 100%;
+}
 .contenido-imag {
     text-align: center;
     background-color: #2595beb1;

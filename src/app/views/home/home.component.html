@@ -1,13 +1,13 @@
 <div class="imag-fondo">
     <div class="contenido-imag">
         <h2 class="text-light p-2">Un sueño de casas</h2>
-        <form [formGroup]="formSearch" class="d-flex p-2 justify-content-center gap-2" (submit)="searchHouseholds()">
+        <form [formGroup]="formSearch" class="d-flex p-2 justify-content-center gap-2 align-items-start" (submit)="searchHouseholds()">
             <select name="search" class="form-select w-25  ms-md-2  h-25" id="inlineFormSelectPref"
                 (change)="buscador($event)">
                 <option value="viviendas" selected>Viviendas</option>
                 <option value="planos">Planos</option>
             </select>
-            <div>
+            <div class="contentInputMg">
                 <input formControlName="ubicacion" name="ubicacion" *ngIf="inputCasas" type="text" class="buscador">
                 <span class="errorMessage"
                 *ngIf="formSearch.get('ubicacion')?.touched && formSearch.get('ubicacion')?.errors?.['required']">Este

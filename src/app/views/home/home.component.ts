@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SearchsService } from 'src/app/services/searchs.service';
 
 @Component({
   selector: 'app-home',
@@ -11,15 +13,13 @@ export class HomeComponent implements OnInit , AfterViewInit {
   // @ts-ignore
   formSearch: FormGroup;
 
-  constructor(private formGroup: FormBuilder) { }
+  constructor(private formGroup: FormBuilder,public router: Router, public search: SearchsService) { }
   inputCasas: any = true;
 
   ngOnInit(): void {
     this.formSearch = this.formGroup.group({
       ubicacion: new FormControl('', Validators.required)
     })
-
-    // console.log(this.formSearch)
   }
 
   buscador(event: any) {
@@ -32,6 +32,14 @@ export class HomeComponent implements OnInit , AfterViewInit {
 
   searchHouseholds() {
     if (this.formSearch.valid) {
+      // this.router.navigate([
+      //   'busquedas'
+      // ])
+      console.log(this.formSearch.value.ubicacion)
+      this.search.searchViviendas({ params: {ubicacion: this.formSearch.value.ubicacion}})
+      .subscribe((res : any) => {
+        console.log(res)
+      })
       console.log('valido')
     } else {
       this.formSearch.markAllAsTouched()

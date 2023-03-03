@@ -4,16 +4,16 @@ img {
     height: 100%;
 }
 
-.content
-{
-    padding: 20px;
+.content {
+    padding: 20px 50px;
 }
 
 .content .casa .portada {
-    width: 38%;
+    width: 420px;
+    min-width: 380px;
 }
 
-.content .casa .portada img{
+.content .casa .portada img {
     border-radius: 15px 0px 0px 15px;
 
 }
@@ -21,14 +21,150 @@ img {
 .content .casa {
     display: flex;
     width: 100%;
-    background-color: aquamarine;
-    border-radius: 15px;
+    border-radius: 25px;
+    border: 1px solid rgb(0 0 0 / 12%);
 }
 
-.content .casa .descripcion{
+.content .casa .descripcion {
     flex: 1;
+    padding: 20px;
 }
 
-.icon{
-    width: 30px;
+.content .casa .descripcion .contentUbicacion {
+    color: gray;
+    display: flex;
+    width: 100%;
+    gap: 9px;
+}
+
+.content .casa .descripcion .contentUbicacion span {
+    width: auto;
+}
+
+.content .casa .descripcion h2 {
+    font-size: 22px;
+}
+
+.content .casa .descripcion h2 span,
+.content .casa .descripcion .precio,
+.content .casa .descripcion .contentUbicacion .casa ,
+.bold{
+    font-weight: 600;
+}
+
+.content .casa .descripcion .precio {
+    font-size: 24px;
+}
+
+/* iconos */
+.info-casaMin {
+    padding: 5px 9px;
+    background-color: #c8ccd552;
+}
+
+.info-casaMin span {
+    margin: 5px;
+    font-size: 14px;
+}
+
+.caracter-casa {
+    gap: 3px;
+}
+
+
+.icon {
+    width: 28px;
+}
+
+.btn-general {
+    font-size: 20px;
+    background-color: #2596BE;
+    color: white;
+    width: fit-content;
+    margin: auto;
+    padding: 8px 28px;
+    border-radius: 9px;
+
+}
+
+.link-btn{
+    padding: 8px 15px;
+    border-radius: 9px;
+    border: 1px solid #2596BE ;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: bold;
+    color: black;
+}
+
+.link-btn:hover{
+    background-color: #2596be12;
+}
+
+.link-btn span{
+    font-size: 15px;
+}
+
+.icon-xs{
+    width: 24px;
+}
+
+.btn-icon{
+    background: none;
+    border: none;
+    padding: 0;
+    height: 35px;
+}
+
+.btn-icon:hover{
+    opacity: 0.8;
+}
+
+.btn-icon img{
+    width: 32px;
+    height: auto;
+}
+
+.btn-general{
+    font-size: 17px;
+}
+
+
+@media (max-width: 950px) {
+    .content {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 840px) {
+    .casa{
+        flex-direction: column;
+    }
+
+    .content .casa .portada{
+        width: 100%;
+        min-width: 0;
+        height: 300px;
+    }
+    .content .casa .portada img{
+        border-radius: 15px 15px 0px 0px;
+    }
+
+    .caracter-casa{
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 450px) {
+    .links{
+        gap: 2px !important;
+    }
+    .btn-general, .link-btn{
+        padding: 6px;
+    }
+
+    .content{
+        padding: 0;
+    }
 }
