@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SesionService } from 'src/app/services/sesion.service';
 import { faL } from '@fortawesome/free-solid-svg-icons';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-perfil',
@@ -12,15 +13,15 @@ import { faL } from '@fortawesome/free-solid-svg-icons';
 export class PerfilComponent implements OnInit {
 
   userinfo: any = null;
-  
+  @ViewChild('dialog') dialog: any;
   guardado: boolean = false;
   noGuardado: boolean = false;
   textoGuar!: string;
-  oldPassword!: string;//Contraseña antigua
-  newPassword!: string; // Contraseña nueva
-  confirmPassword!: string; // Confirmar contraseña
+ 
+  // @ts-ignore
+  CambiarPWDform: FormGroup;
 
-  constructor(private sesions: SesionService, private router: Router) { }
+  constructor(private sesions: SesionService, private router: Router, private form: FormBuilder) { }
   ngOnInit(): void {
     // cogemos el usuario desde el local storage , para verificar que ha iniciado sesion
     if (localStorage.getItem('token')) {
@@ -35,13 +36,48 @@ export class PerfilComponent implements OnInit {
     } else {
       this.router.navigate(['login'])
     }
+    this.CambiarPWDform = this.form.group({
+      //Contraseña antigua
+      oldPassword:['',[  
+        Validators.required,
+      ]],
+      // Contraseña nueva
+      newPassword:['',[  
+        Validators.required,
+        Validators.minLength(4),
+      ]],
+      // Confirmar contraseña
+      confirmPassword:['',[  
+        Validators.required,
+        Validators.minLength(4),
+      ]]
+    }, { validator: this.checkPasswords })
   }
 
   onSubmit() {
-    console.log(`Contraseña actual: ${this.oldPassword}`);
-    console.log(`Nueva contraseña: ${this.newPassword}`);
-    console.log(`Confirmar nueva contraseña: ${this.confirmPassword}`);
+    if(!this.CambiarPWDform.valid){
+      alert("LAS CONTRASEÑAS NO COINCIDEN");
+    }else{
+      this.sesions.editContraseña({
+        oldPassword: this.CambiarPWDform.get('oldPassword')?.value,
+        newPassword: this.CambiarPWDform.get('newPassword')?.value,
+        confirmPassword: this.CambiarPWDform.get('confirmPassword')?.value,
+      }).subscribe(res=>{
+        console.log(res)
+      })
+      alert("LAS CONTRASEÑAS SI COINCIDEN");
+
+    }
+    console.log(this.CambiarPWDform)
   }
+
+  checkPasswords(group: FormGroup) {
+    const password = group.get('newPassword')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { notMatched: true } ;
+   
+  }
+
   ajustar = {
     "width.%": "80"
   }
@@ -123,7 +159,9 @@ export class PerfilComponent implements OnInit {
     this.isDisabled4 = true;
 
   }
-
+  opDialog() {
+    this.dialog.nativeElement.showModal();
+  }
   // edicion del usuario
   guardar(edit: any, value: any) {
     this.sesions.editField({
