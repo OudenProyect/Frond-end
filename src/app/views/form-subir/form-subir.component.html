@@ -1,0 +1,35 @@
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<div class="box-content col-sm-12 row">
+    <title>Subir propiedad - Inmobiliario</title>
+    <div class="container">
+      <h1>Subir propiedad - Inmobiliario</h1>
+      <form action="submit-property.php" method="POST" enctype="multipart/form-data">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+  
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" required>
+  
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea>
+  
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*">
+  
+        <label for="tipo">Tipo de propiedad:</label>
+        <select id="tipo" name="tipo">
+          <option value="casa">Casa</option>
+          <option value="departamento">Departamento</option>
+          <option value="terreno">Terreno</option>
+        </select>
+  
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" name="ubicacion">
+  
+        <label for="metros-cuadrados">Metros cuadrados:</label>
+        <input type="number" id="metros-cuadrados" name="metros-cuadrados">
+  
+        <input type="submit" value="Subir propiedad">
+      </form>
+    </div>
+</div>

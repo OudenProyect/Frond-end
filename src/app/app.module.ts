@@ -20,6 +20,7 @@ import { AboutComponent } from './views/about/about.component';
 /* importamos el modulo http client conexion backend */
 import { HttpClientModule } from '@angular/common/http';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
+import { FormSubirComponent } from './views/form-subir/form-subir.component';
 
 
 /** alison */
@@ -37,7 +38,8 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
     ContactComponent,
     FormcontactComponent,
     AboutComponent,
-    CarruselComponent
+    CarruselComponent,
+    FormSubirComponent
   ],
   imports: [
     BrowserModule,
