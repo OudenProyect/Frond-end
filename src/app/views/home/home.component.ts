@@ -35,8 +35,8 @@ export class HomeComponent implements OnInit , AfterViewInit {
       // this.router.navigate([
       //   'busquedas'
       // ])
-      console.log(this.formSearch.value.ubicacion)
-      this.search.searchViviendas({ params: {ubicacion: this.formSearch.value.ubicacion}})
+      console.log(typeof(this.formSearch.value))
+      this.search.searchViviendas(this.formSearch.value?.ubicacion)
       .subscribe((res : any) => {
         console.log(res)
       })
