@@ -1,0 +1,56 @@
+.box-content .form h2 {
+    width: 100%;
+    margin-bottom: 37px;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bolder;
+}
+.contenedor {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  border: 2px solid  #ccc;
+  text-align: center; /* Agrega esta propiedad para centrar el span */
+  margin: 0 auto; /* Centrar el contenedor horizontalmente */
+}
+
+.capa {
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0.5;
+    transition: opacity 0.5s, box-shadow 0.5s;
+    box-shadow: 0 0 0 rgb(0 0 0 / 0%);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.capa:hover {
+  opacity: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  padding: 20px;
+}
+img{
+  width: 100%;
+  border-radius: 10px;
+
+}
+span{
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  font-weight: bolder;
+  color: white;
+  text-shadow: 
+    3px 2px 0 #000,
+    2px 3px 0 #000,
+    4px 2px 0 #000,
+    4px 3px 0 #000
+}

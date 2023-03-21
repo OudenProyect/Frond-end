@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BusquedaComponent } from './views/busqueda/busqueda.component';
 import { FiltrosComponent } from './components/filtros/filtros.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
-
+import { FormSubirComponent } from './views/form-subir/form-subir.component';
 
 /** alison */
 @NgModule({
@@ -41,7 +41,8 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
     AboutComponent,
     BusquedaComponent,
     FiltrosComponent,
-    CarruselComponent
+    CarruselComponent,
+    FormSubirComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,9 +51,9 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
     ReactiveFormsModule,
     FormsModule,
     SwiperModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

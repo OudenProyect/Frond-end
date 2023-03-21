@@ -154,3 +154,7 @@
         width: 119px;
     }
 }
+
+dialog {
+    position: fixed;
+}

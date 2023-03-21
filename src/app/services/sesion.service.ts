@@ -33,4 +33,12 @@ export class SesionService {
     });
   }
 
+  editContraseña(data: any) {
+    return this.http.put('http://127.0.0.1:8000/api/changeUserPwd', data, {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    });
+  }
+
 }

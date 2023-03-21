@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SesionService } from 'src/app/services/sesion.service';
 import { faL } from '@fortawesome/free-solid-svg-icons';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-perfil',
@@ -12,12 +13,15 @@ import { faL } from '@fortawesome/free-solid-svg-icons';
 export class PerfilComponent implements OnInit {
 
   userinfo: any = null;
-  
+  @ViewChild('dialog') dialog: any;
   guardado: boolean = false;
   noGuardado: boolean = false;
   textoGuar!: string;
+ 
+  // @ts-ignore
+  CambiarPWDform: FormGroup;
 
-  constructor(private sesions: SesionService, private router: Router) { }
+  constructor(private sesions: SesionService, private router: Router, private form: FormBuilder) { }
   ngOnInit(): void {
     // cogemos el usuario desde el local storage , para verificar que ha iniciado sesion
     if (localStorage.getItem('token')) {
@@ -32,8 +36,47 @@ export class PerfilComponent implements OnInit {
     } else {
       this.router.navigate(['login'])
     }
+    this.CambiarPWDform = this.form.group({
+      //Contraseña antigua
+      oldPassword:['',[  
+        Validators.required,
+      ]],
+      // Contraseña nueva
+      newPassword:['',[  
+        Validators.required,
+        Validators.minLength(4),
+      ]],
+      // Confirmar contraseña
+      confirmPassword:['',[  
+        Validators.required,
+        Validators.minLength(4),
+      ]]
+    }, { validator: this.checkPasswords })
   }
 
+  onSubmit() {
+    if(!this.CambiarPWDform.valid){
+      alert("LAS CONTRASEÑAS NO COINCIDEN");
+    }else{
+      this.sesions.editContraseña({
+        oldPassword: this.CambiarPWDform.get('oldPassword')?.value,
+        newPassword: this.CambiarPWDform.get('newPassword')?.value,
+        confirmPassword: this.CambiarPWDform.get('confirmPassword')?.value,
+      }).subscribe(res=>{
+        console.log(res)
+      })
+      alert("LAS CONTRASEÑAS SI COINCIDEN");
+
+    }
+    console.log(this.CambiarPWDform)
+  }
+
+  checkPasswords(group: FormGroup) {
+    const password = group.get('newPassword')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { notMatched: true } ;
+   
+  }
 
   ajustar = {
     "width.%": "80"
@@ -54,12 +97,10 @@ export class PerfilComponent implements OnInit {
   showDiv = false;
   showDiv2 = false;
   showDiv3 = false;
-  showDiv4 = false;
   showDiv5 = false;
   noPincel = true;
   noPincel2 = true;
   noPincel3 = true;
-  noPincel4 = true;
   noPincel5 = true;
   isDisabled = true;
   isDisabled2 = true;
@@ -103,19 +144,7 @@ export class PerfilComponent implements OnInit {
     this.ajustar3["width.%"] = "80";
   }
   opbnt4() {
-    this.showDiv4 = !this.showDiv4;
-    this.noPincel4 = !this.noPincel4;
-    this.ajustar4["width.%"] = "70";
-    this.isDisabled3 = false;
-
-  }
-  cancel4() {
-    this.noPincel4 = !this.noPincel4;
-    this.showDiv4 = !this.showDiv4;
-    this.ajustar4["width.%"] = "80";
-    this.isDisabled3 = true;
-
-  }
+  } 
   opbnt5() {
     this.showDiv5 = !this.showDiv5;
     this.noPincel5 = !this.noPincel5;
@@ -130,7 +159,9 @@ export class PerfilComponent implements OnInit {
     this.isDisabled4 = true;
 
   }
-
+  opDialog() {
+    this.dialog.nativeElement.showModal();
+  }
   // edicion del usuario
   guardar(edit: any, value: any) {
     this.sesions.editField({
@@ -143,10 +174,6 @@ export class PerfilComponent implements OnInit {
           this.cancel2();
           this.guardado = true;
  
-        }else if(this.showDiv4){
-          this.cancel4();
-          this.guardado = true;
-
         }else{
           this.cancel5();
           this.guardado = true;
@@ -157,8 +184,6 @@ export class PerfilComponent implements OnInit {
         console.log({ res })
       }, err => {
         if (this.showDiv2) {
-          this.noGuardado = true;
-        }else if(this.showDiv4){
           this.noGuardado = true;
         }else{
           this.noGuardado = true;

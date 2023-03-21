@@ -1,5 +1,26 @@
 <div id="header">
 </div>
+<dialog #dialog class="z-2">
+    <h2>Cambiar contraseña</h2>
+    <form [formGroup]="CambiarPWDform" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="oldPassword">Contraseña actual:</label>
+            <input type="password" id="oldPassword" formControlName="oldPassword" name="oldPassword">
+        </div>
+        <div>
+            <label for="newPassword">Nueva contraseña:</label>
+            <input type="password" id="newPassword" formControlName="newPassword" name="newPassword">
+        </div>
+        <div>
+            <label for="confirmPassword">Confirmar nueva contraseña:</label>
+            <input type="password" id="confirmPassword" formControlName="confirmPassword" name="confirmPassword">
+        </div>
+        <button type="submit">Guardar nueva contraseña</button>
+    </form>
+    <form action="" method="dialog">
+        <button>Cancelar</button>
+    </form>
+</dialog>
 
 <div id="perfil" class=" m-5">
     <h1 class="text-center m-5"><b>Tu perfil</b></h1>
@@ -12,6 +33,7 @@
                 <span class="name">{{ userinfo.user.name }}</span>
             </div>
         </div>
+
         <div id="centrar">
             <div class="wi1300">
                 <div id="bordes" class="infoEdit">
@@ -34,8 +56,9 @@
                             <input [disabled]="isDisabled2" type="text" [ngStyle]="ajustar2" name="name" placeholder="Nombre completo" [(ngModel)]="userinfo.user.name">
                             <span (click)="opbnt2()" btn-id="bnt1"><i *ngIf="noPincel2" class="fa fa-pencil"></i></span>
                             <span *ngIf="showDiv2">
-                                <span (click)="guardar('name', userinfo.user.name)" id="guardar"
-                                    class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
+                                <span (click)="guardar('name', userinfo.user.name)" id="guardar" class="bnt-ocult">
+                                    <button><i class="fa fa-save"></i></button>
+                                </span>
                             <span (click)="cancel2()" id="cancelar" class="bnt-ocult"><i
                                         class="fa fa-remove"></i></span>
                             </span>
@@ -52,16 +75,14 @@
                     </form>
                     <form class="editPWD" action="" method="get">
                         <div class="borderInput">
-                            <i class="fa fa-lock"></i> <input [disabled]="isDisabled3" type="text" [ngStyle]="ajustar4" placeholder="Contraseña">
-                            <span (click)="opbnt4()" btn-id="bnt1"><i *ngIf="noPincel4" class="fa fa-pencil"></i></span>
-                            <span *ngIf="showDiv4">
-                                <span id="guardar" class="bnt-ocult"><button><i class="fa fa-save"></i></button></span>
-                            <span (click)="cancel4()" id="cancelar" class="bnt-ocult"><i
-                                        class="fa fa-remove"></i></span>
-                            </span>
+                            <i class="fa fa-lock"></i> <input [disabled]="isDisabled3" type="text" name="editPWD" [ngStyle]="ajustar4" placeholder="Contraseña">
+                            <span (click)="opDialog()"><i class="fa fa-pencil"></i></span>
                         </div>
-
                     </form>
+
+                    <!-- Formulario de cambiar pwd -->
+
+
                     <form class="editTlf" action="" method="get">
                         <div class="borderInput">
                             <i class="fa fa-phone"></i>
@@ -133,6 +154,5 @@
 
 <div id="recomendados">
     <h1 class="text-center m-2"><b>Recomendados para ti</b></h1>
-
     <app-carrusel></app-carrusel>
 </div>
