@@ -27,7 +27,10 @@
 
     <div id="bordes" class="info-user" *ngIf="userinfo?.user">
         <div class="d-flex align-items-center">
-            <img class="avatar mx-4" src="assets/imag/cara_5.png" alt="avatar">
+            <figure>
+                <img class="avatar mx-4" src="assets/imag/cara_5.png" alt="avatar">
+                <figcaption class="iditFoto"><i class="fa fa-camera"></i></figcaption>
+            </figure>
             <div>
                 <span class="d-block nickname">@nickname</span>
                 <span class="name">{{ userinfo.user.name }}</span>
