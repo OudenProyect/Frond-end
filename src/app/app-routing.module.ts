@@ -25,6 +25,14 @@ const routes: Routes = [
   {
     path:"about",
     loadChildren: () => import('./views/about/about.module').then(m => m.AboutModule)
+  },
+  {
+    path:"subir",
+    loadChildren: () => import('./views/subir/subir.module').then(m => m.SubirModule)
+  },
+  {
+    path:"form_subir",
+    loadChildren: () => import('./views/form-subir/form-subir.module').then(m => m.FormSubirModule)
   }
 ];
 
