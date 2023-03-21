@@ -8,7 +8,11 @@ import { SesionService } from 'src/app/services/sesion.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  
+  menuVisible = false;
+
+  toggleMenu() {
+    this.menuVisible = !this.menuVisible;
+  }
   constructor(private sesions: SesionService, private router: Router) { }
   userinfo: any = "";
   ngOnInit(): void {
