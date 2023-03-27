@@ -33,7 +33,7 @@ const routes: Routes = [
       import('./views/about/about.module').then((m) => m.AboutModule),
   },
   {
-    path: 'busquedas',
+    path: 'busquedas/:search',
     loadChildren: () =>
       import('./views/busqueda/busqueda.module').then((m) => m.BusquedaModule),
   },

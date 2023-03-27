@@ -1,29 +1,43 @@
-import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AfterViewInit,
+  Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { SearchsService } from 'src/app/services/searchs.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit , AfterViewInit {
-
+export class HomeComponent implements OnInit, AfterViewInit {
   // @ts-ignore
   formSearch: FormGroup;
 
-  constructor(private formGroup: FormBuilder,public router: Router, public search: SearchsService) { }
+  constructor(
+    private formGroup: FormBuilder,
+    public router: Router,
+    public search: SearchsService
+  ) {}
   inputCasas: any = true;
 
   ngOnInit(): void {
     this.formSearch = this.formGroup.group({
-      ubicacion: new FormControl('', Validators.required)
-    })
+      ubicacion: new FormControl('', Validators.required),
+    });
   }
 
   buscador(event: any) {
-    if (event.target.value === "planos") {
+    if (event.target.value === 'planos') {
       this.inputCasas = false;
     } else {
       this.inputCasas = true;
@@ -32,25 +46,14 @@ export class HomeComponent implements OnInit , AfterViewInit {
 
   searchHouseholds() {
     if (this.formSearch.valid) {
-      // this.router.navigate([
-      //   'busquedas'
-      // ])
-      console.log(typeof(this.formSearch.value))
-      this.search.searchViviendas(this.formSearch.value?.ubicacion)
-      .subscribe((res : any) => {
-        console.log(res)
-      })
-      console.log('valido')
+      this.router.navigate(['busquedas', this.formSearch.value?.ubicacion]);
     } else {
-      this.formSearch.markAllAsTouched()
+      this.formSearch.markAllAsTouched();
     }
     // console.log(this.formSearch.controls)
   }
 
   ngAfterViewInit(): void {
-    this.formSearch.get('ubicacion')?.valueChanges.subscribe(val => {
-
-    })
+    this.formSearch.get('ubicacion')?.valueChanges.subscribe((val) => {});
   }
-
 }
