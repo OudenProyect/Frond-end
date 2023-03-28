@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { guardianLogin } from './services/guardianLogin.service';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     path: 'perfil',
     loadChildren: () =>
       import('./views/perfil/perfil.module').then((m) => m.PerfilModule),
+    canActivate: [guardianLogin],
   },
   {
     path: 'contact',

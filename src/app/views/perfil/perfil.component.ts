@@ -1,5 +1,5 @@
 import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { SesionService } from 'src/app/services/sesion.service';
 import { faL } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -24,7 +24,7 @@ export class PerfilComponent implements OnInit {
   CambiarPWDform: FormGroup;
 
   ngOnInit(): void {
-    console.log({ perfil: this.sessionService });
+    console.log({ perfil: this.sessionService.user });
     this.CambiarPWDform = this.form.group(
       {
         //Contraseña antigua

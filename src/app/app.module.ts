@@ -23,6 +23,7 @@ import { BusquedaComponent } from './views/busqueda/busqueda.component';
 import { FiltrosComponent } from './components/filtros/filtros.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { FormSubirComponent } from './views/form-subir/form-subir.component';
+import { guardianLogin } from './services/guardianLogin.service';
 
 /** alison */
 @NgModule({
@@ -53,7 +54,7 @@ import { FormSubirComponent } from './views/form-subir/form-subir.component';
     SwiperModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [guardianLogin],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
