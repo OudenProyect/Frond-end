@@ -1,39 +1,62 @@
 <div id="header"></div>
-<dialog #dialog class="z-2">
-  <h2>Cambiar contraseña</h2>
-  <form [formGroup]="CambiarPWDform" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="oldPassword">Contraseña actual:</label>
-      <input
-        type="password"
-        id="oldPassword"
-        formControlName="oldPassword"
-        name="oldPassword"
-      />
-    </div>
-    <div>
-      <label for="newPassword">Nueva contraseña:</label>
-      <input
-        type="password"
-        id="newPassword"
-        formControlName="newPassword"
-        name="newPassword"
-      />
-    </div>
-    <div>
-      <label for="confirmPassword">Confirmar nueva contraseña:</label>
-      <input
-        type="password"
-        id="confirmPassword"
-        formControlName="confirmPassword"
-        name="confirmPassword"
-      />
-    </div>
-    <button type="submit">Guardar nueva contraseña</button>
+<dialog #dialog class="z-2 formContraseña">
+  <form action="" class="position-relative" method="dialog">
+    <h2 class="text-center">Cambiar contraseña</h2>
+    <button class="position-absolute cerrarD">
+      <i class="fa fa-close"></i>
+    </button>
   </form>
-  <form action="" method="dialog">
-    <button>Cancelar</button>
-  </form>
+  <hr />
+  <div class="m-3">
+    <form [formGroup]="CambiarPWDform" (ngSubmit)="onSubmit()">
+      <div class="input-group flex-nowrap my-2">
+        <span class="input-group-text iconPWD" id="oldPWD"
+          ><i class="fa fa-lock"></i
+        ></span>
+        <input
+          type="password"
+          class="form-control"
+          aria-describedby="oldPWD"
+          id="oldPassword"
+          formControlName="oldPassword"
+          placeholder="Contraseña Actual"
+          name="oldPassword"
+        />
+      </div>
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text iconPWD" id="newPassword"
+          ><i class="fa fa-key"></i
+        ></span>
+        <input
+          type="password"
+          class="form-control"
+          aria-describedby="newPassword"
+          id="newPassword"
+          formControlName="newPassword"
+          placeholder=" Nueva contraseña "
+          name="newPassword"
+        />
+      </div>
+      <div class="input-group flex-nowrap my-2">
+        <span class="input-group-text iconPWD" id="confirmPassword"
+          ><i class="fa fa-unlock-alt"></i
+        ></span>
+        <input
+          type="password"
+          class="form-control"
+          aria-describedby="confirmPassword"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          placeholder=" Confirmar nueva contraseña "
+          name="confirmPassword"
+        />
+      </div>
+
+      <button type="submit" class="guardarCont">
+        Guardar nueva contraseña
+      </button>
+    </form>
+  </div>
 </dialog>
 
 <ng-container *ngIf="!sessionService.loading">
