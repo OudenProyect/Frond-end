@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class SesionService {
   user: any = null;
-  loading = true;
+
+  loading = false;
 
   constructor(public http: HttpClient) {}
 
