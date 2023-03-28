@@ -11,7 +11,7 @@
         display: none;
     }
     .links {
-        margin-top: 4%;
+        margin-top: 1%;
         display: flex!important;
         justify-content: center;
         align-items: center;
@@ -104,7 +104,7 @@
 
 .menuAvatar ul {
     left: -115px;
-    top: 52px;
+    top: 64px;
     text-align: right;
 }
 
