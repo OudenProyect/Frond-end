@@ -111,7 +111,7 @@ export class PerfilComponent implements OnInit {
   opbnt() {
     this.showDiv = !this.showDiv;
     this.noPincel = !this.noPincel;
-    this.ajustar["width.%"] = "70";
+    this.ajustar["width.%"] = "72.7";
     this.isDisabled = false;
   }
   cancel() {
