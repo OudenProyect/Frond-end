@@ -19,9 +19,11 @@ import { AboutComponent } from './views/about/about.component';
 
 /* importamos el modulo http client conexion backend */
 import { HttpClientModule } from '@angular/common/http';
+import { BusquedaComponent } from './views/busqueda/busqueda.component';
+import { FiltrosComponent } from './components/filtros/filtros.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { FormSubirComponent } from './views/form-subir/form-subir.component';
-
+import { guardianLogin } from './services/guardianLogin.service';
 
 /** alison */
 @NgModule({
@@ -38,8 +40,10 @@ import { FormSubirComponent } from './views/form-subir/form-subir.component';
     ContactComponent,
     FormcontactComponent,
     AboutComponent,
+    BusquedaComponent,
+    FiltrosComponent,
     CarruselComponent,
-    FormSubirComponent
+    FormSubirComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,9 +52,9 @@ import { FormSubirComponent } from './views/form-subir/form-subir.component';
     ReactiveFormsModule,
     FormsModule,
     SwiperModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [guardianLogin],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -167,15 +167,6 @@ button {
     border: none;
 }
 
-/* ERROR MESSAGE */
-.errorMessage {
-    width: 100%;
-    color: #eb3e3e;
-    font-weight: 500;
-    padding: 0px 12px;
-    font-size: 16px;
-}
-
 
 .mgerror {
     border: 1px solid red;
@@ -187,10 +178,6 @@ button {
     text-align: center;
 }
 
-.error-input {
-    border: 1px solid red !important;
-    color: red !important;
-}
 
 @media screen and (min-width:1200px) {
     .box-content .form {

@@ -1,9 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 
+a{
+    text-decoration: none;
+}
 body{
     font-family: 'Montserrat', sans-serif;
 }
 
+.btn-general{
+    cursor: pointer;
+}
+
 .btn-general:hover {
     background-color: #2db0df !important;
+}
+
+
+.error-input {
+    border: 1px solid red !important;
+    color: red !important;
+}
+
+
+/* ERROR MESSAGE */
+.errorMessage {
+    width: 100%;
+    color: #eb3e3e;
+    font-weight: 500;
+    padding: 0px 12px;
+    font-size: 16px;
 }
