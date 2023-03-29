@@ -1,21 +1,22 @@
-
-.box-form form input,.box-form form textarea{
+.box-form form input,
+.box-form form textarea {
     background-color: #dcdcdc8c;
     border: none;
     padding: 10px;
     width: 100%;
     border-radius: 7px;
 }
+
 .box-form,
-.box-form form .wrap{
+.box-form form .wrap {
     display: flex;
 }
 
-.box-form{
+.box-form {
     gap: 30px;
 }
 
-.box-form form{
+.box-form form {
     padding: 0px 20px;
     width: 50%;
     display: flex;
@@ -23,22 +24,22 @@
     gap: 15px;
 }
 
-.box-form form button{
-    background-color: black;
-    color: white;
-    font-weight: bolder;
-    padding: 11px;
-    border: none;
-    border-radius: 7px;
-}
-.box-form iframe{
+.box-form iframe {
     flex: 1;
 }
 
-.box-form form .wrap{
+.box-form form .wrap {
     gap: 10px;
 }
 
-.box-form form textarea{
+.box-form form textarea {
     height: 200px;
+}
+
+.mapa-google {
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.418);
+    width: 600px;
+    height: auto;
 }
