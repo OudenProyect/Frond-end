@@ -50,8 +50,8 @@ export class RegisterComponent implements OnInit {
             })
             .subscribe((res: any) => {
               this.sesion.saveToken(res.token);
-              this.sesion.getUser().subscribe((user) => {
-                this.sesion.user = user;
+              this.sesion.getUser().subscribe((res: any) => {
+                this.sesion.user = res.user;
                 this.router.navigate(['perfil']);
               });
             }, err => {
