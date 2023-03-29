@@ -14,9 +14,10 @@ export class AppComponent implements OnInit {
     if (this.sessionService.getToken()) {
       this.sessionService.getUser().subscribe((response: any) => {
         this.sessionService.user = response.user;
-        console.log(this.sessionService.loading);
-        console.log(this.sessionService.user);
+        this.sessionService.loading = false;
       });
+    } else {
+      this.sessionService.loading = false;
     }
   }
 }

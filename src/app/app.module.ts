@@ -18,12 +18,13 @@ import { FormcontactComponent } from './components/formcontact/formcontact.compo
 import { AboutComponent } from './views/about/about.component';
 
 /* importamos el modulo http client conexion backend */
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BusquedaComponent } from './views/busqueda/busqueda.component';
 import { FiltrosComponent } from './components/filtros/filtros.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { FormSubirComponent } from './views/form-subir/form-subir.component';
 import { guardianLogin } from './services/guardianLogin.service';
+import { BaseUrlInterceptor } from './services/base-url.interceptor';
 
 /** alison */
 @NgModule({
@@ -54,7 +55,7 @@ import { guardianLogin } from './services/guardianLogin.service';
     SwiperModule,
     FontAwesomeModule,
   ],
-  providers: [guardianLogin],
+  providers: [guardianLogin, { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

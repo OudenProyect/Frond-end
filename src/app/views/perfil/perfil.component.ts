@@ -24,10 +24,6 @@ export class PerfilComponent implements OnInit {
   CambiarPWDform: FormGroup;
 
   ngOnInit(): void {
-    console.log({ perfil: this.sessionService.user });
-    this.sessionService.loading = false;
-    console.log(this.sessionService.loading);
-    console.log(this.sessionService.user);
     this.CambiarPWDform = this.form.group(
       {
         //Contraseña antigua
