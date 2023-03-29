@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -45,7 +46,7 @@ export class SesionService {
       headers: {
         Authorization: 'Bearer ' + this.getToken(),
       },
-    });
+    }).pipe(tap((res: any) => (this.user = res.user)));
   }
 
   editField(data: any) {

@@ -12,8 +12,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.sessionService.getToken()) {
-      this.sessionService.getUser().subscribe((response: any) => {
-        this.sessionService.user = response.user;
+      this.sessionService.getUser().subscribe(() => {
         this.sessionService.loading = false;
       });
     } else {

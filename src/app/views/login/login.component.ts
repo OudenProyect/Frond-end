@@ -39,8 +39,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (res: any) => {
             this.sesion.saveToken(res.token);
-            this.sesion.getUser().subscribe((res: any) => {
-              this.sesion.user = res.user;
+            this.sesion.getUser().subscribe(() => {
               this.router.navigate(['perfil']);
             });
           },
