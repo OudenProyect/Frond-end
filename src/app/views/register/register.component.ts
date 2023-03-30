@@ -49,10 +49,10 @@ export class RegisterComponent implements OnInit {
               password: this.formLogin.get('password')?.value
             })
             .subscribe((res: any) => {
-              window.localStorage.setItem('token', res.token);
-              this.router.navigate([
-                'perfil'
-              ])
+              this.sesion.saveToken(res.token);
+              this.sesion.getUser().subscribe(() => {
+                this.router.navigate(['perfil']);
+              });
             }, err => {
               console.log({ err })
             })

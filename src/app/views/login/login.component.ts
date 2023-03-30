@@ -38,9 +38,8 @@ export class LoginComponent implements OnInit {
         })
         .subscribe(
           (res: any) => {
-            window.localStorage.setItem('token', res.token);
-            this.sesion.getUser().subscribe((user) => {
-              this.sesion.user = user;
+            this.sesion.saveToken(res.token);
+            this.sesion.getUser().subscribe(() => {
               this.router.navigate(['perfil']);
             });
           },

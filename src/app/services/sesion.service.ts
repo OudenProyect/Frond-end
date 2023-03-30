@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,43 +9,58 @@ import { Injectable } from '@angular/core';
 export class SesionService {
   user: any = null;
 
-  loading = false;
+  loading = true;
 
-  constructor(public http: HttpClient) {}
+  http = inject(HttpClient)
+  router = inject(Router)
 
   getToken() {
     return localStorage.getItem('token');
   }
 
+  saveToken (token: string) {
+    localStorage.setItem('token', token)
+  }
+
+  removeToken () {
+    localStorage.removeItem('token')
+  }
+
   register(datos: any) {
-    return this.http.post('http://127.0.0.1:8000/signin', datos);
+    return this.http.post('/signin', datos);
   }
 
   login(datos: any) {
-    return this.http.post('http://127.0.0.1:8000/api/login_check', datos);
+    return this.http.post('/api/login_check', datos);
+  }
+
+  logout () {
+    this.removeToken()
+    this.user = null;
+    this.router.navigate(['login'])
   }
 
   // peticion para informacion usuario pasando el token
   getUser() {
-    return this.http.get('http://127.0.0.1:8000/api/user', {
+    return this.http.get('/api/user', {
+      headers: {
+        Authorization: 'Bearer ' + this.getToken(),
+      },
+    }).pipe(tap((res: any) => (this.user = res.user)));
+  }
+
+  editField(data: any) {
+    return this.http.put('/api/profile/edit', data, {
       headers: {
         Authorization: 'Bearer ' + this.getToken(),
       },
     });
   }
 
-  editField(data: any) {
-    return this.http.put('http://127.0.0.1:8000/api/profile/edit', data, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
-      },
-    });
-  }
-
   editContraseña(data: any) {
-    return this.http.put('http://127.0.0.1:8000/api/changeUserPwd', data, {
+    return this.http.put('/api/changeUserPwd', data, {
       headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('token'),
+        Authorization: 'Bearer ' + this.getToken(),
       },
     });
   }
