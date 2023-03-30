@@ -1,82 +1,61 @@
 <ng-container *ngIf="!sessionService.loading">
-  <nav class="navbar navbar-expand-lg bg-body" *ngIf="sessionService.user">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <img src="assets/imag/logo.png" />
-      </a>
-      <button
-        class="navbar-toggler bb"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarTogglerDemo03"
-        aria-controls="navbarTogglerDemo03"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <div class="links">
-          <a class="mx-3" href="/">Home</a>
-          <a class="mx-3" href="subir">Subir</a>
-          <a class="mx-3" href="contact">Contact</a>
-          <a class="mx-3" href="about">About Us</a>
-          <div class="menuAvatar">
-            <a
-              href="perfil"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <div class="circle-container">
-                <img src="assets/imag/cara_5.png" alt="Foto de perfil" />
-              </div>
+    <nav class="navbar navbar-expand-lg bg-body" *ngIf="sessionService.user">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="assets/imag/logo.png" />
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="perfil">Perfil</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li><a class="dropdown-item" href="#">Tus Favoritos</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li><a class="dropdown-item" href="#" (click)="sessionService.logout()">Cerrar sesión</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <nav class="navbar navbar-expand-lg bg-body" *ngIf="!sessionService.user">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <img src="assets/imag/logo.png" />
-      </a>
-      <button
-        class="navbar-toggler bb"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarTogglerDemo03"
-        aria-controls="navbarTogglerDemo03"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+            <button class="navbar-toggler bb" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <div class="links">
-          <a class="mx-3" href="contact">Contact</a>
-          <a class="mx-3" href="about">About Us</a>
-          <div class="bottom">
-            <a class="logReg mx-2" href="login">Signup</a>
-            <a class="logReg mx-2" href="register ">Register</a>
-          </div>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <div class="links">
+                    <a class="mx-3" href="/">Home</a>
+                    <a class="mx-3" href="subir">Subir</a>
+                    <a class="mx-3" href="contact">Contact</a>
+                    <a class="mx-3" href="about">About Us</a>
+                    <div class="menuAvatar">
+                        <a href="perfil" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="circle-container">
+                                <img src="assets/imag/cara_5.png" alt="Foto de perfil" />
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="perfil">Perfil</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#">Tus Favoritos</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#" (click)="sessionService.logout()">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg bg-body" *ngIf="!sessionService.user">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="assets/imag/logo.png" />
+            </a>
+            <button class="navbar-toggler bb" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <div class="links">
+                    <a class="mx-3" href="contact">Contact</a>
+                    <a class="mx-3" href="about">About Us</a>
+                    <div class="bottom">
+                        <a class="logReg mx-2" href="login">Signup</a>
+                        <a class="logReg mx-2" href="register ">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 </ng-container>

@@ -11,10 +11,10 @@
         display: none;
     }
     .links {
-        margin-top: 1%;
         display: flex!important;
         justify-content: center;
         align-items: center;
+        margin-top: 14px !important;
     }
     .navbar-brand img {
         width: 20%!important;
@@ -104,7 +104,7 @@
 
 .menuAvatar ul {
     left: -115px;
-    top: 64px;
+    top: 66px;
     text-align: right;
 }
 
