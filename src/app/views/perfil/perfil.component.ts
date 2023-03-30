@@ -1,10 +1,9 @@
-import { Component, inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { SesionService } from 'src/app/services/sesion.service';
-import { faL } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { tick } from '@angular/core/testing';
-import { Observable } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-perfil',
@@ -12,9 +11,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./perfil.component.css'],
 })
 export class PerfilComponent implements OnInit {
-  @ViewChild('dialog') dialog: any;
+  @ViewChild('dialog') dialog!: ElementRef;
   guardado: boolean = false;
   noGuardado: boolean = false;
+  guardadoContra :boolean = false;
+  noGuardadoContra: boolean = false;
   textoGuar!: string;
   sessionService = inject(SesionService);
   router = inject(Router);
@@ -43,7 +44,10 @@ export class PerfilComponent implements OnInit {
 
   onSubmit() {
     if (!this.CambiarPWDform.valid) {
-      alert('LAS CONTRASEÑAS NO COINCIDEN');
+      this.noGuardadoContra = true;
+      setTimeout(() => {
+        this.noGuardadoContra = false;
+      }, 1500);
     } else {
       this.sessionService
         .editContraseña({
@@ -54,7 +58,12 @@ export class PerfilComponent implements OnInit {
         .subscribe((res) => {
           console.log(res);
         });
-      alert('LAS CONTRASEÑAS SI COINCIDEN');
+        this.guardadoContra = true;
+        setTimeout(() => {
+          this.guardadoContra = false;
+          this.dialog.nativeElement.close();
+
+        }, 1500);
     }
     console.log(this.CambiarPWDform);
   }
