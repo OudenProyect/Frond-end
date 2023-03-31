@@ -39,6 +39,10 @@
                 <div>
                     <span class="d-block nickname">@nickname</span>
                     <span class="name">{{ sessionService.user.name }}</span>
+
+                </div>
+                <div class="position-absolute text-end" style="right: 40px;">
+                    <button class="btn elimiCuenta">Eliminar Cuenta</button>
                 </div>
             </div>
 
@@ -99,7 +103,6 @@
                                 </span>
                             </div>
                         </form>
-                        <button class="btn btn-danger">Eliminar Cuenta</button>
                         <div id="messGuardado" *ngIf="guardado">Guardado</div>
                         <div id="messNoGuardado" *ngIf="noGuardado">Error en el guardado</div>
                     </div>

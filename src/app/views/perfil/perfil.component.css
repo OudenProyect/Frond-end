@@ -29,7 +29,7 @@
 }
 
 #bordes {
-    background-color: white;
+    background-color: rgb(4, 3, 3);
     margin: 30px 20px;
     border-radius: 20px;
     padding: 40px 20px;
@@ -207,4 +207,15 @@ dialog {
     color: #2595be;
     width: 40px;
     align-items: center;
+}
+
+.elimiCuenta {
+    background-color: #2595be;
+    color: white;
+}
+
+.elimiCuenta:hover {
+    background-color: rgba(0, 0, 0, 0.776);
+    color: white;
+    transition: 0.5s;
 }
