@@ -5,6 +5,11 @@ import { guardianLogin } from './services/guardianLogin.service';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
     loadChildren: () =>
       import('./views/home/home.module').then((m) => m.HomeModule),
   },

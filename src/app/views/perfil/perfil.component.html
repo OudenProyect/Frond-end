@@ -72,7 +72,13 @@
           <figcaption class="iditFoto"><i class="fa fa-camera"></i></figcaption>
         </figure>
         <div>
-          <span class="d-block nickname">@nickname</span>
+          <span class="d-block nickname"
+            >@{{
+              sessionService.user.nickname
+                ? sessionService.user.nickname
+                : "nickname"
+            }}</span
+          >
           <span class="name">{{ sessionService.user.name }}</span>
         </div>
         <div class="position-absolute text-end" style="right: 40px">
@@ -85,23 +91,29 @@
       <div id="centrar">
         <div class="wi1300">
           <div id="bordes" class="infoEdit">
+            <!-- nickname -->
             <form class="editNick" action="" method="get">
               <div class="borderInput">
                 <i class="fa fa-user"></i>
                 <input
+                  [disabled]="isDisabled"
                   type="text"
                   [ngStyle]="ajustar"
-                  placeholder="Nick Name"
                   name="nick"
-                  [disabled]="isDisabled"
+                  placeholder="Nick name"
+                  [(ngModel)]="sessionService.user.nickname"
                 />
                 <span (click)="opbnt()" btn-id="bnt1"
                   ><i *ngIf="noPincel" class="fa fa-pencil"></i
                 ></span>
                 <span *ngIf="showDiv">
-                  <span id="guardar" class="bnt-ocult"
-                    ><button><i class="fa fa-save"></i></button
-                  ></span>
+                  <span
+                    (click)="guardar('nickname', sessionService.user.nick)"
+                    id="guardar"
+                    class="bnt-ocult"
+                  >
+                    <button><i class="fa fa-save"></i></button>
+                  </span>
                   <span (click)="cancel()" id="cancelar" class="bnt-ocult"
                     ><i class="fa fa-remove"></i
                   ></span>
@@ -109,6 +121,7 @@
               </div>
             </form>
 
+            <!-- name -->
             <form class="editName" action="" method="get">
               <div class="borderInput">
                 <i class="fa fa-id-card-o"></i>

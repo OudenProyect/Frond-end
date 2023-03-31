@@ -30,6 +30,7 @@ export class PerfilComponent implements OnInit {
   CambiarPWDform: FormGroup;
 
   ngOnInit(): void {
+    console.log(this.sessionService.user)
     this.CambiarPWDform = this.form.group(
       {
         //Contraseña antigua
@@ -161,6 +162,7 @@ export class PerfilComponent implements OnInit {
   }
   // edicion del usuario
   guardar(edit: any, value: any) {
+    console.log({edit: edit, value: value})
     this.sessionService
       .editField({
         id: this.sessionService.user.id,
@@ -169,6 +171,7 @@ export class PerfilComponent implements OnInit {
       })
       .subscribe(
         (res) => {
+          this.sessionService.user = res;
           if (this.showDiv2) {
             this.cancel2();
             this.guardado = true;
