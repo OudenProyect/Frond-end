@@ -26,7 +26,9 @@ export class BusquedaComponent implements OnInit {
         this.resultBusqueda = res;
       },
       (err) => {
-        console.log('Algo salio mal');
+        console.log(
+          'Hemos mirado por todas partes... pero no hemos encontrado lo que buscas '
+        );
       }
     );
     console.log(this.lugar);

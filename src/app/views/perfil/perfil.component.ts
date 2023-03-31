@@ -1,9 +1,14 @@
-import { Component, inject, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { SesionService } from 'src/app/services/sesion.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
 
 @Component({
   selector: 'app-perfil',
@@ -14,7 +19,7 @@ export class PerfilComponent implements OnInit {
   @ViewChild('dialog') dialog!: ElementRef;
   guardado: boolean = false;
   noGuardado: boolean = false;
-  guardadoContra :boolean = false;
+  guardadoContra: boolean = false;
   noGuardadoContra: boolean = false;
   textoGuar!: string;
   sessionService = inject(SesionService);
@@ -54,20 +59,25 @@ export class PerfilComponent implements OnInit {
         .subscribe((res) => {
           console.log(res);
         });
-        this.guardadoContra = true;
-        setTimeout(() => {
-          this.guardadoContra = false;
-          this.dialog.nativeElement.close();
-
-        }, 1500);
+      this.guardadoContra = true;
+      setTimeout(() => {
+        this.guardadoContra = false;
+        this.dialog.nativeElement.close();
+      }, 1500);
     }
-    console.log(this.CambiarPWDform);
   }
 
   checkPasswords(group: FormGroup) {
     const password = group.get('newPassword')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
     return password === confirmPassword ? null : { notMatched: true };
+  }
+
+  eliminarCuenta() {
+    this.sessionService.deleteCuenta().subscribe(() => {
+      this.sessionService.removeToken();
+      window.location.reload()
+    });
   }
 
   ajustar = {
@@ -180,7 +190,6 @@ export class PerfilComponent implements OnInit {
           setTimeout(() => {
             this.noGuardado = false;
           }, 1500);
-          console.log({ err });
         }
       );
   }

@@ -11,19 +11,19 @@ export class SesionService {
 
   loading = true;
 
-  http = inject(HttpClient)
-  router = inject(Router)
+  http = inject(HttpClient);
+  router = inject(Router);
 
   getToken() {
     return localStorage.getItem('token');
   }
 
-  saveToken (token: string) {
-    localStorage.setItem('token', token)
+  saveToken(token: string) {
+    localStorage.setItem('token', token);
   }
 
-  removeToken () {
-    localStorage.removeItem('token')
+  removeToken() {
+    localStorage.removeItem('token');
   }
 
   register(datos: any) {
@@ -34,19 +34,21 @@ export class SesionService {
     return this.http.post('/api/login_check', datos);
   }
 
-  logout () {
-    this.removeToken()
+  logout() {
+    this.removeToken();
     this.user = null;
-    this.router.navigate(['login'])
+    this.router.navigate(['login']);
   }
 
   // peticion para informacion usuario pasando el token
   getUser() {
-    return this.http.get('/api/user', {
-      headers: {
-        Authorization: 'Bearer ' + this.getToken(),
-      },
-    }).pipe(tap((res: any) => (this.user = res.user)));
+    return this.http
+      .get('/api/user', {
+        headers: {
+          Authorization: 'Bearer ' + this.getToken(),
+        },
+      })
+      .pipe(tap((res: any) => (this.user = res.user)));
   }
 
   editField(data: any) {
@@ -59,6 +61,14 @@ export class SesionService {
 
   editContraseña(data: any) {
     return this.http.put('/api/changeUserPwd', data, {
+      headers: {
+        Authorization: 'Bearer ' + this.getToken(),
+      },
+    });
+  }
+
+  deleteCuenta() {
+    return this.http.delete('/api/delete', {
       headers: {
         Authorization: 'Bearer ' + this.getToken(),
       },

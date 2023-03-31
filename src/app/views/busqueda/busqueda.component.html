@@ -6,6 +6,7 @@
     </form>
     <app-filtros></app-filtros>
   </div>
+  <span>Busqueda: {{ lugar }}</span>
   <div class="casas" *ngIf="resultBusqueda.length > 0">
     <div class="casa" *ngFor="let casa of resultBusqueda">
       <div class="portada">
@@ -73,6 +74,8 @@
     </div>
   </div>
   <div *ngIf="resultBusqueda.length === 0">
-    <h3>Algo salio mal</h3>
+    <h3>
+      Hemos mirado por todas partes pero... no hemos encontrado lo que buscas :(
+    </h3>
   </div>
 </div>
