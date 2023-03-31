@@ -40,3 +40,6 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+#interceptor
+/src/app/services/base-url.interceptor.ts
