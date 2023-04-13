@@ -65,6 +65,7 @@ input {
 
 .content .casa .descripcion h2 {
   font-size: 22px;
+  text-transform: capitalize;
 }
 
 .content .casa .descripcion h2 span,
