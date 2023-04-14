@@ -57,7 +57,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'details',
+    path: 'detailsHome',
     loadChildren: () =>
       import('./views/home-details/home-details.module').then((m) => m.HomeDetailsModule),
   },

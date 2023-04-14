@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeDetailsComponent implements OnInit {
 
+  sliderImages = [
+    '/assets/imag/chalet-la-zabaleta-idealista-1658919505.jpg',
+    'assets/imag/chalet-es-camp-de-mar-copia-1658919476.jpg'
+  ];
+  selectedImage!: string;
+  currentSlide = 0;
+
+  selectSlide(index: number) {
+    this.selectedImage = this.sliderImages[index];
+    this.currentSlide = index;
+  }
+  
   constructor() { }
 
   ngOnInit(): void {
   }
 
+ 
+
 }
+
