@@ -30,7 +30,6 @@ export class PerfilComponent implements OnInit {
   CambiarPWDform: FormGroup;
 
   ngOnInit(): void {
-    console.log(this.sessionService.user)
     this.CambiarPWDform = this.form.group(
       {
         //Contraseña antigua
@@ -175,7 +174,10 @@ export class PerfilComponent implements OnInit {
           if (this.showDiv2) {
             this.cancel2();
             this.guardado = true;
-          } else {
+          } else if(this.showDiv) {
+            this.cancel();
+            this.guardado = true;
+          }else {
             this.cancel5();
             this.guardado = true;
           }
@@ -187,7 +189,9 @@ export class PerfilComponent implements OnInit {
         (err) => {
           if (this.showDiv2) {
             this.noGuardado = true;
-          } else {
+          } else if(this.showDiv){
+            this.noGuardado = true;
+          }else{
             this.noGuardado = true;
           }
           setTimeout(() => {
