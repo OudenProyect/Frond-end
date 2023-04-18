@@ -61,7 +61,6 @@ body {
     background-color: #acb1b8;
   }
   .sub_img_2{
-    width: 150px;
     height: 150px;
     background-color: #acb1b8;
   }
@@ -84,14 +83,31 @@ body {
     transform: translate(-50%, -50%);
   }
   .subir1{
-    padding: 125px;
+    padding: 160px;
+    width: 750px;
     margin: auto;
   }
   .subir2{
-    padding: 50px;
+    padding: 60px;
+    width:187px;
     margin: auto !important;
     
   }
+  .input-num{
+    display: inline-block !important;
+    width: 100px !important;
+  }
+  .label-num{
+    display: inline-block !important;
+  }
+  .imag-info {
+    width: 40px;
+    vertical-align: middle;
+  }
+  .enviar{
+    text-align: center;
+  }
+  
   
 
 

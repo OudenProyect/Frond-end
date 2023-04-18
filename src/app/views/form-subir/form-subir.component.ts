@@ -11,6 +11,7 @@ export class FormSubirComponent {
   imgSrc3 = false;
   imgSrc4 = false;
   imgSrc5 = false;
+  imgSrc6 = false;
 
   constructor() {}
 
@@ -36,6 +37,9 @@ export class FormSubirComponent {
         } else if (num == 4) {
           this.imgSrc5 = e.target.result;
           console.log("imgSrc5");
+        }else if (num == 5) {
+          this.imgSrc5 = e.target.result;
+          console.log("imgSrc6");
         }
       };
       reader.readAsDataURL(event.target.files[0]);
