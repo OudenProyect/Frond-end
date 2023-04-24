@@ -74,11 +74,6 @@
   padding: 30px;
 }
 
-.form-select {
-  width: fit-content;
-  max-width: 165px;
-}
-
 .img-empreinfo {
   width: 47.5%;
   border-radius: 5px;
@@ -101,10 +96,7 @@
   --bs-accordion-active-color: black;
 }
 
-.buscador {
-  width: 400px;
-  height: fit-content;
-  padding: 7px;
-  border-radius: 7px;
-  border: none;
+.form-select {
+  width: fit-content;
+  max-width: 165px;
 }

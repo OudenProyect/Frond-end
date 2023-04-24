@@ -1,0 +1,8 @@
+.buscador {
+  height: fit-content;
+  padding: 7px;
+  border-radius: 7px;
+  border: none;
+  width: 100%;
+  min-width: 300px;
+}

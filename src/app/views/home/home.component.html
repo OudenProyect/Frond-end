@@ -1,36 +1,19 @@
 <div class="imag-fondo">
   <div class="contenido-imag">
     <h2 class="text-light p-2">Un sueño de casas</h2>
-    <form
-      [formGroup]="formSearch"
-      class="formSearch d-flex justify-content-center gap-2 align-items-start"
-      (submit)="searchHouseholds()"
+    <div
+      class="formSearch d-flex gap-2 align-items-center justify-content-center"
     >
       <select
         name="search"
         class="form-select ms-md-2"
         id="inlineFormSelectPref"
-        (change)="buscador($event)"
       >
         <option value="viviendas" selected>Viviendas</option>
-        <option value="planos">Planos</option>
+        <!-- <option value="planos">Planos</option> -->
       </select>
-      <div class="contentInputMg">
-        <input
-          formControlName="ubicacion"
-          name="ubicacion"
-          *ngIf="inputCasas"
-          type="text"
-          class="buscador"
-        />
-        <span
-          class="errorMessage"
-          *ngIf="formSearch.get('ubicacion')?.touched && formSearch.get('ubicacion')?.errors?.['required']"
-          >Este campo es requerido</span
-        >
-      </div>
-      <input type="submit" class="btn btn-dark" value="Search" />
-    </form>
+      <app-search></app-search>
+    </div>
   </div>
 </div>
 <!-- slider -->

@@ -1,0 +1,21 @@
+<form
+  [formGroup]="formSearch"
+  class="formSearch d-flex justify-content-center gap-2 align-items-center"
+  (submit)="searchHouseholds()"
+>
+  <div class="contentInputMg">
+    <input
+      formControlName="ubicacion"
+      name="ubicacion"
+      *ngIf="inputCasas"
+      type="text"
+      class="buscador border border-secondary-subtle"
+    />
+    <!-- <span
+      class="errorMessage"
+      *ngIf="formSearch.get('ubicacion')?.touched && formSearch.get('ubicacion')?.errors?.['required']"
+      >Este campo es requerido</span
+    > -->
+  </div>
+  <input type="submit" class="btn btn-dark" value="Search" />
+</form>
