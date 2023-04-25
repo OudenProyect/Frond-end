@@ -103,25 +103,13 @@ export class FiltrosComponent implements OnInit {
     if (e.target.value != 'All') {
       value = parseInt(e.target.value);
     }
-    if (e.target.getAttribute('data') == '1') {
-      let pos;
-      e.target.classList.remove('selectInputFilter');
 
-      if (e.target.name == 'hab') {
-        this.habSel = 0;
-      } else if (e.target.name == 'bath') {
-        this.bathSel = 0;
-      }
-    } else {
-      // añadimos el valor al array que corresponda
-      if (e.target.name == 'hab') {
-        this.habSel = value;
-      } else if (e.target.name == 'bath') {
-        this.bathSel = value;
-      }
-      e.target.setAttribute('data', '1');
-      e.target.classList.add('selectInputFilter');
+    if (e.target.name == 'hab') {
+      this.habSel = value;
+    } else if (e.target.name == 'bath') {
+      this.bathSel = value;
     }
+    e.target.setAttribute('data', '1');
   }
 
   showPrice(e: any) {

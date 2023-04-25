@@ -25,18 +25,21 @@
             <input
               readonly
               name="hab"
+              [class.selectInputFilter]="habSel == 0"
               (click)="selectHabOrBath($event)"
               value="All"
             />
             <input
               readonly
               name="hab"
+              [class.selectInputFilter]="habSel == 1"
               value="+1"
               (click)="selectHabOrBath($event)"
             />
             <input
               readonly
               name="hab"
+              [class.selectInputFilter]="habSel == 2"
               value="+2"
               (click)="selectHabOrBath($event)"
             />
@@ -44,12 +47,14 @@
               readonly
               name="hab"
               value="+3"
+              [class.selectInputFilter]="habSel == 3"
               (click)="selectHabOrBath($event)"
             />
             <input
               readonly
               name="hab"
               value="+4"
+              [class.selectInputFilter]="habSel == 4"
               (click)="selectHabOrBath($event)"
             />
           </div>
@@ -61,12 +66,14 @@
               <input
                 readonly
                 name="bath"
+                [class.selectInputFilter]="bathSel == 0"
                 (click)="selectHabOrBath($event)"
                 value="All"
               />
               <input
                 readonly
                 name="bath"
+                [class.selectInputFilter]="bathSel == 1"
                 value="+1"
                 (click)="selectHabOrBath($event)"
               />
@@ -74,12 +81,14 @@
                 readonly
                 name="bath"
                 value="+2"
+                [class.selectInputFilter]="bathSel == 2"
                 (click)="selectHabOrBath($event)"
               />
               <input
                 readonly
                 name="bath"
                 value="+3"
+                [class.selectInputFilter]="bathSel == 3"
                 (click)="selectHabOrBath($event)"
               />
             </div>
