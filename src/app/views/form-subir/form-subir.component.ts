@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-form-subir',
   templateUrl: './form-subir.component.html',
-  styleUrls: ['./form-subir.component.css']
+  styleUrls: ['./form-subir.component.css'],
 })
 export class FormSubirComponent {
   imgSrc1 = false;
@@ -15,8 +15,6 @@ export class FormSubirComponent {
 
   constructor() {}
 
-
-  
   onfile(event: any, num: number) {
     console.log(event.target.files[0]);
     if (event.target.files && event.target.files[0]) {
@@ -24,25 +22,29 @@ export class FormSubirComponent {
       reader.onload = (e: any) => {
         if (num == 0) {
           this.imgSrc1 = e.target.result;
-          console.log("imgSrc1");
+          console.log('imgSrc1');
         } else if (num == 1) {
           this.imgSrc2 = e.target.result;
-          console.log("imgSrc2");
+          console.log('imgSrc2');
         } else if (num == 2) {
           this.imgSrc3 = e.target.result;
-          console.log("imgSrc3");
+          console.log('imgSrc3');
         } else if (num == 3) {
           this.imgSrc4 = e.target.result;
-          console.log("imgSrc4");
+          console.log('imgSrc4');
         } else if (num == 4) {
           this.imgSrc5 = e.target.result;
-          console.log("imgSrc5");
-        }else if (num == 5) {
+          console.log('imgSrc5');
+        } else if (num == 5) {
           this.imgSrc5 = e.target.result;
-          console.log("imgSrc6");
+          console.log('imgSrc6');
         }
       };
       reader.readAsDataURL(event.target.files[0]);
     }
+  }
+
+  createPost() {
+    console.log('creado');
   }
 }

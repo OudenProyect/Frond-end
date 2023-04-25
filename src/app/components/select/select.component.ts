@@ -22,6 +22,10 @@ export class SelectComponent implements OnInit {
   selectOption(selected: any) {
     this.selectedOption = selected;
     this.change.emit(selected);
+    console.log({
+      select: selected,
+    });
+
     this.showInput();
   }
 }

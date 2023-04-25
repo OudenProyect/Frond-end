@@ -16,6 +16,8 @@ export class FiltrosComponent implements OnInit {
   bath: number = 0;
   priceMin: string = 'Indiferent';
   priceMax: string = 'Indiferent';
+  surfaceMin: string = 'Indiferent';
+  surfaceMax: string = 'Indiferent';
   btnFiltros: boolean = false;
   contentInput: boolean = false;
   contentPricesMin: boolean = false;
@@ -38,12 +40,28 @@ export class FiltrosComponent implements OnInit {
     'trastero',
     'terraza',
   ];
+  habSel: number = 0;
+  bathSel: number = 0;
+  listExtras: any[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
     this.generateRange(50000, 400000, 25000, this.rangePrice);
     this.generateRange(60, 300, 20, this.rangeSurface);
+
+    console.log({
+      filtros: {
+        tipo: this.type,
+        hab: this.habSel,
+        bath: this.bathSel,
+        pricemin: this.priceMin,
+        pricemax: this.priceMax,
+        surfacemin: this.surfaceMin,
+        surfacemax: this.surfaceMax,
+        extras: this.listExtras,
+      },
+    });
   }
 
   filterB() {
@@ -51,12 +69,7 @@ export class FiltrosComponent implements OnInit {
     this.showBoxFilter();
   }
 
-  generateRange(
-    start: number,
-    end: number,
-    step: number,
-    array: any
-  ): number[] {
+  generateRange(start: number, end: number, step: number, array: any): any[] {
     for (let i = start; i <= end; i += step) {
       array.push(i);
     }
@@ -79,32 +92,36 @@ export class FiltrosComponent implements OnInit {
   }
 
   selectOptionFilter(e: any) {
-    this.type = e.target.value;
-    this.showInput();
+    this.type = e;
   }
 
+  /* verificamos si tiene el atributo data , si lo tiene , se elimina del array su valor
+      HABITACIONES O BAÑOS
+    */
   selectHabOrBath(e: any) {
     let value = 0;
-    let tags = null;
     if (e.target.value != 'All') {
       value = parseInt(e.target.value);
     }
+    if (e.target.getAttribute('data') == '1') {
+      let pos;
+      e.target.classList.remove('selectInputFilter');
 
-    if (e.target.name == 'hab') {
-      this.hab = value;
-      tags = document.querySelectorAll('[name="hab"]');
-    } else if (e.target.name == 'bath') {
-      this.bath = value;
-      tags = document.querySelectorAll('[name="bath"]');
-    }
-    e.target.classList.add('selectInputFilter');
-
-    tags?.forEach((i) => {
-      // comparamos si es el mismo tag
-      if (e.target != i) {
-        i.classList.remove('selectInputFilter');
+      if (e.target.name == 'hab') {
+        this.habSel = 0;
+      } else if (e.target.name == 'bath') {
+        this.bathSel = 0;
       }
-    });
+    } else {
+      // añadimos el valor al array que corresponda
+      if (e.target.name == 'hab') {
+        this.habSel = value;
+      } else if (e.target.name == 'bath') {
+        this.bathSel = value;
+      }
+      e.target.setAttribute('data', '1');
+      e.target.classList.add('selectInputFilter');
+    }
   }
 
   showPrice(e: any) {
@@ -125,10 +142,44 @@ export class FiltrosComponent implements OnInit {
   }
 
   selectPricemin(e: any) {
-    console.log(e.target);
+    this.priceMin = e;
+    console.log(this.priceMin);
+  }
+  selectPricemax(e: any) {
+    this.priceMax = e;
+    console.log(this.priceMax);
   }
 
-  selectSurface(e: any) {
-    console.log(e.target);
+  selectSurfaceMin(e: any) {
+    this.surfaceMin = e;
+  }
+  selectSurfaceMax(e: any) {
+    this.surfaceMax = e;
+  }
+
+  // e es el evento ,
+  selectExtras(valor: string) {
+    if (this.listExtras.includes(valor)) {
+      let pos = this.listExtras.indexOf(valor);
+      this.listExtras.splice(pos, 1);
+    } else {
+      this.listExtras.push(valor);
+    }
+  }
+
+  applyFilter() {
+    this.filterB();
+    console.log({
+      filtros: {
+        tipo: this.type,
+        hab: this.habSel,
+        bath: this.bathSel,
+        pricemin: this.priceMin,
+        pricemax: this.priceMax,
+        surfacemin: this.surfaceMin,
+        surfacemax: this.surfaceMax,
+        extras: this.listExtras,
+      },
+    });
   }
 }

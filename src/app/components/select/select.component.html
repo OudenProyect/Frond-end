@@ -6,6 +6,14 @@
   <div class="selectInput" *ngIf="isOpen">
     <div
       class="dato"
+      *ngIf="selectedOption != 'Indiferent'"
+      (click)="selectOption('Indiferent')"
+    >
+      {{ "Indiferent" }}
+    </div>
+
+    <div
+      class="dato"
       *ngFor="let option of options"
       (click)="selectOption(option)"
     >

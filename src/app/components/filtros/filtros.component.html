@@ -19,7 +19,7 @@
             (change)="selectOptionFilter($event)"
           ></app-select>
         </div>
-        <div>
+        <div class="bedrss">
           <span class="titles">bedrooms</span>
           <div class="viewInput habit">
             <input
@@ -54,7 +54,7 @@
             />
           </div>
         </div>
-        <div>
+        <div class="baths">
           <span class="titles">Nº bathrooms</span>
           <div>
             <div class="viewInput bath">
@@ -99,7 +99,7 @@
               <label class="titles" for="type">Minimo</label>
               <app-select
                 [options]="rangePrice"
-                (change)="selectPricemin($event)"
+                (change)="selectPricemax($event)"
               ></app-select>
             </div>
           </div>
@@ -110,14 +110,14 @@
                 <span class="titles" for="price">Minimun</span>
                 <app-select
                   [options]="rangeSurface"
-                  (change)="selectSurface($event)"
+                  (change)="selectSurfaceMin($event)"
                 ></app-select>
               </div>
               <div>
                 <span class="titles" for="price">Maximum</span>
                 <app-select
                   [options]="rangeSurface"
-                  (change)="selectSurface($event)"
+                  (change)="selectSurfaceMax($event)"
                 ></app-select>
               </div>
             </div>
@@ -125,16 +125,21 @@
           <div class="extras">
             <span class="titles">Extras</span>
             <div class="extra-ctn">
-              <div class="extras-div" *ngFor="let extra of extras">
+              <div
+                *ngFor="let extra of extras"
+                (click)="selectExtras(extra)"
+                [class.selectInputFilter]="listExtras.includes(extra)"
+                class="extras-div"
+              >
                 <img src="assets/iconos/{{ extra }}.png" alt="" />
-                <span>{{ extra }}</span>
+                <span class="{{ extra }}">{{ extra }}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
       <footer class="btnFoot">
-        <button class="btn-general">Apply</button>
+        <button (click)="applyFilter()" class="btn-general">Apply</button>
         <button class="btn-general">Clear</button>
       </footer>
     </div>

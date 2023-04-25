@@ -1,120 +1,239 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <div class="box-content col-sm-12 row">
-    <title>Subir propiedad - Inmobiliario</title>
-    <div class="container">
-        <h1>Subir Plano - Inmobiliario</h1>
-        <form action="submit-property.php" method="POST" enctype="multipart/form-data">
-            <div>
-                <div class="card sub_img  row  col-sm-12">
-                    <img [src]="imgSrc1" *ngIf="imgSrc1" class="img-fluid card-img" />
-                    <div class="card-img-overlay">
-                        <label for="formFile0" class="subir1"><i class="fa fa-images" style="font-size: 45px"></i></label>
-                        <input class="form-control d-none" type="file" id="formFile0" name="formFile0" (change)="onfile($event, 0)" />
-                    </div>
-                </div>
+  <title>Subir propiedad - Inmobiliario</title>
+  <div class="container">
+    <h1>Subir Plano - Inmobiliario</h1>
+    <form
+      action="submit-property.php"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div>
+        <div class="card sub_img row col-sm-12">
+          <img [src]="imgSrc1" *ngIf="imgSrc1" class="img-fluid card-img" />
+          <div class="card-img-overlay">
+            <label for="formFile0" class="subir1"
+              ><i class="fa fa-images" style="font-size: 45px"></i
+            ></label>
+            <input
+              class="form-control d-none"
+              type="file"
+              id="formFile0"
+              name="formFile0"
+              (change)="onfile($event, 0)"
+            />
+          </div>
+        </div>
 
-                <div class="row col-sm-12">
-                    <div class="card sub_img_2 col-sm-3  ">
-                        <img [src]="imgSrc2" *ngIf="imgSrc2" class="img-fluid card-img" />
-                        <div class="card-img-overlay">
-                            <label for="formFile1" class="subir2"><i class="fa fa-images" style="font-size: 35px"></i></label>
-                            <input class="form-control d-none" type="file" id="formFile1" name="formFile1" (change)="onfile($event, 1)" />
-                        </div>
-                    </div>
-                    <div class="card sub_img_2 col-sm-3 ">
-                        <img [src]="imgSrc3" *ngIf="imgSrc3" class="img-fluid card-img" />
-                        <div class="card-img-overlay">
-                            <label for="formFile2" class="subir2"><i class="fa fa-images" style="font-size: 35px"></i></label>
-                            <input class="form-control d-none" type="file" id="formFile2" name="formFile2" (change)="onfile($event, 2)" />
-                        </div>
-                    </div>
-                    <div class="card sub_img_2 col-sm-3">
-                        <img [src]="imgSrc4" *ngIf="imgSrc4" class="img-fluid card-img" />
-                        <div class="card-img-overlay">
-                            <label for="formFile3" class="subir2"><i class="fa fa-images" style="font-size: 35px"></i></label>
-                            <input class="form-control d-none" type="file" id="formFile3" name="formFile3" (change)="onfile($event, 3)" />
-                        </div>
-                    </div>
-                    <div class="card sub_img_2 col-sm-3">
-                        <img [src]="imgSrc5" *ngIf="imgSrc5" class="img-fluid card-img" />
-                        <div class="card-img-overlay">
-                            <label for="formFile4" class="subir2"><i class="fa fa-images" style="font-size: 35px"></i></label>
-                            <input class="form-control d-none" type="file" id="formFile4" name="formFile4" (change)="onfile($event, 4)" />
-                        </div>
-                    </div>
-                </div>
-
+        <div class="row col-sm-12">
+          <div class="card sub_img_2 col-sm-3">
+            <img [src]="imgSrc2" *ngIf="imgSrc2" class="img-fluid card-img" />
+            <div class="card-img-overlay">
+              <label for="formFile1" class="subir2"
+                ><i class="fa fa-images" style="font-size: 35px"></i
+              ></label>
+              <input
+                class="form-control d-none"
+                type="file"
+                id="formFile1"
+                name="formFile1"
+                (change)="onfile($event, 1)"
+              />
             </div>
-
-            <br>
-            <br>
-
-            <label for="titulo">Título:</label>
-            <input type="text" id="titulo" name="titulo" required>
-
-            <label for="precio">Budget:</label>
-            <input type="number" id="precio" name="precio" required>
-
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea>
-
-            <label for="tipo">Type of property to be built:</label>
-            <select id="tipo" name="tipo">
-                <option value="casa">Home</option>
-                <option value="departamento">Duplex</option>
-                <option value="terreno">Terreno</option>
-            </select>
-
-            <div class="row col-sm-12">
-                <div class="col-sm-6">
-                    <img src="assets/svg/cama.png" class="imag-info label-num" alt="...">&nbsp;
-                    <input type="number" id="metros-cuadrados" class="input-num" name="metros-cuadrados" placeholder="Bedrooms">
-                    <br>
-                    <img src="assets/svg/cuarto-de-bano.png" class="imag-info label-num" alt="...">&nbsp;
-                    <input type="number" id="metros-cuadrados" class="input-num" name="metros-cuadrados" placeholder="Bathroom">
-                    <br>
-                    <img src="assets/svg/de-muchos-pisos.png" class="imag-info label-num" alt="...">&nbsp;
-                    <input type="number" id="metros-cuadrados" class="input-num" name="metros-cuadrados" placeholder="Flats">
-                </div>
-                <div class="col-sm-6">
-                    <img src="assets/svg/bosquejo.png" class="imag-info label-num" alt="...">&nbsp;
-                    <input type="number" id="" class="input-num" name="metros-cuadrados" placeholder="m2">
-                    <br>
-                    <img src="assets/svg/bosquejo.png" class="imag-info label-num" alt="...">&nbsp;
-                    <input type="number" id="pisos" class="input-num" name="metros-cuadrados" placeholder="m2 util">
-                </div>
+          </div>
+          <div class="card sub_img_2 col-sm-3">
+            <img [src]="imgSrc3" *ngIf="imgSrc3" class="img-fluid card-img" />
+            <div class="card-img-overlay">
+              <label for="formFile2" class="subir2"
+                ><i class="fa fa-images" style="font-size: 35px"></i
+              ></label>
+              <input
+                class="form-control d-none"
+                type="file"
+                id="formFile2"
+                name="formFile2"
+                (change)="onfile($event, 2)"
+              />
             </div>
-
-            <div class="row col-sm-12">
-                <div class="col-sm-6">
-                    <img src="assets/svg/balcon.png" class="imag-info label-num" alt="...">&nbsp;
-                    <input type="checkbox">&nbsp; <label for="" class="label-num">Balcony</label>
-                    <br>
-                    <img src="assets/svg/terraza.png" class="imag-info label-num" alt="...">&nbsp;
-                    <input type="checkbox">&nbsp; <label for="" class="label-num">Terrace</label>
-                </div>
-                <div class="col-sm-6">
-                    <img src="assets/svg/swimming-pool.png" class="imag-info label-num" alt="...">&nbsp;
-                    <input type="checkbox">&nbsp; <label for="" class="label-num">Swimming pool</label>
-                    <br>
-                    <img src="assets/svg/jardin.png" class="imag-info label-num" alt="...">&nbsp;
-                    <input type="checkbox">&nbsp; <label for="" class="label-num">Garden</label>
-                </div>
+          </div>
+          <div class="card sub_img_2 col-sm-3">
+            <img [src]="imgSrc4" *ngIf="imgSrc4" class="img-fluid card-img" />
+            <div class="card-img-overlay">
+              <label for="formFile3" class="subir2"
+                ><i class="fa fa-images" style="font-size: 35px"></i
+              ></label>
+              <input
+                class="form-control d-none"
+                type="file"
+                id="formFile3"
+                name="formFile3"
+                (change)="onfile($event, 3)"
+              />
             </div>
-            <br>
-
-            <label for="ubicacion">Ubicación:</label>
-            <select name="pets" id="pet-select">
-                <option value="">--Please choose an option--</option>
-                <option value="Barcelona">Barcelona</option>
-                <option value="Girona">Girona</option>
-            </select>
-            <br>
-            <div class="enviar">
-                <input type="submit" value="Subir propiedad">
+          </div>
+          <div class="card sub_img_2 col-sm-3">
+            <img [src]="imgSrc5" *ngIf="imgSrc5" class="img-fluid card-img" />
+            <div class="card-img-overlay">
+              <label for="formFile4" class="subir2"
+                ><i class="fa fa-images" style="font-size: 35px"></i
+              ></label>
+              <input
+                class="form-control d-none"
+                type="file"
+                id="formFile4"
+                name="formFile4"
+                (change)="onfile($event, 4)"
+              />
             </div>
-            
+          </div>
+        </div>
+      </div>
 
-        </form>
-    </div>
+      <br />
+      <br />
+
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo" required />
+
+      <label for="precio">Budget:</label>
+      <input type="number" id="precio" name="precio" required />
+
+      <label for="descripcion">Descripción Portada:</label>
+      <textarea
+        id="descripcion"
+        name="descripcionPortada"
+        rows="4"
+        cols="50"
+      ></textarea>
+      <label for="descripcion">Descripción:</label>
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        rows="4"
+        cols="50"
+      ></textarea>
+
+      <label for="tipo">Type of property to be built:</label>
+      <select id="tipo" name="tipo">
+        <option value="casa">Home</option>
+        <option value="departamento">Duplex</option>
+        <option value="terreno">Terreno</option>
+      </select>
+
+      <div class="row col-sm-12">
+        <div class="col-sm-6">
+          <img
+            src="assets/svg/cama.png"
+            class="imag-info label-num"
+            alt="..."
+          />&nbsp;
+          <input
+            type="number"
+            id="metros-cuadrados"
+            class="input-num"
+            name="metros-cuadrados"
+            placeholder="Bedrooms"
+          />
+          <br />
+          <img
+            src="assets/svg/cuarto-de-bano.png"
+            class="imag-info label-num"
+            alt="..."
+          />&nbsp;
+          <input
+            type="number"
+            id="metros-cuadrados"
+            class="input-num"
+            name="metros-cuadrados"
+            placeholder="Bathroom"
+          />
+          <br />
+          <img
+            src="assets/svg/de-muchos-pisos.png"
+            class="imag-info label-num"
+            alt="..."
+          />&nbsp;
+          <input
+            type="number"
+            id="metros-cuadrados"
+            class="input-num"
+            name="metros-cuadrados"
+            placeholder="Flats"
+          />
+        </div>
+        <div class="col-sm-6">
+          <img
+            src="assets/svg/bosquejo.png"
+            class="imag-info label-num"
+            alt="..."
+          />&nbsp;
+          <input
+            type="number"
+            id=""
+            class="input-num"
+            name="metros-cuadrados"
+            placeholder="m2"
+          />
+          <br />
+          <img
+            src="assets/svg/bosquejo.png"
+            class="imag-info label-num"
+            alt="..."
+          />&nbsp;
+          <input
+            type="number"
+            id="pisos"
+            class="input-num"
+            name="metros-cuadrados"
+            placeholder="m2 util"
+          />
+        </div>
+      </div>
+
+      <div class="row col-sm-12">
+        <div class="col-sm-6">
+          <img
+            src="assets/svg/balcon.png"
+            class="imag-info label-num"
+            alt="..."
+          />&nbsp; <input type="checkbox" />&nbsp;
+          <label for="" class="label-num">Balcony</label>
+          <br />
+          <img
+            src="assets/svg/terraza.png"
+            class="imag-info label-num"
+            alt="..."
+          />&nbsp; <input type="checkbox" />&nbsp;
+          <label for="" class="label-num">Terrace</label>
+        </div>
+        <div class="col-sm-6">
+          <img
+            src="assets/svg/swimming-pool.png"
+            class="imag-info label-num"
+            alt="..."
+          />&nbsp; <input type="checkbox" />&nbsp;
+          <label for="" class="label-num">Swimming pool</label>
+          <br />
+          <img
+            src="assets/svg/jardin.png"
+            class="imag-info label-num"
+            alt="..."
+          />&nbsp; <input type="checkbox" />&nbsp;
+          <label for="" class="label-num">Garden</label>
+        </div>
+      </div>
+      <br />
+
+      <label for="ubicacion">Ubicación:</label>
+      <select name="pets" id="pet-select">
+        <option value="">--Please choose an option--</option>
+        <option value="Barcelona">Barcelona</option>
+        <option value="Girona">Girona</option>
+      </select>
+      <br />
+      <div class="enviar">
+        <input (click)="createPost()" type="submit" value="Subir propiedad" />
+      </div>
+    </form>
+  </div>
 </div>
