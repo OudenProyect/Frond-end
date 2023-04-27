@@ -102,6 +102,8 @@ export class FormSubirComponent implements OnInit {
       //     formdata: { clave, valor },
       //   }); // Mostrar la clave y el valor del par
       // });
+      console.log(formValue);
+
     } catch (e) {
       console.log(e);
     }
