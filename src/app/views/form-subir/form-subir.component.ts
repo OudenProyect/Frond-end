@@ -27,10 +27,11 @@ export class FormSubirComponent implements OnInit {
     { value: 'Barcelona', label: 'Barcelona' },
     { value: 'Girona', label: 'Girona' },
   ];
-  constructor(private build: FormBuilder) {}
+  constructor(private build: FormBuilder) { }
 
   ngOnInit(): void {
     this.formPost = this.build.group({
+      empresa: ['1'],
       titulo: ['', Validators.required],
       precio: ['', Validators.required],
       descripcionPortada: ['', Validators.required],
@@ -88,22 +89,44 @@ export class FormSubirComponent implements OnInit {
 
       if (this.formPost.valid) {
         console.log('correcto');
+        // datos.append('files', this.imgSrc1);
+        this.archivos.forEach((archivo: any, index: number) => {
+          datos.append(`files${index}`, archivo);
+        });
+
+        datos.append('titulo', formValue.titulo);
+        datos.append('precio', formValue.precio);
+        datos.append('descripcionPortada', formValue.descripcionPortada);
+        datos.append('descripcion', formValue.descripcion);
+        datos.append('tipo', formValue.tipo);
+        datos.append('bedrooms', formValue.bedrooms);
+        datos.append('bathroom', formValue.bathroom);
+        datos.append('flats', formValue.flats);
+        datos.append('m2', formValue.m2);
+        datos.append('m2util', formValue.m2util);
+        datos.append('flats', formValue.flats);
+        datos.append('empresa', formValue.empresa);
+
+        formValue.balcony ?  datos.append('balcony', formValue.balcony) : '';
+        formValue.terrace ?  datos.append('terrace', formValue.terrace) : '';
+        formValue.swimmingPool ?  datos.append('swimmingPool', formValue.swimmingPool) : '';
+
+        formValue.garden ?  datos.append('garden', formValue.garden) : '';
+        formValue.Barcelona ?  datos.append('Barcelona', formValue.Barcelona) : '';
+        formValue.Girona ?  datos.append('Girona', formValue.Girona) : '';
+
+        console.log(formValue.empresa);
       } else {
         this.formPost.markAllAsTouched();
       }
 
-      // datos.append('files', this.imgSrc1);
-      this.archivos.forEach((archivo: any, index: number) => {
-        datos.append(`files[${index}]`, archivo);
-      });
-      // // Mostrar los valores de los archivos adjuntos en FormData
+
+      // // // Mostrar los valores de los archivos adjuntos en FormData
       // datos.forEach((valor, clave) => {
       //   console.log({
       //     formdata: { clave, valor },
       //   }); // Mostrar la clave y el valor del par
       // });
-      console.log(formValue);
-
     } catch (e) {
       console.log(e);
     }

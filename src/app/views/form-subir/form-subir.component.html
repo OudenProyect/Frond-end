@@ -8,6 +8,10 @@
       [formGroup]="formPost"
       (submit)="createPost()"
     >
+    <div>
+      Empresa:
+      <input type="text" formControlName="empresa" value="">
+    </div>
       <div>
         <div class="card sub_img row col-sm-12">
           <img [src]="imgSrc1" *ngIf="imgSrc1" class="img-fluid card-img" />
