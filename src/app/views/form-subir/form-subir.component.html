@@ -1,12 +1,12 @@
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <div class="box-content col-sm-12 row">
   <title>Subir propiedad - Inmobiliario</title>
   <div class="container">
     <h1>Subir Plano - Inmobiliario</h1>
     <form
-      action="submit-property.php"
       method="POST"
       enctype="multipart/form-data"
+      [formGroup]="formPost"
+      (submit)="createPost()"
     >
       <div>
         <div class="card sub_img row col-sm-12">
@@ -88,40 +88,86 @@
           </div>
         </div>
       </div>
+      <div>
+        <label for="titulo">Título:</label>
+        <input
+          type="text"
+          id="titulo"
+          name="titulo"
+          formControlName="titulo"
+          required
+        />
+        <span
+          class="errorMessage"
+          *ngIf="formPost.get('titulo')?.touched && formPost.get('titulo')?.errors?.['required'] "
+          >Este campo es requerido</span
+        >
+      </div>
 
-      <br />
-      <br />
+      <div>
+        <label for="precio">Budget:</label>
+        <input
+          type="number"
+          id="precio"
+          name="precio"
+          required
+          formControlName="precio"
+        />
+        <span
+          class="errorMessage"
+          *ngIf="formPost.get('precio')?.touched && formPost.get('precio')?.errors?.['required'] "
+          >Este campo es requerido</span
+        >
+      </div>
 
-      <label for="titulo">Título:</label>
-      <input type="text" id="titulo" name="titulo" required />
+      <div>
+        <label for="descripcion">Descripción Portada:</label>
+        <textarea
+          id="descripcion"
+          formControlName="descripcionPortada"
+          name="descripcionPortada"
+          rows="4"
+          cols="50"
+        ></textarea>
+        <span
+          class="errorMessage"
+          *ngIf="formPost.get('descripcionPortada')?.touched && formPost.get('descripcionPortada')?.errors?.['required'] "
+          >Este campo es requerido</span
+        >
+      </div>
+      <div>
+        <label for="descripcion">Descripción:</label>
+        <textarea
+          id="descripcion"
+          formControlName="descripcion"
+          name="descripcion"
+          rows="4"
+          cols="50"
+        ></textarea>
+        <span
+          class="errorMessage"
+          *ngIf="formPost.get('descripcion')?.touched && formPost.get('descripcion')?.errors?.['required'] "
+          >Este campo es requerido</span
+        >
+      </div>
 
-      <label for="precio">Budget:</label>
-      <input type="number" id="precio" name="precio" required />
+      <div>
+        <label for="tipo">Type of property to be built:</label>
+        <select id="tipo" name="tipo" formControlName="tipo">
+          <option value="casa">Home</option>
+          <option value="departamento">Duplex</option>
+          <option value="terreno">Terreno</option>
+        </select>
+        <span
+          class="errorMessage"
+          *ngIf="formPost.get('tipo')?.touched && formPost.get('tipo')?.errors?.['required'] "
+          >Este campo es requerido</span
+        >
+      </div>
 
-      <label for="descripcion">Descripción Portada:</label>
-      <textarea
-        id="descripcion"
-        name="descripcionPortada"
-        rows="4"
-        cols="50"
-      ></textarea>
-      <label for="descripcion">Descripción:</label>
-      <textarea
-        id="descripcion"
-        name="descripcion"
-        rows="4"
-        cols="50"
-      ></textarea>
-
-      <label for="tipo">Type of property to be built:</label>
-      <select id="tipo" name="tipo">
-        <option value="casa">Home</option>
-        <option value="departamento">Duplex</option>
-        <option value="terreno">Terreno</option>
-      </select>
-
-      <div class="row col-sm-12">
-        <div class="col-sm-6">
+      <div class="row col-sm-12 details">
+        <!-- <div class="col-sm-6"> -->
+        <div>
           <img
             src="assets/svg/cama.png"
             class="imag-info label-num"
@@ -131,10 +177,13 @@
             type="number"
             id="metros-cuadrados"
             class="input-num"
-            name="metros-cuadrados"
+            min="1"
+            name="bedrooms"
+            formControlName="bedrooms"
             placeholder="Bedrooms"
           />
-          <br />
+        </div>
+        <div>
           <img
             src="assets/svg/cuarto-de-bano.png"
             class="imag-info label-num"
@@ -142,12 +191,15 @@
           />&nbsp;
           <input
             type="number"
+            min="1"
             id="metros-cuadrados"
             class="input-num"
-            name="metros-cuadrados"
+            name="bathroom"
+            formControlName="bathroom"
             placeholder="Bathroom"
           />
-          <br />
+        </div>
+        <div>
           <img
             src="assets/svg/de-muchos-pisos.png"
             class="imag-info label-num"
@@ -157,34 +209,39 @@
             type="number"
             id="metros-cuadrados"
             class="input-num"
-            name="metros-cuadrados"
+            min="0"
+            name="flats"
+            formControlName="flats"
             placeholder="Flats"
           />
         </div>
-        <div class="col-sm-6">
+        <div>
           <img
             src="assets/svg/bosquejo.png"
             class="imag-info label-num"
             alt="..."
           />&nbsp;
           <input
-            type="number"
+            type="text"
             id=""
             class="input-num"
-            name="metros-cuadrados"
+            name="m2"
+            formControlName="m2"
             placeholder="m2"
           />
-          <br />
+        </div>
+        <div>
           <img
             src="assets/svg/bosquejo.png"
             class="imag-info label-num"
             alt="..."
           />&nbsp;
           <input
-            type="number"
+            type="text"
             id="pisos"
             class="input-num"
-            name="metros-cuadrados"
+            formControlName="m2util"
+            name="m2util"
             placeholder="m2 util"
           />
         </div>
@@ -196,14 +253,13 @@
             src="assets/svg/balcon.png"
             class="imag-info label-num"
             alt="..."
-          />&nbsp; <input type="checkbox" />&nbsp;
+          />&nbsp; <input type="checkbox" formControlName="balcony" />&nbsp;
           <label for="" class="label-num">Balcony</label>
-          <br />
           <img
             src="assets/svg/terraza.png"
             class="imag-info label-num"
             alt="..."
-          />&nbsp; <input type="checkbox" />&nbsp;
+          />&nbsp; <input type="checkbox" formControlName="terrace" />&nbsp;
           <label for="" class="label-num">Terrace</label>
         </div>
         <div class="col-sm-6">
@@ -211,28 +267,30 @@
             src="assets/svg/swimming-pool.png"
             class="imag-info label-num"
             alt="..."
-          />&nbsp; <input type="checkbox" />&nbsp;
+          />&nbsp;
+          <input type="checkbox" formControlName="swimmingPool" />&nbsp;
           <label for="" class="label-num">Swimming pool</label>
-          <br />
           <img
             src="assets/svg/jardin.png"
             class="imag-info label-num"
             alt="..."
-          />&nbsp; <input type="checkbox" />&nbsp;
+          />&nbsp; <input type="checkbox" formControlName="garden" />&nbsp;
           <label for="" class="label-num">Garden</label>
         </div>
       </div>
-      <br />
-
-      <label for="ubicacion">Ubicación:</label>
-      <select name="pets" id="pet-select">
-        <option value="">--Please choose an option--</option>
-        <option value="Barcelona">Barcelona</option>
-        <option value="Girona">Girona</option>
-      </select>
-      <br />
+      <div class="ubicacionBox">
+        <div *ngFor="let option of optionsUbicacion">
+          <input
+            type="checkbox"
+            [id]="option.value"
+            [value]="option.value"
+            [formControlName]="option.value"
+          />
+          <label [for]="option.value">{{ option.value }}</label>
+        </div>
+      </div>
       <div class="enviar">
-        <input (click)="createPost()" type="submit" value="Subir propiedad" />
+        <input type="submit" value="Subir propiedad" />
       </div>
     </form>
   </div>
