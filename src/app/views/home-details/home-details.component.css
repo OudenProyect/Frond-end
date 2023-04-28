@@ -15,6 +15,7 @@
 .carousel-inner img {
     border-radius: 5px;
     height: 450px;
+    width: 200px;
 }
 
 .slider-thumbnails {
@@ -23,15 +24,18 @@
     margin: auto;
     margin-top: 1rem;
     margin-bottom: 32px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .slider-thumbnails ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: inline-flex;
+    width: fit-content;
+    gap: 10px;
     list-style: none;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
 }
 
 .slider-thumbnails li {
@@ -41,10 +45,30 @@
 
 .slider-thumbnails img {
     border-radius: 5px;
-    width: 100%;
+    width: 200px;
+    margin-bottom: 4px;
     height: 100px;
     object-fit: cover;
     transition: all 0.3s ease;
+}
+
+.slider-thumbnails::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.slider-thumbnails::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.slider-thumbnails::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.6);
+    outline: none;
+    border-radius: 12px;
+}
+
+.slider-thumbnails::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .slider-thumbnails li.active img {
@@ -53,4 +77,57 @@
 
 .slider-thumbnails li:hover img {
     opacity: 0.7;
+}
+
+.caracter-casa {
+    gap: 8px;
+    width: 70%;
+    margin: auto;
+}
+
+.info-casaMin {
+    width: 20%;
+    padding: 8px;
+    background-color: #c8ccd552;
+}
+
+.info-casaMin span {
+    text-align: center;
+    margin-left: 8px;
+    font-size: 20px;
+}
+
+.imag-info {
+    width: 15%;
+    vertical-align: middle;
+}
+
+.info-contact.on {
+    border-right: 1px solid #c8ccd59a;
+}
+
+.precio_Des {
+    font-size: 30px;
+}
+
+.info-contact {
+    padding: 0px 10px;
+    font-size: 25px;
+    color: #2595be;
+}
+
+.contInfoCasa {
+    width: 80%;
+    background-color: white;
+    overflow: hidden;
+    padding: 16px;
+    border-radius: 5px;
+}
+
+
+/* CARRACTERISTICAS CASA */
+
+.material-symbols-outlined {
+    font-size: 45px;
+    vertical-align: middle;
 }
