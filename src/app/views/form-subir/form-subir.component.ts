@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-form-subir',
@@ -18,6 +19,7 @@ export class FormSubirComponent implements OnInit {
   imgSrc4 = false;
   imgSrc5 = false;
   imgSrc6 = false;
+  types: string[] = [];
 
   // @ts-ignore
   formPost: FormGroup;
@@ -27,7 +29,7 @@ export class FormSubirComponent implements OnInit {
     { value: 'Barcelona', label: 'Barcelona' },
     { value: 'Girona', label: 'Girona' },
   ];
-  constructor(private build: FormBuilder) { }
+  constructor(private build: FormBuilder,private post: PostService) { }
 
   ngOnInit(): void {
     this.formPost = this.build.group({
@@ -49,6 +51,10 @@ export class FormSubirComponent implements OnInit {
       Barcelona: new FormControl(false),
       Girona: new FormControl(false),
     });
+
+    this.post.getTipos().subscribe((e:any)=>{
+      this.types = e;
+    })
   }
 
   onfile(event: any, num: number) {
@@ -115,18 +121,11 @@ export class FormSubirComponent implements OnInit {
         formValue.Barcelona ?  datos.append('Barcelona', formValue.Barcelona) : '';
         formValue.Girona ?  datos.append('Girona', formValue.Girona) : '';
 
-        console.log(formValue.empresa);
+        console.log(formValue);
       } else {
         this.formPost.markAllAsTouched();
       }
 
-
-      // // // Mostrar los valores de los archivos adjuntos en FormData
-      // datos.forEach((valor, clave) => {
-      //   console.log({
-      //     formdata: { clave, valor },
-      //   }); // Mostrar la clave y el valor del par
-      // });
     } catch (e) {
       console.log(e);
     }

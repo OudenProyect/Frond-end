@@ -158,9 +158,8 @@
       <div>
         <label for="tipo">Type of property to be built:</label>
         <select id="tipo" name="tipo" formControlName="tipo">
-          <option value="casa">Home</option>
-          <option value="departamento">Duplex</option>
-          <option value="terreno">Terreno</option>
+          <option value="null" selected>Select one option</option>
+          <option *ngFor="let item of types" value="{{ item }}" >{{ item }}</option>
         </select>
         <span
           class="errorMessage"
