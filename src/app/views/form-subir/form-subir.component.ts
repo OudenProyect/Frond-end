@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -24,12 +25,13 @@ export class FormSubirComponent implements OnInit {
   // @ts-ignore
   formPost: FormGroup;
   archivos: any = [];
+  caracteristicas: any = [];
 
   optionsUbicacion = [
     { value: 'Barcelona', label: 'Barcelona' },
     { value: 'Girona', label: 'Girona' },
   ];
-  constructor(private build: FormBuilder,private post: PostService) { }
+  constructor(private build: FormBuilder, private post: PostService) {}
 
   ngOnInit(): void {
     this.formPost = this.build.group({
@@ -38,23 +40,31 @@ export class FormSubirComponent implements OnInit {
       precio: ['', Validators.required],
       descripcionPortada: ['', Validators.required],
       descripcion: ['', Validators.required],
-      tipo: ['', Validators.required],
+      tipo: ['null', Validators.required],
       bedrooms: [1, Validators.required],
       bathroom: [1, Validators.required],
       flats: ['', Validators.required],
       m2: ['', Validators.required],
       m2util: ['', Validators.required],
-      balcony: new FormControl(false),
-      terrace: new FormControl(false),
-      swimmingPool: new FormControl(false),
-      garden: new FormControl(false),
-      Barcelona: new FormControl(false),
+      parking: new FormControl(false),
+      terraza: new FormControl(false),
+      piscina: new FormControl(false),
+      jardin: new FormControl(false),
+      trastero: new FormControl(false),
+      chimenea: new FormControl(false),
+      balcon: new FormControl(false),
+      Barcelona: new FormControl(true),
       Girona: new FormControl(false),
     });
 
-    this.post.getTipos().subscribe((e:any)=>{
+    this.post.getTipos().subscribe((e: any) => {
       this.types = e;
-    })
+    });
+
+    this.post.getCaracteristicas().subscribe((e: any) => {
+      this.caracteristicas = e;
+      console.log(e);
+    });
   }
 
   onfile(event: any, num: number) {
@@ -91,43 +101,49 @@ export class FormSubirComponent implements OnInit {
   createPost() {
     try {
       const formValue = this.formPost.value;
-      const datos = new FormData();
 
       if (this.formPost.valid) {
-        console.log('correcto');
-        // datos.append('files', this.imgSrc1);
-        this.archivos.forEach((archivo: any, index: number) => {
-          datos.append(`files${index}`, archivo);
-        });
+        if (
+          this.formPost.get('Barcelona')?.value ||
+          this.formPost.get('Girona')?.value
+        ) {
+          const datos = new FormData();
+          console.log(this.formPost.get('Barcelona')?.value);
+          // datos.append('files', this.imgSrc1);
+          this.archivos.forEach((archivo: any, index: number) => {
+            datos.append(`files${index}`, archivo);
+          });
 
-        datos.append('titulo', formValue.titulo);
-        datos.append('precio', formValue.precio);
-        datos.append('descripcionPortada', formValue.descripcionPortada);
-        datos.append('descripcion', formValue.descripcion);
-        datos.append('tipo', formValue.tipo);
-        datos.append('bedrooms', formValue.bedrooms);
-        datos.append('bathroom', formValue.bathroom);
-        datos.append('flats', formValue.flats);
-        datos.append('m2', formValue.m2);
-        datos.append('m2util', formValue.m2util);
-        datos.append('flats', formValue.flats);
-        datos.append('empresa', formValue.empresa);
+          datos.append('titulo', formValue.titulo);
+          datos.append('precio', formValue.precio);
+          datos.append('descripcionPortada', formValue.descripcionPortada);
+          datos.append('descripcion', formValue.descripcion);
+          datos.append('tipo', formValue.tipo);
+          datos.append('bedrooms', formValue.bedrooms);
+          datos.append('bathroom', formValue.bathroom);
+          datos.append('flats', formValue.flats);
+          datos.append('m2', formValue.m2);
+          datos.append('m2util', formValue.m2util);
+          datos.append('flats', formValue.flats);
+          datos.append('empresa', formValue.empresa);
 
-        formValue.balcony ?  datos.append('balcony', formValue.balcony) : '';
-        formValue.terrace ?  datos.append('terrace', formValue.terrace) : '';
-        formValue.swimmingPool ?  datos.append('swimmingPool', formValue.swimmingPool) : '';
+          formValue.balcony ? datos.append('balcony', formValue.balcony) : '';
+          formValue.terrace ? datos.append('terrace', formValue.terrace) : '';
+          formValue.swimmingPool
+            ? datos.append('swimmingPool', formValue.swimmingPool)
+            : '';
 
-        formValue.garden ?  datos.append('garden', formValue.garden) : '';
-        formValue.Barcelona ?  datos.append('Barcelona', formValue.Barcelona) : '';
-        formValue.Girona ?  datos.append('Girona', formValue.Girona) : '';
-
-        console.log(formValue);
+          formValue.garden ? datos.append('garden', formValue.garden) : '';
+          formValue.Barcelona
+            ? datos.append('Barcelona', formValue.Barcelona)
+            : '';
+          formValue.Girona ? datos.append('Girona', formValue.Girona) : '';
+        }
       } else {
         this.formPost.markAllAsTouched();
       }
-
-    } catch (e) {
-      console.log(e);
+    } catch (error: any) {
+      console.log(error);
     }
   }
 }

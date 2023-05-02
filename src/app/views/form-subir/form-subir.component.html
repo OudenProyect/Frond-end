@@ -8,10 +8,10 @@
       [formGroup]="formPost"
       (submit)="createPost()"
     >
-    <div>
-      Empresa:
-      <input type="text" formControlName="empresa" value="">
-    </div>
+      <div>
+        Empresa:
+        <input type="text" formControlName="empresa" value="" />
+      </div>
       <div>
         <div class="card sub_img row col-sm-12">
           <img [src]="imgSrc1" *ngIf="imgSrc1" class="img-fluid card-img" />
@@ -159,7 +159,9 @@
         <label for="tipo">Type of property to be built:</label>
         <select id="tipo" name="tipo" formControlName="tipo">
           <option value="null" selected>Select one option</option>
-          <option *ngFor="let item of types" value="{{ item }}" >{{ item }}</option>
+          <option *ngFor="let item of types" value="{{ item }}">
+            {{ item }}
+          </option>
         </select>
         <span
           class="errorMessage"
@@ -250,35 +252,21 @@
         </div>
       </div>
 
-      <div class="row col-sm-12">
-        <div class="col-sm-6">
+      <div class="row col-sm-12 justify-content-evenly">
+        <div *ngFor="let caracteristica of caracteristicas" class="w-25 mb-3">
           <img
-            src="assets/svg/balcon.png"
-            class="imag-info label-num"
-            alt="..."
-          />&nbsp; <input type="checkbox" formControlName="balcony" />&nbsp;
-          <label for="" class="label-num">Balcony</label>
-          <img
-            src="assets/svg/terraza.png"
-            class="imag-info label-num"
-            alt="..."
-          />&nbsp; <input type="checkbox" formControlName="terrace" />&nbsp;
-          <label for="" class="label-num">Terrace</label>
-        </div>
-        <div class="col-sm-6">
-          <img
-            src="assets/svg/swimming-pool.png"
+            src="assets/svg/{{ caracteristica.name.toLowerCase() }}.png"
             class="imag-info label-num"
             alt="..."
           />&nbsp;
-          <input type="checkbox" formControlName="swimmingPool" />&nbsp;
-          <label for="" class="label-num">Swimming pool</label>
-          <img
-            src="assets/svg/jardin.png"
-            class="imag-info label-num"
-            alt="..."
-          />&nbsp; <input type="checkbox" formControlName="garden" />&nbsp;
-          <label for="" class="label-num">Garden</label>
+          <input
+            type="checkbox"
+            [id]="caracteristica.name.toLowerCase()"
+            formControlName="{{ caracteristica.name.toLowerCase() }}"
+          />&nbsp;
+          <label [for]="caracteristica.name.toLowerCase()" class="label-num">{{
+            caracteristica.name
+          }}</label>
         </div>
       </div>
       <div class="ubicacionBox">
@@ -292,6 +280,14 @@
           <label [for]="option.value">{{ option.value }}</label>
         </div>
       </div>
+      <span
+        [className]="
+          formPost.get('Barcelona')?.value || formPost.get('Girona')?.value
+            ? 'hidden'
+            : 'errorMessage'
+        "
+        >Selecciona al menos una ciudad</span
+      >
       <div class="enviar">
         <input type="submit" value="Subir propiedad" />
       </div>

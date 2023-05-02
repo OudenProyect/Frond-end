@@ -59,7 +59,10 @@ import { SelectComponent } from './components/select/select.component';
     SwiperModule,
     FontAwesomeModule,
   ],
-  providers: [guardianLogin, { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true  }],
+  providers: [
+    guardianLogin,
+    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
