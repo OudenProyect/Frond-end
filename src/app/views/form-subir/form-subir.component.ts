@@ -40,9 +40,9 @@ export class FormSubirComponent implements OnInit {
       precio: ['', Validators.required],
       descripcionPortada: ['', Validators.required],
       descripcion: ['', Validators.required],
-      tipo: ['null', Validators.required],
-      bedrooms: [1, Validators.required],
-      bathroom: [1, Validators.required],
+      tipo: [null, Validators.required],
+      bedrooms: ['', Validators.required],
+      bathroom: ['', Validators.required],
       flats: ['', Validators.required],
       m2: ['', Validators.required],
       m2util: ['', Validators.required],
@@ -140,6 +140,7 @@ export class FormSubirComponent implements OnInit {
           formValue.Girona ? datos.append('Girona', formValue.Girona) : '';
         }
       } else {
+        // this.formPost.get('tipo')?.value.setErrors({ required: true });
         this.formPost.markAllAsTouched();
       }
     } catch (error: any) {

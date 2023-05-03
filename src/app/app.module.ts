@@ -27,6 +27,7 @@ import { guardianLogin } from './services/guardianLogin.service';
 import { BaseUrlInterceptor } from './services/base-url.interceptor';
 import { SearchComponent } from './components/search/search.component';
 import { SelectComponent } from './components/select/select.component';
+import { PostCardComponent } from './components/post-card/post-card.component';
 
 /** alison */
 @NgModule({
@@ -49,6 +50,7 @@ import { SelectComponent } from './components/select/select.component';
     FormSubirComponent,
     SearchComponent,
     SelectComponent,
+    PostCardComponent,
   ],
   imports: [
     BrowserModule,

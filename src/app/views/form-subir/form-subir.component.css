@@ -61,18 +61,18 @@ input[type="submit"]:hover {
 .sub_img {
   width: 100%;
   height: 350px;
-  background-color: #acb1b8;
+  background-color: #acb1b836;
 }
 .sub_img_2 {
   height: 150px;
-  background-color: #acb1b8;
+  background-color: #acb1b836;
 }
 
 .sub_img:hover {
-  background-color: #95979a;
+  background-color: #95979a4a;
 }
 .sub_img_2:hover {
-  background-color: #95979a;
+  background-color: #95979a4a;
 }
 .img-fluid {
   width: 100%;
@@ -98,7 +98,7 @@ input[type="submit"]:hover {
 }
 .input-num {
   display: inline-block !important;
-  width: 100px !important;
+  width: auto;
 }
 .label-num {
   display: inline-block !important;
@@ -112,9 +112,9 @@ input[type="submit"]:hover {
 }
 
 .details > div {
-  width: 32%;
+  width: 45%;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   gap: 3px;
 }
 
@@ -126,10 +126,7 @@ input[type="submit"]:hover {
   gap: 5px;
 }
 
-.ubicacionBox {
-  gap: 20px;
-}
 .details {
   gap: 6px;
-  justify-content: center;
+  justify-content: space-between;
 }

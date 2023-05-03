@@ -17,6 +17,10 @@ body {
 
 .error-input {
   border: 1px solid red !important;
+}
+
+.error-input::placeholder,
+.error-input {
   color: red !important;
 }
 

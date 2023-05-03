@@ -13,7 +13,7 @@
         <input type="text" formControlName="empresa" value="" />
       </div>
       <div>
-        <div class="card sub_img row col-sm-12">
+        <div class="card sub_img col-sm-12">
           <img [src]="imgSrc1" *ngIf="imgSrc1" class="img-fluid card-img" />
           <div class="card-img-overlay">
             <label for="formFile0" class="subir1"
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div class="row col-sm-12">
+        <div class="d-flex col-sm-12">
           <div class="card sub_img_2 col-sm-3">
             <img [src]="imgSrc2" *ngIf="imgSrc2" class="img-fluid card-img" />
             <div class="card-img-overlay">
@@ -158,27 +158,30 @@
       <div>
         <label for="tipo">Type of property to be built:</label>
         <select id="tipo" name="tipo" formControlName="tipo">
-          <option value="null" selected>Select one option</option>
+          <option [value]="null" selected>Select one option</option>
           <option *ngFor="let item of types" value="{{ item }}">
             {{ item }}
           </option>
         </select>
         <span
           class="errorMessage"
-          *ngIf="formPost.get('tipo')?.touched && formPost.get('tipo')?.errors?.['required'] "
+          *ngIf="formPost.get('tipo')?.touched && formPost.get('tipo')?.errors?.['required']"
           >Este campo es requerido</span
         >
       </div>
 
-      <div class="row col-sm-12 details">
-        <!-- <div class="col-sm-6"> -->
-        <div>
+      <div class="col-sm-12 details d-flex flex-wrap">
+        <h3 class="w-100 fs-5 fw-bold mt-3 pt-4 border-top">Details House</h3>
+        <div clas>
           <img
             src="assets/svg/cama.png"
             class="imag-info label-num"
             alt="..."
-          />&nbsp;
+          />
           <input
+            [className]="
+              (formPost.get('bedrooms')?.errors?.['required'] && formPost.get('bedrooms')?.touched ) ? 'error-input ' : ''
+            "
             type="number"
             id="metros-cuadrados"
             class="input-num"
@@ -188,13 +191,17 @@
             placeholder="Bedrooms"
           />
         </div>
+
         <div>
           <img
             src="assets/svg/cuarto-de-bano.png"
             class="imag-info label-num"
             alt="..."
-          />&nbsp;
+          />
           <input
+            [className]="
+              (formPost.get('bathroom')?.errors?.['required'] && formPost.get('bathroom')?.touched ) ? 'error-input ' : ''
+            "
             type="number"
             min="1"
             id="metros-cuadrados"
@@ -209,8 +216,11 @@
             src="assets/svg/de-muchos-pisos.png"
             class="imag-info label-num"
             alt="..."
-          />&nbsp;
+          />
           <input
+            [className]="
+              (formPost.get('flats')?.errors?.['required'] && formPost.get('flats')?.touched ) ? 'error-input ' : ''
+            "
             type="number"
             id="metros-cuadrados"
             class="input-num"
@@ -225,8 +235,11 @@
             src="assets/svg/bosquejo.png"
             class="imag-info label-num"
             alt="..."
-          />&nbsp;
+          />
           <input
+            [className]="
+              (formPost.get('m2')?.errors?.['required'] && formPost.get('m2')?.touched ) ? 'error-input ' : ''
+            "
             type="text"
             id=""
             class="input-num"
@@ -240,8 +253,11 @@
             src="assets/svg/bosquejo.png"
             class="imag-info label-num"
             alt="..."
-          />&nbsp;
+          />
           <input
+            [className]="
+              (formPost.get('m2util')?.errors?.['required'] && formPost.get('m2util')?.touched ) ? 'error-input ' : ''
+            "
             type="text"
             id="pisos"
             class="input-num"
@@ -252,25 +268,27 @@
         </div>
       </div>
 
-      <div class="row col-sm-12 justify-content-evenly">
+      <div class="row col-sm-12 justify-content-between gap-2">
+        <h3 class="w-100 fs-5 fw-bold mt-3 pt-4 border-top">Caracteristics</h3>
+
         <div *ngFor="let caracteristica of caracteristicas" class="w-25 mb-3">
           <img
             src="assets/svg/{{ caracteristica.name.toLowerCase() }}.png"
             class="imag-info label-num"
             alt="..."
-          />&nbsp;
+          />
           <input
             type="checkbox"
             [id]="caracteristica.name.toLowerCase()"
             formControlName="{{ caracteristica.name.toLowerCase() }}"
-          />&nbsp;
+          />
           <label [for]="caracteristica.name.toLowerCase()" class="label-num">{{
             caracteristica.name
           }}</label>
         </div>
       </div>
-      <div class="ubicacionBox">
-        <div *ngFor="let option of optionsUbicacion">
+      <div class="ubicacionBox flex-wrap">
+        <div *ngFor="let option of optionsUbicacion" class="w-25">
           <input
             type="checkbox"
             [id]="option.value"
@@ -279,15 +297,16 @@
           />
           <label [for]="option.value">{{ option.value }}</label>
         </div>
+        <span
+          [className]="
+            formPost.get('Barcelona')?.value || formPost.get('Girona')?.value
+              ? 'hidden'
+              : 'errorMessage'
+          "
+          >Selecciona al menos una ciudad</span
+        >
       </div>
-      <span
-        [className]="
-          formPost.get('Barcelona')?.value || formPost.get('Girona')?.value
-            ? 'hidden'
-            : 'errorMessage'
-        "
-        >Selecciona al menos una ciudad</span
-      >
+
       <div class="enviar">
         <input type="submit" value="Subir propiedad" />
       </div>
