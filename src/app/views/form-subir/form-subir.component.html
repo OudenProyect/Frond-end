@@ -92,6 +92,9 @@
           </div>
         </div>
       </div>
+      <div *ngIf="formPost.get('imagen')?.touched && formPost.get('imagen')?.errors?.['required'] ">
+        Al menos una imagen es requerida
+      </div>
       <div>
         <label for="titulo">Título:</label>
         <input

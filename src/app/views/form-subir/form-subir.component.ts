@@ -36,6 +36,7 @@ export class FormSubirComponent implements OnInit {
   ngOnInit(): void {
     this.formPost = this.build.group({
       empresa: ['1'],
+      imagen: ['', Validators.required],
       titulo: ['', Validators.required],
       precio: ['', Validators.required],
       descripcionPortada: ['', Validators.required],
@@ -73,6 +74,9 @@ export class FormSubirComponent implements OnInit {
       reader.onload = (e: any) => {
         if (num == 0) {
           this.imgSrc1 = e.target.result;
+          this.formPost.patchValue({
+            imagen: event.target.files[0]
+          });
           console.log(this.imgSrc1);
         } else if (num == 1) {
           this.imgSrc2 = e.target.result;
@@ -90,9 +94,7 @@ export class FormSubirComponent implements OnInit {
           this.imgSrc5 = e.target.result;
           console.log('imgSrc6');
         }
-
         this.archivos.push(event.target.files[0]);
-        console.log(this.archivos);
       };
       let dat = reader.readAsDataURL(event.target.files[0]);
     }
@@ -108,12 +110,11 @@ export class FormSubirComponent implements OnInit {
           this.formPost.get('Girona')?.value
         ) {
           const datos = new FormData();
-          console.log(this.formPost.get('Barcelona')?.value);
-          // datos.append('files', this.imgSrc1);
-          this.archivos.forEach((archivo: any, index: number) => {
-            datos.append(`files${index}`, archivo);
-          });
-
+          if(this.archivos.length > 0){
+            this.archivos.forEach((archivo: any, index: number) => {
+              datos.append(`files${index}`, archivo);
+            });
+            
           datos.append('titulo', formValue.titulo);
           datos.append('precio', formValue.precio);
           datos.append('descripcionPortada', formValue.descripcionPortada);
@@ -138,6 +139,10 @@ export class FormSubirComponent implements OnInit {
             ? datos.append('Barcelona', formValue.Barcelona)
             : '';
           formValue.Girona ? datos.append('Girona', formValue.Girona) : '';
+          }else{
+            console.log('Selecciona al menos una imagen');
+          }
+
         }
       } else {
         // this.formPost.get('tipo')?.value.setErrors({ required: true });

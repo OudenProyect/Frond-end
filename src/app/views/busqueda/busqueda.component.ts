@@ -30,6 +30,7 @@ export class BusquedaComponent implements OnInit {
     this.search.searchViviendas(this.lugar).subscribe(
       (res: any) => {
         this.resultBusqueda = res;
+        console.log(this.resultBusqueda);
       },
       (err) => {
         console.log(
