@@ -1,0 +1,129 @@
+<div class="box-content">
+    <div class="form">
+        <h2>Register Empresa</h2>
+        <form class="formularioLogin formLogin" [formGroup]="formLogin" (submit)="submitLogin()">
+            <div class="cajaDatos usuario caja-datos-user">
+                <p class="icono-user" for="nombre-empresa">
+                <i class="fa fa-building" aria-hidden="true"></i>
+                </p>
+                <input
+                    [className]="formLogin.get('nombreEmpresa')?.touched && formLogin.get('nombreEmpresa')?.errors ? 'error-input' : '' "
+                    class="flex-grow-1 datos-user validacion" type="text" id="nombre-empresa" formControlName="nombreEmpresa"
+                    placeholder="Nombre completo de la empresa" name="nombreEmpresa">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('nombreEmpresa')?.touched && formLogin.get('nombreEmpresa')?.errors?.['required'] ">Este
+                    campo es requerido
+                </span>
+            </div>
+            <div class="cajaDatos usuario caja-datos-user">
+                <p class="icono-user" for="cif-empresa">
+                    <i class="fa fa-id-card" aria-hidden="true"></i>
+                </p>
+                <input
+                    [className]="formLogin.get('cifEmpresa')?.touched && formLogin.get('cifEmpresa')?.errors ? 'error-input' : '' "
+                    class="flex-grow-1 datos-user validacion" type="text" id="cif-empresa" formControlName="cifEmpresa"
+                    placeholder="CIF de la empresa" name="cifEmpresa">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('cifEmpresa')?.touched && formLogin.get('cifEmpresa')?.errors?.['required'] ">Este
+                    campo es requerido
+                </span>
+            </div>
+            <div class="cajaDatos usuario caja-datos-user">
+                <p class="icono-user" for="usuario">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </p>
+                <input
+                    [className]="formLogin.get('usuario')?.touched && formLogin.get('usuario')?.errors ? 'error-input' : '' "
+                    class="flex-grow-1 datos-user validacion" type="text" id="usuario" formControlName="usuario"
+                    placeholder="Username" name="usuario">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('usuario')?.touched && formLogin.get('usuario')?.errors?.['required'] ">Este
+                    campo es requerido</span>
+            </div>
+            <div class="cajaDatos  caja-datos-contra">
+                <p class="icono-user" for="email">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                </p>
+                <input
+                    [className]="formLogin.get('email')?.touched && formLogin.get('email')?.errors ? 'error-input' : '' "
+                    class="flex-grow-1 validacion" type="email" id="email" formControlName="email" placeholder="Email">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('email')?.errors?.['required'] && formLogin.get('email')?.touched">Este
+                    campo es requerido
+                </span>
+                <span class="errorMessage" *ngIf="formLogin.get('email')?.hasError('email')">Introduzca
+                    un email valido</span>
+            </div>
+            <div class="cajaDatos  caja-datos-contra">
+                <p class="icono-user" for="usuario">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                </p>
+                <input
+                    [className]="formLogin.get('password')?.touched && formLogin.get('password')?.errors ? 'error-input' : '' "
+                    class="flex-grow-1 validacion" type="password" id="password" formControlName="password"
+                    placeholder="Password">
+                <span class="errorMessage"
+                    *ngIf="(formLogin.get('password')?.dirty || formLogin.get('password')?.touched) && formLogin.get('password')?.hasError('required')">Este
+                    campo es requerido</span>
+                <span class="errorMessage" *ngIf="formLogin.get('password')?.hasError('minlength')">
+                    La contraseña debe tener minimo 4 valores</span>
+                <span class="errorMessage" *ngIf="formLogin.get('password')?.hasError('maxlength')">
+                    La contraseña debe tener maximo 10</span>
+            </div>
+            <div class="cajaDatos usuario caja-datos-user">
+                <p class="icono-user" for="link-pagina">
+                    <i class="fa fa-link" aria-hidden="true"></i>
+                </p>
+                <input
+                    [className]="formLogin.get('linkPagina')?.touched && formLogin.get('linkPagina')?.errors ? 'error-input' : '' "
+                    class="flex-grow-1 datos-user validacion" type="text" id="link-pagina" formControlName="linkPagina"
+                    placeholder="Link de la página web de la empresa" name="linkPagina">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('linkPagina')?.touched && formLogin.get('linkPagina')?.errors?.['required'] ">Este
+                    campo es requerido
+                </span>
+            </div>
+            
+            <div class="cajaDatos usuario caja-datos-user">
+                <p class="icono-user" for="localizacion-empresa">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                </p>
+                <input
+                    [className]="formLogin.get('localizacionEmpresa')?.touched && formLogin.get('localizacionEmpresa')?.errors ? 'error-input' : '' "
+                    class="flex-grow-1 datos-user validacion" type="text" id="localizacion-empresa"
+                    formControlName="localizacionEmpresa" placeholder="Localización de la empresa" name="localizacionEmpresa">
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('localizacionEmpresa')?.touched && formLogin.get('localizacionEmpresa')?.errors?.['required'] ">Este
+                    campo es requerido</span>
+            </div>
+            <div class="cajaDatos caja-datos-descripcion">
+                <p class="icono-user" for="descripcion">
+                </p>
+                <textarea class="flex-grow-1 validacion" id="descripcion" formControlName="descripcion"
+                    placeholder="Descripción de la empresa"></textarea>
+                <span class="errorMessage" *ngIf="formLogin.get('descripcion')?.hasError('maxlength')">
+                    La descripción de la empresa debe tener máximo 250 caracteres.</span>
+            </div>
+            <input class="btn-general btn my-3" type="submit" id="Register" value="Register" data-bs-toggle="modal" data-bs-target="#additionalInfoModal">
+        </form>
+          <span class="mgerror" *ngIf="errormg">{{  errormg }}</span>
+          <span class="spanLogin">Ya tienes una cuenta? <a href="login">Inicia sesion</a></span>
+          <div class="box-registres">
+              <span>Registrate con:</span>
+              <div class="iconos">
+                  <a class="face" href=""><i class="fa fa-facebook"> </i></a>
+                  <a href=""><i class="fa fa-google"></i></a>
+                  <a href=""><i class="fa fa-twitter"> </i></a>
+              </div>
+              <div class="btn-descargas">
+                  <button><img src="../../../assets/imag/down-apple.png" alt=""></button>
+                  <button><img src="../../../assets/imag/down-g-p.png" alt=""></button>
+              </div>
+          </div>
+        
+      </div>
+
+    <div id="portada">
+        <span> We help you<br> find your home
+        </span>
+    </div>

@@ -25,6 +25,7 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { FormSubirComponent } from './views/form-subir/form-subir.component';
 import { guardianLogin } from './services/guardianLogin.service';
 import { BaseUrlInterceptor } from './services/base-url.interceptor';
+import { RegisterEmpresaComponent } from './views/register-empresa/register-empresa.component';
 
 /** alison */
 @NgModule({
@@ -45,6 +46,7 @@ import { BaseUrlInterceptor } from './services/base-url.interceptor';
     FiltrosComponent,
     CarruselComponent,
     FormSubirComponent,
+    RegisterEmpresaComponent,
   ],
   imports: [
     BrowserModule,
