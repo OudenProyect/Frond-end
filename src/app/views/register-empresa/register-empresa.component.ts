@@ -8,9 +8,8 @@ import { SesionService } from 'src/app/services/sesion.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register-empresa.component.html',
-  styleUrls: ['./register-empresa.component.css']
+  styleUrls: ['./register-empresa.component.css'],
 })
-
 export class RegisterEmpresaComponent implements OnInit {
   errormg = '';
   user = faUser;
@@ -19,37 +18,29 @@ export class RegisterEmpresaComponent implements OnInit {
   // @ts-ignore
   formLogin: FormGroup;
 
-  constructor(private formGroup: FormBuilder, public sesion: SesionService, public router: Router) { }
+  constructor(
+    private formGroup: FormBuilder,
+    public sesion: SesionService,
+    public router: Router
+  ) {}
 
   ngOnInit(): void {
     this.formLogin = this.formGroup.group({
-      nombreCompleto: ['', [
-        Validators.required
-      ]],
-      cif: ['', [
-        Validators.required
-      ]],
-      usuario: ['', [
-        Validators.required
-      ]],
-      email: ['', [
-        Validators.required,
-        Validators.email
-      ]],
-      password: ['', [
-        Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(10)
-      ]],
-      web: ['', [
-        Validators.required
-      ]],
-      localizacion: ['', [
-        Validators.required
-      ]],
-      descripcion: ['', [
-        Validators.required
-      ]]
+      nombreEmpresa: ['', [Validators.required]],
+      cifEmpresa: ['', [Validators.required]],
+      usuario: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(10),
+        ],
+      ],
+      web: ['', [Validators.required]],
+      localizacion: ['', [Validators.required]],
+      descripcion: ['', [Validators.required]],
     });
   }
 
@@ -63,29 +54,34 @@ export class RegisterEmpresaComponent implements OnInit {
         password: this.formLogin.get('password')?.value,
         web: this.formLogin.get('web')?.value,
         localizacion: this.formLogin.get('localizacion')?.value,
-        descripcion: this.formLogin.get('descripcion')?.value
+        descripcion: this.formLogin.get('descripcion')?.value,
       };
-      this.sesion.register(empresa)
-      .subscribe(res => {
-        console.log({ res });
-        this.sesion.login({
-          email: this.formLogin.get('email')?.value,
-          password: this.formLogin.get('password')?.value
-        })
-        .subscribe((res: any) => {
-          this.sesion.saveToken(res.token);
-          this.sesion.getUser().subscribe(() => {
-            this.router.navigate(['perfil']);
-          });
-        }, err => {
-          console.log({ err })
-        })
-      }, err => {
-        this.errormg = err.error;
-      })
+      this.sesion.register(empresa).subscribe(
+        (res) => {
+          console.log({ res });
+          this.sesion
+            .login({
+              email: this.formLogin.get('email')?.value,
+              password: this.formLogin.get('password')?.value,
+            })
+            .subscribe(
+              (res: any) => {
+                this.sesion.saveToken(res.token);
+                this.sesion.getUser().subscribe(() => {
+                  this.router.navigate(['perfil']);
+                });
+              },
+              (err) => {
+                console.log({ err });
+              }
+            );
+        },
+        (err) => {
+          this.errormg = err.error;
+        }
+      );
     } else {
-      this.formLogin.markAllAsTouched()
+      this.formLogin.markAllAsTouched();
     }
   }
-
 }
