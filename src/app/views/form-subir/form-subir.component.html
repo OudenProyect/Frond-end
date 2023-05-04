@@ -13,7 +13,11 @@
         <input type="text" formControlName="empresa" value="" />
       </div>
       <div>
-        <div class="card sub_img col-sm-12">
+        <div
+          [className]="
+              (formPost.get('imagen')?.errors?.['required'] && formPost.get('imagen')?.touched ) ? 'error-input card sub_img col-sm-12 ' : 'card sub_img col-sm-12'
+            "
+        >
           <img [src]="imgSrc1" *ngIf="imgSrc1" class="img-fluid card-img" />
           <div class="card-img-overlay">
             <label for="formFile0" class="subir1"
@@ -92,9 +96,12 @@
           </div>
         </div>
       </div>
-      <div *ngIf="formPost.get('imagen')?.touched && formPost.get('imagen')?.errors?.['required'] ">
-        Al menos una imagen es requerida
-      </div>
+      <span
+        class="errorMessage"
+        *ngIf="formPost.get('imagen')?.touched && formPost.get('imagen')?.errors?.['required'] "
+      >
+        Se necesita al menos una imagen de portada
+      </span>
       <div>
         <label for="titulo">Título:</label>
         <input
