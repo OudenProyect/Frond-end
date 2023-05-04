@@ -28,6 +28,7 @@ import { BaseUrlInterceptor } from './services/base-url.interceptor';
 import { SearchComponent } from './components/search/search.component';
 import { SelectComponent } from './components/select/select.component';
 import { PostCardComponent } from './components/post-card/post-card.component';
+import { RegisterEmpresaComponent } from './views/register-empresa/register-empresa.component';
 
 /** alison */
 @NgModule({
@@ -51,6 +52,7 @@ import { PostCardComponent } from './components/post-card/post-card.component';
     SearchComponent,
     SelectComponent,
     PostCardComponent,
+    RegisterEmpresaComponent,
   ],
   imports: [
     BrowserModule,

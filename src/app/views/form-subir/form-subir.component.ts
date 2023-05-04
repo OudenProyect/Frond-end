@@ -75,7 +75,7 @@ export class FormSubirComponent implements OnInit {
         if (num == 0) {
           this.imgSrc1 = e.target.result;
           this.formPost.patchValue({
-            imagen: event.target.files[0]
+            imagen: event.target.files[0],
           });
           console.log(this.imgSrc1);
         } else if (num == 1) {
@@ -110,39 +110,38 @@ export class FormSubirComponent implements OnInit {
           this.formPost.get('Girona')?.value
         ) {
           const datos = new FormData();
-          if(this.archivos.length > 0){
+          if (this.archivos.length > 0) {
             this.archivos.forEach((archivo: any, index: number) => {
               datos.append(`files${index}`, archivo);
             });
-            
-          datos.append('titulo', formValue.titulo);
-          datos.append('precio', formValue.precio);
-          datos.append('descripcionPortada', formValue.descripcionPortada);
-          datos.append('descripcion', formValue.descripcion);
-          datos.append('tipo', formValue.tipo);
-          datos.append('bedrooms', formValue.bedrooms);
-          datos.append('bathroom', formValue.bathroom);
-          datos.append('flats', formValue.flats);
-          datos.append('m2', formValue.m2);
-          datos.append('m2util', formValue.m2util);
-          datos.append('flats', formValue.flats);
-          datos.append('empresa', formValue.empresa);
 
-          formValue.balcony ? datos.append('balcony', formValue.balcony) : '';
-          formValue.terrace ? datos.append('terrace', formValue.terrace) : '';
-          formValue.swimmingPool
-            ? datos.append('swimmingPool', formValue.swimmingPool)
-            : '';
+            datos.append('titulo', formValue.titulo);
+            datos.append('precio', formValue.precio);
+            datos.append('descripcionPortada', formValue.descripcionPortada);
+            datos.append('descripcion', formValue.descripcion);
+            datos.append('tipo', formValue.tipo);
+            datos.append('bedrooms', formValue.bedrooms);
+            datos.append('bathroom', formValue.bathroom);
+            datos.append('flats', formValue.flats);
+            datos.append('m2', formValue.m2);
+            datos.append('m2util', formValue.m2util);
+            datos.append('flats', formValue.flats);
+            datos.append('empresa', formValue.empresa);
 
-          formValue.garden ? datos.append('garden', formValue.garden) : '';
-          formValue.Barcelona
-            ? datos.append('Barcelona', formValue.Barcelona)
-            : '';
-          formValue.Girona ? datos.append('Girona', formValue.Girona) : '';
-          }else{
+            formValue.balcony ? datos.append('balcony', formValue.balcony) : '';
+            formValue.terrace ? datos.append('terrace', formValue.terrace) : '';
+            formValue.swimmingPool
+              ? datos.append('swimmingPool', formValue.swimmingPool)
+              : '';
+
+            formValue.garden ? datos.append('garden', formValue.garden) : '';
+            formValue.Barcelona
+              ? datos.append('Barcelona', formValue.Barcelona)
+              : '';
+            formValue.Girona ? datos.append('Girona', formValue.Girona) : '';
+          } else {
             console.log('Selecciona al menos una imagen');
           }
-
         }
       } else {
         // this.formPost.get('tipo')?.value.setErrors({ required: true });
