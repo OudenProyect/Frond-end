@@ -5,8 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 
 import { PostService } from 'src/app/services/post.service';
+import { ReutilizablesService } from 'src/app/services/reutilizables.service';
 
 @Component({
   selector: 'app-form-subir',
@@ -31,7 +33,12 @@ export class FormSubirComponent implements OnInit {
     { value: 'Barcelona', label: 'Barcelona' },
     { value: 'Girona', label: 'Girona' },
   ];
-  constructor(private build: FormBuilder, private post: PostService) {}
+  constructor(
+    private build: FormBuilder,
+    private post: PostService,
+    private route: Router,
+    private reutilizable: ReutilizablesService
+  ) {}
 
   ngOnInit(): void {
     this.formPost = this.build.group({
@@ -128,17 +135,31 @@ export class FormSubirComponent implements OnInit {
             datos.append('flats', formValue.flats);
             datos.append('empresa', formValue.empresa);
 
-            formValue.balcony ? datos.append('balcony', formValue.balcony) : '';
-            formValue.terrace ? datos.append('terrace', formValue.terrace) : '';
-            formValue.swimmingPool
-              ? datos.append('swimmingPool', formValue.swimmingPool)
-              : '';
+            formValue.balcony ? datos.append('balcony', '2') : '';
+            formValue.terrace ? datos.append('terrace', '7') : '';
+            formValue.swimmingPool ? datos.append('swimmingPool', '3') : '';
+            formValue.garden ? datos.append('garden', '6') : '';
+            formValue.parking ? datos.append('parking', '1') : '';
+            formValue.chimenea ? datos.append('chimenea', '4') : '';
+            formValue.trastero ? datos.append('trastero', '5') : '';
 
-            formValue.garden ? datos.append('garden', formValue.garden) : '';
             formValue.Barcelona
               ? datos.append('Barcelona', formValue.Barcelona)
               : '';
             formValue.Girona ? datos.append('Girona', formValue.Girona) : '';
+            this.post.createPost(datos).subscribe(
+              (e: any) => {
+                const datos = {
+                  mensaje: 'Post subido correctamente',
+                };
+
+                this.reutilizable.setDatos(datos);
+                this.route.navigate(['busquedas', 'all']);
+              },
+              (error: any) => {
+                console.log({ error: error });
+              }
+            );
           } else {
             console.log('Selecciona al menos una imagen');
           }

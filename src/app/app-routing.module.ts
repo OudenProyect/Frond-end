@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'home',
@@ -48,23 +48,29 @@ const routes: Routes = [
     path: 'subir',
     loadChildren: () =>
       import('./views/subir/subir.module').then((m) => m.SubirModule),
+    canActivate: [guardianLogin],
   },
   {
     path: 'form_subir',
     loadChildren: () =>
-      import('./views/form-subir/form-subir.module').then((m) => m.FormSubirModule
+      import('./views/form-subir/form-subir.module').then(
+        (m) => m.FormSubirModule
       ),
+    canActivate: [guardianLogin],
   },
   {
     path: 'lista-favoritos',
     loadChildren: () =>
-      import('./views/lista-favoritos/lista-favoritos.module').then((m) => m.ListaFavoritosModule
+      import('./views/lista-favoritos/lista-favoritos.module').then(
+        (m) => m.ListaFavoritosModule
       ),
+    canActivate: [guardianLogin],
   },
   {
     path: 'register-empresa',
     loadChildren: () =>
-      import('./views/register-empresa/register-empresa.module').then((m) => m.RegisterEmpresaModule
+      import('./views/register-empresa/register-empresa.module').then(
+        (m) => m.RegisterEmpresaModule
       ),
   },
 ];
