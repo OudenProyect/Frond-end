@@ -10,6 +10,7 @@ import { SesionService } from 'src/app/services/sesion.service';
   templateUrl: './register-empresa.component.html',
   styleUrls: ['./register-empresa.component.css'],
 })
+
 export class RegisterEmpresaComponent implements OnInit {
   errormg = '';
   user = faUser;
@@ -27,36 +28,35 @@ export class RegisterEmpresaComponent implements OnInit {
   ngOnInit(): void {
     this.formLogin = this.formGroup.group({
       nombreEmpresa: ['', [Validators.required]],
-      cifEmpresa: ['', [Validators.required]],
+      cifEmpresa: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       usuario: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: [
-        '',
+        '', 
         [
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(10),
         ],
       ],
-      web: ['', [Validators.required]],
-      localizacion: ['', [Validators.required]],
+      phone: [
+        '', 
+        [
+          Validators.required,
+          Validators.minLength(9),
+          Validators.maxLength(9),
+        ],
+      ],
+      linkPagina: ['', [Validators.required], , Validators.pattern('^(http|https)://[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*(/[a-zA-Z0-9]*)*$')],
+      localizacionEmpresa: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
     });
   }
 
   submitLogin() {
     if (this.formLogin.valid) {
-      const empresa = {
-        nombreCompleto: this.formLogin.get('nombreCompleto')?.value,
-        cif: this.formLogin.get('cif')?.value,
-        usuario: this.formLogin.get('usuario')?.value,
-        email: this.formLogin.get('email')?.value,
-        password: this.formLogin.get('password')?.value,
-        web: this.formLogin.get('web')?.value,
-        localizacion: this.formLogin.get('localizacion')?.value,
-        descripcion: this.formLogin.get('descripcion')?.value,
-      };
-      this.sesion.register(empresa).subscribe(
+      console.log(this.formLogin);
+      this.sesion.registerCompany(this.formLogin.value).subscribe(
         (res) => {
           console.log({ res });
           this.sesion
