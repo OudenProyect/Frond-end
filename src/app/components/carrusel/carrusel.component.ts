@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrusel',
@@ -13,7 +14,7 @@ export class CarruselComponent implements OnInit {
   derecha!: HTMLElement;
   izq!: HTMLElement;
 
-  constructor() { }
+  constructor(private ruta:Router) { }
 // 
   ngAfterViewInit(): void {
     this.gallery_item_size = this.contenidoReco.nativeElement.querySelector("div").clientWidth;
@@ -27,6 +28,10 @@ export class CarruselComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  openDetaills(){
+    this.ruta.navigate(['detailsHome']);
   }
 
 }
