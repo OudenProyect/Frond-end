@@ -25,7 +25,14 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { FormSubirComponent } from './views/form-subir/form-subir.component';
 import { guardianLogin } from './services/guardianLogin.service';
 import { BaseUrlInterceptor } from './services/base-url.interceptor';
+<<<<<<< HEAD
 import { HomeDetailsComponent } from './views/home-details/home-details.component';
+=======
+import { SearchComponent } from './components/search/search.component';
+import { SelectComponent } from './components/select/select.component';
+import { PostCardComponent } from './components/post-card/post-card.component';
+import { RegisterEmpresaComponent } from './views/register-empresa/register-empresa.component';
+>>>>>>> 1e42b43671e864a146b9d62f3d406865a96a9821
 
 /** alison */
 @NgModule({
@@ -46,7 +53,14 @@ import { HomeDetailsComponent } from './views/home-details/home-details.componen
     FiltrosComponent,
     CarruselComponent,
     FormSubirComponent,
+<<<<<<< HEAD
     HomeDetailsComponent,
+=======
+    SearchComponent,
+    SelectComponent,
+    PostCardComponent,
+    RegisterEmpresaComponent,
+>>>>>>> 1e42b43671e864a146b9d62f3d406865a96a9821
   ],
   imports: [
     BrowserModule,
@@ -57,7 +71,10 @@ import { HomeDetailsComponent } from './views/home-details/home-details.componen
     SwiperModule,
     FontAwesomeModule,
   ],
-  providers: [guardianLogin, { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true  }],
+  providers: [
+    guardianLogin,
+    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

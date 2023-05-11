@@ -8,11 +8,7 @@ input {
   width: 100%;
 }
 
-.content {
-  padding: 20px 50px;
-}
-
-.content .casas {
+.casas {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -20,66 +16,66 @@ input {
   margin: auto;
 }
 
-.content .casa .portada {
+.casa .portada {
   width: 420px;
   min-width: 380px;
 }
 
-.content .casa .portada img {
+.casa .portada img {
   border-radius: 15px 0px 0px 15px;
 }
 
-.content .header {
+.header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.content .header form {
+.header form {
   max-width: 400px;
   width: 500px;
   display: flex;
   gap: 10px;
 }
 
-.content .casa {
+.casa {
   display: flex;
   width: 100%;
   border-radius: 25px;
   border: 1px solid rgb(0 0 0 / 12%);
 }
 
-.content .casa .descripcion {
+.casa .descripcion {
   flex: 1;
   padding: 20px;
 }
 
-.content .casa .descripcion .contentUbicacion {
+.casa .descripcion .contentUbicacion {
   color: gray;
   display: flex;
   width: 100%;
   gap: 9px;
 }
 
-.content .casa .descripcion .contentUbicacion span {
+.casa .descripcion .contentUbicacion span {
   width: auto;
 }
 
-.content .casa .descripcion a {
+.casa .descripcion a {
   font-size: 22px;
   text-transform: capitalize;
   cursor: pointer;
   display: block;
 }
 
-.content .casa .descripcion a span,
-.content .casa .descripcion .precio,
-.content .casa .descripcion .contentUbicacion .casa,
+.casa .descripcion a span,
+.casa .descripcion .precio,
+.casa .descripcion .contentUbicacion .casa,
 .bold {
   font-weight: 600;
 }
 
-.content .casa .descripcion .precio {
+.casa .descripcion .precio {
   font-size: 24px;
 }
 
@@ -133,6 +129,7 @@ input {
 
 .icon-xs {
   width: 24px;
+  margin-right: 10px;
 }
 
 .btn-icon {
@@ -156,9 +153,7 @@ input {
 }
 
 @media (max-width: 950px) {
-  .content {
-    padding: 20px;
-  }
+
 }
 
 @media (max-width: 840px) {
@@ -166,12 +161,12 @@ input {
     flex-direction: column;
   }
 
-  .content .casa .portada {
+  .casa .portada {
     width: 100%;
     min-width: 0;
     height: 300px;
   }
-  .content .casa .portada img {
+  .casa .portada img {
     border-radius: 15px 15px 0px 0px;
   }
 
@@ -189,7 +184,4 @@ input {
     padding: 6px;
   }
 
-  .content {
-    padding: 20px 0px;
-  }
 }

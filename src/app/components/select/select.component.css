@@ -1,0 +1,70 @@
+.viewInput {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid darkgray;
+  display: flex;
+  align-items: center;
+}
+
+.viewInput {
+  justify-content: space-between;
+}
+
+.viewInput,
+.selectInput > .dato {
+  height: 40px;
+  padding-left: 8px;
+}
+
+.icon {
+  width: 50px;
+  text-align: end;
+  font-size: 25px;
+  color: #2596be;
+}
+
+.viewInput > .icon {
+  padding-right: 10px;
+}
+
+.icon:hover {
+  color: #2bb0e1;
+}
+
+.selectInput {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid darkgray;
+  display: flex;
+}
+
+.selectInput > .dato {
+  align-items: center;
+  display: flex;
+  padding: 8px;
+}
+
+.selectInput > .dato:hover {
+  background-color: gainsboro;
+}
+
+.selectInput {
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.box-input {
+  position: relative;
+  z-index: 1;
+  width: inherit;
+}
+
+.ctnmin {
+  box-sizing: border-box;
+  padding: 7px 12px;
+  position: relative;
+  z-index: 3;
+}

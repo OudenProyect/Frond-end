@@ -52,8 +52,19 @@ const routes: Routes = [
   {
     path: 'form_subir',
     loadChildren: () =>
-      import('./views/form-subir/form-subir.module').then(
-        (m) => m.FormSubirModule
+      import('./views/form-subir/form-subir.module').then((m) => m.FormSubirModule
+      ),
+  },
+  {
+    path: 'lista-favoritos',
+    loadChildren: () =>
+      import('./views/lista-favoritos/lista-favoritos.module').then((m) => m.ListaFavoritosModule
+      ),
+  },
+  {
+    path: 'register-empresa',
+    loadChildren: () =>
+      import('./views/register-empresa/register-empresa.module').then((m) => m.RegisterEmpresaModule
       ),
   },
   {
