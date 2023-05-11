@@ -25,6 +25,10 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { FormSubirComponent } from './views/form-subir/form-subir.component';
 import { guardianLogin } from './services/guardianLogin.service';
 import { BaseUrlInterceptor } from './services/base-url.interceptor';
+import { HomeDetailsComponent } from './views/home-details/home-details.component';
+import { SearchComponent } from './components/search/search.component';
+import { SelectComponent } from './components/select/select.component';
+import { PostCardComponent } from './components/post-card/post-card.component';
 import { RegisterEmpresaComponent } from './views/register-empresa/register-empresa.component';
 
 /** alison */
@@ -46,6 +50,10 @@ import { RegisterEmpresaComponent } from './views/register-empresa/register-empr
     FiltrosComponent,
     CarruselComponent,
     FormSubirComponent,
+    HomeDetailsComponent,
+    SearchComponent,
+    SelectComponent,
+    PostCardComponent,
     RegisterEmpresaComponent,
   ],
   imports: [
@@ -57,7 +65,10 @@ import { RegisterEmpresaComponent } from './views/register-empresa/register-empr
     SwiperModule,
     FontAwesomeModule,
   ],
-  providers: [guardianLogin, { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true  }],
+  providers: [
+    guardianLogin,
+    { provide: HTTP_INTERCEPTORS, useClass: BaseUrlInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormSubirComponent } from './form-subir.component';
 import { RouterModule, Routes } from '@angular/router';
 
-
 const routes: Routes = [
   {
     path:"",
@@ -11,7 +10,6 @@ const routes: Routes = [
   }
 
 ]
-
 
 @NgModule({
   declarations: [],

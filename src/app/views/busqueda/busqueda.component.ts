@@ -9,6 +9,7 @@ import { SearchsService } from 'src/app/services/searchs.service';
 })
 export class BusquedaComponent implements OnInit {
   lugar: any = null;
+  datoRecibido: String = '';
   resultBusqueda: any[] = [];
   constructor(
     private route: ActivatedRoute,
@@ -21,9 +22,15 @@ export class BusquedaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.searchHouse();
+  }
+
+  searchHouse() {
+    console.log(this.resultBusqueda);
     this.search.searchViviendas(this.lugar).subscribe(
       (res: any) => {
         this.resultBusqueda = res;
+        console.log(this.resultBusqueda);
       },
       (err) => {
         console.log(
@@ -31,6 +38,11 @@ export class BusquedaComponent implements OnInit {
         );
       }
     );
-    console.log(this.lugar);
+  }
+
+  recibir(dato: String) {
+    this.datoRecibido = dato;
+    this.lugar = dato;
+    this.searchHouse();
   }
 }

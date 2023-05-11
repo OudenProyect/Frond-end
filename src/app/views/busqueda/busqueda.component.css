@@ -16,6 +16,8 @@ input {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .content .casa .portada {
@@ -63,11 +65,14 @@ input {
   width: auto;
 }
 
-.content .casa .descripcion h2 {
+.content .casa .descripcion a {
   font-size: 22px;
+  text-transform: capitalize;
+  cursor: pointer;
+  display: block;
 }
 
-.content .casa .descripcion h2 span,
+.content .casa .descripcion a span,
 .content .casa .descripcion .precio,
 .content .casa .descripcion .contentUbicacion .casa,
 .bold {

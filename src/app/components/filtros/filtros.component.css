@@ -1,0 +1,184 @@
+.btnFilter:hover {
+  border: 1px solid gray;
+}
+
+.showFilter {
+  position: absolute;
+  width: 100%;
+  background-color: rgb(0 0 0 / 37%);
+  height: 100vh;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+}
+
+.boxFilter {
+  background-color: white;
+  max-width: 500px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.btnFoot {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+
+.btnFoot > button {
+  background-color: #2596be;
+  border-radius: 8px;
+  color: white;
+
+  width: 100px;
+}
+
+.icon {
+  width: 50px;
+  text-align: end;
+  font-size: 25px;
+  color: #2596be;
+}
+
+.viewInput > .icon {
+  padding-right: 10px;
+}
+
+.icon:hover {
+  color: #2bb0e1;
+}
+
+/*forms*/
+.titles {
+  font-weight: bold;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 60vh;
+
+  overflow: auto;
+}
+.viewInput,
+.selectInput,
+.ctnExtras > input,
+.extras-div {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid darkgray;
+  display: flex;
+}
+
+.viewInput {
+  justify-content: space-between;
+}
+
+.box-prices.ctnExtras {
+  gap: 8px;
+}
+
+.habit > input,
+.bath > input {
+  width: fit-content;
+  min-width: 58px;
+  text-align: center;
+}
+
+.habit > input:not(:last-child),
+.bath > input:not(:last-child) {
+  border-right: 1px solid darkgray;
+}
+
+input,
+button {
+  border: none;
+  background: none;
+  padding: 7px 12px;
+}
+
+.selectInput > input:hover,
+.habit > input:hover,
+.bath > input:hover,
+.inputPrices > .pricemin:hover,
+.extras-div:hover {
+  background-color: gainsboro;
+}
+
+.selectInputFilter {
+  background-color: azure;
+  border: 3px solid #7ce2f64f;
+}
+
+.box-prices {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.box-prices > div {
+  width: 49%;
+}
+
+.ctnmin {
+  box-sizing: border-box;
+  padding: 7px 12px;
+  position: relative;
+  z-index: 3;
+}
+
+.ctnmin > button {
+  position: absolute;
+  right: 0;
+  padding: 0;
+  top: 0;
+  padding-right: 9px;
+}
+
+.ctnmin > input,
+.ctnmin > .icon {
+  padding: 0px;
+  flex: 1;
+}
+.ctnmin > button > .icon {
+  position: relative;
+  z-index: -3;
+}
+
+app-select {
+  position: relative;
+  z-index: 1;
+}
+
+.surface {
+  position: relative;
+  z-index: 0;
+}
+
+img {
+  width: auto;
+  object-fit: contain;
+}
+
+.extras-div {
+  padding: 8px 13px;
+  height: 45px;
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 5px;
+  width: 49%;
+  gap: 10px;
+}
+
+.extra-ctn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
