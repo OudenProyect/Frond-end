@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ReutilizablesService } from 'src/app/services/reutilizables.service';
 import { SearchsService } from 'src/app/services/searchs.service';
 
 @Component({
@@ -9,9 +10,12 @@ import { SearchsService } from 'src/app/services/searchs.service';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
+  //el input que emitimos al componente padrez
   @Output() busqueda: EventEmitter<string> = new EventEmitter<string>();
+
   // @ts-ignore
   formSearch: FormGroup;
+
   inputCasas: any = true;
 
   constructor(

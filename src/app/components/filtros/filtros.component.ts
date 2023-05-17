@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   faFilter,
   faRectangleXmark,
@@ -11,6 +11,8 @@ import {
   styleUrls: ['./filtros.component.css'],
 })
 export class FiltrosComponent implements OnInit {
+  @Output() propagar = new EventEmitter<any>();
+
   type: string = 'Indiferent';
   hab: number = 0;
   bath: number = 0;
@@ -31,42 +33,57 @@ export class FiltrosComponent implements OnInit {
 
   rangePrice: any = [];
   rangeSurface: any = [];
-  extras: string[] = [
-    'balcon',
-    'calentador',
-    'chimenea',
-    'piscina',
-    'jardin',
-    'trastero',
-    'terraza',
+  extras: any = [
+    {
+      id: 1,
+      name: 'parking',
+    },
+    {
+      id: 2,
+      name: 'balcon',
+    },
+    {
+      id: 3,
+      name: 'piscina',
+    },
+    {
+      id: 4,
+      name: 'chimenea',
+    },
+    {
+      id: 5,
+      name: 'trastero',
+    },
+    {
+      id: 6,
+      name: 'jardin',
+    },
+    {
+      id: 7,
+      name: 'calentador',
+    },
   ];
-  habSel: number = 0;
-  bathSel: number = 0;
+
+  habSel: any = null;
+  bathSel: any = null;
   listExtras: any[] = [];
+
+  filtrar: any = {
+    tipo: this.type,
+    hab: this.habSel,
+    bath: this.bathSel,
+    pricemin: this.priceMin,
+    pricemax: this.priceMax,
+    surfacemin: this.surfaceMin,
+    surfacemax: this.surfaceMax,
+    extras: this.listExtras,
+  };
 
   constructor() {}
 
   ngOnInit(): void {
     this.generateRange(50000, 400000, 25000, this.rangePrice);
     this.generateRange(60, 300, 20, this.rangeSurface);
-
-    console.log({
-      filtros: {
-        tipo: this.type,
-        hab: this.habSel,
-        bath: this.bathSel,
-        pricemin: this.priceMin,
-        pricemax: this.priceMax,
-        surfacemin: this.surfaceMin,
-        surfacemax: this.surfaceMax,
-        extras: this.listExtras,
-      },
-    });
-  }
-
-  filterB() {
-    this.btnFiltros = !this.btnFiltros;
-    this.showBoxFilter();
   }
 
   generateRange(start: number, end: number, step: number, array: any): any[] {
@@ -118,7 +135,6 @@ export class FiltrosComponent implements OnInit {
     } else if (e.target.id == 'max') {
       this.contentPricesMax = !this.contentPricesMax;
     }
-    console.log(e.target);
   }
 
   showSurface(e: any) {
@@ -131,11 +147,9 @@ export class FiltrosComponent implements OnInit {
 
   selectPricemin(e: any) {
     this.priceMin = e;
-    console.log(this.priceMin);
   }
   selectPricemax(e: any) {
     this.priceMax = e;
-    console.log(this.priceMax);
   }
 
   selectSurfaceMin(e: any) {
@@ -146,28 +160,35 @@ export class FiltrosComponent implements OnInit {
   }
 
   // e es el evento ,
-  selectExtras(valor: string) {
+  selectExtras(valor: any) {
+    console.log(valor);
     if (this.listExtras.includes(valor)) {
       let pos = this.listExtras.indexOf(valor);
       this.listExtras.splice(pos, 1);
     } else {
       this.listExtras.push(valor);
     }
+    console.log(this.listExtras);
   }
 
   applyFilter() {
+    console.log(this.extras);
     this.filterB();
-    console.log({
-      filtros: {
-        tipo: this.type,
-        hab: this.habSel,
-        bath: this.bathSel,
-        pricemin: this.priceMin,
-        pricemax: this.priceMax,
-        surfacemin: this.surfaceMin,
-        surfacemax: this.surfaceMax,
-        extras: this.listExtras,
-      },
-    });
+    let filtrar = {
+      tipo: this.type,
+      hab: this.habSel,
+      bath: this.bathSel,
+      pricemin: this.priceMin,
+      pricemax: this.priceMax,
+      surfacemin: this.surfaceMin,
+      surfacemax: this.surfaceMax,
+      extras: this.listExtras,
+    };
+
+    this.propagar.emit(filtrar);
+  }
+  filterB() {
+    this.btnFiltros = !this.btnFiltros;
+    this.showBoxFilter();
   }
 }

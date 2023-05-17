@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ReutilizablesService {
   constructor() {}
-
   private datos: any;
 
   getMessage(): any {

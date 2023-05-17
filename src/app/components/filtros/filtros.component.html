@@ -15,7 +15,8 @@
         <div>
           <label class="titles" for="type">Type of contruccion</label>
           <app-select
-            [options]="['Rustic', 'Castle']"
+            [value]="type"
+            [options]="['Piso', 'Apartamento', 'Vivienda']"
             (change)="selectOptionFilter($event)"
           ></app-select>
         </div>
@@ -100,6 +101,7 @@
             <div class="price1">
               <label class="titles" for="type">Minimo</label>
               <app-select
+                [value]="priceMin"
                 [options]="rangePrice"
                 (change)="selectPricemin($event)"
               ></app-select>
@@ -107,6 +109,7 @@
             <div class="price2">
               <label class="titles" for="type">Minimo</label>
               <app-select
+                [value]="priceMax"
                 [options]="rangePrice"
                 (change)="selectPricemax($event)"
               ></app-select>
@@ -118,6 +121,7 @@
               <div>
                 <span class="titles" for="price">Minimun</span>
                 <app-select
+                  [value]="surfaceMin"
                   [options]="rangeSurface"
                   (change)="selectSurfaceMin($event)"
                 ></app-select>
@@ -125,6 +129,7 @@
               <div>
                 <span class="titles" for="price">Maximum</span>
                 <app-select
+                  [value]="surfaceMax"
                   [options]="rangeSurface"
                   (change)="selectSurfaceMax($event)"
                 ></app-select>
@@ -136,12 +141,12 @@
             <div class="extra-ctn">
               <div
                 *ngFor="let extra of extras"
-                (click)="selectExtras(extra)"
-                [class.selectInputFilter]="listExtras.includes(extra)"
+                (click)="selectExtras(extra.id)"
+                [class.selectInputFilter]="listExtras.includes(extra.id)"
                 class="extras-div"
               >
-                <img src="assets/iconos/{{ extra }}.png" alt="" />
-                <span class="{{ extra }}">{{ extra }}</span>
+                <img src="assets/iconos/{{ extra.name }}.png" alt="" />
+                <span class="{{ extra.name }}">{{ extra.name }}</span>
               </div>
             </div>
           </div>

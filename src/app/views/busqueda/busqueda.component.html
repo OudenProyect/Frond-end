@@ -1,7 +1,8 @@
 <div class="content">
   <div class="header flex-wrap gap-2">
+    <!-- -->
     <app-search (busqueda)="recibir($event)"></app-search>
-    <app-filtros></app-filtros>
+    <app-filtros (propagar)="applyFilter($event)"></app-filtros>
   </div>
   <span class="pb-4 d-block">Busqueda: {{ lugar }}</span>
   <div>
