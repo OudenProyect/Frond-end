@@ -55,24 +55,20 @@
     <div id="perfil" class="m-5">
         <h1 class="text-center m-5"><b>Tu perfil</b></h1>
         <div id="bordes" class="info-user" *ngIf="sessionService.user">
-            <div class="d-flex align-items-center">
+            <div class="contHeadtUser align-items-center">
                 <figure (click)="opDialog2()" class="verImage">
                     <img class="avatar mx-4" src="assets/imag/cara_5.png" alt="avatar" />
                     <figcaption class="iditFoto"><i class="fa fa-camera"></i></figcaption>
-
                 </figure>
-                <div>
-                    <span class="d-block nickname">@{{
-            sessionService.user.nickname
-            ? sessionService.user.nickname
-            : "nickname"
-            }}</span>
+                <div id="username">
+                    <span class="d-block nickname">@{{ sessionService.user.nickname ? sessionService.user.nickname : "nickname"}}</span>
                     <span class="name">{{ sessionService.user.name }}</span>
                 </div>
-                <div class="position-absolute text-end" style="right: 40px">
-                    <button class="btn elimiCuenta" (click)="eliminarCuenta()">
-            Eliminar Cuenta
-          </button>
+                <div class="iconEmpresa text-end mx-5">
+                    <figure class="text-center">
+                        <figcaption *ngIf="sessionService.user">{{ sessionService.user.company ? sessionService.user.company : "company"}}</figcaption>
+                        <img src="/assets/imag/down-apple.png">
+                    </figure>
                 </div>
             </div>
 
@@ -93,7 +89,6 @@
                                 </span>
                             </div>
                         </form>
-
                         <!-- name -->
                         <form class="editName" action="" method="get">
                             <div class="borderInput">
@@ -138,6 +133,11 @@
                                 </span>
                             </div>
                         </form>
+                        <div class="text-start">
+
+                            <button class="btn elimiCuenta justify-content-start" (click)="eliminarCuenta()"><i class="fa fa-trash"></i> Eliminar Cuenta </button>
+                        </div>
+
                         <div id="messGuardado" *ngIf="guardado">Guardado</div>
                         <div id="messNoGuardado" *ngIf="noGuardado">
                             Error en el guardado

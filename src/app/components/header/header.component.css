@@ -25,6 +25,11 @@
     .bottom {
         margin: 0px !important;
     }
+    .menuAvatar ul {
+        left: -115px !important;
+        top: 66px !important;
+        text-align: right;
+    }
 }
 
 .navbar-collapse {
@@ -56,6 +61,7 @@
 
 .links {
     display: inline-grid;
+    text-align: -webkit-right;
 }
 
 .logReg {
@@ -103,8 +109,8 @@
 }
 
 .menuAvatar ul {
-    left: -115px;
-    top: 66px;
+    left: -46px;
+    top: 50px;
     text-align: right;
 }
 
