@@ -78,10 +78,21 @@ export class PerfilComponent implements OnInit {
     return password === confirmPassword ? null : { notMatched: true };
   }
 
+  mostrarModalFlag: boolean = false;
+
+  mostrarModal() {
+    this.mostrarModalFlag = true;
+  }
+
+  ocultarModal() {
+    this.mostrarModalFlag = false;
+  }
+
   eliminarCuenta() {
     this.sessionService.deleteCuenta().subscribe(() => {
       this.sessionService.removeToken();
       window.location.reload()
+      this.ocultarModal();
     });
   }
 

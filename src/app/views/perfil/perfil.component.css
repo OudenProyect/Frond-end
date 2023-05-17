@@ -296,3 +296,19 @@ dialog {
     background-color: rgba(16, 16, 16, 0.194);
     opacity: 1;
 }
+
+#confirmation-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    border-radius: 8px;
+    max-height: 90%;
+    box-shadow: 1px 0px 20px rgb(0 0 0 / 12%);
+    overflow-y: auto;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    z-index: 4;
+    text-align: center;
+    padding: 40px;
+}

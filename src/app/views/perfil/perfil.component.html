@@ -133,10 +133,12 @@
                                 </span>
                             </div>
                         </form>
-                        <div class="text-start">
 
-                            <button class="btn elimiCuenta justify-content-start" (click)="eliminarCuenta()"><i class="fa fa-trash"></i> Eliminar Cuenta </button>
+                        <div class="text-start">
+                            <button class="btn elimiCuenta justify-content-start" (click)="mostrarModal()"><i class="fa fa-trash"></i> Eliminar Cuenta</button>
                         </div>
+
+
 
                         <div id="messGuardado" *ngIf="guardado">Guardado</div>
                         <div id="messNoGuardado" *ngIf="noGuardado">
@@ -203,7 +205,11 @@
             </div>
         </div>
     </div>
-
+    <div id="confirmation-modal" *ngIf="mostrarModalFlag">
+        <p>¿Seguro que deseas eliminar esta cuenta?</p>
+        <button class="editAvatar border-0 p-2 w-25" style="border-radius: 10px;" (click)="eliminarCuenta()"><span>Sí</span></button>
+        <button class="editAvatarCancel border-0 p-2 w-25 " style="border-radius: 10px;" (click)="ocultarModal()"><span>No</span></button>
+    </div>
     <div id="recomendados">
         <h1 class="text-center m-2"><b>Recomendados para ti</b></h1>
         <app-carrusel></app-carrusel>
