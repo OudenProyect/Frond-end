@@ -6,3 +6,9 @@
   width: 100%;
   min-width: 300px;
 }
+
+@media screen and (max-width: 768px) {
+  .buscador {
+    min-width: 240px;
+  }
+}

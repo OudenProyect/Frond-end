@@ -19,6 +19,7 @@
   flex-direction: column;
   width: auto;
 }
+
 .imag-fondo .contenido-imag form .contentInputMg input,
 .imag-fondo .contenido-imag form .contentInputM span {
   width: 100%;
@@ -44,6 +45,10 @@
 
 .dd {
   display: flex;
+}
+
+#patrocinadores {
+  padding: 80px 0px 60px;
 }
 
 #carouselExampleCaptions {
@@ -72,15 +77,21 @@
 .lado {
   background-color: white;
   padding: 30px;
+  width: 45%;
+  height: 300px;
 }
 
 .img-empreinfo {
-  width: 47.5%;
+  width: 45%;
   border-radius: 5px;
 }
 
 #info-empresa {
   background-color: #c8ccd5;
+}
+
+#info-empresa > div {
+  width: 75%;
 }
 
 .accordion-button {
@@ -99,4 +110,50 @@
 .form-select {
   width: fit-content;
   max-width: 165px;
+}
+
+@media screen and (max-width: 768px) {
+  .imag-fondo .contenido-imag {
+    width: 85%;
+  }
+}
+@media screen and (max-width: 820px) {
+  #info-empresa > div {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #info-empresa > div {
+    width: 95%;
+  }
+  .img-empreinfo,
+  .lado {
+    width: 100%;
+  }
+
+  #info-empresa > div:last-child {
+    flex-direction: column-reverse;
+  }
+  #info-empresa > div {
+    gap: 10px !important;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .formSearch {
+    flex-direction: column;
+  }
+
+  .imag-fondo .contenido-imag {
+    padding: 0px 23px 10px;
+    height: auto;
+  }
+  .imag-fondo .contenido-imag {
+    width: 95%;
+  }
+  .form-select {
+    width: -webkit-fill-available;
+    min-width: 322px;
+  }
 }
