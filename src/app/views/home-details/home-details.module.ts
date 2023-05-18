@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormSubirComponent } from './form-subir.component';
+import { HomeDetailsComponent } from './home-details.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path:"",
-    component: FormSubirComponent
+    component: HomeDetailsComponent
   }
 
 ]
@@ -18,4 +18,4 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class FormSubirModule { }
+export class HomeDetailsModule { }

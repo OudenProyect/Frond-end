@@ -7,6 +7,10 @@
     padding: 30px 0px;
 }
 
+#username {
+    width: -webkit-fill-available;
+}
+
 .avatar,
 .avatarTabl {
     width: 80px;
@@ -18,6 +22,15 @@
 .avatarTabl {
     width: 40px;
     height: 40px;
+}
+
+.iconEmpresa img {
+    width: 200px;
+}
+
+.contHeadtUser {
+    display: flex;
+    justify-content: space-between;
 }
 
 .confUser {
@@ -170,6 +183,22 @@ figure {
     .confUser label {
         width: 119px;
     }
+    .iconEmpresa {
+        margin-top: 10px;
+    }
+    .contHeadtUser {
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+    }
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+    #bordes {
+        margin: 17px 0px;
+        padding: 21px 20px;
+    }
 }
 
 dialog {
@@ -180,6 +209,11 @@ dialog {
     border-radius: 16px;
     width: 35%;
     box-shadow: 0px 0px 10px rgb(146, 146, 146);
+}
+
+.formEditIcon {
+    width: 50%;
+    padding: 0px;
 }
 
 .cerrarD {
@@ -210,12 +244,71 @@ dialog {
 }
 
 .elimiCuenta {
+    margin-top: 15px;
+}
+
+.elimiCuenta,
+.editAvatar {
     background-color: #2595be;
     color: white;
 }
 
-.elimiCuenta:hover {
+.editAvatarCancel {
+    margin-left: 8px;
+    color: white;
+    background-color: #C8CCD5;
+}
+
+.elimiCuenta:hover,
+.editAvatar:hover,
+.editAvatarCancel:hover {
     background-color: rgba(0, 0, 0, 0.776);
     color: white;
     transition: 0.5s;
+}
+
+#image-preview {
+    background-color: #d4d4d4;
+    padding: 8px;
+    margin-bottom: 16px;
+}
+
+#image-preview img {
+    object-fit: contain;
+    max-width: 800px;
+    width: 100%;
+    height: 350px;
+    box-shadow: rgba(152, 152, 152, 0.402);
+}
+
+.verImage:hover {
+    cursor: pointer;
+}
+
+.verImage:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 23px;
+    width: 80px;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(16, 16, 16, 0.194);
+    opacity: 1;
+}
+
+#confirmation-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    border-radius: 8px;
+    max-height: 90%;
+    box-shadow: 1px 0px 20px rgb(0 0 0 / 12%);
+    overflow-y: auto;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    z-index: 4;
+    text-align: center;
+    padding: 40px;
 }

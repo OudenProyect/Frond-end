@@ -73,6 +73,11 @@ const routes: Routes = [
         (m) => m.RegisterEmpresaModule
       ),
   },
+  {
+    path: 'detailsHome',
+    loadChildren: () =>
+      import('./views/home-details/home-details.module').then((m) => m.HomeDetailsModule),
+  },
 ];
 
 @NgModule({

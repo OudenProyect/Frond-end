@@ -55,6 +55,8 @@ export class RegisterEmpresaComponent implements OnInit {
         localizacionEmpresa: this.formLogin.get('localizacionEmpresa')?.value,
         descripcion: this.formLogin.get('descripcion')?.value,
       };
+      // falta back
+
       // this.sesion.register(empresa).subscribe(
       //   (res) => {
       //     console.log({ res });

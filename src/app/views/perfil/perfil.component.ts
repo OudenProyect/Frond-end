@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { SesionService } from 'src/app/services/sesion.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-perfil',
@@ -17,15 +17,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PerfilComponent implements OnInit {
   @ViewChild('dialog') dialog!: ElementRef;
+  @ViewChild('dialog2') dialog2!: ElementRef;
+
   guardado: boolean = false;
   noGuardado: boolean = false;
   guardadoContra: boolean = false;
   noGuardadoContra: boolean = false;
   textoGuar!: string;
   sessionService = inject(SesionService);
+  
   router = inject(Router);
   form = inject(FormBuilder);
-
+  selectedImage: string = 'assets/imag/cara_5.png';
   // @ts-ignore
   CambiarPWDform: FormGroup;
 
@@ -40,7 +43,9 @@ export class PerfilComponent implements OnInit {
         confirmPassword: ['', [Validators.required, Validators.minLength(4)]],
       },
       { validator: this.checkPasswords }
-    );
+      
+      );
+      console.log(this.sessionService);
   }
 
   onSubmit() {
@@ -73,10 +78,21 @@ export class PerfilComponent implements OnInit {
     return password === confirmPassword ? null : { notMatched: true };
   }
 
+  mostrarModalFlag: boolean = false;
+
+  mostrarModal() {
+    this.mostrarModalFlag = true;
+  }
+
+  ocultarModal() {
+    this.mostrarModalFlag = false;
+  }
+
   eliminarCuenta() {
     this.sessionService.deleteCuenta().subscribe(() => {
       this.sessionService.removeToken();
       window.location.reload()
+      this.ocultarModal();
     });
   }
 
@@ -159,6 +175,28 @@ export class PerfilComponent implements OnInit {
   opDialog() {
     this.dialog.nativeElement.showModal();
   }
+  opDialog2() {
+    this.dialog2.nativeElement.showModal();
+  }
+  
+  onSubmitIcon(form: NgForm) {
+    // submit form logic here
+    form.resetForm();
+    this.selectedImage= 'assets/imag/cara_5.png';
+    this.dialog2.nativeElement.close(); // close the dialog
+  }
+  previewImage(event: any) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.selectedImage = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+  
+
   // edicion del usuario
   guardar(edit: any, value: any) {
     console.log({edit: edit, value: value})
