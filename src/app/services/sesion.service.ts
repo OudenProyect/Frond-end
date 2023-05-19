@@ -30,6 +30,10 @@ export class SesionService {
     return this.http.post('/signin', datos);
   }
 
+  registerCompany(datos: any) {
+    return this.http.post('/register', datos);
+  }
+
   login(datos: any) {
     return this.http.post('/api/login_check', datos);
   }
