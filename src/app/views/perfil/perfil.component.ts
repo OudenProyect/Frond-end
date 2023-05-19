@@ -25,6 +25,7 @@ export class PerfilComponent implements OnInit {
   noGuardadoContra: boolean = false;
   textoGuar!: string;
   sessionService = inject(SesionService);
+  
   router = inject(Router);
   form = inject(FormBuilder);
   selectedImage: string = 'assets/imag/cara_5.png';
@@ -42,7 +43,9 @@ export class PerfilComponent implements OnInit {
         confirmPassword: ['', [Validators.required, Validators.minLength(4)]],
       },
       { validator: this.checkPasswords }
-    );
+      
+      );
+      console.log(this.sessionService);
   }
 
   onSubmit() {
@@ -75,10 +78,21 @@ export class PerfilComponent implements OnInit {
     return password === confirmPassword ? null : { notMatched: true };
   }
 
+  mostrarModalFlag: boolean = false;
+
+  mostrarModal() {
+    this.mostrarModalFlag = true;
+  }
+
+  ocultarModal() {
+    this.mostrarModalFlag = false;
+  }
+
   eliminarCuenta() {
     this.sessionService.deleteCuenta().subscribe(() => {
       this.sessionService.removeToken();
       window.location.reload()
+      this.ocultarModal();
     });
   }
 

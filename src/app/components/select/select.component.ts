@@ -8,12 +8,17 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 })
 export class SelectComponent implements OnInit {
   @Input('options') options: any[] = [];
+  @Input('value') value: any;
   @Output() change: EventEmitter<any> = new EventEmitter();
   isOpen = false;
   arrowIcon = faChevronDown;
   selectedOption: any = 'Indiferent';
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.value != 'Indiferent') {
+      this.selectedOption = this.value;
+    }
+  }
 
   showInput() {
     this.isOpen = !this.isOpen;

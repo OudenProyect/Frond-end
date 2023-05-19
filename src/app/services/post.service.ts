@@ -14,4 +14,8 @@ export class PostService {
   getCaracteristicas() {
     return this.http.get('/extras');
   }
+
+  createPost(datos: any) {
+    return this.http.post('/post', datos);
+  }
 }

@@ -1,5 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ReutilizablesService } from 'src/app/services/reutilizables.service';
 import { SesionService } from 'src/app/services/sesion.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { SesionService } from 'src/app/services/sesion.service';
 export class HeaderComponent {
   constructor(private sesions: SesionService, private router: Router) {}
   sessionService = inject(SesionService);
+
   isCollapse = false; // guardamos el valor
   toggleState() {
     // manejador del evento
