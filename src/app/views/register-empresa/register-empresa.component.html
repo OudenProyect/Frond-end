@@ -13,15 +13,29 @@
                 </span>
             </div>
             <div class="cajaDatos usuario caja-datos-user">
-                <p class="icono-user" for="cif-empresa">
-                    <i class="fa fa-id-card" aria-hidden="true"></i>
-                </p>
-                <input [className]="formLogin.get('cifEmpresa')?.touched && formLogin.get('cifEmpresa')?.errors ? 'error-input' : '' " class="flex-grow-1 datos-user validacion" type="text" id="cif-empresa" formControlName="cifEmpresa" placeholder="CIF de la empresa"
-                    name="cifEmpresa">
-                <span class="errorMessage" *ngIf="formLogin.get('cifEmpresa')?.touched && formLogin.get('cifEmpresa')?.errors?.['required'] ">Este
-                    campo es requerido
-                </span>
-            </div>
+    <p class="icono-user" for="cif-empresa">
+        <i class="fa fa-id-card" aria-hidden="true"></i>
+    </p>
+    <input
+        [className]="formLogin.get('cifEmpresa')?.touched && formLogin.get('cifEmpresa')?.errors ? 'error-input' : '' "
+        class="flex-grow-1 datos-user validacion" type="text" id="cif-empresa" formControlName="cifEmpresa"
+        placeholder="CIF de la empresa" name="cifEmpresa">
+    <span class="errorMessage"
+        *ngIf="formLogin.get('cifEmpresa')?.touched && formLogin.get('cifEmpresa')?.errors?.['required'] ">Este
+        campo es requerido
+        
+    </span>
+    <span class="errorMessage"
+        *ngIf="formLogin.get('cifEmpresa')?.touched && formLogin.get('cifEmpresa')?.errors?.['minlength']">
+        La longitud del CIF de empresa debe ser de 9 caracteres.
+        
+    </span>
+    <span class="errorMessage"
+        *ngIf="formLogin.get('cifEmpresa')?.touched && formLogin.get('cifEmpresa')?.errors?.['maxlength']">
+        La longitud del CIF de empresa debe ser de 9 caracteres.
+    </span>
+    
+    </div>
             <div class="cajaDatos usuario caja-datos-user">
                 <p class="icono-user" for="usuario">
                     <i class="fa fa-user" aria-hidden="true"></i>
@@ -53,6 +67,27 @@
                 <span class="errorMessage" *ngIf="formLogin.get('password')?.hasError('maxlength')">
                     La contraseña debe tener maximo 10</span>
             </div>
+            <div class="cajaDatos  caja-datos-phone">
+                <p class="icono-user" for="Phone">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                </p>
+                <input
+                    [className]="formLogin.get('phone')?.touched && formLogin.get('phone')?.errors ? 'error-input' : '' "
+                    class="flex-grow-1 validacion" type="tel" id="phone" formControlName="phone"
+                    placeholder="Phone">
+                    <span class="errorMessage"
+                    *ngIf="formLogin.get('phone')?.touched && formLogin.get('phone')?.errors?.['required'] ">
+                    Este campo es requerido
+                </span>
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('phone')?.touched && formLogin.get('phone')?.errors?.['minlength']">
+                    El numero tiene que tener 9 numeros.
+                </span>
+                <span class="errorMessage"
+                    *ngIf="formLogin.get('phone')?.touched && formLogin.get('phone')?.errors?.['maxlength']">
+                    El numero tiene que tener 9 numeros.
+                </span>
+            </div> 
             <div class="cajaDatos usuario caja-datos-user">
                 <p class="icono-user" for="link-pagina">
                     <i class="fa fa-link" aria-hidden="true"></i>
@@ -76,15 +111,16 @@
             <div class="cajaDatos caja-datos-descripcion">
                 <p class="icono-user" for="descripcion">
                 </p>
-                <textarea class="flex-grow-1 validacion" id="descripcion" formControlName="descripcion" placeholder="Descripción de la empresa"></textarea>
+                <textarea class="flex-grow-1 validacion" id="descripcion" formControlName="descripcion"
+                    placeholder="Descripción de la empresa" ></textarea>
                 <span class="errorMessage" *ngIf="formLogin.get('descripcion')?.hasError('maxlength')">
                     La descripción de la empresa debe tener máximo 250 caracteres.</span>
             </div>
             <input class="btn-general btn my-3" type="submit" id="Register" value="Register" data-bs-toggle="modal" data-bs-target="#additionalInfoModal">
         </form>
-        <span class="mgerror" *ngIf="errormg">{{  errormg }}</span>
-        <span class="spanLogin">Ya tienes una cuenta? <a href="login">Inicia sesion</a></span>
-        <div class="box-registres">
+          <span class="mgerror" *ngIf="errormg">{{  errormg }}</span>
+          <span class="spanLogin">Ya tienes una cuenta? <a href="login">Inicia sesion</a></span>
+          <div class="box-registres">
             <span>Registrate con:</span>
             <div class="iconos">
                 <a class="face" href=""><i class="fa fa-facebook"> </i></a>
@@ -95,8 +131,7 @@
                 <button><img src="../../../assets/imag/down-apple.png" alt=""></button>
                 <button><img src="../../../assets/imag/down-g-p.png" alt=""></button>
             </div>
-        </div>
-
+          </div>
     </div>
 
     <div id="portada">
