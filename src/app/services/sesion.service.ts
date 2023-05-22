@@ -52,7 +52,7 @@ export class SesionService {
           Authorization: 'Bearer ' + this.getToken(),
         },
       })
-      .pipe(tap((res: any) => (this.user = res.user)));
+      .pipe(tap((res: any) => (this.user = res)));
   }
 
   editField(data: any) {

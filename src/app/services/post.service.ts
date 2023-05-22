@@ -18,4 +18,8 @@ export class PostService {
   createPost(datos: any) {
     return this.http.post('/post', datos);
   }
+
+  getPost(id: string) {
+    return this.http.get('/publicacion', { params: { id: id } });
+  }
 }

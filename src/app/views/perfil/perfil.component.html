@@ -1,217 +1,381 @@
 <div id="header"></div>
 <dialog #dialog class="z-2 formContraseña">
-    <form action="" class="position-relative" method="dialog">
-        <h2 class="text-center">Cambiar contraseña</h2>
-        <button class="position-absolute cerrarD">
+  <form action="" class="position-relative" method="dialog">
+    <h2 class="text-center">Cambiar contraseña</h2>
+    <button class="position-absolute cerrarD">
       <i class="fa fa-close"></i>
     </button>
-    </form>
-    <hr />
-    <div class="m-3">
-        <form [formGroup]="CambiarPWDform" (ngSubmit)="onSubmit()">
-            <div class="input-group flex-nowrap my-2">
-                <span class="input-group-text iconPWD" id="oldPWD"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control" aria-describedby="oldPWD" id="oldPassword" formControlName="oldPassword" placeholder="Contraseña Actual" name="oldPassword" />
-            </div>
-            <div class="input-group flex-nowrap">
-                <span class="input-group-text iconPWD" id="newPassword"><i class="fa fa-key"></i></span>
-                <input type="password" class="form-control" aria-describedby="newPassword" id="newPassword" formControlName="newPassword" placeholder=" Nueva contraseña " name="newPassword" />
-            </div>
-            <div class="input-group flex-nowrap my-2">
-                <span class="input-group-text iconPWD" id="confirmPassword"><i class="fa fa-unlock-alt"></i></span>
-                <input type="password" class="form-control" aria-describedby="confirmPassword" id="confirmPassword" formControlName="confirmPassword" placeholder=" Confirmar nueva contraseña " name="confirmPassword" />
-            </div>
-            <button type="submit" class="guardarCont">
+  </form>
+  <hr />
+  <div class="m-3">
+    <form [formGroup]="CambiarPWDform" (ngSubmit)="onSubmit()">
+      <div class="input-group flex-nowrap my-2">
+        <span class="input-group-text iconPWD" id="oldPWD"
+          ><i class="fa fa-lock"></i
+        ></span>
+        <input
+          type="password"
+          class="form-control"
+          aria-describedby="oldPWD"
+          id="oldPassword"
+          formControlName="oldPassword"
+          placeholder="Contraseña Actual"
+          name="oldPassword"
+        />
+      </div>
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text iconPWD" id="newPassword"
+          ><i class="fa fa-key"></i
+        ></span>
+        <input
+          type="password"
+          class="form-control"
+          aria-describedby="newPassword"
+          id="newPassword"
+          formControlName="newPassword"
+          placeholder=" Nueva contraseña "
+          name="newPassword"
+        />
+      </div>
+      <div class="input-group flex-nowrap my-2">
+        <span class="input-group-text iconPWD" id="confirmPassword"
+          ><i class="fa fa-unlock-alt"></i
+        ></span>
+        <input
+          type="password"
+          class="form-control"
+          aria-describedby="confirmPassword"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          placeholder=" Confirmar nueva contraseña "
+          name="confirmPassword"
+        />
+      </div>
+      <button type="submit" class="guardarCont">
         Guardar nueva contraseña
       </button>
-        </form>
-        <div id="messGuardado" *ngIf="guardadoContra">Contaseña guardada</div>
-        <div id="messNoGuardado" *ngIf="noGuardadoContra">
-            Las contraseñas no coinciden
-        </div>
+    </form>
+    <div id="messGuardado" *ngIf="guardadoContra">Contaseña guardada</div>
+    <div id="messNoGuardado" *ngIf="noGuardadoContra">
+      Las contraseñas no coinciden
     </div>
+  </div>
 </dialog>
 <dialog #dialog2 class="z-2 formEditIcon">
-    <form #myForm="ngForm" (ngSubmit)="onSubmitIcon(myForm)" class="position-relative" method="dialog">
-        <h2 class="text-center">Editar Foto de perfil</h2>
-        <button class="position-absolute cerrarD" (click)="dialog2.close()">
-            <i class="fa fa-close"></i></button>
-        <hr />
-        <div class="m-3 text-center">
-            <div id="image-preview">
-                <div *ngIf="selectedImage">
-                    <img class="iconoPerfil" [src]="selectedImage" alt="avatar" />
-                </div>
-            </div>
-            <div class="input-group flex-nowrap my-2">
-                <input class="form-control" type="file" name="image" (change)="previewImage($event)" />
-            </div>
-            <button type="submit" class="btn editAvatar">Guardar cambios</button>
-            <button type="button" class="btn editAvatarCancel">Cancelar</button>
+  <form
+    #myForm="ngForm"
+    (ngSubmit)="onSubmitIcon(myForm)"
+    class="position-relative"
+    method="dialog"
+  >
+    <h2 class="text-center">Editar Foto de perfil</h2>
+    <button class="position-absolute cerrarD" (click)="dialog2.close()">
+      <i class="fa fa-close"></i>
+    </button>
+    <hr />
+    <div class="m-3 text-center">
+      <div id="image-preview">
+        <div *ngIf="selectedImage">
+          <img class="iconoPerfil" [src]="selectedImage" alt="avatar" />
         </div>
-    </form>
+      </div>
+      <div class="input-group flex-nowrap my-2">
+        <input
+          class="form-control"
+          type="file"
+          name="image"
+          (change)="previewImage($event)"
+        />
+      </div>
+      <button type="submit" class="btn editAvatar">Guardar cambios</button>
+      <button type="button" class="btn editAvatarCancel">Cancelar</button>
+    </div>
+  </form>
 </dialog>
 <ng-container *ngIf="!sessionService.loading">
-    <div id="perfil" class="m-5">
-        <h1 class="text-center m-5"><b>Tu perfil</b></h1>
-        <div id="bordes" class="info-user" *ngIf="sessionService.user">
-            <div class="contHeadtUser align-items-center">
-                <figure (click)="opDialog2()" class="verImage">
-                    <img class="avatar mx-4" src="assets/imag/cara_5.png" alt="avatar" />
-                    <figcaption class="iditFoto"><i class="fa fa-camera"></i></figcaption>
-                </figure>
-                <div id="username">
-                    <span class="d-block nickname">@{{ sessionService.user.nickname ? sessionService.user.nickname : "nickname"}}</span>
-                    <span class="name">{{ sessionService.user.name }}</span>
-                </div>
-                <div class="iconEmpresa text-end mx-5">
-                    <figure class="text-center">
-                        <figcaption *ngIf="sessionService.user">{{ sessionService.user.company ? sessionService.user.company : "company"}}</figcaption>
-                        <img src="/assets/imag/down-apple.png">
-                    </figure>
-                </div>
-            </div>
+  <div id="perfil" class="m-5">
+    <h1 class="text-center m-5"><b>Tu perfil</b></h1>
+    <div id="bordes" class="info-user" *ngIf="sessionService">
+      <div class="contHeadtUser align-items-center">
+        <figure (click)="opDialog2()" class="verImage">
+          <img class="avatar mx-4" src="assets/imag/cara_5.png" alt="avatar" />
+          <figcaption class="iditFoto"><i class="fa fa-camera"></i></figcaption>
+        </figure>
+        <div id="username">
+          <span class="d-block nickname"
+            >@{{
+              sessionService.user.name ? sessionService.user.name : "nickname"
+            }}</span
+          >
+          <span class="name">{{ sessionService.user.name }}</span>
+        </div>
+        <div class="iconEmpresa text-end mx-5">
+          <figure class="text-center">
+            <figcaption *ngIf="sessionService.user">
+              {{
+                sessionService.user.cifCompany.name
+                  ? sessionService.user.cifCompany.name
+                  : "company"
+              }}
+            </figcaption>
+            <img src="/assets/imag/down-apple.png" />
+          </figure>
+        </div>
+      </div>
 
-            <div id="centrar">
-                <div class="wi1300">
-                    <div id="bordes" class="infoEdit">
-                        <!-- nickname -->
-                        <form class="editNick" action="" method="get">
-                            <div class="borderInput">
-                                <i class="fa fa-user"></i>
-                                <input [disabled]="isDisabled" type="text" [ngStyle]="ajustar" name="nick" placeholder="Nick name" [(ngModel)]="sessionService.user.nickname" />
-                                <span (click)="opbnt()" btn-id="bnt"><i *ngIf="noPincel" class="fa fa-pencil"></i></span>
-                                <span *ngIf="showDiv">
-                  <span (click)="guardar('nickname', sessionService.user.nickname)" id="guardar" class="bnt-ocult">
+      <div id="centrar">
+        <div class="wi1300">
+          <div id="bordes" class="infoEdit">
+            <!-- nickname -->
+            <form class="editNick" action="" method="get">
+              <div class="borderInput">
+                <i class="fa fa-user"></i>
+                <input
+                  [disabled]="isDisabled"
+                  type="text"
+                  [ngStyle]="ajustar"
+                  name="nick"
+                  placeholder="Nick name"
+                  [(ngModel)]="sessionService.user.nickname"
+                />
+                <span (click)="opbnt()" btn-id="bnt"
+                  ><i *ngIf="noPincel" class="fa fa-pencil"></i
+                ></span>
+                <span *ngIf="showDiv">
+                  <span
+                    (click)="guardar('nickname', sessionService.user.nickname)"
+                    id="guardar"
+                    class="bnt-ocult"
+                  >
                     <button><i class="fa fa-save"></i></button>
                   </span>
-                                <span (click)="cancel()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
-                                </span>
-                            </div>
-                        </form>
-                        <!-- name -->
-                        <form class="editName" action="" method="get">
-                            <div class="borderInput">
-                                <i class="fa fa-id-card-o"></i>
-                                <input [disabled]="isDisabled2" type="text" [ngStyle]="ajustar2" name="name" placeholder="Nombre completo" [(ngModel)]="sessionService.user.name" />
-                                <span (click)="opbnt2()" btn-id="bnt1"><i *ngIf="noPincel2" class="fa fa-pencil"></i></span>
-                                <span *ngIf="showDiv2">
-                  <span (click)="guardar('name', sessionService.user.name)" id="guardar" class="bnt-ocult">
+                  <span (click)="cancel()" id="cancelar" class="bnt-ocult"
+                    ><i class="fa fa-remove"></i
+                  ></span>
+                </span>
+              </div>
+            </form>
+            <!-- name -->
+            <form class="editName" action="" method="get">
+              <div class="borderInput">
+                <i class="fa fa-id-card-o"></i>
+                <input
+                  [disabled]="isDisabled2"
+                  type="text"
+                  [ngStyle]="ajustar2"
+                  name="name"
+                  placeholder="Nombre completo"
+                  [(ngModel)]="sessionService.user.name"
+                />
+                <span (click)="opbnt2()" btn-id="bnt1"
+                  ><i *ngIf="noPincel2" class="fa fa-pencil"></i
+                ></span>
+                <span *ngIf="showDiv2">
+                  <span
+                    (click)="guardar('name', sessionService.user.name)"
+                    id="guardar"
+                    class="bnt-ocult"
+                  >
                     <button><i class="fa fa-save"></i></button>
                   </span>
-                                <span (click)="cancel2()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
-                                </span>
-                            </div>
-                        </form>
+                  <span (click)="cancel2()" id="cancelar" class="bnt-ocult"
+                    ><i class="fa fa-remove"></i
+                  ></span>
+                </span>
+              </div>
+            </form>
 
-                        <form class="editEmail" action="" method="get">
-                            <div class="borderInput">
-                                <i class="fa fa-envelope"></i>
-                                <input readonly disabled type="text" [ngStyle]="ajustar3" name="email" placeholder="Correo" [(ngModel)]="sessionService.user.email" />
-                            </div>
-                        </form>
+            <form class="editEmail" action="" method="get">
+              <div class="borderInput">
+                <i class="fa fa-envelope"></i>
+                <input
+                  readonly
+                  disabled
+                  type="text"
+                  [ngStyle]="ajustar3"
+                  name="email"
+                  placeholder="Correo"
+                  [(ngModel)]="sessionService.user.email"
+                />
+              </div>
+            </form>
 
-                        <form class="editPWD" action="" method="get">
-                            <div class="borderInput">
-                                <i class="fa fa-lock"></i>
-                                <input [disabled]="isDisabled3" type="text" name="editPWD" [ngStyle]="ajustar4" placeholder="Contraseña" />
-                                <span (click)="opDialog()"><i class="fa fa-pencil"></i></span>
-                            </div>
-                        </form>
+            <form class="editPWD" action="" method="get">
+              <div class="borderInput">
+                <i class="fa fa-lock"></i>
+                <input
+                  [disabled]="isDisabled3"
+                  type="text"
+                  name="editPWD"
+                  [ngStyle]="ajustar4"
+                  placeholder="Contraseña"
+                />
+                <span (click)="opDialog()"><i class="fa fa-pencil"></i></span>
+              </div>
+            </form>
 
-                        <form class="editTlf" action="" method="get">
-                            <div class="borderInput">
-                                <i class="fa fa-phone"></i>
-                                <input [disabled]="isDisabled4" type="text" [ngStyle]="ajustar5" name="phone" placeholder="Telefono" [(ngModel)]="sessionService.user.phone" />
-                                <span (click)="opbnt5()" btn-id="bnt1"><i *ngIf="noPincel5" class="fa fa-pencil"></i></span>
-                                <span *ngIf="showDiv5">
-                  <span (click)="guardar('phone', sessionService.user.phone)" id="guardar" class="bnt-ocult"><button>
+            <form class="editTlf" action="" method="get">
+              <div class="borderInput">
+                <i class="fa fa-phone"></i>
+                <input
+                  [disabled]="isDisabled4"
+                  type="text"
+                  [ngStyle]="ajustar5"
+                  name="phone"
+                  placeholder="Telefono"
+                  [(ngModel)]="sessionService.user.phone"
+                />
+                <span (click)="opbnt5()" btn-id="bnt1"
+                  ><i *ngIf="noPincel5" class="fa fa-pencil"></i
+                ></span>
+                <span *ngIf="showDiv5">
+                  <span
+                    (click)="guardar('phone', sessionService.user.phone)"
+                    id="guardar"
+                    class="bnt-ocult"
+                    ><button>
                       <i class="fa fa-save"></i>
                     </button>
                   </span>
-                                <span (click)="cancel5()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
-                                </span>
-                            </div>
-                        </form>
+                  <span (click)="cancel5()" id="cancelar" class="bnt-ocult"
+                    ><i class="fa fa-remove"></i
+                  ></span>
+                </span>
+              </div>
+            </form>
 
-                        <div class="text-start">
-                            <button class="btn elimiCuenta justify-content-start" (click)="mostrarModal()"><i class="fa fa-trash"></i> Eliminar Cuenta</button>
-                        </div>
-
-
-
-                        <div id="messGuardado" *ngIf="guardado">Guardado</div>
-                        <div id="messNoGuardado" *ngIf="noGuardado">
-                            Error en el guardado
-                        </div>
-                    </div>
-
-                    <div class="contacUser" id="bordes">
-                        <h4 class="text-center">Contactos recientes</h4>
-                        <table class="table mt-4">
-                            <thead>
-                                <tr>
-                                    <th scope="col">
-                                        <img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar" />Remires pende
-                                        <button class="bntCont"><i class="fa fa-phone"></i></button>
-                                    </th>
-                                    <th scope="col">
-                                        <img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar" />Remires pende
-                                        <button class="bntCont"><i class="fa fa-phone"></i></button>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        <img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar" />Remires pende
-                                        <button class="bntCont"><i class="fa fa-phone"></i></button>
-                                    </th>
-                                    <th>
-                                        <img class="avatarTabl mx-2" src="assets/imag/cara_5.png" alt="avatar" />Remires pende
-                                        <button class="bntCont"><i class="fa fa-phone"></i></button>
-                                    </th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div id="bordes" class="confUser">
-                    <h3 class="text-center"><i class="fa fa-cog"></i> Ajustes</h3>
-                    <div class="w-75 m-auto mt-5">
-                        <div class="">
-                            <label for="noved"><b>Novedades y recomendaciones</b></label><input class="form-check-input" type="checkbox" id="noved" name="noved" />
-                            <p>Te mantendremos al día de las novedades del portal</p>
-                        </div>
-                        <div>
-                            <label for="noti"><b>Activar notificaciones</b></label>
-                            <input class="form-check-input" type="checkbox" id="noti" name="noti" />
-                            <p>Te informamos de cada nueva publicación</p>
-                        </div>
-                        <div>
-                            <label for="ofer"><b> Ofertas y promociones</b></label><input type="checkbox" class="form-check-input" id="ofer" name="ofer" />
-                            <p>
-                                Información de inmobiliarias o promotoras que ofrecen inmuebles
-                            </p>
-                        </div>
-                        <div>
-                            <label for="ofer"><b> Ofertas y promociones</b></label><input type="checkbox" class="form-check-input" id="ofer" name="ofer" />
-                            <p>
-                                Información de inmobiliarias o promotoras que ofrecen inmuebles
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-start">
+              <button
+                class="btn elimiCuenta justify-content-start"
+                (click)="mostrarModal()"
+              >
+                <i class="fa fa-trash"></i> Eliminar Cuenta
+              </button>
             </div>
+
+            <div id="messGuardado" *ngIf="guardado">Guardado</div>
+            <div id="messNoGuardado" *ngIf="noGuardado">
+              Error en el guardado
+            </div>
+          </div>
+
+          <div class="contacUser" id="bordes">
+            <h4 class="text-center">Contactos recientes</h4>
+            <table class="table mt-4">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <img
+                      class="avatarTabl mx-2"
+                      src="assets/imag/cara_5.png"
+                      alt="avatar"
+                    />Remires pende
+                    <button class="bntCont"><i class="fa fa-phone"></i></button>
+                  </th>
+                  <th scope="col">
+                    <img
+                      class="avatarTabl mx-2"
+                      src="assets/imag/cara_5.png"
+                      alt="avatar"
+                    />Remires pende
+                    <button class="bntCont"><i class="fa fa-phone"></i></button>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <img
+                      class="avatarTabl mx-2"
+                      src="assets/imag/cara_5.png"
+                      alt="avatar"
+                    />Remires pende
+                    <button class="bntCont"><i class="fa fa-phone"></i></button>
+                  </th>
+                  <th>
+                    <img
+                      class="avatarTabl mx-2"
+                      src="assets/imag/cara_5.png"
+                      alt="avatar"
+                    />Remires pende
+                    <button class="bntCont"><i class="fa fa-phone"></i></button>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+        <div id="bordes" class="confUser">
+          <h3 class="text-center"><i class="fa fa-cog"></i> Ajustes</h3>
+          <div class="w-75 m-auto mt-5">
+            <div class="">
+              <label for="noved"><b>Novedades y recomendaciones</b></label
+              ><input
+                class="form-check-input"
+                type="checkbox"
+                id="noved"
+                name="noved"
+              />
+              <p>Te mantendremos al día de las novedades del portal</p>
+            </div>
+            <div>
+              <label for="noti"><b>Activar notificaciones</b></label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="noti"
+                name="noti"
+              />
+              <p>Te informamos de cada nueva publicación</p>
+            </div>
+            <div>
+              <label for="ofer"><b> Ofertas y promociones</b></label
+              ><input
+                type="checkbox"
+                class="form-check-input"
+                id="ofer"
+                name="ofer"
+              />
+              <p>
+                Información de inmobiliarias o promotoras que ofrecen inmuebles
+              </p>
+            </div>
+            <div>
+              <label for="ofer"><b> Ofertas y promociones</b></label
+              ><input
+                type="checkbox"
+                class="form-check-input"
+                id="ofer"
+                name="ofer"
+              />
+              <p>
+                Información de inmobiliarias o promotoras que ofrecen inmuebles
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="confirmation-modal" *ngIf="mostrarModalFlag">
-        <p>¿Seguro que deseas eliminar esta cuenta?</p>
-        <button class="editAvatar border-0 p-2 w-25" style="border-radius: 10px;" (click)="eliminarCuenta()"><span>Sí</span></button>
-        <button class="editAvatarCancel border-0 p-2 w-25 " style="border-radius: 10px;" (click)="ocultarModal()"><span>No</span></button>
-    </div>
-    <div id="recomendados">
-        <h1 class="text-center m-2"><b>Recomendados para ti</b></h1>
-        <app-carrusel></app-carrusel>
-    </div>
+  </div>
+  <div id="confirmation-modal" *ngIf="mostrarModalFlag">
+    <p>¿Seguro que deseas eliminar esta cuenta?</p>
+    <button
+      class="editAvatar border-0 p-2 w-25"
+      style="border-radius: 10px"
+      (click)="eliminarCuenta()"
+    >
+      <span>Sí</span>
+    </button>
+    <button
+      class="editAvatarCancel border-0 p-2 w-25"
+      style="border-radius: 10px"
+      (click)="ocultarModal()"
+    >
+      <span>No</span>
+    </button>
+  </div>
+  <div id="recomendados">
+    <h1 class="text-center m-2"><b>Recomendados para ti</b></h1>
+    <app-carrusel></app-carrusel>
+  </div>
 </ng-container>

@@ -8,6 +8,10 @@ input {
   width: 100%;
 }
 
+a {
+  color: black;
+}
+
 .casas {
   display: flex;
   flex-direction: column;
@@ -42,7 +46,8 @@ input {
   display: flex;
   width: 100%;
   border-radius: 25px;
-  min-height: 300px;
+  min-height: 330px;
+  max-height: 330px;
   border: 1px solid rgb(0 0 0 / 12%);
 }
 
@@ -65,7 +70,7 @@ input {
   width: auto;
 }
 
-.casa .descripcion a {
+.casa .descripcion a:not(.btn-general) {
   font-size: 22px;
   text-transform: capitalize;
   cursor: pointer;
@@ -103,7 +108,7 @@ input {
 }
 
 .btn-general {
-  font-size: 20px;
+  font-size: 18px;
   background-color: #2596be;
   color: white;
   width: fit-content;
@@ -162,6 +167,7 @@ input {
 @media (max-width: 840px) {
   .casa {
     flex-direction: column;
+    max-height: none;
   }
 
   .casa .portada {
@@ -179,7 +185,7 @@ input {
 }
 
 @media (max-width: 450px) {
-  .casa .descripcion a {
+  .casa .descripcion > a {
     font-size: 18px;
   }
   .links {

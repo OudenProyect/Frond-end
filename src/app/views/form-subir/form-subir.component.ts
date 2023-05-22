@@ -55,12 +55,12 @@ export class FormSubirComponent implements OnInit {
       m2: ['', Validators.required],
       m2util: ['', Validators.required],
       parking: new FormControl(false),
-      terraza: new FormControl(false),
+      balcon: new FormControl(false),
       piscina: new FormControl(false),
       jardin: new FormControl(false),
       trastero: new FormControl(false),
       chimenea: new FormControl(false),
-      balcon: new FormControl(false),
+      calentador: new FormControl(false),
       Barcelona: new FormControl(true),
       Girona: new FormControl(false),
     });
@@ -71,7 +71,6 @@ export class FormSubirComponent implements OnInit {
 
     this.post.getCaracteristicas().subscribe((e: any) => {
       this.caracteristicas = e;
-      console.log(e);
     });
   }
 
@@ -135,18 +134,16 @@ export class FormSubirComponent implements OnInit {
             datos.append('flats', formValue.flats);
             datos.append('empresa', formValue.empresa);
 
-            formValue.balcony ? datos.append('balcony', '2') : '';
-            formValue.terrace ? datos.append('terrace', '7') : '';
-            formValue.swimmingPool ? datos.append('swimmingPool', '3') : '';
-            formValue.garden ? datos.append('garden', '6') : '';
+            formValue.balcon ? datos.append('balcony', '2') : '';
+            formValue.calentador ? datos.append('heating', '7') : '';
+            formValue.piscina ? datos.append('swimmingPool', '3') : '';
+            formValue.jardin ? datos.append('garden', '6') : '';
             formValue.parking ? datos.append('parking', '1') : '';
-            formValue.chimenea ? datos.append('chimenea', '4') : '';
-            formValue.trastero ? datos.append('trastero', '5') : '';
+            formValue.chimenea ? datos.append('chimney', '4') : '';
+            formValue.trastero ? datos.append('storage_room', '5') : '';
 
-            formValue.Barcelona
-              ? datos.append('Barcelona', formValue.Barcelona)
-              : '';
-            formValue.Girona ? datos.append('Girona', formValue.Girona) : '';
+            formValue.Barcelona ? datos.append('Barcelona', 'Barcelona') : '';
+            formValue.Girona ? datos.append('Girona', 'Girona') : '';
             this.post.createPost(datos).subscribe(
               (e: any) => {
                 const datos = {

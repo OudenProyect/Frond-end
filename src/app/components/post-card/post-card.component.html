@@ -2,13 +2,13 @@
   <div class="casa" *ngFor="let casa of post; let i = index">
     <div class="portada">
       <img
-        src="assets/imag/chalet-la-zabaleta-idealista-1658919505.jpg"
+        src="{{ 'http://127.0.0.1:8000/images/' + post[i].images[0].name }}"
         alt=""
       />
     </div>
     <div class="descripcion">
       <div>
-        <a>
+        <a href="detailsHome/{{ post[i].id }}">
           {{ post[i].house.type }}
           <span>{{ post[i].title }}</span>
         </a>
@@ -49,11 +49,7 @@
         <div class="links d-flex gap-3 flex-wrap">
           <a class="btn-general ml-0 d-block">Contactar</a>
           <a class="link-btn" href="">
-            <img
-              class="icon-xs"
-              src="assets/svg/call_FILL1_wght400_GRAD0_opsz48.svg"
-              alt=""
-            />
+            <img class="icon-xs" src="assets/svg/telefono.svg" alt="" />
             <span>{{ post[i].idCompany.phone }}</span>
           </a>
         </div>
@@ -62,10 +58,7 @@
             <img src="assets/svg/delete.png" alt="" />
           </button>
           <button class="btn-icon">
-            <img
-              src="assets/svg/favorite_FILL0_wght400_GRAD0_opsz48.svg"
-              alt=""
-            />
+            <img src="assets/svg/encanta.svg" alt="" />
           </button>
         </div>
       </div>
