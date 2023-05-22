@@ -61,6 +61,7 @@
 
 .links {
     display: inline-grid;
+    margin-right: 15px;
     text-align: -webkit-right;
 }
 
