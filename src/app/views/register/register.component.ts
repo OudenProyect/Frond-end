@@ -63,6 +63,7 @@ export class RegisterComponent implements OnInit {
         },
         (err) => {
           this.errormg = err.error;
+          console.log(this.errormg);
         }
       );
     } else {

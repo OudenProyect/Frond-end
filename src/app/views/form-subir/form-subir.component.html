@@ -102,6 +102,9 @@
       >
         Se necesita al menos una imagen de portada
       </span>
+      <span *ngIf="formPost.get('imagen')?.errors?.['invalidImageType']"
+        >El formato es incorrecto</span
+      >
       <div>
         <label for="titulo">Título:</label>
         <input

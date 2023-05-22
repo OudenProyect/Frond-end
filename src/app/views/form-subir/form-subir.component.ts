@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { Route, Router } from '@angular/router';
@@ -43,7 +45,7 @@ export class FormSubirComponent implements OnInit {
   ngOnInit(): void {
     this.formPost = this.build.group({
       empresa: ['1'],
-      imagen: ['', Validators.required],
+      imagen: ['', Validators.required, this.validateImageType],
       titulo: ['', Validators.required],
       precio: ['', Validators.required],
       descripcionPortada: ['', Validators.required],
@@ -78,32 +80,59 @@ export class FormSubirComponent implements OnInit {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        if (num == 0) {
-          this.imgSrc1 = e.target.result;
-          this.formPost.patchValue({
-            imagen: event.target.files[0],
-          });
-          console.log(this.imgSrc1);
-        } else if (num == 1) {
-          this.imgSrc2 = e.target.result;
-          console.log('imgSrc2');
-        } else if (num == 2) {
-          this.imgSrc3 = e.target.result;
-          console.log('imgSrc3');
-        } else if (num == 3) {
-          this.imgSrc4 = e.target.result;
-          console.log('imgSrc4');
-        } else if (num == 4) {
-          this.imgSrc5 = e.target.result;
-          console.log('imgSrc5');
-        } else if (num == 5) {
-          this.imgSrc5 = e.target.result;
-          console.log('imgSrc6');
+        const file: File = event.target.files[0];
+
+        const allowedTypes = ['image/jpeg', 'image/png']; // Tipos de archivo permitidos
+
+        if (allowedTypes.includes(file.type)) {
+          if (num == 0) {
+            this.imgSrc1 = e.target.result;
+            this.formPost.patchValue({
+              imagen: event.target.files[0],
+            });
+            console.log(this.imgSrc1);
+          } else if (num == 1) {
+            this.imgSrc2 = e.target.result;
+            console.log('imgSrc2');
+          } else if (num == 2) {
+            this.imgSrc3 = e.target.result;
+            console.log('imgSrc3');
+          } else if (num == 3) {
+            this.imgSrc4 = e.target.result;
+            console.log('imgSrc4');
+          } else if (num == 4) {
+            this.imgSrc5 = e.target.result;
+            console.log('imgSrc5');
+          } else if (num == 5) {
+            this.imgSrc5 = e.target.result;
+            console.log('imgSrc6');
+          }
+          this.archivos.push(event.target.files[0]);
+
+          // El tipo de archivo es válido
+          console.log('Tipo de archivo válido');
+          // Aquí puedes realizar las acciones necesarias con el archivo
+        } else {
+          // Tipo de archivo no válido
+          console.log('Tipo de archivo no válido');
+          // Aquí puedes mostrar un mensaje de error o realizar otras acciones
         }
-        this.archivos.push(event.target.files[0]);
+
+        console.log(typeof e.target.files);
       };
       let dat = reader.readAsDataURL(event.target.files[0]);
     }
+  }
+
+  validateImageType(control: AbstractControl): ValidationErrors | null {
+    const file = control.value as File;
+    const allowedTypes = ['image/jpeg', 'image/png'];
+
+    if (file && !allowedTypes.includes(file.type)) {
+      return { invalidImageType: true };
+    }
+
+    return null;
   }
 
   createPost() {
