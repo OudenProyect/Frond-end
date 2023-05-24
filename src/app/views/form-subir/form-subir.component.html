@@ -102,7 +102,7 @@
       >
         Se necesita al menos una imagen de portada
       </span>
-      <span *ngIf="formPost.get('imagen')?.errors?.['invalidImageType']"
+      <span class="errorMessage" *ngIf="imgError.length > 0"
         >El formato es incorrecto</span
       >
       <div>
@@ -127,6 +127,7 @@
           type="number"
           id="precio"
           name="precio"
+          min="0"
           required
           formControlName="precio"
         />
@@ -253,7 +254,8 @@
             [className]="
               (formPost.get('m2')?.errors?.['required'] && formPost.get('m2')?.touched ) ? 'error-input ' : ''
             "
-            type="text"
+            type="number"
+            min="0"
             id=""
             class="input-num"
             name="m2"
@@ -271,7 +273,8 @@
             [className]="
               (formPost.get('m2util')?.errors?.['required'] && formPost.get('m2util')?.touched ) ? 'error-input ' : ''
             "
-            type="text"
+            type="number"
+            min="0"
             id="pisos"
             class="input-num"
             formControlName="m2util"

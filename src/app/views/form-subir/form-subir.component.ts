@@ -25,6 +25,7 @@ export class FormSubirComponent implements OnInit {
   imgSrc5 = false;
   imgSrc6 = false;
   types: string[] = [];
+  imgError: string = '';
 
   // @ts-ignore
   formPost: FormGroup;
@@ -45,7 +46,7 @@ export class FormSubirComponent implements OnInit {
   ngOnInit(): void {
     this.formPost = this.build.group({
       empresa: ['1'],
-      imagen: ['', Validators.required, this.validateImageType],
+      imagen: ['', Validators.required],
       titulo: ['', Validators.required],
       precio: ['', Validators.required],
       descripcionPortada: ['', Validators.required],
@@ -108,13 +109,10 @@ export class FormSubirComponent implements OnInit {
             console.log('imgSrc6');
           }
           this.archivos.push(event.target.files[0]);
-
-          // El tipo de archivo es válido
-          console.log('Tipo de archivo válido');
-          // Aquí puedes realizar las acciones necesarias con el archivo
+          console.log(event.target.files[0]);
         } else {
           // Tipo de archivo no válido
-          console.log('Tipo de archivo no válido');
+          this.imgError = 'Tipo de archivo no válido';
           // Aquí puedes mostrar un mensaje de error o realizar otras acciones
         }
 
@@ -124,22 +122,27 @@ export class FormSubirComponent implements OnInit {
     }
   }
 
-  validateImageType(control: AbstractControl): ValidationErrors | null {
-    const file = control.value as File;
-    const allowedTypes = ['image/jpeg', 'image/png'];
+  // validateImageType(control: AbstractControl): ValidationErrors | null {
+  //   const file = control.value as File;
+  //   const allowedTypes = ['image/jpeg', 'image/png'];
 
-    if (file && !allowedTypes.includes(file.type)) {
-      return { invalidImageType: true };
-    }
+  //   if (file && !allowedTypes.includes(file.type)) {
+  //     return { invalidImageType: true };
+  //   }
 
-    return null;
-  }
+  //   return null;
+  // }
 
   createPost() {
     try {
       const formValue = this.formPost.value;
+      console.log(formValue);
+      console.log(this.formPost.valid);
+      console.log(this.formPost);
 
       if (this.formPost.valid) {
+        console.log(this.formPost.valid);
+        console.log(this.formPost.valid);
         if (
           this.formPost.get('Barcelona')?.value ||
           this.formPost.get('Girona')?.value
@@ -147,6 +150,9 @@ export class FormSubirComponent implements OnInit {
           const datos = new FormData();
           if (this.archivos.length > 0) {
             this.archivos.forEach((archivo: any, index: number) => {
+              console.log({
+                añadiendo: 'd',
+              });
               datos.append(`files${index}`, archivo);
             });
 
