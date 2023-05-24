@@ -8,12 +8,8 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./home-details.component.css'],
 })
 export class HomeDetailsComponent implements OnInit {
-  sliderImages = [
-    '/assets/imag/chalet-la-zabaleta-idealista-1658919505.jpg',
-    'assets/imag/chalet-es-camp-de-mar-copia-1658919476.jpg',
-    'assets/imag/luxuryestate-marbella-1658918744.jpeg',
-    'assets/imag/LIVINGKITS_casas-modernas_8_151111.jpg',
-    'assets/imag/LIVINGKITS_casas-modernas_8_151111.jpg',
+  sliderImages:any = [
+    
   ];
   selectedImage!: string;
   currentSlide = 0;
@@ -34,8 +30,12 @@ export class HomeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.post.getPost(this.id).subscribe((e: any) => {
-      console.log((this.publicacion = e));
+      this.publicacion = e;
+      this.publicacion.images.forEach((element: any) => {
+        this.sliderImages.push('http://127.0.0.1:8000/images/'+element.name);
+      });
+      console.log(this.publicacion.images);
+
     });
-    console.log(this.id);
   }
 }

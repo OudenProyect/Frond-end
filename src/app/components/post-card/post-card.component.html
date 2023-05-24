@@ -2,7 +2,7 @@
   <div class="casa" *ngFor="let casa of post; let i = index">
     <div class="portada">
       <img
-        src="{{ 'http://127.0.0.1:8000/images/' + post[i].images[0].name }}"
+        src="{{(post[i].images.length > 0) ? 'http://127.0.0.1:8000/images/'+post[i].images[0].name : 'assets/imag/defect.jpg' }}"
         alt=""
       />
     </div>
@@ -57,8 +57,8 @@
           <button class="btn-icon">
             <img src="assets/svg/delete.png" alt="" />
           </button>
-          <button class="btn-icon">
-            <img src="assets/svg/encanta.svg" alt="" />
+          <button class="btn-icon encanta">
+            <img (click)="meencanta(post[i].id)" src="{{this.encantas.includes(post[i].id) ? 'assets/svg/reaccion.svg': 'assets/svg/encanta.svg'}}" alt="" />
           </button>
         </div>
       </div>

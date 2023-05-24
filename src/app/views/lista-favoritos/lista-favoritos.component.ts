@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaFavoritosComponent implements OnInit {
 
-  constructor() { }
+  favoritos: any[] = [];
+
+  constructor(
+    ) {
+    
+  }
 
   ngOnInit(): void {
+    
   }
 
 }

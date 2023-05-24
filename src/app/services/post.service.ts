@@ -7,6 +7,10 @@ import { Injectable } from '@angular/core';
 export class PostService {
   constructor(private http: HttpClient) {}
 
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
   getTipos() {
     return this.http.get('/type');
   }
@@ -21,5 +25,20 @@ export class PostService {
 
   getPost(id: string) {
     return this.http.get('/publicacion', { params: { id: id } });
+  }
+
+  addFavorite(id: string) {
+    return this.http.post('/api/favorite', { id: id },{
+      headers: {
+        Authorization: 'Bearer ' + this.getToken(),
+      },
+    });
+  }
+  removeFavorite(id: string) {
+    return this.http.post('/api/remFavorite', { id: id },{
+      headers: {
+        Authorization: 'Bearer ' + this.getToken(),
+      },
+    });
   }
 }

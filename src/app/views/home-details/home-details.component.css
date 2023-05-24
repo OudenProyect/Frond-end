@@ -38,6 +38,10 @@
     scroll-behavior: smooth;
 }
 
+.mb{
+    margin-bottom: 200px;
+}
+
 .slider-thumbnails li {
     margin: 0 0.5rem;
     transition: all 0.3s ease;
