@@ -11,6 +11,7 @@ import { Route, Router } from '@angular/router';
 
 import { PostService } from 'src/app/services/post.service';
 import { ReutilizablesService } from 'src/app/services/reutilizables.service';
+import { SesionService } from 'src/app/services/sesion.service';
 
 @Component({
   selector: 'app-form-subir',
@@ -40,7 +41,8 @@ export class FormSubirComponent implements OnInit {
     private build: FormBuilder,
     private post: PostService,
     private route: Router,
-    private reutilizable: ReutilizablesService
+    private reutilizable: ReutilizablesService,
+    private sesion: SesionService
   ) {}
 
   ngOnInit(): void {
@@ -75,6 +77,7 @@ export class FormSubirComponent implements OnInit {
     this.post.getCaracteristicas().subscribe((e: any) => {
       this.caracteristicas = e;
     });
+    console.log(this.sesion.user);
   }
 
   onfile(event: any, num: number) {

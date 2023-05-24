@@ -113,11 +113,11 @@
           >
           <span class="name">{{ sessionService.user.name }}</span>
         </div>
-        <div class="iconEmpresa text-end mx-5">
+        <div class="iconEmpresa text-end mx-5" *ngIf="sessionService.user.cifCompany">
           <figure class="text-center">
-            <figcaption *ngIf="sessionService.user">
+            <figcaption >
               {{
-                sessionService.user.cifCompany.name
+                sessionService.user.cifCompany
                   ? sessionService.user.cifCompany.name
                   : "company"
               }}

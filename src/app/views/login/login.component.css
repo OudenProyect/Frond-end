@@ -9,7 +9,7 @@ label {
 .box-content {
     display: flex;
     width: 100%;
-    height: auto;
+    min-height: 100vh;
 }
 
 .box-content .form {
