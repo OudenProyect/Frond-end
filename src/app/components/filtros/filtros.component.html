@@ -67,7 +67,7 @@
                         <div class="extra-ctn">
                             <div *ngFor="let extra of extras" (click)="selectExtras(extra.id)" [class.selectInputFilter]="listExtras.includes(extra.id)" class="extras-div">
                                 <img src="assets/iconos/{{ extra.name }}.png" alt="" />
-                                <span class="{{ extra.des }}">{{ extra.des }}</span>
+                                <span class="{{ extra.name }}">{{ extra.des }}</span>
                             </div>
                         </div>
                     </div>
