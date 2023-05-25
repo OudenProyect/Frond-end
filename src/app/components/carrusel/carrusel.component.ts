@@ -20,6 +20,7 @@ export class CarruselComponent implements OnInit {
     this.gallery_item_size = this.contenidoReco.nativeElement.querySelector("div").clientWidth;
     this.derecha = this.contenidoReco.nativeElement.querySelector(".btn.next");
     this.izq = this.contenidoReco.nativeElement.querySelector(".btn.prev");
+    
   }
 
   scrollGallery(offset: number): void {

@@ -1,47 +1,33 @@
 <ng-container *ngIf="!sessionService.loading">
-  <nav class="navbar navbar-expand-lg bg-body" *ngIf="sessionService.user">
-    <div class="container-fluid">
-      <a class="navbar-brand">
-        <img routerLink="home" src="assets/imag/logo.png" />
-      </a>
-      <button
-        class="navbar-toggler bb"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarTogglerDemo03"
-        aria-controls="navbarTogglerDemo03"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+    <nav class="navbar navbar-expand-lg bg-body" *ngIf="sessionService.user">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <img routerLink="home" src="assets/imag/logo.png" />
+            </a>
+            <button class="navbar-toggler bb" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <div class="links">
-          <a class="mx-3" routerLink="home">Home</a>
-          <a class="mx-3" routerLink="busquedas/all">households</a>
-          <a class="mx-3" routerLink="subir">Subir</a>
-          <a class="mx-3" routerLink="contact">Contact</a>
-          <a class="mx-3" routerLink="about">About Us</a>
-          <div class="menuAvatar">
-            <a
-              routerLink="perfil"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <div class="circle-container">
-                <img src="assets/imag/cara_5.png" alt="Foto de perfil" />
-              </div>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" routerLink="perfil">Profile</a></li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <a class="dropdown-item" routerLink="lista-favoritos"
-                  >Tus Favoritos</a
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <div class="links">
+                    <a class="mx-3" routerLink="home">Home</a>
+                    <a class="mx-3" routerLink="busquedas/all">Households</a>
+                    <a class="mx-3" routerLink="subir">Up Construction</a>
+                    <a class="mx-3" routerLink="contact">Contact</a>
+                    <a class="mx-3" routerLink="about">About Us</a>
+                    <div class="menuAvatar">
+                        <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="circle-container">
+                                <img src="assets/imag/cara_5.png" alt="Foto de perfil" />
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" routerLink="perfil">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" routerLink="lista-favoritos">Your favourites</a
                 >
               </li>
               <li>
@@ -49,13 +35,12 @@
               </li>
               <li>
                 <a class="dropdown-item" routerLink="">My published ads</a>
-              </li>
-              <li>
-                <hr class="dropdown-divider" />
-              </li>
-              <li>
-                <a class="dropdown-item" (click)="sessionService.logout()"
-                  >Cerrar sesión</a
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                                <a class="dropdown-item" (click)="sessionService.logout()">Log out</a
                 >
               </li>
             </ul>
@@ -70,30 +55,22 @@
       <a class="navbar-brand" routerLink="home">
         <img src="assets/imag/logo.png" />
       </a>
-      <button
-        class="navbar-toggler bb"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarTogglerDemo03"
-        aria-controls="navbarTogglerDemo03"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+                                <button class="navbar-toggler bb" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <div class="links">
-          <a class="mx-3" routerLink="home">Home</a>
-          <a class="mx-3" routerLink="busquedas/all">Households</a>
-          <a class="mx-3" routerLink="contact">Contact</a>
-          <a class="mx-3" routerLink="about">About Us</a>
-          <div class="bottom">
-            <a class="logReg mx-2" routerLink="login">Signup</a>
-            <a class="logReg mx-2" routerLink="register">Register</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+                                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                                    <div class="links">
+                                        <a class="mx-3" routerLink="home">Home</a>
+                                        <a class="mx-3" routerLink="busquedas/all">Households</a>
+                                        <a class="mx-3" routerLink="contact">Contact</a>
+                                        <a class="mx-3" routerLink="about">About Us</a>
+                                        <div class="bottom">
+                                            <a class="logReg mx-2" routerLink="login">Signup</a>
+                                            <a class="logReg mx-2" routerLink="register">Register</a>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+    </nav>
 </ng-container>

@@ -5,17 +5,20 @@
     text-align: center;
     font-weight: bolder;
 }
+
 .contenedor {
-  position: relative;
-  display: inline-block;
-  border-radius: 10px;
-  border: 2px solid  #ccc;
-  text-align: center; /* Agrega esta propiedad para centrar el span */
-  margin: 0 auto; /* Centrar el contenedor horizontalmente */
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    text-align: center;
+    /* Agrega esta propiedad para centrar el span */
+    margin: 0 auto;
+    /* Centrar el contenedor horizontalmente */
 }
 
 .capa {
-  position: absolute;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -29,28 +32,35 @@
 }
 
 .capa:hover {
-  opacity: 0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  border: 2px solid #ccc;
-  padding: 20px;
+    opacity: 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    padding: 20px;
 }
-img{
-  width: 100%;
-  border-radius: 10px;
 
+img {
+    width: 100%;
+    border-radius: 10px;
 }
-span{
-  position: absolute;
-  top: 50%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 50px;
-  font-weight: bolder;
-  color: white;
-  text-shadow: 
-    3px 2px 0 #000,
-    2px 3px 0 #000,
-    4px 2px 0 #000,
-    4px 3px 0 #000
+
+span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-weight: bolder;
+    color: white;
+    text-shadow: 3px 2px 0 #000, 2px 3px 0 #000, 4px 2px 0 #000, 4px 3px 0 #000
+}
+
+.contSubir {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.contSubir a {
+    /* margin: 3px; */
 }

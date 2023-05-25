@@ -1,161 +1,82 @@
 <div>
-  <button class="btn bg-body-tertiary btnFilter" (click)="filterB()">
+    <button class="btn bg-body-tertiary btnFilter" (click)="filterB()">
     <fa-icon [icon]="filtros"> </fa-icon>
-    <span class="ps-2">Filtros</span>
+    <span class="ps-2">Filters</span>
   </button>
-  <div id="filtro" class="showFilter" *ngIf="btnFiltros">
-    <div class="boxFilter">
-      <div class="d-flex justify-content-between">
-        <h2>Filtros</h2>
-        <button class="border border-0 bg-transparent" (click)="filterB()">
+    <div id="filtro" class="showFilter" *ngIf="btnFiltros">
+        <div class="boxFilter">
+            <div class="d-flex justify-content-between">
+                <h2>Filters</h2>
+                <button class="border border-0 bg-transparent" (click)="filterB()">
           <fa-icon class="icon" [icon]="close"> </fa-icon>
         </button>
-      </div>
-      <div class="form">
-        <div>
-          <label class="titles" for="type">Type of contruccion</label>
-          <app-select
-            [value]="type"
-            [options]="['Piso', 'Apartamento', 'Vivienda']"
-            (change)="selectOptionFilter($event)"
-          ></app-select>
+            </div>
+            <div class="form">
+                <div>
+                    <label class="titles" for="type">Type of contruccion</label>
+                    <app-select [value]="type" [options]="['Flat', 'Apartment', 'Dwelling']" (change)="selectOptionFilter($event)"></app-select>
+                </div>
+                <div class="bedrss">
+                    <span class="titles">bedrooms</span>
+                    <div class="viewInput habit">
+                        <input readonly name="hab" [class.selectInputFilter]="habSel == 0" (click)="selectHabOrBath($event)" value="All" />
+                        <input readonly name="hab" [class.selectInputFilter]="habSel == 1" value="+1" (click)="selectHabOrBath($event)" />
+                        <input readonly name="hab" [class.selectInputFilter]="habSel == 2" value="+2" (click)="selectHabOrBath($event)" />
+                        <input readonly name="hab" value="+3" [class.selectInputFilter]="habSel == 3" (click)="selectHabOrBath($event)" />
+                        <input readonly name="hab" value="+4" [class.selectInputFilter]="habSel == 4" (click)="selectHabOrBath($event)" />
+                    </div>
+                </div>
+                <div class="baths">
+                    <span class="titles">Nº Bathrooms</span>
+                    <div>
+                        <div class="viewInput bath">
+                            <input readonly name="bath" [class.selectInputFilter]="bathSel == 0" (click)="selectHabOrBath($event)" value="All" />
+                            <input readonly name="bath" [class.selectInputFilter]="bathSel == 1" value="+1" (click)="selectHabOrBath($event)" />
+                            <input readonly name="bath" value="+2" [class.selectInputFilter]="bathSel == 2" (click)="selectHabOrBath($event)" />
+                            <input readonly name="bath" value="+3" [class.selectInputFilter]="bathSel == 3" (click)="selectHabOrBath($event)" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="titles">Prices</span>
+                    <div class="box-prices">
+                        <div class="price1">
+                            <label class="titles" for="type">Minimun</label>
+                            <app-select [value]="priceMin" [options]="rangePrice" (change)="selectPricemin($event)"></app-select>
+                        </div>
+                        <div class="price2">
+                            <label class="titles" for="type">Maximum</label>
+                            <app-select [value]="priceMax" [options]="rangePrice" (change)="selectPricemax($event)"></app-select>
+                        </div>
+                    </div>
+                    <div class="surface"><br>
+                        <span class="titles">Surface</span>
+                        <div class="box-prices">
+                            <div>
+                                <span class="titles" for="price">Minimun</span>
+                                <app-select [value]="surfaceMin" [options]="rangeSurface" (change)="selectSurfaceMin($event)"></app-select>
+                            </div>
+                            <div>
+                                <span class="titles" for="price">Maximum</span>
+                                <app-select [value]="surfaceMax" [options]="rangeSurface" (change)="selectSurfaceMax($event)"></app-select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="extras"><br>
+                        <span class="titles">Extras</span>
+                        <div class="extra-ctn">
+                            <div *ngFor="let extra of extras" (click)="selectExtras(extra.id)" [class.selectInputFilter]="listExtras.includes(extra.id)" class="extras-div">
+                                <img src="assets/iconos/{{ extra.name }}.png" alt="" />
+                                <span class="{{ extra.des }}">{{ extra.des }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="btnFoot">
+                <button (click)="applyFilter()" class="btn-general">Apply</button>
+                <button class="btn-general">Clear</button>
+            </footer>
         </div>
-        <div class="bedrss">
-          <span class="titles">bedrooms</span>
-          <div class="viewInput habit">
-            <input
-              readonly
-              name="hab"
-              [class.selectInputFilter]="habSel == 0"
-              (click)="selectHabOrBath($event)"
-              value="All"
-            />
-            <input
-              readonly
-              name="hab"
-              [class.selectInputFilter]="habSel == 1"
-              value="+1"
-              (click)="selectHabOrBath($event)"
-            />
-            <input
-              readonly
-              name="hab"
-              [class.selectInputFilter]="habSel == 2"
-              value="+2"
-              (click)="selectHabOrBath($event)"
-            />
-            <input
-              readonly
-              name="hab"
-              value="+3"
-              [class.selectInputFilter]="habSel == 3"
-              (click)="selectHabOrBath($event)"
-            />
-            <input
-              readonly
-              name="hab"
-              value="+4"
-              [class.selectInputFilter]="habSel == 4"
-              (click)="selectHabOrBath($event)"
-            />
-          </div>
-        </div>
-        <div class="baths">
-          <span class="titles">Nº bathrooms</span>
-          <div>
-            <div class="viewInput bath">
-              <input
-                readonly
-                name="bath"
-                [class.selectInputFilter]="bathSel == 0"
-                (click)="selectHabOrBath($event)"
-                value="All"
-              />
-              <input
-                readonly
-                name="bath"
-                [class.selectInputFilter]="bathSel == 1"
-                value="+1"
-                (click)="selectHabOrBath($event)"
-              />
-              <input
-                readonly
-                name="bath"
-                value="+2"
-                [class.selectInputFilter]="bathSel == 2"
-                (click)="selectHabOrBath($event)"
-              />
-              <input
-                readonly
-                name="bath"
-                value="+3"
-                [class.selectInputFilter]="bathSel == 3"
-                (click)="selectHabOrBath($event)"
-              />
-            </div>
-          </div>
-        </div>
-        <div>
-          <span class="titles">Prices</span>
-          <div class="box-prices">
-            <div class="price1">
-              <label class="titles" for="type">Minimo</label>
-              <app-select
-                [value]="priceMin"
-                [options]="rangePrice"
-                (change)="selectPricemin($event)"
-              ></app-select>
-            </div>
-            <div class="price2">
-              <label class="titles" for="type">Minimo</label>
-              <app-select
-                [value]="priceMax"
-                [options]="rangePrice"
-                (change)="selectPricemax($event)"
-              ></app-select>
-            </div>
-          </div>
-          <div class="surface">
-            <span class="titles">Surface</span>
-            <div class="box-prices">
-              <div>
-                <span class="titles" for="price">Minimun</span>
-                <app-select
-                  [value]="surfaceMin"
-                  [options]="rangeSurface"
-                  (change)="selectSurfaceMin($event)"
-                ></app-select>
-              </div>
-              <div>
-                <span class="titles" for="price">Maximum</span>
-                <app-select
-                  [value]="surfaceMax"
-                  [options]="rangeSurface"
-                  (change)="selectSurfaceMax($event)"
-                ></app-select>
-              </div>
-            </div>
-          </div>
-          <div class="extras">
-            <span class="titles">Extras</span>
-            <div class="extra-ctn">
-              <div
-                *ngFor="let extra of extras"
-                (click)="selectExtras(extra.id)"
-                [class.selectInputFilter]="listExtras.includes(extra.id)"
-                class="extras-div"
-              >
-                <img src="assets/iconos/{{ extra.name }}.png" alt="" />
-                <span class="{{ extra.name }}">{{ extra.name }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer class="btnFoot">
-        <button (click)="applyFilter()" class="btn-general">Apply</button>
-        <button class="btn-general">Clear</button>
-      </footer>
     </div>
-  </div>
 </div>
