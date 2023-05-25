@@ -37,30 +37,37 @@ export class FiltrosComponent implements OnInit {
     {
       id: 1,
       name: 'parking',
+      des: 'Parking'
     },
     {
       id: 2,
       name: 'balcon',
+      des: 'Balcony'
     },
     {
       id: 3,
       name: 'piscina',
+      des: 'Swimming pool'
     },
     {
       id: 4,
-      name: 'chimenea',
+      name: 'terraza',
+      des: 'Fireplace'
     },
     {
       id: 5,
       name: 'trastero',
+      des: 'Storage room'
     },
     {
       id: 6,
       name: 'jardin',
+      des: 'Garden'
     },
     {
       id: 7,
       name: 'calentador',
+      des: 'Heater'
     },
   ];
 

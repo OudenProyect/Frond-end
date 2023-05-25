@@ -8,9 +8,7 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./home-details.component.css'],
 })
 export class HomeDetailsComponent implements OnInit {
-  sliderImages:any = [
-    
-  ];
+  sliderImages: any = [];
   selectedImage!: string;
   currentSlide = 0;
   publicacion: any;
@@ -32,10 +30,9 @@ export class HomeDetailsComponent implements OnInit {
     this.post.getPost(this.id).subscribe((e: any) => {
       this.publicacion = e;
       this.publicacion.images.forEach((element: any) => {
-        this.sliderImages.push('http://127.0.0.1:8000/images/'+element.name);
+        this.sliderImages.push('http://127.0.0.1:8000/images/' + element.name);
       });
       console.log(this.publicacion.images);
-
     });
   }
 }

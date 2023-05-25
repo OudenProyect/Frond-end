@@ -22,10 +22,11 @@ export class ListaFavoritosComponent implements OnInit {
     // });
     this.posst.getFavorites().subscribe((e: any) => {
       this.publicaciones = e;
-      e.forEach((el: any) => {
-        this.encanta.push(el.id);
-      });
-      console.log(this.publicaciones);
+      if (e != 'No hay favoritos') {
+        e.forEach((el: any) => {
+          this.encanta.push(el.id);
+        });
+      }
     });
     console.log(this.encanta);
   }

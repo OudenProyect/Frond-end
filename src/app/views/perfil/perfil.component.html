@@ -1,7 +1,7 @@
 <div id="header"></div>
 <dialog #dialog class="z-2 formContraseña">
   <form action="" class="position-relative" method="dialog">
-    <h2 class="text-center">Cambiar contraseña</h2>
+    <h2 class="text-center">Change password</h2>
     <button class="position-absolute cerrarD">
       <i class="fa fa-close"></i>
     </button>
@@ -19,7 +19,7 @@
           aria-describedby="oldPWD"
           id="oldPassword"
           formControlName="oldPassword"
-          placeholder="Contraseña Actual"
+          placeholder="Current Password"
           name="oldPassword"
         />
       </div>
@@ -33,7 +33,7 @@
           aria-describedby="newPassword"
           id="newPassword"
           formControlName="newPassword"
-          placeholder=" Nueva contraseña "
+          placeholder=" New password"
           name="newPassword"
         />
       </div>
@@ -47,17 +47,15 @@
           aria-describedby="confirmPassword"
           id="confirmPassword"
           formControlName="confirmPassword"
-          placeholder=" Confirmar nueva contraseña "
+          placeholder=" Confirm new password "
           name="confirmPassword"
         />
       </div>
-      <button type="submit" class="guardarCont">
-        Guardar nueva contraseña
-      </button>
+      <button type="submit" class="guardarCont">Save new password</button>
     </form>
-    <div id="messGuardado" *ngIf="guardadoContra">Contaseña guardada</div>
+    <div id="messGuardado" *ngIf="guardadoContra">Password saved</div>
     <div id="messNoGuardado" *ngIf="noGuardadoContra">
-      Las contraseñas no coinciden
+      Passwords do not match
     </div>
   </div>
 </dialog>
@@ -94,35 +92,35 @@
 </dialog>
 <ng-container *ngIf="!sessionService.loading">
   <div id="perfil" class="m-5">
-    <h1 class="text-center m-5"><b>Tu perfil</b></h1>
-    <div id="bordes" class="info-user" *ngIf="sessionService">
+    <h1 class="text-center m-5"><b>Your Profile</b></h1>
+    <div id="bordes" class="info-user" *ngIf="sessionService.user">
       <div class="contHeadtUser align-items-center">
         <figure (click)="opDialog2()" class="verImage">
-          <img
-            class="avatar mx-4"
-            src="assets/imag/cara_5.png"
-            alt="avatar usuario"
-          />
+          <img class="avatar mx-4" src="assets/imag/cara_5.png" alt="avatar" />
           <figcaption class="iditFoto"><i class="fa fa-camera"></i></figcaption>
         </figure>
         <div id="username">
           <span class="d-block nickname"
             >@{{
-              sessionService.user.name ? sessionService.user.name : "nickname"
+              sessionService.user.nickname
+                ? sessionService.user.nickname
+                : "nickname"
             }}</span
           >
           <span class="name">{{ sessionService.user.name }}</span>
         </div>
-        <div class="iconEmpresa text-end mx-5" *ngIf="sessionService.user.cifCompany">
+        <div class="iconEmpresa text-end mx-5">
           <figure class="text-center">
-            <figcaption >
+            <figcaption *ngIf="sessionService.user">
               {{
-                sessionService.user.cifCompany
-                  ? sessionService.user.cifCompany.name
+                sessionService.user.company
+                  ? sessionService.user.company
                   : "company"
               }}
             </figcaption>
-            <img src="/assets/imag/down-apple.png" />
+            <img
+              src="https://www.logotiposenlima.com/wp-content/uploads/2018/03/COSAPI-logotipo.jpg"
+            />
           </figure>
         </div>
       </div>
@@ -168,7 +166,7 @@
                   type="text"
                   [ngStyle]="ajustar2"
                   name="name"
-                  placeholder="Nombre completo"
+                  placeholder="Full name"
                   [(ngModel)]="sessionService.user.name"
                 />
                 <span (click)="opbnt2()" btn-id="bnt1"
@@ -212,7 +210,7 @@
                   type="text"
                   name="editPWD"
                   [ngStyle]="ajustar4"
-                  placeholder="Contraseña"
+                  placeholder="Password"
                 />
                 <span (click)="opDialog()"><i class="fa fa-pencil"></i></span>
               </div>
@@ -226,7 +224,7 @@
                   type="text"
                   [ngStyle]="ajustar5"
                   name="phone"
-                  placeholder="Telefono"
+                  placeholder="Telephone"
                   [(ngModel)]="sessionService.user.phone"
                 />
                 <span (click)="opbnt5()" btn-id="bnt1"
@@ -253,18 +251,16 @@
                 class="btn elimiCuenta justify-content-start"
                 (click)="mostrarModal()"
               >
-                <i class="fa fa-trash"></i> Eliminar Cuenta
+                <i class="fa fa-trash"></i> Delete Account
               </button>
             </div>
 
-            <div id="messGuardado" *ngIf="guardado">Guardado</div>
-            <div id="messNoGuardado" *ngIf="noGuardado">
-              Error en el guardado
-            </div>
+            <div id="messGuardado" *ngIf="guardado">Saved</div>
+            <div id="messNoGuardado" *ngIf="noGuardado">Error in saving</div>
           </div>
 
           <div class="contacUser" id="bordes">
-            <h4 class="text-center">Contactos recientes</h4>
+            <h4 class="text-center">Recent contacts</h4>
             <table class="table mt-4">
               <thead>
                 <tr>
@@ -310,42 +306,48 @@
           </div>
         </div>
         <div id="bordes" class="confUser">
-          <h3 class="text-center"><i class="fa fa-cog"></i> Ajustes</h3>
+          <h3 class="text-center"><i class="fa fa-cog"></i> Settings</h3>
           <div class="w-75 m-auto mt-5">
             <div class="">
-              <label for="noved"><b>Novedades y recomendaciones</b></label
+              <label for="noved"><b>News and recommendations</b></label
               ><input
                 class="form-check-input"
                 type="checkbox"
                 id="noved"
                 name="noved"
               />
-              <p>Te mantendremos al día de las novedades del portal</p>
+              <p>
+                We will keep you up to date with the latest news from the
+                portal.
+              </p>
             </div>
             <div>
-              <label for="noti"><b>Activar notificaciones</b></label>
+              <label for="noti"><b>Activate notifications</b></label>
               <input
                 class="form-check-input"
                 type="checkbox"
                 id="noti"
                 name="noti"
+                checked
               />
-              <p>Te informamos de cada nueva publicación</p>
+              <p>We inform you of each new publication</p>
             </div>
             <div>
-              <label for="ofer"><b> Ofertas y promociones</b></label
+              <label for="ofer"><b> Offers and promotions</b></label
               ><input
                 type="checkbox"
+                checked
                 class="form-check-input"
                 id="ofer"
                 name="ofer"
               />
               <p>
-                Información de inmobiliarias o promotoras que ofrecen inmuebles
+                Information on real estate agencies or property developers
+                offering properties
               </p>
             </div>
             <div>
-              <label for="ofer"><b> Ofertas y promociones</b></label
+              <label for="ofer"><b> Do not display advertising</b></label
               ><input
                 type="checkbox"
                 class="form-check-input"
@@ -353,7 +355,8 @@
                 name="ofer"
               />
               <p>
-                Información de inmobiliarias o promotoras que ofrecen inmuebles
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Cupiditate veniam sint, officia corrupti iusto
               </p>
             </div>
           </div>
@@ -362,13 +365,13 @@
     </div>
   </div>
   <div id="confirmation-modal" *ngIf="mostrarModalFlag">
-    <p>¿Seguro que deseas eliminar esta cuenta?</p>
+    <p>¿Are you sure you want to delete this account?</p>
     <button
       class="editAvatar border-0 p-2 w-25"
       style="border-radius: 10px"
       (click)="eliminarCuenta()"
     >
-      <span>Sí</span>
+      <span>Yes</span>
     </button>
     <button
       class="editAvatarCancel border-0 p-2 w-25"
@@ -379,7 +382,8 @@
     </button>
   </div>
   <div id="recomendados">
-    <h1 class="text-center m-2"><b>Recomendados para ti</b></h1>
+    <h1 class="text-center m-2"><b>Recommended for you</b></h1>
+    <br />
     <app-carrusel></app-carrusel>
   </div>
 </ng-container>

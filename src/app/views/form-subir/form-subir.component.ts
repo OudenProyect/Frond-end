@@ -125,17 +125,6 @@ export class FormSubirComponent implements OnInit {
     }
   }
 
-  // validateImageType(control: AbstractControl): ValidationErrors | null {
-  //   const file = control.value as File;
-  //   const allowedTypes = ['image/jpeg', 'image/png'];
-
-  //   if (file && !allowedTypes.includes(file.type)) {
-  //     return { invalidImageType: true };
-  //   }
-
-  //   return null;
-  // }
-
   createPost() {
     try {
       const formValue = this.formPost.value;

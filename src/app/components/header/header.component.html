@@ -19,17 +19,12 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <div class="links">
           <a class="mx-3" routerLink="home">Home</a>
-          <a class="mx-3" routerLink="busquedas/all">households</a>
-          <a class="mx-3" routerLink="subir">Subir</a>
+          <a class="mx-3" routerLink="busquedas/all">Households</a>
+          <a class="mx-3" routerLink="subir">Up Construction</a>
           <a class="mx-3" routerLink="contact">Contact</a>
           <a class="mx-3" routerLink="about">About Us</a>
           <div class="menuAvatar">
-            <a
-              routerLink="perfil"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
+            <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <div class="circle-container">
                 <img src="assets/imag/cara_5.png" alt="Foto de perfil" />
               </div>
@@ -41,7 +36,7 @@
               </li>
               <li>
                 <a class="dropdown-item" routerLink="lista-favoritos"
-                  >Tus Favoritos</a
+                  >Your favourites</a
                 >
               </li>
               <li>
@@ -55,7 +50,7 @@
               </li>
               <li>
                 <a class="dropdown-item" (click)="sessionService.logout()"
-                  >Cerrar sesión</a
+                  >Log out</a
                 >
               </li>
             </ul>

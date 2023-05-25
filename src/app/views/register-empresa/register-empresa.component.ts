@@ -9,6 +9,7 @@ import { SesionService } from 'src/app/services/sesion.service';
   templateUrl: './register-empresa.component.html',
   styleUrls: ['./register-empresa.component.css'],
 })
+
 export class RegisterEmpresaComponent implements OnInit {
   errormg = '';
   user = faUser;
@@ -26,62 +27,58 @@ export class RegisterEmpresaComponent implements OnInit {
   ngOnInit(): void {
     this.formLogin = this.formGroup.group({
       nombreEmpresa: ['', [Validators.required]],
-      cifEmpresa: ['', [Validators.required]],
+      cifEmpresa: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       usuario: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: [
-        '',
+        '', 
         [
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(10),
         ],
       ],
-      linkPagina: [''],
-      localizacionEmpresa: [''],
+      phone: [
+        '', 
+        [
+          Validators.required,
+          Validators.minLength(9),
+          Validators.maxLength(9),
+        ],
+      ],
+      linkPagina: ['', [Validators.required], , Validators.pattern('^(http|https)://[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*(/[a-zA-Z0-9]*)*$')],
+      localizacionEmpresa: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
     });
   }
 
   submitLogin() {
     if (this.formLogin.valid) {
-      const empresa = {
-        nombreEmpresa: this.formLogin.get('nombreEmpresa')?.value,
-        cifEmpresa: this.formLogin.get('cifEmpresa')?.value,
-        usuario: this.formLogin.get('usuario')?.value,
-        email: this.formLogin.get('email')?.value,
-        password: this.formLogin.get('password')?.value,
-        linkPagina: this.formLogin.get('linkPagina')?.value,
-        localizacionEmpresa: this.formLogin.get('localizacionEmpresa')?.value,
-        descripcion: this.formLogin.get('descripcion')?.value,
-      };
-      // falta back
-
-      // this.sesion.register(empresa).subscribe(
-      //   (res) => {
-      //     console.log({ res });
-      //     this.sesion
-      //       .login({
-      //         email: this.formLogin.get('email')?.value,
-      //         password: this.formLogin.get('password')?.value,
-      //       })
-      //       .subscribe(
-      //         (res: any) => {
-      //           this.sesion.saveToken(res.token);
-      //           this.sesion.getUser().subscribe(() => {
-      //             this.router.navigate(['perfil']);
-      //           });
-      //         },
-      //         (err) => {
-      //           console.log({ err });
-      //         }
-      //       );
-      //   },
-      //   (err) => {
-      //     this.errormg = err.error;
-      //   }
-      // );
-      console.log('valido');
+      console.log(this.formLogin);
+      this.sesion.registerCompany(this.formLogin.value).subscribe(
+        (res) => {
+          console.log({ res });
+          this.sesion
+            .login({
+              email: this.formLogin.get('email')?.value,
+              password: this.formLogin.get('password')?.value,
+            })
+            .subscribe(
+              (res: any) => {
+                this.sesion.saveToken(res.token);
+                this.sesion.getUser().subscribe(() => {
+                  this.router.navigate(['perfil']);
+                });
+              },
+              (err) => {
+                console.log({ err });
+              }
+            );
+        },
+        (err) => {
+          this.errormg = err.error;
+        }
+      );
     } else {
       console.log(this.formLogin);
       this.formLogin.markAllAsTouched();

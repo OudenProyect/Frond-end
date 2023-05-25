@@ -1,5 +1,5 @@
 <div class="main">
-  <div class="casas">
+  <div class="casas" *ngIf="publicaciones != 'No hay favoritos'">
     <div class="casa" *ngFor="let post of publicaciones">
       <div class="portada">
         <img
@@ -79,7 +79,7 @@
     </div>
   </div>
 
-  <span *ngIf="publicaciones.length == 0">
+  <span *ngIf="publicaciones == 'No hay favoritos'">
     {{ "No hay publicaciones favoritas" }}
   </span>
 </div>

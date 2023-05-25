@@ -130,8 +130,13 @@
             </div>
           </div>
           <h5 class="m-3 text-secondary">Extras de la Vivienda</h5>
-          <span *ngIf="publicacion.house.feature.length == 0" >No hay mas detalles extras </span>
-          <div *ngIf="publicacion.house.feature.length > 0" class="cont_Caracteris mt-3">
+          <span *ngIf="publicacion.house.feature.length == 0"
+            >No hay mas detalles extras
+          </span>
+          <div
+            *ngIf="publicacion.house.feature.length > 0"
+            class="cont_Caracteris mt-3"
+          >
             <div
               class="d-flex caj-catris"
               *ngFor="let extra of publicacion.house.feature"

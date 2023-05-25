@@ -110,8 +110,9 @@ label {
     width: 100%;
     flex-wrap: wrap;
 }
-
+textarea,
 input[type="text"],
+input[type="tel"],
 input[type="password"],
 input[type="email"] {
     border: 1.5px solid gray;
