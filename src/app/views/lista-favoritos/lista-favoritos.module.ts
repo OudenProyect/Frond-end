@@ -1,22 +1,17 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListaFavoritosComponent } from './lista-favoritos.component';
 import { RouterModule, Routes } from '@angular/router';
-
+import { SesionService } from 'src/app/services/sesion.service';
 
 const routes: Routes = [
   {
-    path:"",
-    component: ListaFavoritosComponent
-  }
-
-]
+    path: '',
+    component: ListaFavoritosComponent,
+  },
+];
 @NgModule({
-  declarations: [
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ]
+  declarations: [ListaFavoritosComponent],
+  imports: [CommonModule, RouterModule.forChild(routes)],
 })
-export class ListaFavoritosModule { }
+export class ListaFavoritosModule {}

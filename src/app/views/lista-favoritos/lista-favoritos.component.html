@@ -1,1 +1,85 @@
-<app-post-card *ngIf="favoritos" [post]="favoritos"></app-post-card>
+<div class="main">
+  <div class="casas">
+    <div class="casa" *ngFor="let post of publicaciones">
+      <div class="portada">
+        <img
+          src="{{
+            post.images.length > 0
+              ? 'http://127.0.0.1:8000/images/' + post.images[0].name
+              : 'assets/imag/defect.jpg'
+          }}"
+          alt=""
+        />
+      </div>
+      <div class="descripcion">
+        <div>
+          <a href="detailsHome/{{ post.id }}">
+            {{ post.house.type }}
+            <span>{{ post.title }}</span>
+          </a>
+          <span class="precio">{{ post.house.price }}€</span>
+          <div class="contentUbicacion">
+            <span class="bold" *ngFor="let res of post.house.areaServices">{{
+              res.name
+            }}</span>
+          </div>
+          <div class="d-flex gap-3 caracter-casa iconos">
+            <div class="info-casaMin">
+              <img src="assets/svg/cama (1).png" class="icon" alt="..." />
+              <span>{{ post.house.nBedrooms }} Hab</span>
+            </div>
+            <div class="info-casaMin">
+              <img src="assets/svg/ducha.png" class="icon" alt="..." /><span
+                >{{ post.house.toilets }} Baños</span
+              >
+            </div>
+            <div class="info-casaMin">
+              <img src="assets/svg/zona.png" class="icon" alt="..." /><span
+                >{{
+                  post.house.buildedSurface
+                    ? post.house.buildedSurface
+                    : post.house.BuildedSurface
+                }}
+                m²</span
+              >
+            </div>
+          </div>
+          <p>
+            {{ post.description }}
+          </p>
+        </div>
+        <div
+          class="lastSection d-flex justify-content-between align-items-center gap-2"
+        >
+          <div class="links d-flex gap-3 flex-wrap">
+            <a class="btn-general ml-0 d-block">Contactar</a>
+            <a class="link-btn" href="">
+              <img class="icon-xs" src="assets/svg/telefono.svg" alt="" />
+              <span>{{ post.idCompany.phone }}</span>
+            </a>
+          </div>
+          <div class="btns d-flex gap-2">
+            <button class="btn-icon">
+              <img src="assets/svg/delete.png" alt="" />
+            </button>
+            <button class="btn-icon encanta">
+              <img
+                (click)="meencanta(post.id)"
+                src="{{
+                  encanta.includes(post.id)
+                    ? 'assets/svg/reaccion.svg'
+                    : 'assets/svg/encanta.svg'
+                }}"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span *ngIf="publicaciones.length == 0">
+    {{ "No hay publicaciones favoritas" }}
+  </span>
+</div>

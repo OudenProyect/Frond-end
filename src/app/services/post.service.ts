@@ -28,14 +28,30 @@ export class PostService {
   }
 
   addFavorite(id: string) {
-    return this.http.post('/api/favorite', { id: id },{
-      headers: {
-        Authorization: 'Bearer ' + this.getToken(),
-      },
-    });
+    return this.http.post(
+      '/api/favorite',
+      { id: id },
+      {
+        headers: {
+          Authorization: 'Bearer ' + this.getToken(),
+        },
+      }
+    );
   }
   removeFavorite(id: string) {
-    return this.http.post('/api/remFavorite', { id: id },{
+    return this.http.post(
+      '/api/remFavorite',
+      { id: id },
+      {
+        headers: {
+          Authorization: 'Bearer ' + this.getToken(),
+        },
+      }
+    );
+  }
+
+  getFavorites() {
+    return this.http.get('/api/favorites', {
       headers: {
         Authorization: 'Bearer ' + this.getToken(),
       },
