@@ -111,19 +111,38 @@ export class PerfilComponent implements OnInit {
   ajustar5 = {
     'width.%': '80',
   };
+  ajustar6 = {
+    'width.%': '80',
+  };
+  ajustar7 = {
+    'width.%': '80',
+  };
+  ajustar8 = {
+    'width.%': '100',
+    'height.px': '200',
+  };
   // @Input('pp') public text:string ="";
   showDiv = false;
   showDiv2 = false;
   showDiv3 = false;
   showDiv5 = false;
+  showDiv6 = false;
+  showDiv7 = false;
+  showDiv8 = false;
   noPincel = true;
   noPincel2 = true;
   noPincel3 = true;
   noPincel5 = true;
+  noPincel6 = true;
+  noPincel7 = true;
+  noPincel8 = true;
   isDisabled = true;
   isDisabled2 = true;
   isDisabled3 = true;
   isDisabled4 = true;
+  isDisabled6 = true;
+  isDisabled7 = true;
+  isDisabled8 = true;
 
   opbnt() {
     this.showDiv = !this.showDiv;
@@ -166,11 +185,48 @@ export class PerfilComponent implements OnInit {
     this.ajustar5['width.%'] = '70';
     this.isDisabled4 = false;
   }
+
   cancel5() {
     this.noPincel5 = !this.noPincel5;
     this.showDiv5 = !this.showDiv5;
     this.ajustar5['width.%'] = '80';
     this.isDisabled4 = true;
+  }
+  opbnt6() {
+    this.showDiv6 = !this.showDiv6;
+    this.noPincel6 = !this.noPincel6;
+    this.ajustar6['width.%'] = '70';
+    this.isDisabled6 = false;
+  }
+  cancel6() {
+    this.noPincel5 = !this.noPincel6;
+    this.showDiv6 = !this.showDiv6;
+    this.ajustar6['width.%'] = '80';
+    this.isDisabled6 = true;
+  }
+  opbnt7() {
+    this.showDiv7 = !this.showDiv7;
+    this.noPincel7 = !this.noPincel7;
+    this.ajustar7['width.%'] = '70';
+    this.isDisabled7 = false;
+  }
+  cancel7() {
+    this.noPincel7 = !this.noPincel7;
+    this.showDiv7 = !this.showDiv7;
+    this.ajustar7['width.%'] = '80';
+    this.isDisabled7 = true;
+  }
+  opbnt8() {
+    this.showDiv8 = !this.showDiv8;
+    this.noPincel8 = !this.noPincel8;
+    this.ajustar8['width.%'] = '100';
+    this.isDisabled8 = false;
+  }
+  cancel8() {
+    this.noPincel8 = !this.noPincel8;
+    this.showDiv8 = !this.showDiv8;
+    this.ajustar8['width.%'] = '100';
+    this.isDisabled8 = true;
   }
   opDialog() {
     this.dialog.nativeElement.showModal();
@@ -214,6 +270,9 @@ export class PerfilComponent implements OnInit {
             this.guardado = true;
           } else if(this.showDiv) {
             this.cancel();
+            this.guardado = true;
+          }else if(this.showDiv6) {
+            this.cancel6();
             this.guardado = true;
           }else {
             this.cancel5();

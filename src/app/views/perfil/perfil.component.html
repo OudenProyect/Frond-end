@@ -64,9 +64,9 @@
                     <span class="d-block nickname">@{{ sessionService.user.nickname ? sessionService.user.nickname : "nickname"}}</span>
                     <span class="name">{{ sessionService.user.name }}</span>
                 </div>
-                <div class="iconEmpresa text-end mx-5">
+                <div *ngIf="sessionService.user.cifCompany" class="iconEmpresa text-end mx-5">
                     <figure class="text-center">
-                        <figcaption *ngIf="sessionService.user">{{ sessionService.user.company ? sessionService.user.company : "company"}}</figcaption>
+                        <figcaption *ngIf="sessionService.user.cifCompany">{{ sessionService.user.cifCompany ? sessionService.user.cifCompany.name : "company"}}</figcaption>
                         <img src="/assets/imag/down-apple.png">
                     </figure>
                 </div>
@@ -125,11 +125,42 @@
                                 <input [disabled]="isDisabled4" type="text" [ngStyle]="ajustar5" name="phone" placeholder="Telefono" [(ngModel)]="sessionService.user.phone" />
                                 <span (click)="opbnt5()" btn-id="bnt1"><i *ngIf="noPincel5" class="fa fa-pencil"></i></span>
                                 <span *ngIf="showDiv5">
-                  <span (click)="guardar('phone', sessionService.user.phone)" id="guardar" class="bnt-ocult"><button>
-                      <i class="fa fa-save"></i>
-                    </button>
-                  </span>
+                                <span (click)="guardar('phone', sessionService.user.phone)" id="guardar" class="bnt-ocult"><button>
+                                    <i class="fa fa-save"></i>
+                                    </button>
+                                </span>
                                 <span (click)="cancel5()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                                </span>
+                            </div>
+                        </form>
+
+                        <form *ngIf="sessionService.user.cifCompany" class="editTlf" action="" method="get">
+                            <div class="borderInput">
+                                <i class="fa fa-building"></i>
+                                <input [disabled]="isDisabled6" type="text" [ngStyle]="ajustar6" name="company" placeholder="Company name" [(ngModel)]="sessionService.user.cifCompany.name" />
+                                <span (click)="opbnt6()" btn-id="bnt1"><i *ngIf="noPincel6" class="fa fa-pencil"></i></span>
+                                <span *ngIf="showDiv6">
+                                <span (click)="guardar('company', sessionService.user.cifCompany.name)" id="guardar" class="bnt-ocult"><button>
+                                    <i class="fa fa-save"></i>
+                                    </button>
+                                </span>
+                                <span (click)="cancel6()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                                </span>
+                            </div>
+                        </form>
+
+
+                        <form *ngIf="sessionService.user.cifCompany" class="editTlf" action="" method="get">
+                            <div class="borderInput">
+                                <i class="fa fa-link"></i>
+                                <input [disabled]="isDisabled7" type="text" [ngStyle]="ajustar7" name="linkWeb" placeholder="linkWeb" [(ngModel)]="sessionService.user.cifCompany.linkWeb" />
+                                <span (click)="opbnt7()" btn-id="bnt1"><i *ngIf="noPincel7" class="fa fa-pencil"></i></span>
+                                <span *ngIf="showDiv7">
+                                <span (click)="guardar('linkWeb', sessionService.user.cifCompany.linkWeb)" id="guardar" class="bnt-ocult"><button>
+                                    <i class="fa fa-save"></i>
+                                    </button>
+                                </span>
+                                <span (click)="cancel7()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
                                 </span>
                             </div>
                         </form>
@@ -144,6 +175,25 @@
                         <div id="messNoGuardado" *ngIf="noGuardado">
                             Error en el guardado
                         </div>
+                    </div>
+
+                    <div *ngIf="sessionService.user.cifCompany" class="contacUser" id="bordes">
+                        <div class="borderInput">
+                            <textarea [disabled]="isDisabled8" type="text" [ngStyle]="ajustar8" name="description" placeholder="description" [(ngModel)]="sessionService.user.cifCompany.description"></textarea>
+                        </div>
+
+                        
+                        <div class="borderInput">
+                            <span (click)="opbnt8()" btn-id="bnt1"><i *ngIf="noPincel8" class="fa fa-pencil"></i></span>
+                            <span *ngIf="showDiv8">
+                            <span (click)="guardar('description', sessionService.user.cifCompany.description)" id="guardar" class="bnt-ocult"><button>
+                                <i class="fa fa-save"></i>
+                                </button>
+                            </span>
+                            <span (click)="cancel8()" id="cancelar" class="bnt-ocult"><i class="fa fa-remove"></i></span>
+                            </span> 
+                        </div>
+                        
                     </div>
 
                     <div class="contacUser" id="bordes">
