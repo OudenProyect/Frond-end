@@ -44,6 +44,7 @@ export class PerfilComponent implements OnInit {
       },
       { validator: this.checkPasswords }
     );
+
     console.log(this.sessionService);
   }
 

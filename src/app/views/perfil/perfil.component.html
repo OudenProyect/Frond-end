@@ -102,19 +102,22 @@
         <div id="username">
           <span class="d-block nickname"
             >@{{
-              sessionService.user.nickname
-                ? sessionService.user.nickname
+              sessionService.user.user.nickname
+                ? sessionService.user.user.nickname
                 : "nickname"
             }}</span
           >
-          <span class="name">{{ sessionService.user.name }}</span>
+          <span class="name">{{ sessionService.user.user.name }}</span>
         </div>
-        <div class="iconEmpresa text-end mx-5">
+        <div
+          *ngIf="sessionService.user.user.cifCompany"
+          class="iconEmpresa text-end mx-5"
+        >
           <figure class="text-center">
-            <figcaption *ngIf="sessionService.user">
+            <figcaption>
               {{
-                sessionService.user.company
-                  ? sessionService.user.company
+                sessionService.user.user.cifCompany
+                  ? sessionService.user.user.cifCompany.name
                   : "company"
               }}
             </figcaption>
