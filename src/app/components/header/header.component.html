@@ -31,7 +31,7 @@
               aria-expanded="false"
             >
               <div class="circle-container">
-                <img src="assets/imag/cara_5.png" alt="Foto de perfil" />
+                <img  src="{{ sessionService.user.imgProfile ? 'http://127.0.0.1:8000/images/' + sessionService.user.imgProfile : 'assets/imag/cara_5.png' }}" alt="Foto de perfil" />
               </div>
             </a>
             <ul class="dropdown-menu">
