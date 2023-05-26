@@ -26,6 +26,7 @@ export class PostService {
   avatarPost(datos: any) {
     return this.http.post('/avatarpost', datos);
   }
+  
   getPost(id: string) {
     return this.http.get('/publicacion', { params: { id: id } });
   }
