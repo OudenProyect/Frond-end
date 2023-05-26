@@ -9,6 +9,8 @@ import {
 import { CanActivate, Router } from '@angular/router';
 import { SesionService } from 'src/app/services/sesion.service';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { PostService } from 'src/app/services/post.service';
+import { ReutilizablesService } from 'src/app/services/reutilizables.service';
 
 @Component({
   selector: 'app-perfil',
@@ -31,6 +33,14 @@ export class PerfilComponent implements OnInit {
   selectedImage: string = 'assets/imag/cara_5.png';
   // @ts-ignore
   CambiarPWDform: FormGroup;
+  archivos: any = [];
+
+  constructor(
+    private build: FormBuilder,
+    private post: PostService,
+    private route: Router,
+    private reutilizable: ReutilizablesService
+  ) {}
 
   ngOnInit(): void {
     this.CambiarPWDform = this.form.group(
@@ -243,12 +253,13 @@ export class PerfilComponent implements OnInit {
   }
   previewImage(event: any) {
     const file = event.target.files[0];
-    if (!file) return;
-
     const reader = new FileReader();
-    reader.onload = (event: any) => {
-      this.selectedImage = event.target.result;
+
+    reader.onload = (e: any) => {
+      this.selectedImage = e.target.result;
+      this.archivos.push(event.target.files[0]);
     };
+
     reader.readAsDataURL(file);
   }
   
@@ -296,5 +307,32 @@ export class PerfilComponent implements OnInit {
           }, 1500);
         }
       );
+  }
+
+
+  createPost() {
+    if (this.selectedImage) {
+      const formData = new FormData();
+      if (this.archivos.length > 0) {
+        this.archivos.forEach((archivo: any, index: number) => {
+          console.log(`files${index}`, archivo);
+          formData.append(`files${index}`, archivo);
+        });
+
+      }      
+      console.log(this.selectedImage);
+      formData.append('userId', this.sessionService.user.id); // Agregar el ID del usuario al FormData
+  
+      this.post.avatarPost(formData).subscribe(
+        (response: any) => {
+          console.log('Imagen subida exitosamente');
+        },
+        (error: any) => {
+          console.error('Error al subir la imagen:', error);
+        }
+      );
+    } else {
+      console.log('No se ha seleccionado ninguna imagen');
+    }
   }
 }

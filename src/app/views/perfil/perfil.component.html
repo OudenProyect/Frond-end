@@ -44,9 +44,9 @@
                 </div>
             </div>
             <div class="input-group flex-nowrap my-2">
-                <input class="form-control" type="file" name="image" (change)="previewImage($event)" />
+                <input class="form-control" type="file" name="image" accept="image/jpeg, image/png, image/gif" (change)="previewImage($event)" />
             </div>
-            <button type="submit" class="btn editAvatar">Guardar cambios</button>
+            <button type="submit" (click)="createPost()" class="btn editAvatar">Guardar cambios</button>
             <button type="button" class="btn editAvatarCancel">Cancelar</button>
         </div>
     </form>
@@ -57,7 +57,7 @@
         <div id="bordes" class="info-user" *ngIf="sessionService.user">
             <div class="contHeadtUser align-items-center">
                 <figure (click)="opDialog2()" class="verImage">
-                    <img class="avatar mx-4" src="assets/imag/cara_5.png" alt="avatar" />
+                    <img class="avatar mx-4"  src="assets/imag/cara_5.png" alt="avatar" />
                     <figcaption class="iditFoto"><i class="fa fa-camera"></i></figcaption>
                 </figure>
                 <div id="username">

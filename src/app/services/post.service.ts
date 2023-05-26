@@ -18,4 +18,8 @@ export class PostService {
   createPost(datos: any) {
     return this.http.post('/post', datos);
   }
+
+  avatarPost(datos: any) {
+    return this.http.post('/avatarpost', datos);
+  }
 }
