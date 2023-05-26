@@ -74,9 +74,11 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'detailsHome',
+    path: 'detailsHome/:id',
     loadChildren: () =>
-      import('./views/home-details/home-details.module').then((m) => m.HomeDetailsModule),
+      import('./views/home-details/home-details.module').then(
+        (m) => m.HomeDetailsModule
+      ),
   },
 ];
 

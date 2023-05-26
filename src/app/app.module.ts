@@ -63,7 +63,7 @@ import { RegisterEmpresaComponent } from './views/register-empresa/register-empr
     ReactiveFormsModule,
     FormsModule,
     SwiperModule,
-    FontAwesomeModule,
+    FontAwesomeModule
   ],
   providers: [
     guardianLogin,

@@ -1,7 +1,7 @@
 <div class="box-content col-sm-12 row">
   <title>Subir propiedad - Inmobiliario</title>
   <div class="container">
-    <h1>Subir Plano - Inmobiliario</h1>
+    <h1>Upload Plan - Real Estate</h1>
     <form
       method="POST"
       enctype="multipart/form-data"
@@ -9,7 +9,7 @@
       (submit)="createPost()"
     >
       <div>
-        Empresa:
+        Company:
         <input type="text" formControlName="empresa" value="" />
       </div>
       <div>
@@ -105,10 +105,10 @@
         class="errorMessage"
         *ngIf="formPost.get('imagen')?.touched && formPost.get('imagen')?.errors?.['required'] "
       >
-        Se necesita al menos una imagen de portada
+        At least one cover image is needed
       </span>
       <div>
-        <label for="titulo">Título:</label>
+        <label for="titulo">Title:</label>
         <input
           type="text"
           id="titulo"
@@ -119,7 +119,7 @@
         <span
           class="errorMessage"
           *ngIf="formPost.get('titulo')?.touched && formPost.get('titulo')?.errors?.['required'] "
-          >Este campo es requerido</span
+          >This field is required</span
         >
       </div>
 
@@ -129,18 +129,19 @@
           type="number"
           id="precio"
           name="precio"
+          min="0"
           required
           formControlName="precio"
         />
         <span
           class="errorMessage"
           *ngIf="formPost.get('precio')?.touched && formPost.get('precio')?.errors?.['required'] "
-          >Este campo es requerido</span
+          >This field is required</span
         >
       </div>
 
       <div>
-        <label for="descripcion">Descripción Portada:</label>
+        <label for="descripcion">Description Cover:</label>
         <textarea
           id="descripcion"
           formControlName="descripcionPortada"
@@ -151,11 +152,11 @@
         <span
           class="errorMessage"
           *ngIf="formPost.get('descripcionPortada')?.touched && formPost.get('descripcionPortada')?.errors?.['required'] "
-          >Este campo es requerido</span
+          >This field is required</span
         >
       </div>
       <div>
-        <label for="descripcion">Descripción:</label>
+        <label for="descripcion">Description:</label>
         <textarea
           id="descripcion"
           formControlName="descripcion"
@@ -166,7 +167,7 @@
         <span
           class="errorMessage"
           *ngIf="formPost.get('descripcion')?.touched && formPost.get('descripcion')?.errors?.['required'] "
-          >Este campo es requerido</span
+          >This field is required</span
         >
       </div>
 
@@ -181,7 +182,7 @@
         <span
           class="errorMessage"
           *ngIf="formPost.get('tipo')?.touched && formPost.get('tipo')?.errors?.['required']"
-          >Este campo es requerido</span
+          >This field is required</span
         >
       </div>
 
@@ -255,7 +256,8 @@
             [className]="
               (formPost.get('m2')?.errors?.['required'] && formPost.get('m2')?.touched ) ? 'error-input ' : ''
             "
-            type="text"
+            type="number"
+            min="0"
             id=""
             class="input-num"
             name="m2"
@@ -273,7 +275,8 @@
             [className]="
               (formPost.get('m2util')?.errors?.['required'] && formPost.get('m2util')?.touched ) ? 'error-input ' : ''
             "
-            type="text"
+            type="number"
+            min="0"
             id="pisos"
             class="input-num"
             formControlName="m2util"
@@ -284,7 +287,7 @@
       </div>
 
       <div class="row col-sm-12 justify-content-between gap-2">
-        <h3 class="w-100 fs-5 fw-bold mt-3 pt-4 border-top">Caracteristics</h3>
+        <h3 class="w-100 fs-5 fw-bold mt-3 pt-4 border-top">Zone</h3>
 
         <div *ngFor="let caracteristica of caracteristicas" class="w-25 mb-3">
           <img
@@ -318,12 +321,12 @@
               ? 'hidden'
               : 'errorMessage'
           "
-          >Selecciona al menos una ciudad</span
+          >Select at least one city</span
         >
       </div>
 
       <div class="enviar">
-        <input type="submit" value="Subir propiedad" />
+        <input type="submit" value="Upload property" />
       </div>
     </form>
   </div>

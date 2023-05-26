@@ -27,7 +27,7 @@ export class PerfilComponent implements OnInit {
   noGuardadoContra: boolean = false;
   textoGuar!: string;
   sessionService = inject(SesionService);
-  
+
   router = inject(Router);
   form = inject(FormBuilder);
   selectedImage: string = 'assets/imag/cara_5.png';
@@ -53,9 +53,9 @@ export class PerfilComponent implements OnInit {
         confirmPassword: ['', [Validators.required, Validators.minLength(4)]],
       },
       { validator: this.checkPasswords }
-      
-      );
-      console.log(this.sessionService);
+    );
+
+    console.log(this.sessionService);
   }
 
   onSubmit() {
@@ -101,7 +101,7 @@ export class PerfilComponent implements OnInit {
   eliminarCuenta() {
     this.sessionService.deleteCuenta().subscribe(() => {
       this.sessionService.removeToken();
-      window.location.reload()
+      window.location.reload();
       this.ocultarModal();
     });
   }
@@ -244,11 +244,11 @@ export class PerfilComponent implements OnInit {
   opDialog2() {
     this.dialog2.nativeElement.showModal();
   }
-  
+
   onSubmitIcon(form: NgForm) {
     // submit form logic here
     form.resetForm();
-    this.selectedImage= 'assets/imag/cara_5.png';
+    this.selectedImage = 'assets/imag/cara_5.png';
     this.dialog2.nativeElement.close(); // close the dialog
   }
   previewImage(event: any) {
@@ -262,24 +262,23 @@ export class PerfilComponent implements OnInit {
 
     reader.readAsDataURL(file);
   }
-  
 
   // edicion del usuario
   guardar(edit: any, value: any) {
-    console.log({edit: edit, value: value})
+    console.log({ edit: edit, value: value });
     this.sessionService
       .editField({
-        id: this.sessionService.user.id,
+        id: this.sessionService.user.user.id,
         edit,
         value,
       })
       .subscribe(
         (res) => {
-          this.sessionService.user = res;
+          this.sessionService.user.user = res;
           if (this.showDiv2) {
             this.cancel2();
             this.guardado = true;
-          } else if(this.showDiv) {
+          } else if (this.showDiv) {
             this.cancel();
             this.guardado = true;
           }else if(this.showDiv6) {
@@ -297,9 +296,9 @@ export class PerfilComponent implements OnInit {
         (err) => {
           if (this.showDiv2) {
             this.noGuardado = true;
-          } else if(this.showDiv){
+          } else if (this.showDiv) {
             this.noGuardado = true;
-          }else{
+          } else {
             this.noGuardado = true;
           }
           setTimeout(() => {
@@ -321,7 +320,7 @@ export class PerfilComponent implements OnInit {
 
       }      
       console.log(this.selectedImage);
-      formData.append('userId', this.sessionService.user.id); // Agregar el ID del usuario al FormData
+      formData.append('userId', this.sessionService.user.user.id); // Agregar el ID del usuario al FormData
   
       this.post.avatarPost(formData).subscribe(
         (response: any) => {

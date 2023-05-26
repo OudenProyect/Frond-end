@@ -1,12 +1,12 @@
 <div>
   <button class="btn bg-body-tertiary btnFilter" (click)="filterB()">
     <fa-icon [icon]="filtros"> </fa-icon>
-    <span class="ps-2">Filtros</span>
+    <span class="ps-2">Filters</span>
   </button>
   <div id="filtro" class="showFilter" *ngIf="btnFiltros">
     <div class="boxFilter">
       <div class="d-flex justify-content-between">
-        <h2>Filtros</h2>
+        <h2>Filters</h2>
         <button class="border border-0 bg-transparent" (click)="filterB()">
           <fa-icon class="icon" [icon]="close"> </fa-icon>
         </button>
@@ -16,7 +16,7 @@
           <label class="titles" for="type">Type of contruccion</label>
           <app-select
             [value]="type"
-            [options]="['Piso', 'Apartamento', 'Vivienda']"
+            [options]="['Piso', 'Apartmento', 'Viviendas']"
             (change)="selectOptionFilter($event)"
           ></app-select>
         </div>
@@ -61,7 +61,7 @@
           </div>
         </div>
         <div class="baths">
-          <span class="titles">Nº bathrooms</span>
+          <span class="titles">Nº Bathrooms</span>
           <div>
             <div class="viewInput bath">
               <input
@@ -99,7 +99,7 @@
           <span class="titles">Prices</span>
           <div class="box-prices">
             <div class="price1">
-              <label class="titles" for="type">Minimo</label>
+              <label class="titles" for="type">Minimun</label>
               <app-select
                 [value]="priceMin"
                 [options]="rangePrice"
@@ -107,7 +107,7 @@
               ></app-select>
             </div>
             <div class="price2">
-              <label class="titles" for="type">Minimo</label>
+              <label class="titles" for="type">Maximum</label>
               <app-select
                 [value]="priceMax"
                 [options]="rangePrice"
@@ -116,6 +116,7 @@
             </div>
           </div>
           <div class="surface">
+            <br />
             <span class="titles">Surface</span>
             <div class="box-prices">
               <div>
@@ -137,6 +138,7 @@
             </div>
           </div>
           <div class="extras">
+            <br />
             <span class="titles">Extras</span>
             <div class="extra-ctn">
               <div
@@ -146,7 +148,7 @@
                 class="extras-div"
               >
                 <img src="assets/iconos/{{ extra.name }}.png" alt="" />
-                <span class="{{ extra.name }}">{{ extra.name }}</span>
+                <span class="{{ extra.name }}">{{ extra.des }}</span>
               </div>
             </div>
           </div>

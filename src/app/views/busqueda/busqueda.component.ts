@@ -64,17 +64,45 @@ export class BusquedaComponent implements OnInit {
   applyFilter(e: any) {
     this.filtros = e;
 
+    //   if (
+    //     e.tipo != 'Indiferent' ||
+    //     e.surfacemin != 'Indiferent' ||
+    //     e.surfacemax != 'Indiferent' ||
+    //     e.pricemin != 'Indiferent' ||
+    //     e.pricemax != 'Indiferent' ||
+    //     e.hab != null ||
+    //     e.bath != null ||
+    //     e.extras != 0
+    //   ) {
+    //     console.log(this.filtros);
+    //     this.search.filtrar(this.filtros).subscribe(
+    //       (e: any) => {
+    //         this.resultBusqueda = e;
+    //         console.log(this.resultBusqueda);
+    //       },
+    //       (error: any) => {
+    //         console.log({
+    //           error: error,
+    //         });
+    //       }
+    //     );
+    //     console.log('buscando');
+    //   } else {
+    //     console.log('Ningun filtro aplicado');
+    //   }
     if (
-      e.tipo != 'Indiferent' ||
-      e.surfacemin != 'Indiferent' ||
-      e.surfacemax != 'Indiferent' ||
-      e.pricemin != 'Indiferent' ||
-      e.pricemax != 'Indiferent' ||
-      e.hab != null ||
-      e.bath != null ||
-      e.extras != 0
+      e.tipo == 'Indiferent' &&
+      e.surfacemin == 'Indiferent' &&
+      e.surfacemax == 'Indiferent' &&
+      e.pricemin == 'Indiferent' &&
+      e.pricemax == 'Indiferent' &&
+      e.hab == null &&
+      e.bath == null &&
+      e.extras == 0
     ) {
-      console.log(this.filtros);
+      console.log('all');
+      this.searchHouse();
+    } else {
       this.search.filtrar(this.filtros).subscribe(
         (e: any) => {
           this.resultBusqueda = e;
@@ -86,9 +114,6 @@ export class BusquedaComponent implements OnInit {
           });
         }
       );
-      console.log('buscando');
-    } else {
-      console.log('Ningun filtro aplicado');
     }
   }
 }

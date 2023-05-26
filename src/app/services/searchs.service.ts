@@ -12,6 +12,7 @@ export class SearchsService {
   searchViviendas(datos: string) {
     return this.http.get('/search', { params: { ubicacion: datos } });
   }
+
   filtrar(datos: any) {
     return this.http.get('/filtrar', {
       params: {

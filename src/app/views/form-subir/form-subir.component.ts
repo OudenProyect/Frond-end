@@ -1,14 +1,17 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 
 import { PostService } from 'src/app/services/post.service';
 import { ReutilizablesService } from 'src/app/services/reutilizables.service';
+import { SesionService } from 'src/app/services/sesion.service';
 
 @Component({
   selector: 'app-form-subir',
@@ -23,6 +26,7 @@ export class FormSubirComponent implements OnInit {
   imgSrc5 = false;
   imgSrc6 = false;
   types: string[] = [];
+  imgError: string = '';
 
   // @ts-ignore
   formPost: FormGroup;
@@ -37,7 +41,8 @@ export class FormSubirComponent implements OnInit {
     private build: FormBuilder,
     private post: PostService,
     private route: Router,
-    private reutilizable: ReutilizablesService
+    private reutilizable: ReutilizablesService,
+    private sesion: SesionService
   ) {}
 
   ngOnInit(): void {
@@ -55,12 +60,12 @@ export class FormSubirComponent implements OnInit {
       m2: ['', Validators.required],
       m2util: ['', Validators.required],
       parking: new FormControl(false),
-      terraza: new FormControl(false),
+      balcon: new FormControl(false),
       piscina: new FormControl(false),
       jardin: new FormControl(false),
       trastero: new FormControl(false),
       chimenea: new FormControl(false),
-      balcon: new FormControl(false),
+      calentador: new FormControl(false),
       Barcelona: new FormControl(true),
       Girona: new FormControl(false),
     });
@@ -71,37 +76,50 @@ export class FormSubirComponent implements OnInit {
 
     this.post.getCaracteristicas().subscribe((e: any) => {
       this.caracteristicas = e;
-      console.log(e);
     });
+    console.log(this.sesion.user);
   }
 
   onfile(event: any, num: number) {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        if (num == 0) {
-          this.imgSrc1 = e.target.result;
-          this.formPost.patchValue({
-            imagen: event.target.files[0],
-          });
-          console.log(this.imgSrc1);
-        } else if (num == 1) {
-          this.imgSrc2 = e.target.result;
-          console.log('imgSrc2');
-        } else if (num == 2) {
-          this.imgSrc3 = e.target.result;
-          console.log('imgSrc3');
-        } else if (num == 3) {
-          this.imgSrc4 = e.target.result;
-          console.log('imgSrc4');
-        } else if (num == 4) {
-          this.imgSrc5 = e.target.result;
-          console.log('imgSrc5');
-        } else if (num == 5) {
-          this.imgSrc5 = e.target.result;
-          console.log('imgSrc6');
+        const file: File = event.target.files[0];
+
+        const allowedTypes = ['image/jpeg', 'image/png']; // Tipos de archivo permitidos
+
+        if (allowedTypes.includes(file.type)) {
+          if (num == 0) {
+            this.imgSrc1 = e.target.result;
+            this.formPost.patchValue({
+              imagen: event.target.files[0],
+            });
+            console.log(this.imgSrc1);
+          } else if (num == 1) {
+            this.imgSrc2 = e.target.result;
+            console.log('imgSrc2');
+          } else if (num == 2) {
+            this.imgSrc3 = e.target.result;
+            console.log('imgSrc3');
+          } else if (num == 3) {
+            this.imgSrc4 = e.target.result;
+            console.log('imgSrc4');
+          } else if (num == 4) {
+            this.imgSrc5 = e.target.result;
+            console.log('imgSrc5');
+          } else if (num == 5) {
+            this.imgSrc5 = e.target.result;
+            console.log('imgSrc6');
+          }
+          this.archivos.push(event.target.files[0]);
+          console.log(event.target.files[0]);
+        } else {
+          // Tipo de archivo no válido
+          this.imgError = 'Tipo de archivo no válido';
+          // Aquí puedes mostrar un mensaje de error o realizar otras acciones
         }
-        this.archivos.push(event.target.files[0]);
+
+        console.log(typeof e.target.files);
       };
       let dat = reader.readAsDataURL(event.target.files[0]);
     }
@@ -110,8 +128,13 @@ export class FormSubirComponent implements OnInit {
   createPost() {
     try {
       const formValue = this.formPost.value;
+      console.log(formValue);
+      console.log(this.formPost.valid);
+      console.log(this.formPost);
 
       if (this.formPost.valid) {
+        console.log(this.formPost.valid);
+        console.log(this.formPost.valid);
         if (
           this.formPost.get('Barcelona')?.value ||
           this.formPost.get('Girona')?.value
@@ -119,6 +142,9 @@ export class FormSubirComponent implements OnInit {
           const datos = new FormData();
           if (this.archivos.length > 0) {
             this.archivos.forEach((archivo: any, index: number) => {
+              console.log({
+                añadiendo: 'd',
+              });
               datos.append(`files${index}`, archivo);
             });
 
@@ -135,18 +161,16 @@ export class FormSubirComponent implements OnInit {
             datos.append('flats', formValue.flats);
             datos.append('empresa', formValue.empresa);
 
-            formValue.balcony ? datos.append('balcony', '2') : '';
-            formValue.terrace ? datos.append('terrace', '7') : '';
-            formValue.swimmingPool ? datos.append('swimmingPool', '3') : '';
-            formValue.garden ? datos.append('garden', '6') : '';
+            formValue.balcon ? datos.append('balcony', '2') : '';
+            formValue.calentador ? datos.append('heating', '7') : '';
+            formValue.piscina ? datos.append('swimmingPool', '3') : '';
+            formValue.jardin ? datos.append('garden', '6') : '';
             formValue.parking ? datos.append('parking', '1') : '';
-            formValue.chimenea ? datos.append('chimenea', '4') : '';
-            formValue.trastero ? datos.append('trastero', '5') : '';
+            formValue.chimenea ? datos.append('chimney', '4') : '';
+            formValue.trastero ? datos.append('storage_room', '5') : '';
 
-            formValue.Barcelona
-              ? datos.append('Barcelona', formValue.Barcelona)
-              : '';
-            formValue.Girona ? datos.append('Girona', formValue.Girona) : '';
+            formValue.Barcelona ? datos.append('Barcelona', 'Barcelona') : '';
+            formValue.Girona ? datos.append('Girona', 'Girona') : '';
             this.post.createPost(datos).subscribe(
               (e: any) => {
                 const datos = {
