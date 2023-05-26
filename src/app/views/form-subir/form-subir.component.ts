@@ -119,9 +119,6 @@ export class FormSubirComponent implements OnInit {
           const datos = new FormData();
           if (this.archivos.length > 0) {
             this.archivos.forEach((archivo: any, index: number) => {
-              console.log("si");
-              console.log(`files${index}`, archivo);
-              console.log("si");
               datos.append(`files${index}`, archivo);
             });
 
