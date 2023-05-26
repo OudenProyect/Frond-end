@@ -47,7 +47,7 @@ export class FormSubirComponent implements OnInit {
 
   ngOnInit(): void {
     this.formPost = this.build.group({
-      empresa: ['1'],
+      empresa: ['5'],
       imagen: ['', Validators.required],
       titulo: ['', Validators.required],
       precio: ['', Validators.required],
@@ -142,9 +142,6 @@ export class FormSubirComponent implements OnInit {
           const datos = new FormData();
           if (this.archivos.length > 0) {
             this.archivos.forEach((archivo: any, index: number) => {
-              console.log({
-                añadiendo: 'd',
-              });
               datos.append(`files${index}`, archivo);
             });
 

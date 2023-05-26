@@ -16,7 +16,7 @@
           <label class="titles" for="type">Type of contruccion</label>
           <app-select
             [value]="type"
-            [options]="['Piso', 'Apartmento', 'Viviendas']"
+            [options]="['Piso', 'Apartamento', 'Viviendas', 'Chalet Adosado']"
             (change)="selectOptionFilter($event)"
           ></app-select>
         </div>
@@ -156,7 +156,7 @@
       </div>
       <footer class="btnFoot">
         <button (click)="applyFilter()" class="btn-general">Apply</button>
-        <button class="btn-general">Clear</button>
+        <button class="btn-general" (click)="filterB()">Clear</button>
       </footer>
     </div>
   </div>

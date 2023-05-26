@@ -8,11 +8,17 @@ import { SesionService } from 'src/app/services/sesion.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   constructor(private sesions: SesionService, private router: Router) {}
   sessionService = inject(SesionService);
 
   isCollapse = false; // guardamos el valor
+
+  ngOnInit(): void {
+    console.log({
+      header: this.sessionService,
+    });
+  }
   toggleState() {
     // manejador del evento
     let foo = this.isCollapse;

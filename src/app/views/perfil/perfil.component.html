@@ -141,14 +141,16 @@
                   [ngStyle]="ajustar"
                   name="nick"
                   placeholder="Nick name"
-                  [(ngModel)]="sessionService.user.nickname"
+                  [(ngModel)]="sessionService.user.user.nickname"
                 />
                 <span (click)="opbnt()" btn-id="bnt"
                   ><i *ngIf="noPincel" class="fa fa-pencil"></i
                 ></span>
                 <span *ngIf="showDiv">
                   <span
-                    (click)="guardar('nickname', sessionService.user.nickname)"
+                    (click)="
+                      guardar('nickname', sessionService.user.user.nickname)
+                    "
                     id="guardar"
                     class="bnt-ocult"
                   >
@@ -170,14 +172,14 @@
                   [ngStyle]="ajustar2"
                   name="name"
                   placeholder="Full name"
-                  [(ngModel)]="sessionService.user.name"
+                  [(ngModel)]="sessionService.user.user.name"
                 />
                 <span (click)="opbnt2()" btn-id="bnt1"
                   ><i *ngIf="noPincel2" class="fa fa-pencil"></i
                 ></span>
                 <span *ngIf="showDiv2">
                   <span
-                    (click)="guardar('name', sessionService.user.name)"
+                    (click)="guardar('name', sessionService.user.user.name)"
                     id="guardar"
                     class="bnt-ocult"
                   >
@@ -200,7 +202,7 @@
                   [ngStyle]="ajustar3"
                   name="email"
                   placeholder="Correo"
-                  [(ngModel)]="sessionService.user.email"
+                  [(ngModel)]="sessionService.user.user.email"
                 />
               </div>
             </form>
@@ -228,14 +230,14 @@
                   [ngStyle]="ajustar5"
                   name="phone"
                   placeholder="Telephone"
-                  [(ngModel)]="sessionService.user.phone"
+                  [(ngModel)]="sessionService.user.user.phone"
                 />
                 <span (click)="opbnt5()" btn-id="bnt1"
                   ><i *ngIf="noPincel5" class="fa fa-pencil"></i
                 ></span>
                 <span *ngIf="showDiv5">
                   <span
-                    (click)="guardar('phone', sessionService.user.phone)"
+                    (click)="guardar('phone', sessionService.user.user.phone)"
                     id="guardar"
                     class="bnt-ocult"
                     ><button>

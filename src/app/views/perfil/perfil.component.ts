@@ -201,13 +201,14 @@ export class PerfilComponent implements OnInit {
     console.log({ edit: edit, value: value });
     this.sessionService
       .editField({
-        id: this.sessionService.user.id,
+        id: this.sessionService.user.user.id,
         edit,
         value,
       })
       .subscribe(
         (res) => {
           this.sessionService.user = res;
+          console.log(res);
           if (this.showDiv2) {
             this.cancel2();
             this.guardado = true;
