@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
 import { SesionService } from 'src/app/services/sesion.service';
 
@@ -13,7 +14,7 @@ export class PostCardComponent implements OnInit {
   posst = inject(PostService);
   user = inject(SesionService);
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     if (this.user.user) {
@@ -30,27 +31,40 @@ export class PostCardComponent implements OnInit {
   }
 
   meencanta(id: any) {
-    if (this.encantas.includes(id)) {
-      this.encantas.splice(this.encantas.indexOf(id), 1);
-      this.posst.removeFavorite(id).subscribe(
-        (e: any) => {
-          console.log(e);
-        },
-        (err: any) => {
-          console.log({ error_remobve: err });
-        }
-      );
+    if (this.user.user) {
+      // elimina
+      if (this.encantas.includes(id)) {
+        this.encantas.splice(this.encantas.indexOf(id), 1);
+        this.posst.removeFavorite(id).subscribe(
+          (e: any) => {
+            console.log(e);
+          },
+          (err: any) => {
+            console.log({ error_remobve: err });
+          }
+        );
+      } else {
+        //añade
+        this.encantas.push(id);
+        this.posst.addFavorite(id).subscribe(
+          (e: any) => {
+            console.log(e);
+          },
+          (err: any) => {
+            console.log({ error_Add: err });
+          }
+        );
+      }
     } else {
-      this.encantas.push(id);
-      this.posst.addFavorite(id).subscribe(
-        (e: any) => {
-          console.log(e);
-        },
-        (err: any) => {
-          console.log({ error_Add: err });
-        }
-      );
+      this.router.navigate(['login']);
     }
-    console.log(this.encantas);
+  }
+
+  eraseView(id: any) {
+    if (this.user.user) {
+      console.log('no lo volveras a ver');
+    } else {
+      this.router.navigate(['login']);
+    }
   }
 }

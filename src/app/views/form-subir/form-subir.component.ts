@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { map } from 'rxjs';
 
 import { PostService } from 'src/app/services/post.service';
 import { ReutilizablesService } from 'src/app/services/reutilizables.service';
@@ -32,6 +33,7 @@ export class FormSubirComponent implements OnInit {
   formPost: FormGroup;
   archivos: any = [];
   caracteristicas: any = [];
+  company: any;
 
   optionsUbicacion = [
     { value: 'Barcelona', label: 'Barcelona' },
@@ -42,12 +44,20 @@ export class FormSubirComponent implements OnInit {
     private post: PostService,
     private route: Router,
     private reutilizable: ReutilizablesService,
-    private sesion: SesionService
+    public sesion: SesionService
   ) {}
 
   ngOnInit(): void {
+    this.sesion
+      .getUser()
+      .pipe(map((e: any) => e.user))
+      .subscribe((user: any) => {
+        this.company = user;
+        console.log(user);
+        // Aquí puedes utilizar this.company para reutilizar el valor
+      });
     this.formPost = this.build.group({
-      empresa: ['5'],
+      empresa: [''],
       imagen: ['', Validators.required],
       titulo: ['', Validators.required],
       precio: ['', Validators.required],
@@ -77,7 +87,7 @@ export class FormSubirComponent implements OnInit {
     this.post.getCaracteristicas().subscribe((e: any) => {
       this.caracteristicas = e;
     });
-    console.log(this.sesion.user);
+    console.log(this.sesion);
   }
 
   onfile(event: any, num: number) {
@@ -128,13 +138,10 @@ export class FormSubirComponent implements OnInit {
   createPost() {
     try {
       const formValue = this.formPost.value;
-      console.log(formValue);
-      console.log(this.formPost.valid);
-      console.log(this.formPost);
+      const empressa = this.company.cifCompany.id;
+      console.log();
 
       if (this.formPost.valid) {
-        console.log(this.formPost.valid);
-        console.log(this.formPost.valid);
         if (
           this.formPost.get('Barcelona')?.value ||
           this.formPost.get('Girona')?.value
@@ -156,7 +163,7 @@ export class FormSubirComponent implements OnInit {
             datos.append('m2', formValue.m2);
             datos.append('m2util', formValue.m2util);
             datos.append('flats', formValue.flats);
-            datos.append('empresa', formValue.empresa);
+            datos.append('empresa', empressa);
 
             formValue.balcon ? datos.append('balcony', '2') : '';
             formValue.calentador ? datos.append('heating', '7') : '';
@@ -189,6 +196,7 @@ export class FormSubirComponent implements OnInit {
         // this.formPost.get('tipo')?.value.setErrors({ required: true });
         this.formPost.markAllAsTouched();
       }
+      console.log(formValue);
     } catch (error: any) {
       console.log(error);
     }

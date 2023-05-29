@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
+import { SesionService } from 'src/app/services/sesion.service';
 
 @Component({
   selector: 'app-home-details',
@@ -14,41 +15,70 @@ export class HomeDetailsComponent implements OnInit {
   encanta: boolean = false;
   favorito: any[] = [];
   publicacion: any;
+  user: any;
+  session = inject(SesionService);
   id: string = '';
   post = inject(PostService);
+  active: boolean = false;
 
   selectSlide(index: number) {
     this.selectedImage = this.sliderImages[index];
     this.currentSlide = index;
   }
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe((param) => {
       this.id = param['id'];
     });
   }
 
   ngOnInit(): void {
+    console.log({
+      load: this.session.loading,
+    });
     this.post.getPost(this.id).subscribe((e: any) => {
       this.publicacion = e;
-
-      this.favorito = this.publicacion.idCompany.user.favoritPublications;
-      this.favorito.find(
-        (e: any) => (e.id = 2 ? (this.encanta = true) : (this.encanta = false))
-      );
-      console.log(this.favorito);
       this.publicacion.images.forEach((element: any) => {
         this.sliderImages.push('http://127.0.0.1:8000/images/' + element.name);
       });
-      console.log(this.publicacion);
     });
-    // this.post.getFavorites().subscribe((e: any) => {
-    //   this.publicaciones = e;
-    //   if (e != 'No hay favoritos') {
-    //     e.forEach((el: any) => {
-    //       this.encanta.push(el.id);
-    //     });
-    //   }
-    // });
+    this.active = this.session.loading;
+    if (this.session.loading) {
+      this.session.getUser().subscribe((e: any) => {
+        this.user = e;
+        this.encanta = e.user.favoritPublications.find(
+          (e: any) => e.id == this.publicacion.id
+        )
+          ? true
+          : false;
+      });
+    }
+  }
+
+  meencanta(id: any) {
+    if (this.active) {
+      if (this.encanta) {
+        this.post.removeFavorite(id).subscribe(
+          (e: any) => {
+            this.encanta = false;
+          },
+          (err: any) => {
+            console.log({ error_remobve: err });
+          }
+        );
+      } else {
+        this.post.addFavorite(id).subscribe(
+          (e: any) => {
+            this.encanta = true;
+          },
+          (err: any) => {
+            console.log({ error_Add: err });
+          }
+        );
+      }
+    } else {
+      console.log({ me: this.session.loading });
+      this.router.navigate(['login']);
+    }
   }
 }

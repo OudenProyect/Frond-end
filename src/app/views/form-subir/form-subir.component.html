@@ -10,7 +10,15 @@
     >
       <div>
         Company:
-        <input type="text" formControlName="empresa" value="" />
+        <input
+          type="text"
+          readonly
+          name="empresa"
+          formControlName="empresa"
+          [value]="
+            this.sesion.user ? this.sesion.user.user.cifCompany.cifCompany : ''
+          "
+        />
       </div>
       <div>
         <div

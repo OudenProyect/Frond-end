@@ -62,7 +62,13 @@
             ><i class="fa fa-envelope-o"></i
           ></a>
           <a href="#" class="info-contact on"><i class="fa fa-phone"></i></a>
-          <a href="#" class="info-contact"><i class="fa fa-heart-o"></i></a>
+          <a (click)="meencanta(publicacion.id)" class="info-contact on love"
+            ><img
+              src="{{
+                encanta ? 'assets/svg/reaccion.svg' : 'assets/svg/encanta.svg'
+              }}"
+              alt=""
+          /></a>
         </div>
       </div>
       <hr />

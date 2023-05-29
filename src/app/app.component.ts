@@ -18,6 +18,5 @@ export class AppComponent implements OnInit {
     } else {
       this.sessionService.loading = false;
     }
-    console.log({user: this.sessionService.loading})
   }
 }
