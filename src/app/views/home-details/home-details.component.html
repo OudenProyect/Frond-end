@@ -146,17 +146,17 @@
             class="cont_Caracteris mt-3"
           >
             <div
-              class="d-flex caj-catris"
+              class="d-flex caj-catris align-items-baseline"
               *ngFor="let extra of publicacion.house.feature"
             >
               <p class="mx-3">
                 <img
                   class="casaFa"
-                  src="/assets/svg/{{ extra.name | lowercase }}.svg"
-                  alt="Trastero"
+                  src="/assets/svg/{{ extra.name }}.svg"
+                  alt="icono"
                 />
               </p>
-              <span> {{ extra.name }} <b class="d-block"> 2 plazas</b></span>
+              <span > {{ extra.show }}</span>
             </div>
           </div>
         </div>

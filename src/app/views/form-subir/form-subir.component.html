@@ -11,6 +11,7 @@
       <div>
         Company:
         <input
+        class="border-0 pe-none"
           type="text"
           readonly
           name="empresa"
@@ -294,17 +295,17 @@
 
         <div *ngFor="let caracteristica of caracteristicas" class="w-25 mb-3">
           <img
-            src="assets/svg/{{ caracteristica.name.toLowerCase() }}.png"
+            src="assets/svg/{{ caracteristica.name}}.png"
             class="imag-info label-num"
             alt="..."
           />
           <input
             type="checkbox"
-            [id]="caracteristica.name.toLowerCase()"
-            formControlName="{{ caracteristica.name.toLowerCase() }}"
+            [id]="caracteristica.name"
+            formControlName="{{ caracteristica.name }}"
           />
-          <label [for]="caracteristica.name.toLowerCase()" class="label-num">{{
-            caracteristica.name
+          <label [for]="caracteristica.name" class="label-num">{{
+            caracteristica.show
           }}</label>
         </div>
       </div>

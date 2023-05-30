@@ -53,9 +53,18 @@ export class FormSubirComponent implements OnInit {
       .pipe(map((e: any) => e.user))
       .subscribe((user: any) => {
         this.company = user;
-        console.log(user);
         // Aquí puedes utilizar this.company para reutilizar el valor
       });
+
+
+      
+    this.post.getCaracteristicas().subscribe((e: any) => {
+      e.forEach((element: any) => {
+        this.caracteristicas.push({show:element.name,name: element.name.toLowerCase().replace(/\s/g, ''), id: element.id});
+      });
+      console.log(this.caracteristicas);
+    });
+    
     this.formPost = this.build.group({
       empresa: [''],
       imagen: ['', Validators.required],
@@ -70,12 +79,13 @@ export class FormSubirComponent implements OnInit {
       m2: ['', Validators.required],
       m2util: ['', Validators.required],
       parking: new FormControl(false),
-      balcon: new FormControl(false),
-      piscina: new FormControl(false),
-      jardin: new FormControl(false),
-      trastero: new FormControl(false),
-      chimenea: new FormControl(false),
-      calentador: new FormControl(false),
+      balcony: new FormControl(false),
+      terrace: new FormControl(false),
+      swimmingpool: new FormControl(false),
+      garden: new FormControl(false),
+      storageroom: new FormControl(false),
+      chimney: new FormControl(false),
+      // calentador: new FormControl(false),
       Barcelona: new FormControl(true),
       Girona: new FormControl(false),
     });
@@ -84,10 +94,6 @@ export class FormSubirComponent implements OnInit {
       this.types = e;
     });
 
-    this.post.getCaracteristicas().subscribe((e: any) => {
-      this.caracteristicas = e;
-      console.log(this.caracteristicas);
-    });
   }
 
   onfile(event: any, num: number) {
@@ -139,7 +145,6 @@ export class FormSubirComponent implements OnInit {
     try {
       const formValue = this.formPost.value;
       const empressa = this.company.cifCompany.id;
-      console.log();
 
       if (this.formPost.valid) {
         if (
@@ -165,13 +170,13 @@ export class FormSubirComponent implements OnInit {
             datos.append('flats', formValue.flats);
             datos.append('empresa', empressa);
 
-            formValue.balcon ? datos.append('balcony', '10') : '';
-            formValue.calentador ? datos.append('heating', '15') : '';
-            formValue.piscina ? datos.append('swimmingPool', '8') : '';
-            formValue.jardin ? datos.append('garden', '14') : '';
-            formValue.parking ? datos.append('parking', '7') : '';
-            formValue.chimenea ? datos.append('chimney', '13') : '';
-            formValue.trastero ? datos.append('storage_room', '11') : '';
+            formValue.balcony ? datos.append('balcony', this.caracteristicas.find((e: any) => e.name == 'balcony').id) : '';
+            formValue.swimmingpool ? datos.append('swimmingpool', this.caracteristicas.find((e: any) => e.name == 'swimmingpool').id) : '';
+            formValue.garden ? datos.append('garden', this.caracteristicas.find((e: any) => e.name == 'garden').id) : '';
+            formValue.parking ? datos.append('parking', this.caracteristicas.find((e: any) => e.name == 'parking').id) : '';
+            formValue.chimney ? datos.append('chimney', this.caracteristicas.find((e: any) => e.name == 'chimney').id) : '';
+            formValue.storageroom ? datos.append('storageroom', this.caracteristicas.find((e: any) => e.name == 'storageroom').id) : '';
+            formValue.terrace ? datos.append('terrace', this.caracteristicas.find((e: any) => e.name == 'terrace').id) : '';
 
             formValue.Barcelona ? datos.append('Barcelona', 'Barcelona') : '';
             formValue.Girona ? datos.append('Girona', 'Girona') : '';

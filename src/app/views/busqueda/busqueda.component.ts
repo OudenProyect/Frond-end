@@ -14,7 +14,7 @@ export class BusquedaComponent implements OnInit {
   filtros: any;
   message: any = null;
   datoRecibido: String = '';
-  resultBusqueda: any[] = [];
+  resultBusqueda: any;
   constructor(
     private route: ActivatedRoute,
     public search: SearchsService,
@@ -42,10 +42,12 @@ export class BusquedaComponent implements OnInit {
     this.search.searchViviendas(this.lugar).subscribe(
       (res: any) => {
         this.resultBusqueda = res;
-        let p = this.resultBusqueda.sort((a: any, b: any) => {
-          return b.id - a.id;
-        });
-        console.log(p);
+        if(res != 'No hay casas en esta ubicacion'){
+          let p = this.resultBusqueda.sort((a: any, b: any) => {
+            return b.id - a.id;
+          });
+        }
+        console.log(this.resultBusqueda);
       },
       (err) => {
         console.log(
@@ -64,32 +66,6 @@ export class BusquedaComponent implements OnInit {
   applyFilter(e: any) {
     this.filtros = e;
 
-    //   if (
-    //     e.tipo != 'Indiferent' ||
-    //     e.surfacemin != 'Indiferent' ||
-    //     e.surfacemax != 'Indiferent' ||
-    //     e.pricemin != 'Indiferent' ||
-    //     e.pricemax != 'Indiferent' ||
-    //     e.hab != null ||
-    //     e.bath != null ||
-    //     e.extras != 0
-    //   ) {
-    //     console.log(this.filtros);
-    //     this.search.filtrar(this.filtros).subscribe(
-    //       (e: any) => {
-    //         this.resultBusqueda = e;
-    //         console.log(this.resultBusqueda);
-    //       },
-    //       (error: any) => {
-    //         console.log({
-    //           error: error,
-    //         });
-    //       }
-    //     );
-    //     console.log('buscando');
-    //   } else {
-    //     console.log('Ningun filtro aplicado');
-    //   }
     if (
       e.tipo == 'Indiferent' &&
       e.surfacemin == 'Indiferent' &&

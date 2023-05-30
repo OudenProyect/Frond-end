@@ -15,7 +15,7 @@ a {
 .descript-details {
   display: block;
   overflow: auto;
-  height: 100px;
+  max-height: 100px;
 }
 
 .casas {
@@ -118,6 +118,8 @@ a {
   background-color: #2596be;
   color: white;
   width: fit-content;
+  min-width: 140px;
+  text-align: center;
   margin: auto;
   padding: 8px 28px;
   border-radius: 9px;
@@ -195,7 +197,12 @@ a {
     font-size: 18px;
   }
   .links {
+    flex-wrap: wrap;
     gap: 2px !important;
+  }
+
+  .btn-general {
+margin-left: 0%;
   }
   .btn-general,
   .link-btn {

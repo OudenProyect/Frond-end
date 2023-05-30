@@ -33,14 +33,20 @@ export class HomeDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log({
-      load: this.session.loading,
-    });
+
     this.post.getPost(this.id).subscribe((e: any) => {
       this.publicacion = e;
+
+      this.publicacion.house.feature = e.house.feature.map((element: any) => {
+        const modifiedElement = { ...element, name: element.name.toLowerCase().replace(/\s/g, ''),show:element.name };
+        return modifiedElement;
+      });
+
+      console.log(this.publicacion);
       this.publicacion.images.forEach((element: any) => {
         this.sliderImages.push('http://127.0.0.1:8000/images/' + element.name);
       });
+
     });
     this.active = this.session.loading;
     if (this.session.loading) {

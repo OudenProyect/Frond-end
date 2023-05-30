@@ -17,17 +17,19 @@ export class PostCardComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    if (this.user.user) {
-      this.posst.getFavorites().subscribe((e: any) => {
-        if (e != 'No hay favoritos') {
-          e.forEach((el: any) => {
-            this.encantas.push(el.id);
-          });
-        }
-      });
-    } else {
-      this.encantas = [];
-    }
+      if (this.user.user) {
+        this.posst.getFavorites().subscribe((e: any) => {
+          if (e != 'No hay favoritos') {
+            e.forEach((el: any) => {
+              this.encantas.push(el.id);
+            });
+          }
+        });
+      } else {
+        this.encantas = [];
+      }
+    
+    
   }
 
   meencanta(id: any) {

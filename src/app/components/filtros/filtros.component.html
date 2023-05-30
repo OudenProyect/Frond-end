@@ -19,7 +19,7 @@
             [options]="[
               'Piso',
               'Apartamento',
-              'Viviendas',
+              'Vivienda',
               'Chalet adosado',
               'Chalet pareado'
             ]"
@@ -153,8 +153,8 @@
                 [class.selectInputFilter]="listExtras.includes(extra.id)"
                 class="extras-div"
               >
-                <img src="assets/iconos/{{ extra.name }}.png" alt="" />
-                <span class="{{ extra.name }}">{{ extra.des }}</span>
+                <img src="assets/iconos/{{ extra.name.toLowerCase()}}.png" alt="" />
+                <span class="{{ extra.name }}">{{ extra.name }}</span>
               </div>
             </div>
           </div>

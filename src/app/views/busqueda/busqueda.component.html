@@ -8,10 +8,10 @@
   <div>
     <span class="mgright" *ngIf="message">{{ message.mensaje }}</span>
     <app-post-card
-      *ngIf="resultBusqueda.length > 0"
-      [post]="resultBusqueda.length > 0 ? resultBusqueda : []"
+      *ngIf="resultBusqueda != 'No hay casas en esta ubicacion'"
+      [post]="resultBusqueda != 'No hay casas en esta ubicacion' ? resultBusqueda : []"
     ></app-post-card>
-    <div *ngIf="resultBusqueda.length === 0">
+    <div *ngIf="resultBusqueda === 'No hay casas en esta ubicacion'">
       <h3>
         Hemos mirado por todas partes pero... no hemos encontrado lo que buscas
         :(
