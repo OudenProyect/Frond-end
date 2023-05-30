@@ -4,16 +4,16 @@
     <app-search (busqueda)="recibir($event)"></app-search>
     <app-filtros (propagar)="applyFilter($event)"></app-filtros>
   </div>
-  <span class="pb-4 d-block">Busqueda: {{ lugar }}</span>
+  <span class="pb-4 d-block">Search: {{ lugar }}</span>
   <div>
     <span class="mgright" *ngIf="message">{{ message.mensaje }}</span>
     <app-post-card
-      *ngIf="resultBusqueda != 'No hay casas en esta ubicacion'"
-      [post]="resultBusqueda != 'No hay casas en esta ubicacion' ? resultBusqueda : []"
+      *ngIf="resultBusqueda.length != 0"
+      [post]="resultBusqueda.length > 0 ? resultBusqueda : []"
     ></app-post-card>
-    <div *ngIf="resultBusqueda === 'No hay casas en esta ubicacion'">
+    <div *ngIf="resultBusqueda.length === 0">
       <h3>
-        Hemos mirado por todas partes pero... no hemos encontrado lo que buscas
+        We have looked everywhere but... we have not found what you are looking for
         :(
       </h3>
     </div>

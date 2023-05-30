@@ -14,7 +14,7 @@ export class BusquedaComponent implements OnInit {
   filtros: any;
   message: any = null;
   datoRecibido: String = '';
-  resultBusqueda: any;
+  resultBusqueda: any = [];
   constructor(
     private route: ActivatedRoute,
     public search: SearchsService,
@@ -41,11 +41,14 @@ export class BusquedaComponent implements OnInit {
   searchHouse() {
     this.search.searchViviendas(this.lugar).subscribe(
       (res: any) => {
-        this.resultBusqueda = res;
         if(res != 'No hay casas en esta ubicacion'){
+          this.resultBusqueda = res;
+
           let p = this.resultBusqueda.sort((a: any, b: any) => {
             return b.id - a.id;
           });
+        }else{
+          this.resultBusqueda = [];
         }
         console.log(this.resultBusqueda);
       },
