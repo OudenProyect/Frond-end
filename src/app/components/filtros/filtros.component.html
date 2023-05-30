@@ -16,7 +16,13 @@
           <label class="titles" for="type">Type of contruccion</label>
           <app-select
             [value]="type"
-            [options]="['Piso', 'Apartamento', 'Viviendas', 'Chalet Adosado']"
+            [options]="[
+              'Piso',
+              'Apartamento',
+              'Viviendas',
+              'Chalet adosado',
+              'Chalet pareado'
+            ]"
             (change)="selectOptionFilter($event)"
           ></app-select>
         </div>

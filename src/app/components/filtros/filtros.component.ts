@@ -35,39 +35,39 @@ export class FiltrosComponent implements OnInit {
   rangeSurface: any = [];
   extras: any = [
     {
-      id: 1,
+      id: 7,
       name: 'parking',
-      des: 'Parking'
+      des: 'Parking',
     },
     {
-      id: 2,
+      id: 10,
       name: 'balcon',
-      des: 'Balcony'
+      des: 'Balcony',
     },
     {
-      id: 3,
+      id: 8,
       name: 'piscina',
-      des: 'Swimming pool'
+      des: 'Swimming pool',
     },
     {
-      id: 4,
+      id: 12,
       name: 'terraza',
-      des: 'Fireplace'
+      des: 'Fireplace',
     },
     {
-      id: 5,
+      id: 11,
       name: 'trastero',
-      des: 'Storage room'
+      des: 'Storage room',
     },
     {
-      id: 6,
+      id: 14,
       name: 'jardin',
-      des: 'Garden'
+      des: 'Garden',
     },
     {
       id: 7,
       name: 'calentador',
-      des: 'Heater'
+      des: 'Heater',
     },
   ];
 

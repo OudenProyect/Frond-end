@@ -12,6 +12,12 @@ a {
   color: black;
 }
 
+.descript-details {
+  display: block;
+  overflow: auto;
+  height: 100px;
+}
+
 .casas {
   display: flex;
   flex-direction: column;

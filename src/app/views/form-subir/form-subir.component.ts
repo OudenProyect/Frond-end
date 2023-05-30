@@ -86,8 +86,8 @@ export class FormSubirComponent implements OnInit {
 
     this.post.getCaracteristicas().subscribe((e: any) => {
       this.caracteristicas = e;
+      console.log(this.caracteristicas);
     });
-    console.log(this.sesion);
   }
 
   onfile(event: any, num: number) {
@@ -165,13 +165,13 @@ export class FormSubirComponent implements OnInit {
             datos.append('flats', formValue.flats);
             datos.append('empresa', empressa);
 
-            formValue.balcon ? datos.append('balcony', '2') : '';
-            formValue.calentador ? datos.append('heating', '7') : '';
-            formValue.piscina ? datos.append('swimmingPool', '3') : '';
-            formValue.jardin ? datos.append('garden', '6') : '';
-            formValue.parking ? datos.append('parking', '1') : '';
-            formValue.chimenea ? datos.append('chimney', '4') : '';
-            formValue.trastero ? datos.append('storage_room', '5') : '';
+            formValue.balcon ? datos.append('balcony', '10') : '';
+            formValue.calentador ? datos.append('heating', '15') : '';
+            formValue.piscina ? datos.append('swimmingPool', '8') : '';
+            formValue.jardin ? datos.append('garden', '14') : '';
+            formValue.parking ? datos.append('parking', '7') : '';
+            formValue.chimenea ? datos.append('chimney', '13') : '';
+            formValue.trastero ? datos.append('storage_room', '11') : '';
 
             formValue.Barcelona ? datos.append('Barcelona', 'Barcelona') : '';
             formValue.Girona ? datos.append('Girona', 'Girona') : '';
