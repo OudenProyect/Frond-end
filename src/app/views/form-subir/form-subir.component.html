@@ -33,12 +33,13 @@
               ><i class="fa fa-images" style="font-size: 45px"></i
             ></label>
             <input
-              class="form-control d-none"
-              type="file"
-              id="formFile0"
-              name="formFile0"
-              (change)="onfile($event, 0)"
-            />
+                class="form-control d-none"
+                type="file"
+                id="formFile0"
+                name="formFile0"
+                accept="image/jpeg, image/png, image/gif"
+                (change)="onfile($event, 0)"
+              />
           </div>
         </div>
 
@@ -54,6 +55,7 @@
                 type="file"
                 id="formFile1"
                 name="formFile1"
+                accept="image/jpeg, image/png, image/gif"
                 (change)="onfile($event, 1)"
               />
             </div>
@@ -69,6 +71,7 @@
                 type="file"
                 id="formFile2"
                 name="formFile2"
+                accept="image/jpeg, image/png, image/gif"
                 (change)="onfile($event, 2)"
               />
             </div>
@@ -84,6 +87,7 @@
                 type="file"
                 id="formFile3"
                 name="formFile3"
+                accept="image/jpeg, image/png, image/gif"
                 (change)="onfile($event, 3)"
               />
             </div>
@@ -99,6 +103,7 @@
                 type="file"
                 id="formFile4"
                 name="formFile4"
+                accept="image/jpeg, image/png, image/gif"
                 (change)="onfile($event, 4)"
               />
             </div>

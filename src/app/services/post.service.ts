@@ -23,6 +23,10 @@ export class PostService {
     return this.http.post('/post', datos);
   }
 
+  avatarPost(datos: any) {
+    return this.http.post('/avatarpost', datos);
+  }
+  
   getPost(id: string) {
     return this.http.get('/publicacion', { params: { id: id } });
   }
