@@ -1,0 +1,22 @@
+<div class="content">
+    <div class="header flex-wrap gap-2">
+      <!-- -->
+      <app-search (busqueda)="recibir($event)"></app-search>
+      <app-filtros (propagar)="applyFilter($event)"></app-filtros>
+    </div>
+    <span class="pb-4 d-block">Search: {{ lugar }}</span>
+    <div>
+      <span class="mgright" *ngIf="message">{{ message.mensaje }}</span>
+      <app-my-post-card
+        *ngIf="resultBusqueda.length != 0"
+        [post]="resultBusqueda.length > 0 ? resultBusqueda : []"
+      ></app-my-post-card>
+      <div *ngIf="resultBusqueda.length === 0">
+        <h3>
+          We have looked everywhere but... we have not found what you are looking for
+          :(
+        </h3>
+      </div>
+    </div>
+  </div>
+  

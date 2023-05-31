@@ -1,0 +1,87 @@
+<div  *ngIf="post.length > 0">
+    <div  *ngFor="let casa of post; let i = index">
+    <div class="casa" *ngIf="post[i].idCompany.id === user?.user?.user?.cifCompany?.id">
+      <div class="portada">
+        <img
+          src="{{
+            post[i].images.length > 0
+              ? 'http://127.0.0.1:8000/images/' + post[i].images[0].name
+              : 'assets/imag/defect.jpg'
+          }}"
+          alt=""
+        />
+      </div>
+      <div class="descripcion">
+        <div>
+          <a href="detailsHome/{{ post[i].id }}">
+            {{ post[i].house.type }}
+            <span>{{ post[i].title }}</span>
+          </a>
+          <span class="precio">{{ post[i].house.price }}€</span>
+          <div class="contentUbicacion">
+            <span class="bold" *ngFor="let res of post[i].house.areaServices">{{
+              res.name
+            }}</span>
+          </div>
+          <div class="d-flex gap-3 caracter-casa iconos">
+            <div class="info-casaMin">
+              <img src="assets/svg/cama (1).png" class="icon" alt="..." />
+              <span>{{ post[i].house.nBedrooms }} Hab</span>
+            </div>
+            <div class="info-casaMin">
+              <img src="assets/svg/ducha.png" class="icon" alt="..." /><span
+                >{{ post[i].house.toilets }} Baños</span
+              >
+            </div>
+            <div class="info-casaMin">
+              <img src="assets/svg/zona.png" class="icon" alt="..." /><span
+                >{{
+                  post[i].house.buildedSurface
+                    ? post[i].house.buildedSurface
+                    : post[i].house.BuildedSurface
+                }}
+                m²</span
+              >
+            </div>
+          </div>
+          <p class="descript-details">
+            {{ post[i].description }}
+          </p>
+        </div>
+        <div
+          class="lastSection d-flex justify-content-between align-items-center gap-2"
+        >
+          <div class="links d-flex gap-3">
+            <a class="btn-general ml-0 d-block">Contactar</a>
+            <a class="link-btn" href="">
+              <img class="icon-xs" src="assets/svg/telefono.svg" alt="" />
+              <span>{{ post[i].idCompany.phone }}</span>
+            </a>
+          </div>
+          <div class="btns d-flex gap-2">
+            <a href="edit/{{ post[i].id }}" *ngIf="post[i].idCompany.id === user?.user?.user?.cifCompany?.id">
+              <button class="btn-icon"  >
+                <img src="assets/svg/edit.png" alt="" />
+              </button>
+            </a>
+            <button class="btn-icon" (click)="eraseView(post[i].id)">
+              <img src="assets/svg/delete.png" alt="" />
+            </button>
+            <button class="btn-icon encanta">
+              <img
+                (click)="meencanta(post[i].id)"
+                src="{{
+                  this.encantas.includes(post[i].id)
+                    ? 'assets/svg/reaccion.svg'
+                    : 'assets/svg/encanta.svg'
+                }}"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  

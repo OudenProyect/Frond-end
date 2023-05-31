@@ -31,6 +31,8 @@ import { SelectComponent } from './components/select/select.component';
 import { PostCardComponent } from './components/post-card/post-card.component';
 import { RegisterEmpresaComponent } from './views/register-empresa/register-empresa.component';
 import { EditFormSubirComponent } from './views/edit-form-subir/edit-form-subir.component';
+import { MyAdsComponent } from './views/my-ads/my-ads.component';
+import { MyPostCardComponent } from './components/my-post-card/my-post-card.component';
 
 /** alison */
 @NgModule({
@@ -57,6 +59,8 @@ import { EditFormSubirComponent } from './views/edit-form-subir/edit-form-subir.
     PostCardComponent,
     RegisterEmpresaComponent,
     EditFormSubirComponent,
+    MyAdsComponent,
+    MyPostCardComponent,
   ],
   imports: [
     BrowserModule,

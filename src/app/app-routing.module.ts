@@ -87,6 +87,12 @@ const routes: Routes = [
         (m) => m.EditFormSubirModule
       ),
   },
+
+  {
+    path: 'Myads/:search',
+    loadChildren: () =>
+      import('./views/my-ads/my-ads.module').then((m) => m.MyAdsModule),
+  },
 ];
 
 @NgModule({
