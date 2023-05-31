@@ -30,6 +30,7 @@ import { SearchComponent } from './components/search/search.component';
 import { SelectComponent } from './components/select/select.component';
 import { PostCardComponent } from './components/post-card/post-card.component';
 import { RegisterEmpresaComponent } from './views/register-empresa/register-empresa.component';
+import { EditFormSubirComponent } from './views/edit-form-subir/edit-form-subir.component';
 
 /** alison */
 @NgModule({
@@ -55,6 +56,7 @@ import { RegisterEmpresaComponent } from './views/register-empresa/register-empr
     SelectComponent,
     PostCardComponent,
     RegisterEmpresaComponent,
+    EditFormSubirComponent,
   ],
   imports: [
     BrowserModule,

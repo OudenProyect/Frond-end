@@ -80,6 +80,13 @@ const routes: Routes = [
         (m) => m.HomeDetailsModule
       ),
   },
+  {
+    path: 'edit/:id',
+    loadChildren: () =>
+      import('./views/edit-form-subir/edit-form-subir.module').then(
+        (m) => m.EditFormSubirModule
+      ),
+  },
 ];
 
 @NgModule({

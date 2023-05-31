@@ -58,6 +58,11 @@
           </a>
         </div>
         <div class="btns d-flex gap-2">
+          <a href="edit/{{ post[i].id }}" *ngIf="post[i].idCompany.id === user.user.user.cifCompany.id">
+            <button class="btn-icon"  >
+              <img src="assets/svg/edit.png" alt="" />
+            </button>
+          </a>
           <button class="btn-icon" (click)="eraseView(post[i].id)">
             <img src="assets/svg/delete.png" alt="" />
           </button>

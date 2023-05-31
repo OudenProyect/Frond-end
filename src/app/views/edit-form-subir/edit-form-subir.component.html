@@ -1,0 +1,355 @@
+<div class="box-content col-sm-12 row">
+    <title>Subir propiedad - Inmobiliario</title>
+    <div class="container">
+      <h1>Upload Plan - Real Estate</h1>
+      <form
+        method="POST"
+        enctype="multipart/form-data"
+        [formGroup]="formPost"
+        (submit)="createPost()"
+      >
+        <div hidden>
+          Company:
+          <input type="text" formControlName="empresa" value="" [(ngModel)]="publicacion.idCompany.id"/>
+        </div>
+        <div>
+          <div
+            [className]="
+                (formPost.get('imagen')?.errors?.['required'] && formPost.get('imagen')?.touched ) ? 'error-input card sub_img col-sm-12 ' : 'card sub_img col-sm-12'
+              "
+          
+                  >
+
+            <img [src]="imgSrc1" *ngIf="imgSrc1" class="img-fluid card-img"  />
+            <div class="card-img-overlay">
+              <label for="formFile0" class="subir1"
+                ><i class="fa fa-images" style="font-size: 45px"></i
+              ></label>
+              <input
+                  class="form-control d-none"
+                  type="file"
+                  id="formFile0"
+                  name="formFile0"
+                  accept="image/jpeg, image/png, image/gif"
+                  (change)="onfile($event, 0)"
+                  
+                />
+            </div>
+          </div>
+  
+          <div class="d-flex col-sm-12">
+            <div class="card sub_img_2 col-sm-3">
+              <img [src]="imgSrc2" *ngIf="imgSrc2" class="img-fluid card-img" />
+              <div class="card-img-overlay">
+                <label for="formFile1" class="subir2"
+                  ><i class="fa fa-images" style="font-size: 35px"></i
+                ></label>
+                <input
+                  class="form-control d-none"
+                  type="file"
+                  id="formFile1"
+                  name="formFile1"
+                  accept="image/jpeg, image/png, image/gif"
+                  (change)="onfile($event, 1)"
+                />
+              </div>
+            </div>
+            <div class="card sub_img_2 col-sm-3">
+              <img [src]="imgSrc3" *ngIf="imgSrc3" class="img-fluid card-img" />
+              <div class="card-img-overlay">
+                <label for="formFile2" class="subir2"
+                  ><i class="fa fa-images" style="font-size: 35px"></i
+                ></label>
+                <input
+                  class="form-control d-none"
+                  type="file"
+                  id="formFile2"
+                  name="formFile2"
+                  accept="image/jpeg, image/png, image/gif"
+                  (change)="onfile($event, 2)"
+                />
+              </div>
+            </div>
+            <div class="card sub_img_2 col-sm-3">
+              <img [src]="imgSrc4" *ngIf="imgSrc4" class="img-fluid card-img" />
+              <div class="card-img-overlay">
+                <label for="formFile3" class="subir2"
+                  ><i class="fa fa-images" style="font-size: 35px"></i
+                ></label>
+                <input
+                  class="form-control d-none"
+                  type="file"
+                  id="formFile3"
+                  name="formFile3"
+                  accept="image/jpeg, image/png, image/gif"
+                  (change)="onfile($event, 3)"
+                />
+              </div>
+            </div>
+            <div class="card sub_img_2 col-sm-3">
+              <img [src]="imgSrc5" *ngIf="imgSrc5" class="img-fluid card-img" />
+              <div class="card-img-overlay">
+                <label for="formFile4" class="subir2"
+                  ><i class="fa fa-images" style="font-size: 35px"></i
+                ></label>
+                <input
+                  class="form-control d-none"
+                  type="file"
+                  id="formFile4"
+                  name="formFile4"
+                  accept="image/jpeg, image/png, image/gif"
+                  (change)="onfile($event, 4)"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <span
+          class="errorMessage"
+          *ngIf="formPost.get('imagen')?.touched && formPost.get('imagen')?.errors?.['required'] "
+        >
+          At least one cover image is needed
+        </span>
+        <div>
+          <label for="titulo">Title:</label>
+          <input
+            type="text"
+            id="titulo"
+            name="titulo"
+            
+            formControlName="titulo"
+            required
+            [(ngModel)]="publicacion.title"
+            placeholder="{{publicacion.title}}"
+          />
+          <span
+            class="errorMessage"
+            *ngIf="formPost.get('titulo')?.touched && formPost.get('titulo')?.errors?.['required'] "
+            >This field is required</span
+          >
+        </div>
+  
+        <div>
+          <label for="precio">Budget:</label>
+          <input
+            type="number"
+            id="precio"
+            name="precio"
+            min="0"
+            required
+            formControlName="precio"
+            [(ngModel)]="publicacion.house.price"
+            placeholder="{{publicacion.house.price}}"
+          />
+          <span
+            class="errorMessage"
+            *ngIf="formPost.get('precio')?.touched && formPost.get('precio')?.errors?.['required'] "
+            >This field is required</span
+          >
+        </div>
+  
+        <div>
+          <label for="descripcion">Description Cover:</label>
+          <textarea
+            id="descripcion"
+            formControlName="descripcionPortada"
+            name="descripcionPortada"
+            rows="4"
+            cols="50"
+            [(ngModel)]="publicacion.description"
+            placeholder="{{publicacion.description}}"
+          ></textarea>
+          <span
+            class="errorMessage"
+            *ngIf="formPost.get('descripcionPortada')?.touched && formPost.get('descripcionPortada')?.errors?.['required'] "
+            >This field is required</span
+          >
+        </div>
+        <div>
+          <label for="descripcion">Description:</label>
+          <textarea
+            id="descripcion"
+            formControlName="descripcion"
+            name="descripcion"
+            rows="4"
+            cols="50"
+            [(ngModel)]="publicacion.details"
+            placeholder="{{publicacion.details}}"
+          ></textarea>
+          <span
+            class="errorMessage"
+            *ngIf="formPost.get('descripcion')?.touched && formPost.get('descripcion')?.errors?.['required'] "
+            >This field is required</span
+          >
+        </div>
+  
+        <div>
+          <label for="tipo">Type of property to be built:</label>
+          <select id="tipo" name="tipo" formControlName="tipo">
+            <option [value]="null" selected>{{publicacion.house.type}}</option>
+            <option *ngFor="let item of types" value="{{ item }}">
+              {{ item }}
+            </option>
+          </select>
+          <span
+            class="errorMessage"
+            *ngIf="formPost.get('tipo')?.touched && formPost.get('tipo')?.errors?.['required']"
+            >This field is required</span
+          >
+        </div>
+  
+        <div class="col-sm-12 details d-flex flex-wrap">
+          <h3 class="w-100 fs-5 fw-bold mt-3 pt-4 border-top">Details House</h3>
+          <div clas>
+            <img
+              src="assets/svg/cama.png"
+              class="imag-info label-num"
+              alt="..."
+            />
+            <input
+              [className]="
+                (formPost.get('bedrooms')?.errors?.['required'] && formPost.get('bedrooms')?.touched ) ? 'error-input ' : ''
+              "
+              type="number"
+              id="metros-cuadrados"
+              class="input-num"
+              min="1"
+              name="bedrooms"
+              formControlName="bedrooms"
+              [(ngModel)]="publicacion.house.nBedrooms"
+              placeholder="{{publicacion.house.nBedrooms}}"
+            />
+          </div>
+  
+          <div>
+            <img
+              src="assets/svg/cuarto-de-bano.png"
+              class="imag-info label-num"
+              alt="..."
+            />
+            <input
+              [className]="
+                (formPost.get('bathroom')?.errors?.['required'] && formPost.get('bathroom')?.touched ) ? 'error-input ' : ''
+              "
+              type="number"
+              min="1"
+              id="metros-cuadrados"
+              class="input-num"
+              name="bathroom"
+              formControlName="bathroom"
+              placeholder="Bathroom"
+              [(ngModel)]="publicacion.house.toilets"
+              placeholder="{{publicacion.house.toilets}}"
+            />
+          </div>
+          <div>
+            <img
+              src="assets/svg/de-muchos-pisos.png"
+              class="imag-info label-num"
+              alt="..."
+            />
+            <input
+              [className]="
+                (formPost.get('flats')?.errors?.['required'] && formPost.get('flats')?.touched ) ? 'error-input ' : ''
+              "
+              type="number"
+              id="metros-cuadrados"
+              class="input-num"
+              min="0"
+              name="flats"
+              formControlName="flats"
+              placeholder="Flats"
+              [(ngModel)]="publicacion.house.floors"
+              placeholder="{{publicacion.house.floors}}"
+            />
+          </div>
+          <div>
+            <img
+              src="assets/svg/bosquejo.png"
+              class="imag-info label-num"
+              alt="..."
+            />
+            <input
+              [className]="
+                (formPost.get('m2')?.errors?.['required'] && formPost.get('m2')?.touched ) ? 'error-input ' : ''
+              "
+              type="number"
+              min="0"
+              id=""
+              class="input-num"
+              name="m2"
+              formControlName="m2"
+              placeholder="m2"
+              [(ngModel)]="publicacion.house.buildedSurface"
+              placeholder="{{publicacion.house.buildedSurface}}"
+            />
+          </div>
+          <div>
+            <img
+              src="assets/svg/bosquejo.png"
+              class="imag-info label-num"
+              alt="..."
+            />
+            <input
+              [className]="
+                (formPost.get('m2util')?.errors?.['required'] && formPost.get('m2util')?.touched ) ? 'error-input ' : ''
+              "
+              type="number"
+              min="0"
+              id="pisos"
+              class="input-num"
+              formControlName="m2util"
+              name="m2util"
+              placeholder="m2 util"
+              [(ngModel)]="publicacion.house.usefulLivinArea"
+              placeholder="{{publicacion.house.usefulLivinArea}}"
+            />
+          </div>
+        </div>
+  
+        <div class="row col-sm-12 justify-content-between gap-2">
+          <h3 class="w-100 fs-5 fw-bold mt-3 pt-4 border-top">Zone</h3>
+  
+          <div *ngFor="let caracteristica of caracteristicas" class="w-25 mb-3">
+            <img
+              src="assets/svg/{{ caracteristica.name.toLowerCase() }}.png"
+              class="imag-info label-num"
+              alt="..."
+            />
+            <input
+              type="checkbox"
+              [id]="caracteristica.name.toLowerCase()"
+              formControlName="{{ caracteristica.name.toLowerCase() }}"
+            />
+            <label [for]="caracteristica.name.toLowerCase()" class="label-num">{{
+              caracteristica.name
+            }}</label>
+          </div>
+        </div>
+        <div class="ubicacionBox flex-wrap">
+          <div *ngFor="let option of optionsUbicacion" class="w-25">
+            <input
+              type="checkbox"
+              [id]="option.value"
+              [value]="option.value"
+              [formControlName]="option.value"
+            />
+            <label [for]="option.value">{{ option.value }}</label>
+          </div>
+          <span
+            [className]="
+              formPost.get('Barcelona')?.value || formPost.get('Girona')?.value
+                ? 'hidden'
+                : 'errorMessage'
+            "
+            >Select at least one city</span
+          >
+        </div>
+  
+        <div class="enviar">
+          <input type="submit" value="Upload property" />
+        </div>
+      </form>
+    </div>
+  </div>
+  

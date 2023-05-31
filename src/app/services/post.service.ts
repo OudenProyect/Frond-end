@@ -61,4 +61,7 @@ export class PostService {
       },
     });
   }
+  postedit(datos: any) {
+    return this.http.post('/postedit', datos);
+  }
 }
